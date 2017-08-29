@@ -1,0 +1,13 @@
+{
+  "name": "project-4",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/bleetdh/project-4.git",
+  "author": "lee brian <leesinshingbrian@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "firebase": "^4.3.0",
+    "react": "^15.6.1",
+    "reactfire": "^1.0.0"
+  }
+}
