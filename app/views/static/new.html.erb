@@ -1,0 +1,4 @@
+<h1>Welcome <%= current_user.name %> to the hatchpodz organization page</h1>
+
+
+<%= link_to "Logout", destroy_user_session_path, method: :delete %>
