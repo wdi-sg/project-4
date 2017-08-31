@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class German extends Component {
+export default class German extends Component {
   render () {
     return (
       <div>
@@ -9,5 +9,3 @@ class German extends Component {
     )
   }
 }
-
-export default German

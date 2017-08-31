@@ -1,1 +1,21 @@
+.country .image {
+  height: 250px;
+  max-width: 300px;
+  position: relative;
+}
 
+.country .subtitle {
+  font-family: 'Chewy', cursive;
+  font-size: 30px;
+  text-align: center;
+}
+
+.country span{
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left: 0;
+
+  z-index: 1;
+}

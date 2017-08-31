@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class Goethe extends Component {
+export default class Goethe extends Component {
   render () {
     return (
       <div>
@@ -9,5 +9,3 @@ class Goethe extends Component {
     )
   }
 }
-
-export default Goethe
