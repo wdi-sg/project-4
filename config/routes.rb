@@ -3,11 +3,10 @@ Rails.application.routes.draw do
   # get 'users/new'
 
   # get 'users/index'
-  match '/users',   to: 'users#index',   via: 'get'
 
-  match '/users/:id',     to: 'users#show',       via: 'get'
+  root 'static#home'
 
-  resources :users_admin, :controller => 'users'
+  resources :create_users, :controller => 'users'
   # :only =>[:show]
 
   devise_for :users,

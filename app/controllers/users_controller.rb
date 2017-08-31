@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+    before_action :authenticate_user!
+    before_action :isAdmin
+
   def index
     @user = User.all
   end
@@ -13,5 +16,14 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(params.require(:user).permit(:name, :email, :password, :isAdmin))
+    redirect_to create_users_path
+  end
+
+  private
+
+  def isAdmin
+    if !current_user.isAdmin
+      redirect_to '/'
+    end
   end
 end
