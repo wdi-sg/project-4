@@ -1,6 +1,10 @@
 <h1>Static#home</h1>
 <p>Find me in app/views/static/home.html.erb</p>
 
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+
 <% if current_user %>
 <% if current_user.isAdmin %>
 <%= link_to "Create user", new_create_user_path %>
