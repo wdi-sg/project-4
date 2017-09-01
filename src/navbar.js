@@ -65,8 +65,7 @@ export default class Nav extends Component {
   }
   render () {
     return (
-      <div className='App'>
-
+      <div>
         <Router>
           <div>
             <nav>
