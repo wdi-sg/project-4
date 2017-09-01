@@ -4,7 +4,11 @@ Rails.application.routes.draw do
 
   # get 'users/index'
 
-  root 'static#home'
+  # root 'static#home'
+  root 'statics#home'
+
+  resources :meetingrooms
+  resources :bookrooms
 
   resources :create_users, :controller => 'users'
   # :only =>[:show]
