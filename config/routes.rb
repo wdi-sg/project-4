@@ -4,8 +4,10 @@ Rails.application.routes.draw do
 
   # get 'users/index'
 
-  # root 'static#home'
-  root 'statics#home'
+  #  temporarily change to show react abilities. Using root 'static#home will redirect to nick's user page.
+  # Using root 'statics#home will redirect to daniel's react page
+  root 'static#home'
+  # root 'statics#home'
 
   resources :meetingrooms
   resources :bookrooms
