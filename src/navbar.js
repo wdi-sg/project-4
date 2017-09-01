@@ -5,6 +5,7 @@ import Home from './homepage/Home'
 import Contact from './Contact'
 import German from './languages/German'
 import Goethe from './schools/Goethe'
+import { DropdownButton, MenuItem } from 'react-bootstrap'
 
 import Login from './authen/Login'
 import Register from './authen/Register'
@@ -71,7 +72,30 @@ export default class Nav extends Component {
             <nav>
               <div className="container">
                 <Link to="/" className="navbar-brand">Home</Link>{' '}
-                <Link to="/german" className="navbar-brand">German</Link>
+
+                <DropdownButton className="navbar-brand" title='Languages'>
+                  <MenuItem href='/arabic'>Arabic</MenuItem>
+                  <MenuItem href='/Bahasaindo'>Bahasa Indo</MenuItem>
+                  <MenuItem href='/chinese'>Chinese</MenuItem>
+                  <MenuItem href='/dutch'>Dutch</MenuItem>
+                  <MenuItem href='/english'>English</MenuItem>
+                  <MenuItem href='/french'>French</MenuItem>
+                  <MenuItem href='/german'>German</MenuItem>
+                  <MenuItem href='/greek'>Greek</MenuItem>
+                  <MenuItem href='/hebrew'>Hebrew</MenuItem>
+                  <MenuItem href='/italian'>Italian</MenuItem>
+                  <MenuItem href='/japanese'>Japanese</MenuItem>
+                  <MenuItem href='/korean'>Korean</MenuItem>
+                  <MenuItem href='/russian'>Russian</MenuItem>
+                  <MenuItem href='/spanish'>Spanish</MenuItem>
+                  <MenuItem href='/tagalog'>Tagalog</MenuItem>
+                  <MenuItem href='/thai'>Thai</MenuItem>
+                  <MenuItem href='/vietnamese'>Vietnamese</MenuItem>
+                </DropdownButton>
+
+
+
+
                   {this.state.authed
                   ? <button
                     style={{border: 'none', background: 'transparent'}}
