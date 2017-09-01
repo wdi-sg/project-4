@@ -67,7 +67,7 @@ export default class Nav extends Component {
     this.removeListener()
   }
   render () {
-    return this.state.loading === true ? <h1>Loading</h1> : (
+    return (
       <div>
         <Router>
           <div>
@@ -115,7 +115,7 @@ export default class Nav extends Component {
                     <PublicRoute authed={this.state.authed} path='/contact' component={Contact} />
                     <PublicRoute authed={this.state.authed} path='/french' component={French} />
                     <PublicRoute authed={this.state.authed} path='/german' component={German} />
-                    <PrivateRoute authed={this.state.authed} path='/goethe' component={Goethe} />
+                    <PublicRoute authed={this.state.authed} path='/goethe' component={Goethe} />
                     <Route render={() => <h3>No Match</h3>} />
                   </Switch>
               </div>
