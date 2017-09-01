@@ -3,6 +3,7 @@ import './App.css'
 
 import Home from './homepage/Home'
 import Contact from './Contact'
+import French from './languages/French'
 import German from './languages/German'
 import Goethe from './schools/Goethe'
 import Chalkboard from './images/Chalkboard.png'
@@ -66,7 +67,7 @@ export default class Nav extends Component {
     this.removeListener()
   }
   render () {
-    return (
+    return this.state.loading === true ? <h1>Loading</h1> : (
       <div>
         <Router>
           <div>
@@ -112,6 +113,7 @@ export default class Nav extends Component {
                     <PublicRoute authed={this.state.authed} path='/login' component={Login} />
                     <PublicRoute authed={this.state.authed} path='/register' component={Register} />
                     <PublicRoute authed={this.state.authed} path='/contact' component={Contact} />
+                    <PublicRoute authed={this.state.authed} path='/french' component={French} />
                     <PublicRoute authed={this.state.authed} path='/german' component={German} />
                     <PrivateRoute authed={this.state.authed} path='/goethe' component={Goethe} />
                     <Route render={() => <h3>No Match</h3>} />
