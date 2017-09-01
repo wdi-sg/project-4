@@ -1,0 +1,16 @@
+<h1>Static#home</h1>
+<p>Find me in app/views/static/home.html.erb</p>
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+
+<% if current_user %>
+<% if current_user.isAdmin %>
+<%= link_to "Create user", new_create_user_path %>
+<%= link_to "View Users",  create_users_path %>
+<% end %>
+<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+<% else %>
+<%= link_to "Login", new_user_session_path %>
+<% end %>

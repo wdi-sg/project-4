@@ -1,7 +1,11 @@
-<h2>Sign up</h2>
+<h1>Creating User</h1>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<%= form_for @user, url: create_users_path(@user)  do |f| %>
+
+  <div class="field">
+    <%= f.label :isAdmin %><br />
+    <%= f.check_box :isAdmin, autofocus: true %>
+  </div>
 
   <div class="field">
     <%= f.label :name %><br />
@@ -27,8 +31,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Create" %>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
