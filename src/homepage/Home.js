@@ -49,7 +49,6 @@ export default class Home extends Component {
         </Row>
         <Row>
           <Col xs={12}>
-
             <Row>
               <Col xs={3}>
                 <h1>East Asian</h1>

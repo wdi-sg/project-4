@@ -1,3 +1,4 @@
+/* styling for country squares in homepage */
 .country .image {
   height: 250px;
   max-width: 300px;
@@ -18,6 +19,8 @@
   left: 0;
   z-index: 1;
 }
+
+/* styling for school cards in language page */
 .card {
   border-style: outset;
   padding: 15px;
@@ -32,4 +35,9 @@
   top:0;
   left: 0;
   z-index: 1;
+}
+
+/* background color for every page */
+.App {
+  background-color: #F4FBFB
 }
