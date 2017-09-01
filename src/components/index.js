@@ -60,14 +60,14 @@ export default class App extends Component {
           <nav className="navbar navbar-default navbar-static-top">
             <div className="container">
               <div className="navbar-header">
-                <Link to="/" className="navbar-brand">React Router + Firebase Auth</Link>
+                <Link to="/" className="navbar-brand">Graviton</Link>
               </div>
               <ul className="nav navbar-nav pull-right">
                 <li>
                   <Link to="/" className="navbar-brand">Home</Link>
                 </li>
                 <li>
-                  <Link to="/livestock" className="navbar-brand">Livestock</Link>
+                  <Link to="/livestock" className="navbar-brand">Live Stocks</Link>
                 </li>
                 <li>
                   {this.state.authed
