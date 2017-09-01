@@ -19,11 +19,13 @@ import Indonesia from '../images/indonesia.png'
 import Philippines from '../images/philippines.png'
 import { Row, Col, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import Chalkboard from '../images/Chalkboard.png'
 
 export default class Home extends Component {
   render () {
     return (
       <div>
+        <Image src={Chalkboard} responsive />
         <Row>
           <Col xs={6} xsOffset={6}>
             <h1>European Germanic</h1>

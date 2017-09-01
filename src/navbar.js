@@ -5,7 +5,9 @@ import Home from './homepage/Home'
 import Contact from './Contact'
 import German from './languages/German'
 import Goethe from './schools/Goethe'
+import Chalkboard from './images/Chalkboard.png'
 import { DropdownButton, MenuItem } from 'react-bootstrap'
+import { Row, Col, Image } from 'react-bootstrap'
 
 import Login from './authen/Login'
 import Register from './authen/Register'
@@ -92,9 +94,6 @@ export default class Nav extends Component {
                   <MenuItem href='/thai'>Thai</MenuItem>
                   <MenuItem href='/vietnamese'>Vietnamese</MenuItem>
                 </DropdownButton>
-
-
-
 
                   {this.state.authed
                   ? <button
