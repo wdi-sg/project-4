@@ -7,7 +7,6 @@ import German from './languages/German'
 import Goethe from './schools/Goethe'
 import Chalkboard from './images/Chalkboard.png'
 import { DropdownButton, MenuItem } from 'react-bootstrap'
-import { Row, Col, Image } from 'react-bootstrap'
 
 import Login from './authen/Login'
 import Register from './authen/Register'
@@ -74,6 +73,7 @@ export default class Nav extends Component {
             <nav>
               <div className="container">
                 <Link to="/" className="navbar-brand">Home</Link>{' '}
+                <Link to="/contact" className="navbar-brand">Contact</Link>{' '}
 
                 <DropdownButton className="navbar-brand" title='Languages'>
                   <MenuItem href='/arabic'>Arabic</MenuItem>
@@ -111,6 +111,7 @@ export default class Nav extends Component {
                     <Route path='/' exact component={Home} />
                     <PublicRoute authed={this.state.authed} path='/login' component={Login} />
                     <PublicRoute authed={this.state.authed} path='/register' component={Register} />
+                    <PublicRoute authed={this.state.authed} path='/contact' component={Contact} />
                     <PublicRoute authed={this.state.authed} path='/german' component={German} />
                     <PrivateRoute authed={this.state.authed} path='/goethe' component={Goethe} />
                     <Route render={() => <h3>No Match</h3>} />

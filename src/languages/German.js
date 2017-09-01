@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
+import { Image } from 'react-bootstrap'
+import Germanpic from '../images/German.png'
 
 export default class German extends Component {
   render () {
     return (
       <div>
-        <h1>German</h1>
+        <Image src={Germanpic} responsive />
       </div>
     )
   }
