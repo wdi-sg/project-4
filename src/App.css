@@ -24,6 +24,7 @@
 .card {
   border-style: outset;
   padding: 15px;
+  background-color: #FFFFFF
 }
 .card:hover {
   background-color: #EDF6F6

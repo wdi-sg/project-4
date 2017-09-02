@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import './App.css'
 import Nav from './navbar'
 import Home from './homepage/Home'
@@ -53,21 +54,23 @@ export default class App extends Component {
   render () {
     return (
       <div className='App'>
-        <Router>
-          <div>
-            <Nav />
-            <Switch>
-              <Route exact path='/' component={Home} />
-              <Route path='/login' component={Login} />
-              <Route path='/register' component={Register} />
-              <Route exact path='/contact' component={Contact} />
-              <Route path='/french' component={French} />
-              <Route path='/german' component={German} />
-              <PrivateRoute authed={this.state.authed} path='/goethe' component={Goethe} />
-              <Route render={() => <h3>No Match</h3>} />
-            </Switch>
-          </div>
-        </Router>
+        <MuiThemeProvider>
+          <Router>
+            <div>
+              <Nav />
+              <Switch>
+                <Route exact path='/' component={Home} />
+                <Route path='/login' component={Login} />
+                <Route path='/register' component={Register} />
+                <Route exact path='/contact' component={Contact} />
+                <Route path='/french' component={French} />
+                <Route path='/german' component={German} />
+                <PrivateRoute authed={this.state.authed} path='/goethe' component={Goethe} />
+                <Route render={() => <h3>No Match</h3>} />
+              </Switch>
+            </div>
+          </Router>
+        </MuiThemeProvider>
       </div>
     )
   }
