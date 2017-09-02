@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   end
 
   def new
-    @new_event = Eventroom.new
+    @new_event = Event.new
     # render html: "hhh"
   end
 

@@ -1,6 +1,6 @@
-class CreateEventrooms < ActiveRecord::Migration[5.1]
+class CreateEvents < ActiveRecord::Migration[5.1]
   def change
-    create_table :eventrooms do |t|
+    create_table :events do |t|
       t.string  :title
       t.date :date_start
       t.time :time_start
