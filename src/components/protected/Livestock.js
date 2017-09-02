@@ -11,18 +11,31 @@ class Livestock extends Component {
     }
   }
   render () {
-    let allRSI = this.state.rsiArr.map((rsi, index) => {
-      return <Graph key={index} rsi={rsi} />
+    let allData = this.state.rsiArr.map((rsi, index) => {
+      // let graphObj = {
+      //   x: this.state.timeArr[index],
+      //   y: rsi
+      // }
+
+      return (
+        <Graph
+          key={index}
+          // graphObj={graphObj}
+          rsi={rsi}
+          time={this.state.timeArr[index]}
+        />
+      )
     })
-    let allTime = this.state.timeArr.map((time, index) => {
-      return <Graph key={index} time={time} />
-    })
+    // let allTime = this .state.timeArr.map((time, index) => {
+    //   return <Graph key={index} time={time} />
+    // })
     return (
       <div>
         <h2>RSI</h2>
         <ol>
-          {allTime}
+          {allData}
         </ol>
+        {/* <ul>{allRSI}</ul> */}
       </div>
     )
   }
