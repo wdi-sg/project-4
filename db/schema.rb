@@ -36,9 +36,7 @@ ActiveRecord::Schema.define(version: 20170829110721) do
   create_table "bookevents", force: :cascade do |t|
     t.bigint "eventroom_id"
     t.bigint "user_id"
-    t.time "time_start"
-    t.time "time_end"
-    t.integer "rsvp"
+    t.integer "no_pax"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["eventroom_id"], name: "index_bookevents_on_eventroom_id"
@@ -50,6 +48,7 @@ ActiveRecord::Schema.define(version: 20170829110721) do
     t.bigint "user_id"
     t.time "time_start"
     t.time "time_end"
+    t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["meetingroom_id"], name: "index_bookrooms_on_meetingroom_id"
@@ -57,9 +56,15 @@ ActiveRecord::Schema.define(version: 20170829110721) do
   end
 
   create_table "eventrooms", force: :cascade do |t|
-    t.integer "pax"
-    t.boolean "availability"
-    t.string "name"
+    t.string "title"
+    t.date "date_start"
+    t.time "time_start"
+    t.date "date_end"
+    t.time "time_end"
+    t.integer "total_slots"
+    t.string "venue"
+    t.string "description"
+    t.integer "price_pax"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,12 +1,14 @@
 class EventsController < ApplicationController
   def index
-    render
+    render html:"hhh"
   end
 
   def create
   end
 
   def new
+    @new_event = Eventroom.new
+    # render html: "hhh"
   end
 
   def edit

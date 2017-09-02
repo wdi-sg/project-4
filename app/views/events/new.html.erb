@@ -6,5 +6,18 @@
   </head>
   <body>
     <h1>create event</h1>
-  </body>
+
+  <%= form_for @new_event  do |f| %>
+    <%#= render "shared/errors", object:  %>
+    <%= f.text_field :field %>
+
+  <% end %>
+
+
+    <h3>Date Start: <%= date_select Date.today, prefix: :start_date %></h3>
+    <h3>Time Start: <%= select_time(Time.now, time_separator: ':', start_hour: 8, end_hour: 23, minute_step: 15, ampm: true) %></h3>
+    <h3>Date End: <%= date_select Date.today, prefix: :start_date %></h3>
+    <h3>Time End: <%= select_time(Time.now, time_separator: ':', start_hour: 8, end_hour: 23, minute_step: 15, ampm: true) %></h3>
+
+</body>
 </html>

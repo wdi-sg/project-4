@@ -5,6 +5,7 @@ class CreateBookrooms < ActiveRecord::Migration[5.1]
       t.references :user, foreign_key: true
       t.time :time_start
       t.time :time_end
+      t.integer :price
 
       t.timestamps
     end
