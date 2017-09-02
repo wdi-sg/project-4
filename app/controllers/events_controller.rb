@@ -4,6 +4,7 @@ class EventsController < ApplicationController
   end
 
   def create
+    render json: params
   end
 
   def new

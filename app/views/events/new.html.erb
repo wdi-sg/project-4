@@ -7,17 +7,38 @@
   <body>
     <h1>create event</h1>
 
+<div class="">
+
   <%= form_for @new_event  do |f| %>
-    <%#= render "shared/errors", object:  %>
-    <%= f.text_field :title %>
+
+    <div class="field">
+    <%= f.label :date_start %>
+    <%= f.date_select :date_start %>
+  </div>
+
+  <div class="field">
+    <%= f.label :time_start %>
+    <%= f.time_select :time_start, {start_hour: 8, end_hour: 23, minute_step: 15, ampm: true} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date_end %>
+    <%= f.date_select :date_end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :time_end %>
+    <%= f.time_select :time_end, {start_hour: 8, end_hour: 23, minute_step: 15, ampm: true} %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Create" %>
+  </div>
 
   <% end %>
 
+</div>
 
-    <h3>Date Start: <%= date_select Date.today, prefix: :start_date %></h3>
-    <h3>Time Start: <%= select_time(Time.now, time_separator: ':', start_hour: 8, end_hour: 23, minute_step: 15, ampm: true) %></h3>
-    <h3>Date End: <%= date_select Date.today, prefix: :start_date %></h3>
-    <h3>Time End: <%= select_time(Time.now, time_separator: ':', start_hour: 8, end_hour: 23, minute_step: 15, ampm: true) %></h3>
 
 </body>
 </html>
