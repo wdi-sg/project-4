@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20170829110721) do
     t.time "time_start"
     t.time "time_end"
     t.integer "price"
+    t.date "date_start"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["meetingroom_id"], name: "index_bookrooms_on_meetingroom_id"

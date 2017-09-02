@@ -1,1 +1,52 @@
 <h2>Form to book a room</h2>
+
+<div class="form">
+  <%= form_for @new_room do |f| %>
+
+  <div style="overflow:hidden;">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-8">
+          <%= f.label :date_start %>
+          <%= f.text_field :date_start, required: true, id: 'datetimepicker1' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+      <div class="row">
+          <div class='col-sm-6'>
+              <div class="form-group">
+                  <div class='input-group date' id='datetimepicker1'>
+                      <input type='text' class="form-control" />
+                      <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-calendar"></span>
+                      </span>
+                  </div>
+              </div>
+          </div>
+        </div>
+
+
+  <div class="container">
+    <div class="row">
+      <div class='col-sm-6'>
+        <div class="form-group">
+          <%= f.label :time_end %>
+          <%= f.text_field :time_end, required: true, id: 'datetimepicker3' %>
+          <input type='text' class="form-control"/>
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-time"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Book room" %>
+  </div>
+
+  <% end %>
+</div>

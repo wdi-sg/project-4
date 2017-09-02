@@ -3,9 +3,11 @@ class BookroomsController < ApplicationController
   end
 
   def create
+    render json: params
   end
 
   def new
+    @new_room = Bookroom.new
   end
 
   def edit
@@ -19,5 +21,5 @@ class BookroomsController < ApplicationController
 
   def destroy
   end
-  
+
 end
