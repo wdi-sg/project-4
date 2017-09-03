@@ -21,8 +21,10 @@ class Livestock extends Component {
         <Graph
           key={index}
           // graphObj={graphObj}
-          rsi={rsi}
-          time={this.state.timeArr[index]}
+          rsiArr={rsi}
+          timeArr={this.state.timeArr[index]}
+          // rsi={rsi}
+          // time={this.state.timeArr[index]}
         />
       )
     })
@@ -74,6 +76,7 @@ class Livestock extends Component {
         console.log(err)
       })
   }
+
 }
 
 export default Livestock
