@@ -11,36 +11,36 @@
   <%= form_for @new_event do |f| %>
 
   <div class="">
-    <%= f.label :Title %>:
-    <%= f.text_field :title, required: true %>
+    <p><%= f.label :Title %>:</p>
+    <p><%= f.text_field :title, required: true %></p>
   </div>
 
   <div class="">
-    <%= f.label :Description %>:
-    <%= f.text_field :description, required: true %>
+    <p><%= f.label :Description %>:</p>
+    <p><%= f.text_area :description, required: true %></p>
   </div>
 
   <div class="">
-    <%= f.label :Venue %>:
-    <%= f.text_field :venue, required: true %>
+    <p><%= f.label :Venue %>:</p>
+    <p><%= f.text_field :venue, required: true %></p>
   </div>
 
   <div class="">
-    <%= f.label :total_slots %>:
-    <%= f.number_field :total_slots, required: true %>
+    <p><%= f.label :total_slots %>:</p>
+    <p><%= f.number_field :total_slots, :min => 1, required: true %></p>
   </div>
 
   <div class="">
-      <%= f.label :price_pax %>:
-    <%= f.number_field :price_pax, required: true %>
+    <p><%= f.label :price_pax %>:</p>
+    <p><%= f.number_field :price_pax, :min => 0, required: true  %></p>
   </div>
 
   <div style="overflow:hidden;">
     <div class="form-group">
       <div class="row">
         <div class="col-md-8">
-          <%= f.label :Start %>:
-          <%= f.text_field :event_start, required: true, id: 'datetimepickerstart' %>
+          <p><%= f.label :Start %>:</p>
+          <p><%= f.text_field :event_start, required: true, id: 'datetimepickerstart' %></p>
         </div>
       </div>
     </div>
@@ -50,8 +50,8 @@
     <div class="form-group">
       <div class="row">
         <div class="col-md-8">
-          <%= f.label :End %>:
-          <%= f.text_field :event_end, required: true, id: 'datetimepickerend' %>
+          <p><%= f.label :End %>:</p>
+          <p><%= f.text_field :event_end, required: true, id: 'datetimepickerend' %></p>
         </div>
       </div>
     </div>
