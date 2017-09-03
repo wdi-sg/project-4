@@ -1,24 +1,27 @@
 import React, {Component} from 'react'
 import Graph from './Graph'
-import ReactDom from 'react-dom'
 
 class Livestock extends Component {
   constructor (props) {
     super()
 
     this.state = {
-      rsiArr: []
+      rsiArr: [],
+      timeArr: []
     }
   }
   render () {
     let allRSI = this.state.rsiArr.map((rsi, index) => {
       return <Graph key={index} rsi={rsi} />
     })
+    let allTime = this.state.timeArr.map((time, index) => {
+      return <Graph key={index} time={time} />
+    })
     return (
       <div>
-        <h2>latest RSI to past 100 RSI</h2>
+        <h2>RSI</h2>
         <ol>
-          {allRSI}
+          {allTime}
         </ol>
       </div>
     )
@@ -34,13 +37,22 @@ class Livestock extends Component {
       .then((data) => {
         var rsiObj = (data['Technical Analysis: RSI'])
         var allRsiArr = []
+        var allTimeArr = []
         for (var prop in rsiObj) {
           allRsiArr.push(rsiObj[prop])
+          allTimeArr.push(prop)
         }
         allRsiArr.map((rsi, index) => {
-          if (index < 5) {
+          if (index < 10) {
             this.setState({
               rsiArr: this.state.rsiArr.concat(rsi.RSI)
+            })
+          }
+        })
+        allTimeArr.map((time, index) => {
+          if (index < 10) {
+            this.setState({
+              timeArr: this.state.timeArr.concat(time)
             })
           }
         })
