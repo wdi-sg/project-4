@@ -44,8 +44,8 @@ export default class Goethe extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      rate: 0,
-      open: false
+      rate: 0, // for the star rating
+      open: false // to open the snackbar after submission
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -55,14 +55,21 @@ export default class Goethe extends Component {
     this.setState({
       open: true
     })
+    // clear all the fields after submission
+    this.name.value =""
+    this.language.value = ""
+    this.state.rate = 0
+    this.review.value = ""
   }
 
+  // to manually close the snackbar
   handleRequestClose (event) {
     this.setState({
       open: false
     })
   }
 
+  // change the rate state upon clicking the stars
   handleRate (rate, event) {
     this.setState({rate: rate})
   }
