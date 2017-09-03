@@ -40,16 +40,51 @@ class Livestock extends Component {
     // let allTime = this .state.timeArr.map((time, index) => {
     //   return <Graph key={index} time={time} />
     // })
-    const option1 = {
-      timePeriod: 'INTRADAY&interval=5min&outputsize=full',
-      timeSeries: 'Time Series (5min)',
-      arrSize: 288
-    }
-    const option2 = {
-      timePeriod: 'INTRADAY&interval=15min&outputsize=full',
-      timeSeries: 'Time Series (15min)',
-      arrSize: 480
-    }
+    const option1 = [
+      'INTRADAY&interval=5min&outputsize=full',
+      'Time Series (5min)',
+      288
+    ]
+    const option2 = [
+      'INTRADAY&interval=15min&outputsize=full',
+      'Time Series (15min)',
+      480
+    ]
+    const option3 = [
+      'INTRADAY&interval=60min&outputsize=full',
+      'Time Series (60min)',
+      720
+    ]
+    const option4 = [
+      'DAILY&outputsize=full',
+      'Time Series (Daily)',
+      90
+    ]
+    const option5 = [
+      'DAILY&outputsize=full',
+      'Time Series (Daily)',
+      180
+    ]
+    const option6 = [
+      'DAILY&outputsize=full',
+      'Time Series (Daily)',
+      365
+    ]
+    const option7 = [
+      'WEEKLY',
+      'Weekly Time Series',
+      260
+    ]
+    const option8 = [
+      'WEEKLY',
+      'Weekly Time Series',
+      520
+    ]
+    const option9 = [
+      'MONTHLY',
+      'Monthly Time Series',
+      999
+    ]
     return (
       <div>
         <h2>Price of Stock: </h2>
@@ -59,13 +94,13 @@ class Livestock extends Component {
             <select>
               <option value={option1}>24 hrs</option>
               <option value={option2}>5 days</option>
-              <option value='INTRADAY&interval=60min&outputsize=full'>1 month</option>
-              <option value='DAILY&outputsize=full'>3 months</option>
-              <option value='DAILY&outputsize=full'>6 months</option>
-              <option value='DAILY&outputsize=full'>1 year</option>
-              <option value='WEEKLY'>5 years</option>
-              <option value='WEEKLY'>10 years</option>
-              <option value='MONTHLY'>All Data</option>
+              <option value={option3}>1 month</option>
+              <option value={option4}>3 months</option>
+              <option value={option5}>6 months</option>
+              <option value={option6}>1 year</option>
+              <option value={option7}>5 years</option>
+              <option value={option8}>10 years</option>
+              <option value={option9}>All Data</option>
             </select>
           </label>
         </form>
@@ -83,24 +118,27 @@ class Livestock extends Component {
   }
 
   handleChange (e) {
-    let random = e.target.value
-    console.log(random)
+    this.setState({priceArr: []})
+    var optionArr = e.target.value.split(',')
+    console.log(optionArr[0])
+    console.log(optionArr[1])
+    console.log(optionArr[2])
     let base = this
 
-    var url = 'https://www.alphavantage.co/query?function=TIME_SERIES_' + e.target.value.timePeriod + '&symbol=AAPL&apikey=D2E5ZAQU25U0NKAE'
+    var url = 'https://www.alphavantage.co/query?function=TIME_SERIES_' + optionArr[0] + '&symbol=AAPL&apikey=D2E5ZAQU25U0NKAE'
 
     fetch(url)
         .then((response) => {
           return response.json()
         })
         .then((data) => {
-          var obj = (data['Time Series (5min)'])
+          var obj = (data[optionArr[1]])
           var randomArr = []
           for (var prop in obj) {
             randomArr.push(obj[prop])
           }
           randomArr.map((price, index) => {
-            if (index < 5) {
+            if (index < optionArr[2]) {
               base.setState({
                 priceArr:
                 this.state.priceArr.concat(price['4. close'])
