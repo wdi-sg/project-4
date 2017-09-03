@@ -92,6 +92,7 @@ class Livestock extends Component {
           <label>
             Please select time period:
             <select>
+              <option>-</option>
               <option value={option1}>24 hrs</option>
               <option value={option2}>5 days</option>
               <option value={option3}>1 month</option>
