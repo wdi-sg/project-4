@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { Row, Col, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Germanpic from '../images/German.png'
-import Goethe from '../images/goethe.jpg'
+import Goethe from '../images/goethe.png'
+import Inlingua from '../images/inlingua.svg'
 import { school } from '../schools/schoolinfo'
 
 export default class German extends Component {
@@ -24,10 +25,20 @@ export default class German extends Component {
                   </div>
                 </div>
               </Col>
-              <Col xs={3} />
+              <Col xs={3}>
+                <div className="card">
+                  <Image className="card-img-top" src={Inlingua} responsive />
+                  <Link to="/inlingua"><span></span></Link>
+                  <div className="card-body">
+                    <h4 className="card-title">{school.inlingua.name}</h4>
+                    <p className="card-text">{school.inlingua.description}</p>
+                  </div>
+                </div>
+              </Col>
               <Col xs={3} />
               <Col xs={3} />
             </Row>
+            <br></br>
           </Col>
         </Row>
       </div>

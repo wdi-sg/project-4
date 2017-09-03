@@ -53,7 +53,7 @@ export default class App extends Component {
   }
   render () {
     return (
-      <div className='App'>
+      <div className='App container'>
         <MuiThemeProvider>
           <Router>
             <div>
@@ -65,7 +65,7 @@ export default class App extends Component {
                 <Route exact path='/contact' component={Contact} />
                 <Route path='/french' component={French} />
                 <Route path='/german' component={German} />
-                <PrivateRoute authed={this.state.authed} path='/goethe' component={Goethe} />
+                <Route authed={this.state.authed} path='/goethe' component={Goethe} />
                 <Route render={() => <h3>No Match</h3>} />
               </Switch>
             </div>

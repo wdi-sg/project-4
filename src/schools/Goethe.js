@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
-import { Button, ButtonGroup, ButtonToolbar } from 'react-bootstrap'
+import { ref } from '../fire'
 import {List, ListItem} from 'material-ui/List'
 import Divider from 'material-ui/Divider'
 import Subheader from 'material-ui/Subheader'
-import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors'
+import {grey400, darkBlack} from 'material-ui/styles/colors'
 import IconButton from 'material-ui/IconButton'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import IconMenu from 'material-ui/IconMenu'
 import MenuItem from 'material-ui/MenuItem'
-import SelectField from 'material-ui/SelectField'
-import TextField from 'material-ui/TextField'
+import Snackbar from 'material-ui/Snackbar'
+import RaisedButton from 'material-ui/RaisedButton'
+import Rating from 'react-rating'
+import starEmpty from '../images/star-empty.png'
+import starFull from '../images/star-full.png'
 
 const iconButtonElement = (
   <IconButton
@@ -27,52 +30,85 @@ const rightIconMenu = (
   </IconMenu>
 )
 
+function saveReview (name, language, rating, review) {
+  return ref.child('reviews/goethe/')
+    .push({
+      name: name,
+      language: language,
+      rating: rating,
+      review: review
+    })
+}
+
 export default class Goethe extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      value: null
+      rate: 0,
+      open: false
     }
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
-  handleChange = (event, index, value) => this.setState({value})
+  handleSubmit (e) {
+    e.preventDefault()
+    saveReview(this.name.value, this.language.value, this.state.rate, this.review.value)
+    this.setState({
+      open: true
+    })
+  }
+
+  handleRequestClose (event) {
+    this.setState({
+      open: false
+    })
+  }
+
+  handleRate (rate, event) {
+    this.setState({rate: rate})
+  }
 
   render () {
     return (
       <div className='container'>
-        <div>
-          <TextField
-            hintText="Hint Text"
-            floatingLabelText="Name"
-          /><br />
-          <SelectField
-            floatingLabelText='Language'
-            value={this.state.value}
-            onChange={this.handleChange}
-          >
-            <MenuItem value={1} primaryText='German' />
-          </SelectField><br />
-          <ButtonToolbar>
-            <ButtonGroup>
-              <Button>1</Button>
-              <Button>2</Button>
-              <Button>3</Button>
-              <Button>4</Button>
-              <Button>5</Button>
-              <Button>6</Button>
-              <Button>7</Button>
-              <Button>8</Button>
-              <Button>9</Button>
-              <Button>10</Button>
-            </ButtonGroup>
-          </ButtonToolbar>
-          <TextField
-            hintText="Message Field"
-            floatingLabelText="Your Review"
-            multiLine={true}
-            fullWidth={true}
-            rows={2}
-          />
-        </div>
+
+        <form className='form' onSubmit={this.handleSubmit}>
+          <div className="form-row">
+            <div className="form-group col-xs-6">
+              <label>Name</label>
+              <input className="form-control" ref={(name) => this.name = name} placeholder="Your name" />
+            </div>
+            <div className="form-group col-xs-6">
+              <label>Language Taken</label>
+              <select className="form-control" ref={(language) => this.language = language}>
+                <option>German</option>
+              </select>
+            </div>
+          </div>
+          <div className="form-group">
+            <label>Rating</label><br />
+            <Rating
+              start= {0}
+              stop={10}
+              initialRate={this.state.rate}
+              onClick={rate => this.handleRate(rate)}
+              empty={<img src={starEmpty} className="icon" />}
+              full={<img src={starFull} className="icon" />}
+            />
+          </div>
+          <div className="form-group">
+            <label>Review</label>
+            <textarea className="form-control" placeholder="Review" rows="3" ref={(review) => this.review = review} />
+          </div>
+          <button type="submit" className="btn btn-primary">Submit Review</button>
+        </form>
+
+        <Snackbar
+          open={this.state.open}
+          message="Review submitted"
+          autoHideDuration={4000}
+          onRequestClose={event => this.handleRequestClose(event)}
+        />
+
 
 
         <List>
@@ -82,7 +118,9 @@ export default class Goethe extends Component {
             primaryText="Brendan Lim"
             secondaryText={
               <p>
-                <span style={{color: darkBlack}}>Brunch this weekend?</span><br />
+                <span style={{color: darkBlack}}>Language taken:  </span>
+                <span style={{color: darkBlack}}>Rating:</span>
+                <br />
                 I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?
               </p>
             }
@@ -91,7 +129,7 @@ export default class Goethe extends Component {
           <Divider inset={true} />
           <ListItem
             rightIconButton={rightIconMenu}
-            primaryText="me, Scott, Jennifer"
+            primaryText="Jennifer"
             secondaryText={
               <p>
                 <span style={{color: darkBlack}}>Summer BBQ</span><br />

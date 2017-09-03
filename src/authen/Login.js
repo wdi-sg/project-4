@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router'
 import { login, resetPassword } from './Auth'
 
 function setErrorMsg(error) {
@@ -11,7 +12,8 @@ export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loginMessage: null
+      loginMessage: null,
+      fireRedirect: false
     }
   }
   handleSubmit = (e) => {
@@ -20,6 +22,7 @@ export default class Login extends Component {
       .catch((error) => {
           this.setState(setErrorMsg('Invalid username/password.'))
         })
+    this.setState({ fireRedirect: true })
   }
   resetPassword = () => {
     resetPassword(this.email.value)
@@ -27,6 +30,9 @@ export default class Login extends Component {
       .catch((error) => this.setState(setErrorMsg(`Email address not found.`)))
   }
   render () {
+    const { from } = this.props.location.state || '/'
+    const { fireRedirect } = this.state
+
     return (
       <div className="col-sm-6 col-sm-offset-3">
         <h1> Login </h1>
@@ -49,6 +55,9 @@ export default class Login extends Component {
           }
           <button type="submit" className="btn btn-primary">Login</button>
         </form>
+        {fireRedirect && (
+          <Redirect to={from || '/'} />
+        )}
       </div>
     )
   }

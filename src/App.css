@@ -1,7 +1,7 @@
 /* styling for country squares in homepage */
 .country .image {
   height: 250px;
-  max-width: 300px;
+  width: 100%;
   position: relative;
 }
 
@@ -23,8 +23,12 @@
 /* styling for school cards in language page */
 .card {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 6px 0 rgba(0, 0, 0, 0.19);
-  padding: 15px;
-  background-color: #FFFFFF
+  padding: 15px 15px 30px 15px;
+  background-color: #FFFFFF;
+  height: 250px
+}
+.card .card-img-top {
+  height: 50%
 }
 .card:hover {
   background-color: #EDF6F6
@@ -41,4 +45,10 @@
 /* background color for every page */
 .App {
   background-color: #F4FBFB
+}
+
+/* background color for every page */
+.form {
+  width: 50%;
+  margin: 0 auto
 }

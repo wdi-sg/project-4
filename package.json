@@ -8,6 +8,7 @@
     "react": "^15.6.1",
     "react-bootstrap": "^0.31.2",
     "react-dom": "^15.6.1",
+    "react-rating": "^0.8.1",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.12"
   },
@@ -20,5 +21,7 @@
   "devDependencies": {
     "babel-preset-stage-1": "^6.24.1"
   },
-  "presets": ["stage-1"]
+  "presets": [
+    "stage-1"
+  ]
 }

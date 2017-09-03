@@ -23,7 +23,7 @@ export const school = {
   },
   inlingua: {
     name: 'Inlingua School of Languages',
-    description: 'At inlingua, you can learn a language naturally, with realistic speaking activities and practical expressions you can use immediately.  Our teachers are all trained native speakers, using the best interactive techniques and technology to help you speak from the very first lesson.',
+    description: 'inlingua School of Languages has been providing quality language training in Singapore since 1971. ',
     location: '51 Cuppage Road, #10-12, Singapore 229469',
     trainStation: 'Somerset',
     skillsfuture: 'Yes',

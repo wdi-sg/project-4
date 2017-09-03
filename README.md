@@ -37,3 +37,4 @@ Singapore being an international and multicultural hub, there are many reasons w
 * [ReactJS](https://facebook.github.io/react/)
 * [Firebase](https://firebase.google.com/)
 * [React-Bootstrap CSS Framework](https://react-bootstrap.github.io/)
+* [React-Rating](https://github.com/dreyescat/react-rating)
