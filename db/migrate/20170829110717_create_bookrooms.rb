@@ -6,6 +6,7 @@ class CreateBookrooms < ActiveRecord::Migration[5.1]
       t.time :time_start
       t.time :time_end
       t.integer :price
+      t.date :date_start
 
       t.timestamps
     end
