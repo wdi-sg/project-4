@@ -3,7 +3,7 @@ import { Row, Col, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Germanpic from '../images/German.png'
 import Goethe from '../images/goethe.jpg'
-import {Card, CardMedia, CardTitle, CardText} from 'material-ui/Card'
+import { school } from '../schools/schoolinfo'
 
 export default class German extends Component {
   render () {
@@ -19,24 +19,14 @@ export default class German extends Component {
                   <Image className="card-img-top" src={Goethe} responsive />
                   <Link to="/goethe"><span></span></Link>
                   <div className="card-body">
-                    <h4 className="card-title">Goethe Institut</h4>
-                    <p className="card-text">The Goethe-Institut is the Federal Republic of Germany’s cultural institute, active worldwide.</p>
+                    <h4 className="card-title">{school.goethe.name}</h4>
+                    <p className="card-text">{school.goethe.description}</p>
                   </div>
                 </div>
               </Col>
               <Col xs={3} />
               <Col xs={3} />
-              <Col xs={3}>
-              <Card>
-              <CardMedia>
-                <Image src={Goethe} />
-              </CardMedia>
-              <CardTitle title="Goethe Institut" subtitle="Card subtitle" />
-              <CardText>
-                The Goethe-Institut is the Federal Republic of Germany’s cultural institute, active worldwide.
-              </CardText>
-              </Card>
-              </Col>
+              <Col xs={3} />
             </Row>
           </Col>
         </Row>
