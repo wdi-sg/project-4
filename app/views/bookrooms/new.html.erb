@@ -8,6 +8,7 @@
       <div class='col-sm-6'>
         <div class="form-group">
           <%= f.label :pick_a_room %>
+          :
           <%= f.select :meetingroom, @room_title%>
         </div>
       </div>
@@ -16,7 +17,7 @@
     <div class="row">
       <div class='col-sm-6'>
         <div class="form-group">
-          <%= f.label :date %>
+          <%= f.label :date %> :
           <%= f.text_field :date_start, required: true, id: 'datetimepicker1' %>
         </div>
       </div>
@@ -24,18 +25,11 @@
 
     <div class="row">
       <div class='col-sm-6'>
+        <%= f.label :Pick_slot %> :
         <div class="form-group">
-          <%= f.label :time_start %>
-          <%= f.text_field :time_start, required: true, id: 'datetimepicker3start' %>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class='col-sm-6'>
-        <div class="form-group">
-          <%= f.label :time_end %>
-          <%= f.text_field :time_end, required: true, id: 'datetimepicker3end' %>
+          <div class="row">
+            <%= f.select :slot, @slot_avail, {}, {:multiple => true, :size => @slot_avail.length, class: "input-lg"} %>
+          </div>
         </div>
       </div>
     </div>
