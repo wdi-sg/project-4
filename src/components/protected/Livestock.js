@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Graph from './Graph'
 import Price from './Price'
+import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Legend } from 'recharts'
 
 class Livestock extends Component {
   constructor (props) {
@@ -10,13 +11,12 @@ class Livestock extends Component {
       rsiArr: [],
       timeArr: [],
       priceArr: [],
-      timePeriod: '',
-      timeSeries: '',
-      arrSize: ''
+      priceDataArr: []
     }
     this.handleChange = this.handleChange.bind(this)
   }
   render () {
+    let data = this.state.priceDataArr
     let allPrice = this.state.priceArr.map((price, index) => {
       return <Price key={index} price={price} />
     })
@@ -88,11 +88,10 @@ class Livestock extends Component {
     return (
       <div>
         <h2>Price of Stock: </h2>
-        <form onChange={this.handleChange}>
+        <form>
           <label>
             Please select time period:
-            <select>
-              <option>-</option>
+            <select onChange={this.handleChange}>
               <option value={option1}>24 hrs</option>
               <option value={option2}>5 days</option>
               <option value={option3}>1 month</option>
@@ -106,6 +105,15 @@ class Livestock extends Component {
           </label>
         </form>
         <h2>Prices</h2>
+        <LineChart width={1000} height={500} data={data}
+          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+          <XAxis dataKey='name' padding={{ right: 20 }} />
+          <YAxis type='number' domain={['dataMin - 2', 'dataMax + 2']} padding={{ top: 20, bottom: 20 }} />
+          <CartesianGrid strokeDasharray='3 3' />
+          <Tooltip />
+          <Legend />
+          <Line type='monotone' dataKey='price' stroke='#82ca9d' dot={false} />
+        </LineChart>
         <ol>
           {allPrice}
         </ol>
@@ -119,7 +127,7 @@ class Livestock extends Component {
   }
 
   handleChange (e) {
-    this.setState({priceArr: []})
+    this.setState({priceArr: [], priceDataArr: []})
     var optionArr = e.target.value.split(',')
     console.log(optionArr[0])
     console.log(optionArr[1])
@@ -142,7 +150,8 @@ class Livestock extends Component {
             if (index < optionArr[2]) {
               base.setState({
                 priceArr:
-                this.state.priceArr.concat(price['4. close'])
+                this.state.priceArr.concat(price['4. close']),
+                priceDataArr: this.state.priceDataArr.concat({ name: index, price: +price['4. close'] })
               })
             }
           })
@@ -182,6 +191,29 @@ class Livestock extends Component {
       .catch((err) => {
         console.log(err)
       })
+
+    const url1 = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&interval=5min&outputsize=full&symbol=AAPL&apikey=D2E5ZAQU25U0NKAE'
+
+    fetch(url1)
+        .then((response) => {
+          return response.json()
+        })
+        .then((data) => {
+          var obj = (data['Time Series (5min)'])
+          var randomArr = []
+          for (var prop in obj) {
+            randomArr.push(obj[prop])
+          }
+          randomArr.map((price, index) => {
+            if (index < 288) {
+              this.setState({
+                priceArr:
+                this.state.priceArr.concat(price['4. close']),
+                priceDataArr: this.state.priceDataArr.concat({ name: index, price: +price['4. close'] })
+              })
+            }
+          })
+        })
   }
 
 }
