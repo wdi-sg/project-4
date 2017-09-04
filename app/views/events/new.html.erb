@@ -1,23 +1,70 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <h1>create event</h1>
+<h1>create event</h1>
 
-  <%= form_for @new_event  do |f| %>
-    <%#= render "shared/errors", object:  %>
-    <%= f.text_field :title %>
+
+
+<div class="container">
+
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+<br><br>
+  <%= form_for @new_event do |f| %>
+
+  <div class="">
+    <p><%= f.label :Title %>:</p>
+    <p><%= f.text_field :title, required: true %></p>
+  </div>
+
+  <div class="">
+    <p><%= f.label :Description %>:</p>
+    <p><%= f.text_area :description, required: true %></p>
+  </div>
+
+  <div class="">
+    <p><%= f.label :Venue %>:</p>
+    <p><%= f.text_field :venue, required: true %></p>
+  </div>
+
+  <div class="">
+    <p><%= f.label :total_slots %>:</p>
+    <p><%= f.number_field :total_slots, :min => 1, required: true %></p>
+  </div>
+
+  <div class="">
+    <p><%= f.label :price_pax %>:</p>
+    <p><%= f.number_field :price_pax, :min => 0, required: true  %></p>
+  </div>
+
+  <div style="overflow:hidden;">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-8">
+          <p><%= f.label :Start %>:</p>
+          <p><%= f.text_field :event_start, required: true, id: 'datetimepickerstart' %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="overflow:hidden;">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-8">
+          <p><%= f.label :End %>:</p>
+          <p><%= f.text_field :event_end, required: true, id: 'datetimepickerend' %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="actions">
+    <%= f.submit "Create Event" %>
+  </div>
 
   <% end %>
 
-
-    <h3>Date Start: <%= date_select Date.today, prefix: :start_date %></h3>
-    <h3>Time Start: <%= select_time(Time.now, time_separator: ':', start_hour: 8, end_hour: 23, minute_step: 15, ampm: true) %></h3>
-    <h3>Date End: <%= date_select Date.today, prefix: :start_date %></h3>
-    <h3>Time End: <%= select_time(Time.now, time_separator: ':', start_hour: 8, end_hour: 23, minute_step: 15, ampm: true) %></h3>
-
-</body>
-</html>
+</div>

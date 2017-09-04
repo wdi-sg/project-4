@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 20170903081031) do
     t.bigint "event_id"
     t.bigint "user_id"
     t.integer "no_pax"
+    t.integer "price_pax"
+    t.integer "total_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_bookevents_on_event_id"
@@ -59,10 +61,8 @@ ActiveRecord::Schema.define(version: 20170903081031) do
 
   create_table "events", force: :cascade do |t|
     t.string "title"
-    t.date "date_start"
-    t.time "time_start"
-    t.date "date_end"
-    t.time "time_end"
+    t.string "event_start"
+    t.string "event_end"
     t.integer "total_slots"
     t.string "venue"
     t.string "description"

@@ -23,6 +23,7 @@ class BookroomsController < ApplicationController
         @new_room.save
       end
     end
+    render json: params
   end
 
   def new

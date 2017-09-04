@@ -13,6 +13,11 @@ Rails.application.routes.draw do
   resources :bookrooms
   resources :adverts
 
+  # resources :bookevents
+
+  # get 'bookevents', to: 'bookevents#show'
+   post 'bookevents', to: 'bookevents#create'
+
   resources :create_users, :controller => 'users'
   # :only =>[:show]
 
@@ -26,4 +31,5 @@ Rails.application.routes.draw do
 
   resources :events
 
+  post 'event', to:'event#booktix'
 end
