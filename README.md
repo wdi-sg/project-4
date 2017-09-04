@@ -19,7 +19,7 @@ Singapore being an international and multicultural hub, there are many reasons w
 
 ![ERD]()
 
-![Wireframes]()
+![Wireframes](https://i.imgur.com/lLMYYrO.png)
 
 ## Challenges faced
 
@@ -37,4 +37,5 @@ Singapore being an international and multicultural hub, there are many reasons w
 * [ReactJS](https://facebook.github.io/react/)
 * [Firebase](https://firebase.google.com/)
 * [React-Bootstrap CSS Framework](https://react-bootstrap.github.io/)
+* [Material-UI](http://www.material-ui.com/)
 * [React-Rating](https://github.com/dreyescat/react-rating)

@@ -4,7 +4,6 @@ import { DropdownButton, MenuItem } from 'react-bootstrap'
 import { logout } from './authen/Auth'
 import { firebaseAuth } from './fire'
 import { Link } from 'react-router-dom'
-import FlatButton from 'material-ui/FlatButton'
 
 export default class Nav extends Component {
   constructor (props) {
