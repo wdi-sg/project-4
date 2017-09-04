@@ -1,0 +1,34 @@
+<h1>new meetingroom</h1>
+
+<%= @new_meeting.inspect %>
+
+<div class="container">
+
+  <%= form_for @new_meeting do |f| %>
+
+  <div class="row">
+    <div class='col-sm-6'>
+      <div class="form-group">
+        <%= f.label :Room_title %>
+        :
+        <%= f.text_field :room_title %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class='col-sm-6'>
+      <div class="form-group">
+        <%= f.label :occupancy %>
+        :
+        <%= f.text_field :pax %>
+      </div>
+    </div>  
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Book now" %>
+  </div>
+
+  <% end %>
+</div>

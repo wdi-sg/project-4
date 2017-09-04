@@ -1,12 +1,27 @@
-
 <div class="container">
   <h1>show all events</h1>
 
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
   <% @all_events.each do |i|  %>
   <h3> Title: <%= i.title %> </h3>
-  <h3> Description: <%= i.description %> </h3>
-  <h3> Start: <%= i.event_start %> </h3>
-  <h3> End: <%= i.event_end %> </h3>
+  <h3> Start: <%= i.event_start %> || End: <%= i.event_end %></h3>
+  <h3> Venue: <%= i.venue %></h3>
+  <% if (i.remaining_slots > 0) %>
+    <h3>Remaining slots: <%= i.remaining_slots %> </h3>
+  <% else %>
+    <h3> **FULLY BOOKED** </h3>
+  <% end %>
+
+<% if (i.description.split.size > 10) %>
+<h3> Description: <%= i.description[/(\S+\s+){10}/].strip %>... </h3>
+<% else %>
+<h3> Description: <%= i.description %> </h3>
+
+<%end %>
+
   <%= link_to "More details/ Book", event_path(i) %>
 
 
