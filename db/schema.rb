@@ -16,6 +16,8 @@ ActiveRecord::Schema.define(version: 20170829110721) do
   enable_extension "plpgsql"
 
   create_table "adverts", force: :cascade do |t|
+    t.string "title"
+    t.string "advert_image"
     t.string "description"
     t.bigint "user_id"
     t.datetime "created_at", null: false

@@ -5,8 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'cloudinary'
 gem 'pry'
 gem 'devise'
+gem 'jquery-rails'
 gem 'react-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

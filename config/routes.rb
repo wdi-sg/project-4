@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :meetingrooms
   resources :bookrooms
+  resources :adverts
 
   resources :create_users, :controller => 'users'
   # :only =>[:show]

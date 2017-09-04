@@ -1,0 +1,18 @@
+<h1>Create new Advert</h1>
+<%= link_to "Back", :back %><br>
+
+<img class='advert_image' onclick="openEventWidgets()" src="http://res.cloudinary.com/ddanielnp/image/upload/c_scale,w_300/v1502804208/giftloop/ntbdvahkbycuxlecogcr.png">
+<p>Click on image above to upload or change</p>
+
+<%= form_for @advert, :html => {:id => "image_request"} do |f| %>
+  <%= f.label :description %>
+  <%= f.text_field :description, autofocus: true %>
+  <br>
+  <%= f.label :title %>
+  <%= f.text_field :title, autofocus: true %>
+  <br>
+  <%= f.hidden_field :advert_image %>
+
+  <%= f.submit "Create" %>
+
+<% end %>
