@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-const Graph = (props) => {
+const RSIGraph = (props) => {
   // let graphObj = { x: props.time, y: props.rsi }
 
   return (
@@ -12,4 +12,4 @@ const Graph = (props) => {
   )
 }
 
-export default Graph
+export default RSIGraph
