@@ -6,7 +6,7 @@ const Graph = (props) => {
   return (
     <div>
       <li>
-        Obj: { props.rsiArr } || { props.timeArr }
+        Obj: { props.time } || { props.rsi }
       </li>
     </div>
   )

@@ -21,10 +21,8 @@ class Livestock extends Component {
         <Graph
           key={index}
           // graphObj={graphObj}
-          rsiArr={rsi}
-          timeArr={this.state.timeArr[index]}
-          // rsi={rsi}
-          // time={this.state.timeArr[index]}
+          rsi={rsi}
+          time={this.state.timeArr[index]}
         />
       )
     })
