@@ -3,9 +3,13 @@ class MeetingroomsController < ApplicationController
   end
 
   def create
+    # render json: params
+    Meetingroom.create(params.require(:meetingroom).permit(:room_title, :pax))
+    redirect_to root_path
   end
 
   def new
+    @new_meeting = Meetingroom.new
   end
 
   def edit
@@ -19,5 +23,5 @@ class MeetingroomsController < ApplicationController
 
   def destroy
   end
-  
+
 end

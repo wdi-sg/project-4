@@ -4,8 +4,6 @@ class EventsController < ApplicationController
   end
 
   def create
-
-
     # render json: params
 
     time2 = params[:event][:event_end]
@@ -34,8 +32,6 @@ class EventsController < ApplicationController
       redirect_to new_event_path
     end
 
-
-
   end
 
 
@@ -57,7 +53,5 @@ class EventsController < ApplicationController
 
   def destroy
   end
-
-
 
 end

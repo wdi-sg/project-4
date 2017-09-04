@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170829110721) do
+ActiveRecord::Schema.define(version: 20170903081031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,10 +50,9 @@ ActiveRecord::Schema.define(version: 20170829110721) do
   create_table "bookrooms", force: :cascade do |t|
     t.bigint "meetingroom_id"
     t.bigint "user_id"
-    t.time "time_start"
-    t.time "time_end"
+    t.string "slot"
     t.integer "price"
-    t.date "date_start"
+    t.string "date_start"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["meetingroom_id"], name: "index_bookrooms_on_meetingroom_id"
@@ -74,7 +73,15 @@ ActiveRecord::Schema.define(version: 20170829110721) do
 
   create_table "meetingrooms", force: :cascade do |t|
     t.integer "pax"
-    t.boolean "availability"
+    t.boolean "availability", default: true
+    t.string "room_title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "slots", force: :cascade do |t|
+    t.string "time_start"
+    t.string "time_end"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
