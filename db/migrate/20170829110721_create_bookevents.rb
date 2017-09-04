@@ -1,11 +1,12 @@
 class CreateBookevents < ActiveRecord::Migration[5.1]
   def change
     create_table :bookevents do |t|
-      t.references :eventroom, foreign_key: true
+      t.references :event, foreign_key: true
       t.references :user, foreign_key: true
-      t.time :time_start
-      t.time :time_end
-      t.integer :rsvp
+
+      t.integer :no_pax
+      t.integer :price_pax
+      t.integer :total_price
 
       t.timestamps
     end

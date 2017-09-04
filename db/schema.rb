@@ -36,14 +36,14 @@ ActiveRecord::Schema.define(version: 20170829110721) do
   end
 
   create_table "bookevents", force: :cascade do |t|
-    t.bigint "eventroom_id"
+    t.bigint "event_id"
     t.bigint "user_id"
-    t.time "time_start"
-    t.time "time_end"
-    t.integer "rsvp"
+    t.integer "no_pax"
+    t.integer "price_pax"
+    t.integer "total_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["eventroom_id"], name: "index_bookevents_on_eventroom_id"
+    t.index ["event_id"], name: "index_bookevents_on_event_id"
     t.index ["user_id"], name: "index_bookevents_on_user_id"
   end
 
@@ -52,16 +52,22 @@ ActiveRecord::Schema.define(version: 20170829110721) do
     t.bigint "user_id"
     t.time "time_start"
     t.time "time_end"
+    t.integer "price"
+    t.date "date_start"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["meetingroom_id"], name: "index_bookrooms_on_meetingroom_id"
     t.index ["user_id"], name: "index_bookrooms_on_user_id"
   end
 
-  create_table "eventrooms", force: :cascade do |t|
-    t.integer "pax"
-    t.boolean "availability"
-    t.string "name"
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.string "event_start"
+    t.string "event_end"
+    t.integer "total_slots"
+    t.string "venue"
+    t.string "description"
+    t.integer "price_pax"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -94,7 +100,7 @@ ActiveRecord::Schema.define(version: 20170829110721) do
 
   add_foreign_key "adverts", "users"
   add_foreign_key "assets", "users"
-  add_foreign_key "bookevents", "eventrooms"
+  add_foreign_key "bookevents", "events"
   add_foreign_key "bookevents", "users"
   add_foreign_key "bookrooms", "meetingrooms"
   add_foreign_key "bookrooms", "users"

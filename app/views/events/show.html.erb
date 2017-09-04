@@ -1,0 +1,33 @@
+<h1>Event Details & Booking</h1>
+
+<h2>Hello <%= current_user.name %></h2>
+<p>Title:</p>
+<p><%= @event.title %></p>
+<p>Description:</p>
+<p><%= @event.description %></p>
+<p>Start:</p>
+<p><%= @event.event_start %></p>
+<p>End:</p>
+<p><%= @event.event_end %></p>
+<p>Capacity:</p>
+<p><%= @event.total_slots %></p>
+<p>Price per ticket:</p>
+<p><%= @event.price_pax %></p>
+
+<%= @event. inspect %>
+
+<div class="">
+  <h2>BOOK TICKETS</h2>
+  <%= form_for @new_reservation do |f| %>
+  <%= f.label :Number_tix %>
+    <%= f.number_field :no_pax %>
+    <%= f.hidden_field :event_id, value: @event.event_id %>
+    
+    <div class="actions">
+      <br>
+      <%= f.submit "Book tickets" %>
+    </div>
+
+  <% end %>
+
+</div>
