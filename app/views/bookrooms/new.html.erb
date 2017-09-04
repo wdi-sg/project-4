@@ -7,8 +7,7 @@
     <div class="row">
       <div class='col-sm-6'>
         <div class="form-group">
-          <%= f.label :pick_a_room %>
-          :
+          <%= f.label :pick_a_room %> :
           <%= f.select :meetingroom, @room_title%>
         </div>
       </div>
@@ -23,6 +22,7 @@
       </div>
     </div>
 
+<%= @taken_slots.inspect %>
     <div class="row">
       <div class='col-sm-6'>
         <%= f.label :Pick_slot %> :
@@ -35,8 +35,9 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "Book room" %>
+      <%= f.submit "Book now" %>
     </div>
+
 
     <% end %>
   </div>

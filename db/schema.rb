@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20170903081031) do
 
   create_table "meetingrooms", force: :cascade do |t|
     t.integer "pax"
-    t.boolean "availability"
+    t.boolean "availability", default: true
     t.string "room_title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
