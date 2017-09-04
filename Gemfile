@@ -5,8 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'cloudinary'
 gem 'pry'
 gem 'devise'
+gem 'jquery-rails'
 gem 'react-rails'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'momentjs-rails', '>= 2.9.0'
