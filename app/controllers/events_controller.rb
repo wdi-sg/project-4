@@ -1,20 +1,20 @@
 class EventsController < ApplicationController
   def index
-    render html:"hhh"
+    @all_events = Event.all.reverse
   end
 
   def create
 
 
     # render json: params
-    # var time_diff = params[:event][:event_end] - params[:event][:event_start]
+
     time2 = params[:event][:event_end]
     time = params[:event][:event_start]
-    p (DateTime.parse(time2) > DateTime.parse(time))
-    p time
-    p DateTime.parse(time).to_i
-    p DateTime.now.to_i + 28800
-    p (DateTime.parse(time).to_i  < DateTime.now.to_i+28800)
+    # p (DateTime.parse(time2) > DateTime.parse(time))
+    # p time
+    # p DateTime.parse(time).to_i
+    # p DateTime.now.to_i + 28800
+    # p (DateTime.parse(time).to_i  < DateTime.now.to_i+28800)
 
 
 
@@ -48,6 +48,8 @@ class EventsController < ApplicationController
   end
 
   def show
+    @event = Event.find(params[:id])
+    @new_reservation = Bookevent.new
   end
 
   def update
@@ -55,5 +57,7 @@ class EventsController < ApplicationController
 
   def destroy
   end
+
+
 
 end

@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 20170829110721) do
     t.bigint "event_id"
     t.bigint "user_id"
     t.integer "no_pax"
+    t.integer "price_pax"
+    t.integer "total_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_bookevents_on_event_id"

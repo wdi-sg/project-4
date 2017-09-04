@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-<h1>show all events</h1>
-  </body>
-</html>
+
+<div class="container">
+  <h1>show all events</h1>
+
+  <% @all_events.each do |i|  %>
+  <h3> Title: <%= i.title %> </h3>
+  <h3> Description: <%= i.description %> </h3>
+  <h3> Start: <%= i.event_start %> </h3>
+  <h3> End: <%= i.event_end %> </h3>
+  <%= link_to "Details/ Book", event_path(i) %>
+
+  <%= i.inspect %>
+  <% end %>
+</div>
