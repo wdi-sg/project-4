@@ -112,7 +112,7 @@ class Livestock extends Component {
           <CartesianGrid strokeDasharray='3 3' />
           <Tooltip />
           <Legend />
-          <Line type='monotone' dataKey='price' stroke='#82ca9d' dot={false} />
+          <Line type='monotone' dataKey='price' stroke='#82ca9d' strokeWidth={2} dot={false} />
         </LineChart>
         <ol>
           {allPrice}
