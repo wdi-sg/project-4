@@ -1,0 +1,10 @@
+<h1>Users#index</h1>
+
+<% @users = User.all %>
+<% @users.each do |user| %>
+  <%= user.name %><br/>
+  <%= user.email %><br/>
+<% end %>
+
+<%= link_to "Back", :back %>
+<%= link_to "Logout", destroy_user_session_path, method: :delete %>

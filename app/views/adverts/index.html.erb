@@ -1,0 +1,10 @@
+<h1>Where adverts will be</h1>
+<%= link_to "Home", root_path %>
+<%= link_to "Create New Advert", new_advert_path %>
+
+<% @adverts.each do |advert| %>
+  <h3><%= advert.title %></h3><br>
+  <img src="<%= advert.advert_image %>" alt="Event Image">
+  <br>
+  <p><%= advert.description %><br></p>
+<% end %>
