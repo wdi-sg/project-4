@@ -14,15 +14,18 @@
 <p>Price per ticket:</p>
 <p><%= @event.price_pax %></p>
 
-<%= @event. inspect %>
+
+
+
 
 <div class="">
   <h2>BOOK TICKETS</h2>
   <%= form_for @new_reservation do |f| %>
   <%= f.label :Number_tix %>
     <%= f.number_field :no_pax %>
-    <%= f.hidden_field :event_id, value: @event.event_id %>
-    
+    <%= f.hidden_field :event_id, value: @event.id %>
+    <%#= f.hidden_field :event_id, value: @event.event_id %>
+
     <div class="actions">
       <br>
       <%= f.submit "Book tickets" %>
