@@ -62,7 +62,7 @@ class Livestock extends Component {
       <div>
         <PriceGraph priceDataArr={priceData} />
 
-        <h2>RSI</h2>
+        <h2>RSI (Relative Strength Index)</h2>
         <form>
           <label>
             Please select time period:
