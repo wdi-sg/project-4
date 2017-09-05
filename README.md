@@ -23,7 +23,7 @@ Provide instructions here about how to get your project running on our local mac
 
 As soon as the our group decided to accept Jerel's project, we met with him over the weekend and then set to work. Our first few interactions involved creating ERDs and figuring out the exact requirements of our client.
 
-![Rough requirements](./app/assets/images/requirements)
+![Rough requirements](./app/assets/images/requirements.png)
 
 ```
 Code example
