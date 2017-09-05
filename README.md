@@ -15,19 +15,20 @@ Our job was to create an admin system that would act as a management tool to all
 
 ##### To see our project, here is the [link](https://www.facebook.com)!
 
-Provide instructions here about how to get your project running on our local machine. Do we just need to clone and open a certain file or do we need to install anything first.
-
 ---
 
 ## Our project
 
 As soon as the our group decided to accept Jerel's project, we met with him over the weekend and then set to work. Our first few interactions involved creating ERDs and figuring out the exact requirements of our client.
 
+*Very, very rough draft*
 ![Rough requirements](./app/assets/images/requirements.png)
 
-```
-Code example
-```
+We then sent the perceived requirements to Jerel to be accepted, so we could synchronize Jerel's vision of the project, and the idea that we had for the project.
+
+![Project requirements sent to Jerel](./app/assets/images/project_specs.png)
+
+
 
 ### How to Use
 
