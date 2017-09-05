@@ -31,6 +31,10 @@ $(document).on('turbolinks:load', function () {
       stepping: 30,
       format: 'DD/MM/YYYY h:mm A'
     })
+
+    $('#datetimepicker1').datetimepicker({
+      format: 'DD/MM/YYYY'
+    })
   })
 })
 
