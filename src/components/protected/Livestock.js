@@ -7,7 +7,6 @@ import Counter from './Counter.js'
 import RSI from './RSI.js'
 import Generate from './Generate.js'
 
-
 // jerald end
 
 class Livestock extends Component {
