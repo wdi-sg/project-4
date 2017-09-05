@@ -20,6 +20,7 @@ import Philippines from '../images/philippines.png'
 import { Row, Col, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Chalkboard from '../images/Chalkboard.png'
+import RoadStraight from '../images/road-straight.png'
 
 export default class Home extends Component {
   render () {
@@ -27,17 +28,19 @@ export default class Home extends Component {
       <div>
         <Image src={Chalkboard} responsive />
         <Row>
-          <Col xs={6} xsOffset={6}>
+          <Col xs={12}>
             <h1>European Germanic</h1>
             <Row>
-              <Col xs={6}>
+              <Col xs={3}></Col>
+              <Col xs={3}></Col>
+              <Col xs={3}>
                 <div className='country'>
                   <Image src={Germany} className='image' responsive />
                   <p className='subtitle'>German</p>
                   <Link to="/german"><span></span></Link>
                 </div>
               </Col>
-              <Col xs={6}>
+              <Col xs={3}>
                 <div className='country'>
                   <Image src={Holland} className='image' responsive />
                   <p className='subtitle'>Dutch</p>
@@ -68,6 +71,10 @@ export default class Home extends Component {
                 </div>
               </Col>
             </Row>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12}>
             <Row>
               <Col xs={3}>
                 <div className='country'>
@@ -83,6 +90,8 @@ export default class Home extends Component {
                   <Link to="/korean"><span></span></Link>
                 </div>
               </Col>
+              <Col xs={3}></Col>
+              <Col xs={3}></Col>
             </Row>
           </Col>
         </Row>
@@ -114,7 +123,7 @@ export default class Home extends Component {
                   <Link to="/arabic"><span></span></Link>
                 </div>
               </Col>
-              <Col xs={3}></Col>
+              <Col xs={3}><Image src={RoadStraight} className='image' responsive /></Col>
               <Col xs={3}>
                 <div className='country'>
                   <Image src={France} className='image' responsive />
@@ -133,36 +142,41 @@ export default class Home extends Component {
           </Col>
         </Row>
         <Row>
-          <Col xs={3}>
+          <Col xs={12}>
             <Row>
-              <Col xs={12}>
+              <Col xs={3}>
                 <div className='country'>
                   <Image src={Israel} className='image' responsive />
                   <p className='subtitle'>Hebrew</p>
                   <Link to="/hebrew"><span></span></Link>
                 </div>
               </Col>
+              <Col xs={3}></Col>
+              <Col xs={3}></Col>
+              <Col xs={3}></Col>
             </Row>
           </Col>
         </Row>
         <Row>
-          <Col xs={6} xsOffset={3}>
+          <Col xs={12}>
             <h1>European East</h1>
             <Row>
-              <Col xs={6}>
+              <Col xs={3}></Col>
+              <Col xs={3}>
                 <div className='country'>
                   <Image src={Russia} className='image' responsive />
                   <p className='subtitle'>Russian</p>
                   <Link to="/russian"><span></span></Link>
                 </div>
               </Col>
-              <Col xs={6}>
+              <Col xs={3}>
                 <div className='country'>
                   <Image src={Greece} className='image' responsive />
                   <p className='subtitle'>Greek</p>
                   <Link to="/greek"><span></span></Link>
                 </div>
               </Col>
+              <Col xs={3}></Col>
             </Row>
           </Col>
         </Row>
