@@ -10,16 +10,12 @@ class Livestock extends Component {
     this.state = {
       rsiArr: [],
       timeArr: [],
-      priceArr: [],
       priceDataArr: []
     }
     this.handleChange = this.handleChange.bind(this)
   }
   render () {
     let data = this.state.priceDataArr
-    let allPrice = this.state.priceArr.map((price, index) => {
-      return <Price key={index} price={price} />
-    })
     let allData = this.state.rsiArr.map((rsi, index) => {
       // let graphObj = {
       //   x: this.state.timeArr[index],
@@ -108,15 +104,12 @@ class Livestock extends Component {
         <LineChart width={1000} height={500} data={data}
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
           <XAxis hide='true' dataKey='name' padding={{ right: 20 }} />
-          <YAxis type='number' domain={['dataMin - 2', 'dataMax + 2']} padding={{ top: 20, bottom: 20 }} />
+          <YAxis type='number' domain={['dataMin - 1', 'dataMax + 1']} padding={{ top: 0, bottom: 0 }} />
           <CartesianGrid strokeDasharray='3 3' />
           <Tooltip />
           <Legend />
           <Line type='monotone' dataKey='price' stroke='#82ca9d' strokeWidth={2} dot={false} />
         </LineChart>
-        <ol>
-          {allPrice}
-        </ol>
         <h2>RSI</h2>
         <ol>
           {allData}
@@ -127,7 +120,7 @@ class Livestock extends Component {
   }
 
   handleChange (e) {
-    this.setState({priceArr: [], priceDataArr: []})
+    this.setState({priceDataArr: []})
     var optionArr = e.target.value.split(',')
     console.log(optionArr[0])
     console.log(optionArr[1])
