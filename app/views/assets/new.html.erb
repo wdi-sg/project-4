@@ -1,0 +1,14 @@
+<h1>Create New Asset</h1>
+<h3><%= flash[:member_error] %></h3>
+<%= link_to "Back", :back %>
+<br>
+<h5><%#= flash[:date_error] %></h5>
+
+<%= form_for @asset, url: spaces_path do |f| %>
+  <%= f.select :asset_type, options_for_select(["Office", "Desk", "Hotdesk"]) %>
+  <br>
+  <%= f.label :user_id %>
+  <%= f.number_field :user_id %>
+  <br>
+  <%= f.submit %>
+<% end %>

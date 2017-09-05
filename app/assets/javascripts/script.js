@@ -4,6 +4,14 @@ $(document).on('turbolinks:load', function () {
       format: 'DD/MM/YYYY'
     })
 
+    $('#datestartasset').datetimepicker({
+      format: 'DD/MM/YYYY'
+    })
+
+    $('#dateendasset').datetimepicker({
+      format: 'DD/MM/YYYY'
+    })
+
     $('#datetimepickerend').datetimepicker({
       inline: true,
       sideBySide: true,
