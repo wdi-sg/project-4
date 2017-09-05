@@ -1,6 +1,7 @@
 <h1>Where adverts will be</h1>
-<%= link_to "Home", root_path %>
+<% if current_user %>
 <%= link_to "Create New Advert", new_advert_path %>
+<% end %>
 
 <% @adverts.each do |advert| %>
   <h3><%= advert.title %></h3><br>

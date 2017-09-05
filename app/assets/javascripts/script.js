@@ -29,7 +29,6 @@ $(document).on('turbolinks:load', function () {
       format: 'DD/MM/YYYY h:mm A'
     })
   })
-
 })
 
 function openEventWidgets () {

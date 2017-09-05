@@ -1,2 +1,59 @@
-<h1><%= @user.name %></h1>
-<h1><%= @user.email %></h1>
+<h2>This is what you've been up to,
+  <%= @user.name %>.</h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>Your current bookings</h3>
+      <% @bookings.each_with_index do |i, index| %>
+      <% if Date.today.strftime("%d/%m/%Y") <= i.date_start %>
+      <ul>
+        <li>
+          Meetingroom :
+          <%= i.meetingroom.room_title %>
+        </li>
+        <li>
+          Date :
+          <%= i.date_start %>
+        </li>
+        <li>
+          Price paid : $<%= i.price %>
+        </li>
+        <li>
+          <%= Slot.find(index+1).time_start %>
+          -
+          <%= Slot.find(index+1).time_end %>
+        </li>
+      </ul>
+      <% end %>
+      <% end %>
+    </div>
+
+    <%#= Time.now.strftime("%H:%M") %>
+
+    <div class="col">
+      <h3>Your past bookings</h3>
+      <% @bookings.each_with_index do |i, index| %>
+      <% if Date.today.strftime("%d/%m/%Y") > i.date_start %>
+      <ul>
+        <li>
+          Meetingroom :
+          <%= i.meetingroom.room_title %>
+        </li>
+        <li>
+          Date :
+          <%= i.date_start %>
+        </li>
+        <li>
+          Price paid : $<%= i.price %>
+        </li>
+        <li>
+          <%= Slot.find(index+1).time_start %>
+          -
+          <%= Slot.find(index+1).time_end %>
+        </li>
+      </ul>
+      <% end %>
+      <% end %>
+    </div>
+  </div>

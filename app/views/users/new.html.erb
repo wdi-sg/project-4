@@ -1,10 +1,9 @@
 <h1>Creating User</h1>
-<%= link_to "Back", :back %>
 
 <%= form_for @user, url: create_users_path(@user)  do |f| %>
 
   <div class="field">
-    <%= f.label :isAdmin %><br />
+    <%= f.label :Select_if_admin %>
     <%= f.check_box :isAdmin, autofocus: true %>
   </div>
 
@@ -31,7 +30,9 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <div class="actions">
+  <div class="actions field">
     <%= f.submit "Create" %>
   </div>
+
 <% end %>
+<%= button_to "Cancel", root_path, method: "get" %>

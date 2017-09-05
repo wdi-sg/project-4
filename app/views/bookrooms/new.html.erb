@@ -1,12 +1,12 @@
 <h2>Form to book a room</h2>
 
 <div class="container">
-  <div class="form-group">
+  <div class="form-group field">
     <%= form_for @new_room do |f| %>
 
     <div class="row">
       <div class='col-sm-6'>
-        <div class="form-group">
+        <div class="form-group field">
           <%= f.label :pick_a_room %> :
           <%= f.select :meetingroom, @room_title%>
         </div>
@@ -15,7 +15,7 @@
 
     <div class="row">
       <div class='col-sm-6'>
-        <div class="form-group">
+        <div class="form-group field">
           <%= f.label :date %> :
           <%= f.text_field :date_start, required: true, id: 'datetimepicker1' %>
         </div>
@@ -26,7 +26,7 @@
     <div class="row">
       <div class='col-sm-6'>
         <%= f.label :Pick_slot %> :
-        <div class="form-group">
+        <div class="form-group field">
           <div class="row">
             <%= f.select :slot, @slot_avail, {}, {:multiple => true, :size => @slot_avail.length, class: "input-lg"} %>
           </div>
