@@ -10,9 +10,12 @@ class Livestock extends Component {
       rsiArr: [],
       rsiDataArr: [],
       timeArr: [],
+      priceArr: [],
       priceDataArr: []
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleRsiChange = this.handleRsiChange.bind(this)
+
   }
   render () {
     let data = this.state.priceDataArr
@@ -24,7 +27,6 @@ class Livestock extends Component {
     })
 
     let allRSI = this.state.rsiArr.map((rsi, index) => {
-
       // let graphObj = {
       //   x: this.state.timeArr[index],
       //   y: rsi
@@ -109,7 +111,7 @@ class Livestock extends Component {
 
         <h2>Prices</h2>
         <LineChart width={1000} height={500} data={data}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+          margin={{ top: 5, right: 0, left: 20, bottom: 5 }}>
           <XAxis hide='true' dataKey='name' padding={{ right: 20 }} />
           <YAxis type='number' domain={['dataMin - 1', 'dataMax + 1']} padding={{ top: 0, bottom: 0 }} />
           <CartesianGrid strokeDasharray='3 3' />
@@ -119,14 +121,31 @@ class Livestock extends Component {
         </LineChart>
 
         <h2>RSI</h2>
+        <form>
+          <label>
+            Please select time period:
+            <select onChange={this.handleRsiChange}>
+              <option value={option1}>24 hrs</option>
+              <option value={option2}>5 days</option>
+              <option value={option3}>1 month</option>
+              <option value={option4}>3 months</option>
+              <option value={option5}>6 months</option>
+              <option value={option6}>1 year</option>
+              <option value={option7}>5 years</option>
+              <option value={option8}>10 years</option>
+              <option value={option9}>All Data</option>
+            </select>
+          </label>
+        </form>
+
         <LineChart width={1000} height={300} data={rsiData}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-          <XAxis dataKey='date' padding={{ right: 20 }} />
-          <YAxis type='number' domain={['dataMin - 2', 'dataMax + 2']} padding={{ top: 20, bottom: 20 }} />
+          margin={{ top: 5, right: 0, left: 20, bottom: 5 }}>
+          <XAxis hide='true' dataKey='date' padding={{ right: 20 }} />
+          <YAxis type='number' domain={['dataMin - 2', 'dataMax + 2']} padding={{ top: 0, bottom: 0 }} />
           <CartesianGrid strokeDasharray='3 3' />
           <Tooltip />
           <Legend />
-          <Line type='monotone' dataKey='RSI' stroke='#82ca9d' dot={false} />
+          <Line type='monotone' dataKey='RSI' stroke='#82ca9d' strokeWidth={2} dot={false} />
         </LineChart>
 
         <ol>
@@ -143,7 +162,6 @@ class Livestock extends Component {
     console.log(optionArr[0])
     console.log(optionArr[1])
     console.log(optionArr[2])
-    let base = this
 
     var urlPriceToChange = 'https://www.alphavantage.co/query?function=TIME_SERIES_' + optionArr[0] + '&symbol=AAPL&apikey=D2E5ZAQU25U0NKAE'
 
@@ -174,6 +192,43 @@ class Livestock extends Component {
         })
   }
 
+  handleRsiChange (e) {
+    this.setState({rsiDataArr: []})
+    var optionArr = e.target.value.split(',')
+    console.log('RSI optionArr', optionArr)
+    console.log(optionArr[0])
+    console.log(optionArr[1])
+    console.log(optionArr[2])
+
+    var urlPriceToChange = 'https://www.alphavantage.co/query?function=RSI' + optionArr[0] + '&symbol=AAPL&apikey=D2E5ZAQU25U0NKAE'
+
+    fetch(urlPriceToChange)
+        .then((response) => {
+          return response.json()
+        })
+        .then((data) => {
+          var obj = (data[optionArr[1]])
+          var dataArr = []
+          var counter = 0
+          for (var prop in obj) {
+            if (counter > optionArr[2]) {
+              break
+            }
+            dataArr.push({
+              name: prop,
+              price: +obj[prop]['4. close']
+            })
+            counter++
+          }
+          this.setState({
+            rsiDataArr: dataArr.reverse()
+          })
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+  }
+
   componentDidMount () {
     const url = 'https://www.alphavantage.co/query?function=RSI&symbol=AAPL&interval=daily&time_period=10&series_type=close&apikey=D2E5ZAQU25U0NKAE'
 
@@ -186,6 +241,8 @@ class Livestock extends Component {
         var allRsiArr = []
         var allTimeArr = []
         var timeRsiArr = []
+
+        // for the graph
         for (var prop in rsiObj) {
           timeRsiArr.push({date: prop, RSI: +rsiObj[prop].RSI })
         }
@@ -196,6 +253,8 @@ class Livestock extends Component {
             })
           }
         })
+        this.setState({ rsiDataArr: this.state.rsiDataArr.reverse() })
+        // for the values
         for (var prop in rsiObj) {
           allRsiArr.push(rsiObj[prop])
           allTimeArr.push(prop)
