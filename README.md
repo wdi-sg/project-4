@@ -126,6 +126,18 @@ function openEventWidget () {
   })
 }
 ```
+#### Jquery
+
+We used [jQuery](http://jquery.com/) for some of our front end stuff (cloudinary interaction and bootstrap interaction)
+
+#### Ruby
+
+We used ruby on rails for the front end and back end as well.
+
+#### Devise
+
+We used devise for all of our authentications.
+
 ### Communications
 
 Our team used trello as a basic means of team management and communication. It allowed us to see what we had completed, what we still had left to do, what each of us were responsible for, and the problems we encounterd on the way.
@@ -134,22 +146,15 @@ Our team also used slack to communicate with each other as well as with Prima, o
 
 ![trello](./app/assets/images/trello.png)
 
-## Built With
+### Authors
 
-What did you use to build it, list the technologies, plugins, gems, packages etc.
-
-* [jQuery](http://jquery.com/) - jQuery for example is something you likely used
-
-## Workflow
-
-Did you write user stories, draw wireframes, use task tracking, produce ERDs? Did you use source control, with regular commits? Include links to them here.
-
-## Authors
-
-Did you collaborate with others on this project, list them here
-
-* **John McClain** - *Responsible for keeping vests white* - [GithubUserName](https://github.com/GithubUserName)
+This project was completed by
+* [Daniel Lim](https://github.com/ddanielnp)
+* [Azmeer Siddiq](https://github.com/merejarvis)
+* [Nicholas Lee](https://github.com/nicoalee)
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used, for example [this was a useful starting point for creating this template](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2).
+Thank you Jerel for working with us to finish this project.
+Thank you to Prima and Shimei for their tutelage and their educational assistance.
+Thank you to all of WDI 11 for their peer support.
