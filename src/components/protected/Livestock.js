@@ -2,6 +2,13 @@ import React, {Component} from 'react'
 import RSIGraph from './RSIGraph'
 import PriceGraph from './PriceGraph'
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Legend } from 'recharts'
+// jerald part
+import Counter from './Counter.js'
+import RSI from './RSI.js'
+import Generate from './Generate.js'
+
+
+// jerald end
 
 class Livestock extends Component {
   constructor (props) {
@@ -10,7 +17,8 @@ class Livestock extends Component {
       rsiArr: [],
       rsiDataArr: [],
       timeArr: [],
-      priceDataArr: []
+      priceDataArr: [],
+      rsi: ''
     }
   }
   render () {
@@ -21,14 +29,15 @@ class Livestock extends Component {
       //   x: this.state.timeArr[index],
       //   y: rsi
       // }
-
       return (
-        <RSIGraph
-          key={index}
-          rsi={rsi}
+        <div>
+          <RSIGraph
+            key={index}
+            rsi={rsi}
             // graphObj={graphObj}
-          time={this.state.timeArr[index]}
+            time={this.state.timeArr[index]}
           />
+        </div>
       )
     })
     // let allTime = this .state.timeArr.map((time, index) => {
@@ -54,12 +63,18 @@ class Livestock extends Component {
           <Line type='monotone' dataKey='RSI' stroke='#82ca9d' dot={false} />
         </LineChart>
 
-        <ol>
-          { allRSI }
-        </ol>
-        {/* <ul>{allRSI}</ul> */}
+        <h2>Regression</h2>
+        <RSI getRSI={(rsi) => this.getRSI(rsi)} />
+        <Counter rsi={this.state.rsi} />
+
       </div>
     )
+  }
+  getRSI (rsi) {
+    console.log(rsi)
+    this.setState({
+      rsi
+    })
   }
 
   componentDidMount () {

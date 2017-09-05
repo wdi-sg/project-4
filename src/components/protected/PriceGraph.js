@@ -90,10 +90,6 @@ class PriceGraph extends Component {
   handleChange (e) {
     this.setState({priceDataArr: []})
     var optionArr = e.target.value.split(',')
-    console.log(optionArr[0])
-    console.log(optionArr[1])
-    console.log(optionArr[2])
-    let base = this
 
     var urlPriceToChange = 'https://www.alphavantage.co/query?function=TIME_SERIES_' + optionArr[0] + '&symbol=AAPL&apikey=D2E5ZAQU25U0NKAE'
 
