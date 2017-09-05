@@ -52,26 +52,32 @@ export default class ReviewForm extends Component {
   }
 
   render () {
+    var allLanguages = this.props.languages.map(function (value, i) {
+      return (
+        <option> {value} </option>
+      )
+    })
+
     return (
       <div className='container'>
 
         <form className='form' onSubmit={this.handleSubmit}>
-          <div className="form-row">
-            <div className="form-group col-xs-6">
+          <div className='form-row'>
+            <div className='form-group col-xs-6'>
               <label>Name</label>
-              <input className="form-control" ref={(name) => this.name = name} placeholder="Your name" />
+              <input className='form-control' ref={(name) => this.name = name} placeholder='Your name' />
             </div>
-            <div className="form-group col-xs-6">
+            <div className='form-group col-xs-6'>
               <label>Language Taken</label>
               <select className="form-control" ref={(language) => this.language = language}>
-                <option>German</option>
+                { allLanguages }
               </select>
             </div>
           </div>
           <div className="form-group">
             <label>Rating</label><br />
             <Rating
-              start= {0}
+              start={0}
               stop={10}
               initialRate={this.state.rate}
               onClick={rate => this.handleRate(rate)}
