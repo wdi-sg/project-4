@@ -109,7 +109,7 @@ class Livestock extends Component {
     // console.log('RSI optionArr', optionArr)
     // console.log(optionArr[0])
 
-    var urlRsiToChange = 'https://www.alphavantage.co/query?function=RSI&symbol=AAPL' + optionArr[0] + '&time_period=10&series_type=open&apikey=D2E5ZAQU25U0NKAE'
+    var urlRsiToChange = 'https://www.alphavantage.co/query?function=RSI&symbol=AAPL' + optionArr[0] + '&time_period=60&series_type=open&apikey=D2E5ZAQU25U0NKAE'
 
     fetch(urlRsiToChange)
         .then((response) => {
@@ -138,7 +138,7 @@ class Livestock extends Component {
   }
 
   componentDidMount () {
-    const url = 'https://www.alphavantage.co/query?function=RSI&symbol=AAPL&interval=daily&time_period=10&series_type=close&apikey=D2E5ZAQU25U0NKAE'
+    const url = 'https://www.alphavantage.co/query?function=RSI&symbol=AAPL&interval=daily&time_period=60&series_type=close&apikey=D2E5ZAQU25U0NKAE'
 
     fetch(url)
       .then((response) => {
