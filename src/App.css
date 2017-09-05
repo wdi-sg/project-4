@@ -1,14 +1,13 @@
 /* styling for country squares in homepage */
 .country .image {
-  height: 250px;
-  width: 100%;
   position: relative;
 }
 
 .country .subtitle {
   font-family: 'Chewy', cursive;
-  font-size: 30px;
   text-align: center;
+  font-size: 30px;
+  font-size: 3.5vw;
 }
 
 .country span{
@@ -18,6 +17,19 @@
   top:0;
   left: 0;
   z-index: 1;
+}
+
+/* make all bootstrap columns the same height */
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+}
+.row > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
 }
 
 /* styling for school cards in language page */

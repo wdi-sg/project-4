@@ -31,12 +31,12 @@ export default class ReviewForm extends Component {
       open: true
     })
     // clear all the fields after submission
-    this.name.value =""
-    this.language.value = ""
+    this.name.value = ''
+    this.language.value = ''
     this.setState({
       rate: 0
     })
-    this.review.value = ""
+    this.review.value = ''
   }
 
   // to manually close the snackbar
@@ -75,15 +75,15 @@ export default class ReviewForm extends Component {
               stop={10}
               initialRate={this.state.rate}
               onClick={rate => this.handleRate(rate)}
-              empty={<img src={starEmpty} className="icon" />}
-              full={<img src={starFull} className="icon" />}
+              empty={<img src={starEmpty} className="icon" alt='' />}
+              full={<img src={starFull} className="icon" alt='' />}
             />
           </div>
-          <div className="form-group">
+          <div className='form-group'>
             <label>Review</label>
             <textarea className="form-control" placeholder="Review" rows="3" ref={(review) => this.review = review} />
           </div>
-          <button type="submit" className="btn btn-primary">Submit Review</button>
+          <button type='submit' className='btn btn-primary'>Submit Review</button>
         </form>
 
         <Snackbar

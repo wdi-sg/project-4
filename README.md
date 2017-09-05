@@ -23,7 +23,9 @@ Singapore being an international and multicultural hub, there are many reasons w
 
 ## Challenges faced
 
-*
+* Making the grids of the front page responsive
+* 1. The columns are split into 4 but the height of the pictures do not scale. [The Solution](https://stackoverflow.com/questions/19695784/how-can-i-make-bootstrap-columns-all-the-same-height)
+* 2. Bootstrap does not scale typography in response to display size changes. [The Solution](https://stackoverflow.com/questions/14431411/pure-css-to-make-font-size-responsive-based-on-dynamic-amount-of-characters)
 
 ## Moving Forward
 
