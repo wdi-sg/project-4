@@ -19,18 +19,28 @@ Our job was to create an admin system that would act as a management tool to all
 
 ## Our project
 
+#### The Beginning
+
 As soon as the our group decided to accept Jerel's project, we met with him over the weekend and then set to work. Our first few interactions involved creating ERDs and figuring out the exact requirements of our client.
 
 *Very, very rough draft*
 ![Rough requirements](./app/assets/images/requirements.png)
 
-We then sent the perceived requirements to Jerel to be accepted, so we could synchronize Jerel's vision of the project, and the idea that we had for the project.
+We then sent the perceived requirements to Jerel to be accepted, so we could synchronize Jerel's vision of the project with the idea that we had for the project.
 
 ![Project requirements sent to Jerel](./app/assets/images/project_specs.png)
 
+#### ERD and Wireframes
 
+Once everything was client-verified, we began constructing the ERD and the Wireframes. The planning process was slightly complicated due to the fact that there were so many models. We had to make routes for meeting-room bookings, event-room bookings, office/hot-desk/desk bookings, advertisement posting, and admin member generation.
 
-### How to Use
+![Planning the models](./app/assets/images/model_planning.jpg)
+
+One thing to notice is that we made meeting-room bookings and meeting-rooms two separate models. The reason behind this was that we realized reservations and rooms themselves are two different concepts. An admin can create meeting-rooms which would allow reservations to happen in those meeting-rooms. Reservations for these meeting-rooms would need to be an independent model so that a meeting room could have multiple reservations. The same applies for events.
+
+*The models were then cleaned up into a legible spreadsheet*
+![Models with properties](./app/assets/images/erd_spreadsheet.png)
+
 
 A step by step guide on how to install and use the project, for example if this is a game, how do we play it.
 
