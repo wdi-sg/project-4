@@ -1,0 +1,15 @@
+<h1>All Meeting Rooms</h1>
+
+<%= link_to "Create Meeting Room", new_meetingroom_path %>
+
+<% @meetingrooms.each do |room| %>
+<h4> <%= room.room_title %></h4>
+<h4> PAX: <%= room.pax %></h4>
+<% if room.availability %>
+<h4>AVAILABLE</h4>
+<% else %>
+<h4>NOT AVAILABLE</h4>
+<% end %>
+<%= link_to "Delete", meetingroom_path(room), method: :delete %>
+<br>
+<% end %>
