@@ -19,7 +19,7 @@ Our job was to create an admin system that would act as a management tool to all
 
 ## Our project
 
-#### The Beginning
+### The Beginning
 
 As soon as the our group decided to accept Jerel's project, we met with him over the weekend and then set to work. Our first few interactions involved creating ERDs and figuring out the exact requirements of our client.
 
@@ -30,7 +30,7 @@ We then sent the perceived requirements to Jerel to be accepted, so we could syn
 
 ![Project requirements sent to Jerel](./app/assets/images/project_specs.png)
 
-#### ERD and Wireframes
+### ERD and Wireframes
 
 Once everything was client-verified, we began constructing the ERD and the Wireframes. The planning process was slightly complicated due to the fact that there were so many models. We had to make routes for meeting-room bookings, event-room bookings, office/hot-desk/desk bookings, advertisement posting, and admin member generation.
 
@@ -41,22 +41,81 @@ One thing to notice is that we made meeting-room bookings and meeting-rooms two 
 *The models were then cleaned up into a legible spreadsheet*
 ![Models with properties](./app/assets/images/erd_spreadsheet.png)
 
+We also drafted some basic wireframes for the website.
+![Wireframes](./app/assets/images/wireframes.png)
 
-A step by step guide on how to install and use the project, for example if this is a game, how do we play it.
+### Code
 
+A lot of the project was basic rails routing. However, there were some interesting aspects.
+
+In the code below, this was the method we devised to show the users only the time slots that were readily available.
+@available_slots holds all possible time slots. The user has to submit the date and room name they want to reserve. This information is used to find all slots that are already reserved on that date and time. The slots are then subtracted from @available_slots to give the remaining slots.
 
 ```
-Code example
+def slots
+  @available_slots = ['7:00 AM','8:00 AM','9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM','6:00 PM','7:00 PM']
+  # render json: params
+  roomID = Meetingroom.find_by(room_title: params[:bookroom][:meetingroom_id]).id
+  @bookroom = Bookroom.new
+  @bookroom.meetingroom_id = roomID
+  @bookroom.date_start = params[:bookroom][:date_start]
+
+  slots_same_date = Bookroom.where(date_start: params[:bookroom][:date_start])
+
+  taken_slots = slots_same_date.map do |slot|
+    slot.slot if slot.meetingroom_id == roomID
+  end
+
+  @available_slots = @available_slots - taken_slots
+end
 ```
 
-More steps...
+We also used manual authentication to determine which user was an admin. Each user has a boolean property which displays their admin status.
 
 ```
-until finished
+before_action :isAdmin
+
+def isAdmin
+  if !current_user.isAdmin
+    redirect_to '/'
+  end
+end
 ```
 
+### APIs and other external business
 
-## Tests
+```
+$('#bookRoomDateStart').datetimepicker({
+  format: 'DD/MM/YYYY'
+})
+```
+
+```
+function openEventWidgets () {
+  cloudinary.openUploadWidget({
+    cloud_name: 'ddanielnp',
+    upload_preset: 'event_preset',
+    multiple: false
+  }, function (error, result) {
+    console.log(result)
+    $('.advert_image').attr('src', result[0].eager[0].secure_url)
+    // ruby will autocreate its hidden field with an id (modelName_columnName). form_for is supposed to be used in conjunction with a model, (form_tag is not) so it will create and id using the model name and attribute.
+    $('#advert_advert_image').val(result[0].eager[0].secure_url)
+  })
+}
+
+function openEventWidget () {
+  cloudinary.openUploadWidget({
+    cloud_name: 'ddanielnp',
+    upload_preset: 'event_preset',
+    multiple: false
+  }, function (error, result) {
+    console.log(result);
+    $('.event_image').attr('src', result[0].eager[0].secure_url)
+    $('#event_event_image').val(result[0].eager[0].secure_url)
+  })
+}
+```
 
 Did you write automated tests? If so, how do we run them.
 
