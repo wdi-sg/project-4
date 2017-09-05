@@ -11,7 +11,7 @@
 
   <p>Title: <%= @event.title %></p>
 
-  <p>Start: <%= @event.event_start %> || End: <%= @event.event_end %> </p>
+  <p>Start: <%= @event.event_start.strftime('%e %b %y, %l:%M %p') %> || End: <%= @event.event_end.strftime('%e %b %y, %l:%M %p') %> </p>
 
   <p>Venue: <%= @event.venue %></p>
 

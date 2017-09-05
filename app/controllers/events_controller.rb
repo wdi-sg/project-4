@@ -1,33 +1,10 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :isAdmin, except: [:index, :show]
+
   def index
 
-
-    b= []
-    all_events = Event.find(1).event_start
-    # @all_events = DateTime.parse(all_events).strftime('%y %m %d %H:%M:%S')
-    b<<@all_events
-    @time = DateTime.now.localtime.strftime('%y %m %d %H:%M:%S')
-    b<<@time
-
-    c = '17 08 31 12:16:04'
-    b<<c
-
-    d = @time>c
-    # strftime('%d/%m/%Y %I:%M %p')
-
-    l= []
-    lemon= Event.find(2).event_start
-    nows= DateTime.now.change(:offset => "+0000")
-    men= lemon>nows
-    l << lemon
-    l << nows
-    l << men
-    Time.now.strftime("%:z")
-    b<<d
     @all_events = Event.where('event_start>?', DateTime.now.change(:offset => "+0000"))
-
-
-
 
   end
 
@@ -36,13 +13,6 @@ class EventsController < ApplicationController
 
     time2 = params[:event][:event_end]
     time = params[:event][:event_start]
-    # p (DateTime.parse(time2) > DateTime.parse(time))
-    # p time
-    # p DateTime.parse(time).to_i
-    # p DateTime.now.to_i + 28800
-    # p (DateTime.parse(time).to_i  < DateTime.now.to_i+28800)
-
-
 
 # convert to seconds and add 8h time difference
     if (DateTime.parse(time).to_i > DateTime.now.to_i + 28800)
@@ -68,7 +38,7 @@ class EventsController < ApplicationController
 
   def new
     @new_event = Event.new
-    # render html: "hhh"
+
   end
 
   def edit
@@ -76,6 +46,9 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    if @event.event_start < DateTime.now.change(:offset => "+0000")
+      redirect_to '/events'
+    end
     @new_reservation = Bookevent.new
     @current_booking = Bookevent.where("event_id = #{params[:id]}").sum(:no_pax)
   end
@@ -84,6 +57,13 @@ class EventsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+  def isAdmin
+    if !current_user.isAdmin
+      redirect_to '/events'
+    end
   end
 
 end
