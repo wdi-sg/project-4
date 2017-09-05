@@ -1,1 +1,15 @@
 <h1>See individual Asset</h1>
+
+<h3>Member Name</h3>
+<h6><%= @asset.user.name %></h6>
+
+<h3>Asset Type</h3>
+<%= @asset.asset_type %>
+
+<h3>Member ID</h3>
+<%= @asset.id%>
+
+<br>
+<br>
+
+<%= link_to "Back", :back %>

@@ -11,8 +11,8 @@
 <%= link_to "View Users",  create_users_path %>
 <%= link_to "Assets", spaces_path %>
 <% end %>
+<%= link_to "Marketplace", adverts_path %>
 <%= link_to "Logout", destroy_user_session_path, method: :delete %>
 <% else %>
 <%= link_to "Login", new_user_session_path %>
 <% end %>
-<%= link_to "Marketplace", adverts_path %>

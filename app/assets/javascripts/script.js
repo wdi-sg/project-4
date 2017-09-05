@@ -1,6 +1,9 @@
 $(document).on('turbolinks:load', function () {
   $(function () {
-    $('#datetimepicker1').datetimepicker({
+    $('#bookRoomDateStart').datetimepicker({
+      format: 'DD/MM/YYYY'
+    })
+    $('#bookRoomDateEnd').datetimepicker({
       format: 'DD/MM/YYYY'
     })
 
