@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 20170903081031) do
   create_table "assets", force: :cascade do |t|
     t.string "asset_type"
     t.bigint "user_id"
-    t.time "time_start"
-    t.time "time_end"
+    t.string "date_start"
+    t.string "date_end"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_assets_on_user_id"

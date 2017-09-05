@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :meetingrooms
   resources :bookrooms
   resources :adverts
+  resources :spaces, :controller => 'assets'
 
   # resources :bookevents
 

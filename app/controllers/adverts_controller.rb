@@ -14,7 +14,7 @@ class AdvertsController < ApplicationController
   def create
 
     @advert = Advert.create(params.require(:advert).permit(:description, :advert_image, :title))
-    if !params[:advert][:advert_image]
+    if params[:advert][:advert_image] == ''
       @advert.advert_image = 'http://res.cloudinary.com/ddanielnp/image/upload/c_scale,w_300/v1502804208/giftloop/ntbdvahkbycuxlecogcr.png'
     end
     @advert.user_id = current_user.id
