@@ -1,5 +1,9 @@
 class BookroomsController < ApplicationController
+  before_action :check_valid_date,
+    only: [:slots]
+
   def index
+    @bookings = Bookroom.all
   end
 
   def create
@@ -56,15 +60,34 @@ end
   def new
     @new_room = Bookroom.new
     @room_title = Meetingroom.distinct.pluck(:room_title).sort
-
-    @taken_slots = Bookroom.distinct.pluck(:date_start)
-    @taken_slots = Bookroom.where(date_start: @taken_slots)
-
-    @slot = Slot.all
-    @slot_avail = []
-    @slot.each do |i|
-      @slot_avail << i.time_start
+    params[:bookroom][:slot].each do |slot|
+      if slot != ""
+        @bookroom = Bookroom.create(params.require(:bookroom).permit(:date_start, :meetingroom_id))
+        @bookroom.slot = slot
+        @bookroom.price = 10
+        @bookroom.user_id = current_user.id
+        @bookroom.save
+      end
     end
+    redirect_to bookrooms_path
+  end
+
+  def slots
+    @available_slots = ['7:00 AM','8:00 AM','9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM','6:00 PM','7:00 PM']
+    # render json: params
+    roomID = Meetingroom.find_by(room_title: params[:bookroom][:meetingroom_id]).id
+    @bookroom = Bookroom.new
+    @bookroom.meetingroom_id = roomID
+    @bookroom.date_start = params[:bookroom][:date_start]
+
+    slots = Bookroom.where(meetingroom_id: roomID)
+    taken_slots = slots.map {|slot| slot.slot}
+    @available_slots = @available_slots - taken_slots
+  end
+
+  def new
+    @bookroom = Bookroom.new
+    @meetingrooms = Meetingroom.all
   end
 
   def edit
@@ -77,6 +100,15 @@ end
   end
 
   def destroy
+  end
+
+  private
+
+  def check_valid_date
+    if Date.today > Date.parse(params[:bookroom][:date_start])
+      flash[:date_error] = "Please input a valid date"
+      redirect_to new_bookroom_path
+    end
   end
 
 end

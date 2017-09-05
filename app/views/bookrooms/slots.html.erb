@@ -1,0 +1,8 @@
+<h3>slots</h3>
+<%= link_to "Back", :back %>
+<%= form_for @bookroom do |f| %>
+  <%= f.select :slot, options_for_select(@available_slots.map {|slot| slot}), {:multiple => true, :size => @available_slots.length} %>
+  <%= f.hidden_field :date_start, :value => @bookroom.date_start %>
+  <%= f.hidden_field :meetingroom_id, :value => @bookroom.meetingroom_id %>
+  <%= f.submit %>
+<% end %>
