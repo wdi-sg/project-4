@@ -12,10 +12,11 @@ export default class German extends Component {
       <div className='container'>
         <Image src={Germanpic} responsive />
         <Row>
-          <Col xs={12}>
+          <Col xs={12} md={12}>
             <br></br>
             <Row>
-              <Col xs={3}>
+              <div className="card-deck">
+              <Col xs={6} md={3}>
                 <div className="card">
                   <Image className="card-img-top" src={Goethe} responsive />
                   <Link to="/goethe"><span></span></Link>
@@ -25,7 +26,7 @@ export default class German extends Component {
                   </div>
                 </div>
               </Col>
-              <Col xs={3}>
+              <Col xs={6} md={3}>
                 <div className="card">
                   <Image className="card-img-top" src={Inlingua} responsive />
                   <Link to="/inlingua"><span></span></Link>
@@ -37,6 +38,7 @@ export default class German extends Component {
               </Col>
               <Col xs={3} />
               <Col xs={3} />
+              </div>
             </Row>
             <br></br>
           </Col>

@@ -4,6 +4,30 @@ import ReviewForm from './ReviewForm'
 import Review from './Review'
 import { ref } from '../fire'
 
+const goethe = {
+  name: 'Goethe Institut',
+  description: 'The Goethe-Institut is the Federal Republic of Germany’s cultural institute, active worldwide.',
+  location: '136 Neil Road, 088865',
+  trainStation: 'Outram Park',
+  skillsfuture: 'No',
+  materials: 'https://www.cornelsen.de/studio_21/',
+  link: 'https://www.goethe.de/ins/sg/en/spr/kur/gia.html',
+  schedule: {
+    extensive: {
+      length: '10 weeks',
+      frequency: 'Once a week',
+      cost: 'S$520'
+    },
+    intensive: {
+      length: '2 weeks',
+      frequency: 'Monday to Friday',
+      cost: 'S$720'
+    }
+  }
+}
+
+const goetheLanguages = ['German']
+
 export default class Goethe extends Component {
   constructor (props) {
     super(props)
@@ -29,8 +53,8 @@ export default class Goethe extends Component {
     })
     return (
       <div className='container'>
-        <SchDescription />
-        <ReviewForm />
+        <SchDescription info={goethe} />
+        <ReviewForm lang={goetheLanguages} />
         { allReviews }
       </div>
     )

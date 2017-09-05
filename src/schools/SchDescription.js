@@ -8,9 +8,11 @@ const iconStyles = {
 export default class SchDescription extends Component {
   render () {
     return (
-      <div>
-        <FontIcon className="material-icons" style={iconStyles}>home</FontIcon>
-
+      <div className='form'>
+        <div className='line'>
+          <FontIcon className="material-icons" style={iconStyles}>home</FontIcon>
+          <p>{this.props.info.name}</p>
+        </div>
       </div>
     )
   }
