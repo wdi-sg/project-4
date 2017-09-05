@@ -11,6 +11,7 @@
 
   <div id="navbarNavDropdown" class="navbar-collapse collapse">
 
+    <% if current_user %>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="/events">Events
@@ -25,7 +26,6 @@
     </ul>
 
     <ul class="navbar-nav">
-      <% if current_user %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hello,
           <%= current_user.email %></a>
