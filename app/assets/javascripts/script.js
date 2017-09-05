@@ -31,3 +31,15 @@ function openEventWidgets () {
     $('#advert_advert_image').val(result[0].eager[0].secure_url)
   })
 }
+
+function openEventWidget () {
+  cloudinary.openUploadWidget({
+    cloud_name: 'ddanielnp',
+    upload_preset: 'event_preset',
+    multiple: false
+  }, function (error, result) {
+    console.log(result);
+    $('.event_image').attr('src', result[0].eager[0].secure_url)
+    $('#event_event_image').val(result[0].eager[0].secure_url)
+  })
+}

@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20170903081031) do
     t.string "event_end"
     t.integer "total_slots"
     t.integer "remaining_slots"
+    t.string "event_image"
     t.string "venue"
     t.string "description"
     t.integer "price_pax"

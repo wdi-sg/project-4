@@ -21,7 +21,7 @@ class EventsController < ApplicationController
     if (DateTime.parse(time).to_i > DateTime.now.to_i + 28800)
 
       if (DateTime.parse(time2) > DateTime.parse(time))
-        new_event = Event.create(params.require(:event).permit(:title,:description,:venue,:total_slots,:price_pax,:event_start,:event_end))
+        new_event = Event.create(params.require(:event).permit(:title,:description,:venue,:total_slots,:price_pax,:event_start,:event_end,:event_image))
         new_event.remaining_slots = params[:event][:total_slots]
         new_event.save!
 

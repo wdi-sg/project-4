@@ -5,32 +5,21 @@
   <% if flash[:notice] %>
     <div class="notice"><%= flash[:notice] %></div>
   <% end %>
+
+<!-- <p>Upload Event Image</p>
+  <div class="center">
+     <div class="input-field inline">
+       <img onclick="openEventWidget()" src="http://i.imgur.com/hFjTK8K.png" class="event_image">
+       <p>Click on image above to upload or change</p>
+     </div>
+   </div> -->
+
 <br><br>
   <%= form_for @new_event do |f| %>
 
   <div class="">
     <p><%= f.label :Title %>:</p>
     <p><%= f.text_field :title, required: true %></p>
-  </div>
-
-  <div class="">
-    <p><%= f.label :Description %>:</p>
-    <p><%= f.text_area :description, required: true %></p>
-  </div>
-
-  <div class="">
-    <p><%= f.label :Venue %>:</p>
-    <p><%= f.text_field :venue, required: true %></p>
-  </div>
-
-  <div class="">
-    <p><%= f.label :total_slots %>:</p>
-    <p><%= f.number_field :total_slots, :min => 1, required: true %></p>
-  </div>
-
-  <div class="">
-    <p><%= f.label :price_pax %>:</p>
-    <p><%= f.number_field :price_pax, :min => 0, required: true  %></p>
   </div>
 
   <div style="overflow:hidden;">
@@ -55,14 +44,43 @@
     </div>
   </div>
 
+  <div class="">
+    <p><%= f.label :Venue %>:</p>
+    <p><%= f.text_field :venue, required: true %></p>
+  </div>
 
+  <div class="">
+    <p><%= f.label :total_slots %>:</p>
+    <p><%= f.number_field :total_slots, :min => 1, required: true %></p>
+  </div>
 
+  <div class="">
+    <p><%= f.label :price_pax %>:</p>
+    <p><%= f.number_field :price_pax, :min => 0, required: true  %></p>
+  </div>
 
+  <div class="">
+    <p><%= f.label :Description %>:</p>
+    <p><%= f.text_area :description, size: "100x15", required: true %></p>
+  </div>
+
+<div class="">
+  <p>Event Image: </p>
+    <div class="center">
+       <div class="input-field inline">
+         <img onclick="openEventWidget()" src="http://i.imgur.com/hFjTK8K.png" class="event_image">
+
+       </div>
+     </div>
+</div>
+
+<%= f.hidden_field :event_image %>
 
   <div class="actions">
     <%= f.submit "Create Event" %>
+    <br>
   </div>
 
   <% end %>
-
+<br>
 </div>
