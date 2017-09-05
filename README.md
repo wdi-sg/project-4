@@ -11,9 +11,13 @@ Our job was to create an admin system that would act as a management tool to all
 * Admin can create events.
 * Admin can make meeting bookings.
 
-###### To see our project, here is the link(https://www.facebook.com)!
+---
+
+##### To see our project, here is the [link](https://www.facebook.com)!
 
 Provide instructions here about how to get your project running on our local machine. Do we just need to clone and open a certain file or do we need to install anything first.
+
+---
 
 ### Prerequisites
 
