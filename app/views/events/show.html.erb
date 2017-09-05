@@ -33,22 +33,25 @@
   <p><%= @event.description %></p>
 </div>
 
+<% if @event.remaining_slots > 0 %>
+<div class="">
+  <h2>BOOK TICKETS</h2>
+  <%= form_for @new_reservation do |f| %>
+  <%= f.label :Number_tix %>
+  <%= f.number_field :no_pax, min: 1 %>
+  <%= f.hidden_field :event_id, value: @event.id %>
+    <%#= f.hidden_field :event_id, value: @event.event_id %>
 
-  <div class="">
-    <h2>BOOK TICKETS</h2>
-    <%= form_for @new_reservation do |f| %>
-    <%= f.label :Number_tix %>
-    <%= f.number_field :no_pax %>
-    <%= f.hidden_field :event_id, value: @event.id %>
-      <%#= f.hidden_field :event_id, value: @event.event_id %>
+    <div class="actions">
+      <br>
+      <%= f.submit "Book tickets" %>
+    </div>
 
-      <div class="actions">
-        <br>
-        <%= f.submit "Book tickets" %>
-      </div>
-
-    <% end %>
+  <% end %>
 <br>
-  </div>
+</div>
+<% end %>
+
+
 
 </div>
