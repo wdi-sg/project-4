@@ -1,6 +1,8 @@
-# Your Project Name
+# Hatchpodz
 
-This is the starter code for WDI projects. Please update this README file with information specific to your project. Replace this paragraph for instance, with a short description of your project. Then update the sections below. Refer to your project specificaion for instructions on how to submit your projects.
+This project is the only client project undergoing completion in WDI 11. It was forwarded by former WDI member Jerel Lim who is interested in starting his own business. This business would be a space where artists and likeminded individuals could rent out in proximity, utilizing facilities to promote their art or individual business. This concept is not unlike Spacemob.
+
+Our job was to create an admin system that would act as a management tool to allow an admin in charge of the facility to keep track of the spaces being utilized by clients. 
 
 ## Getting Started
 
