@@ -20,14 +20,14 @@ class BookroomsController < ApplicationController
       flash[:notice] ='Please do not pick a day before today'
       redirect_to new_bookroom_path
     else
-    # if date_today <= date_picked
-      if time_now > time_picked
+    if date_today <= date_picked
+      if date_today == date_picked && time_now > time_picked
         flash[:notice] ='Please do not pick a time before now'
         redirect_to new_bookroom_path
       else
         flash[:notice] ='SAVED'
-        redirect_to new_bookroom_path
-      # end
+        redirect_to bookrooms_path
+      end
     end
   end
 
