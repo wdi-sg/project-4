@@ -5,8 +5,8 @@ import Rating from 'react-rating'
 import starEmpty from '../images/star-empty.png'
 import starFull from '../images/star-full.png'
 
-function saveReview (name, language, rating, review) {
-  return ref.child('reviews/goethe/')
+function saveReview (name, language, rating, review, schName) {
+  return ref.child('reviews/' + schName)
     .push({
       name: name,
       language: language,
@@ -26,7 +26,7 @@ export default class ReviewForm extends Component {
   }
   handleSubmit (e) {
     e.preventDefault()
-    saveReview(this.name.value, this.language.value, this.state.rate, this.review.value)
+    saveReview(this.name.value, this.language.value, this.state.rate, this.review.value, this.props.sch)
     this.setState({
       open: true
     })

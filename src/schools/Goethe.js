@@ -54,7 +54,7 @@ export default class Goethe extends Component {
     return (
       <div className='container'>
         <SchDescription info={goethe} />
-        <ReviewForm languages={goetheLanguages} />
+        <ReviewForm sch='goethe' languages={goetheLanguages} />
         { allReviews }
       </div>
     )
