@@ -8,6 +8,7 @@ class Livestock extends Component {
     super()
     this.state = {
       rsiArr: [],
+      rsiDataArr: [],
       timeArr: [],
       priceArr: [],
       priceDataArr: []
@@ -16,7 +17,7 @@ class Livestock extends Component {
   }
   render () {
     let data = this.state.priceDataArr
-    let rsiData = this.state.rsiArr
+    let rsiData = this.state.rsiDataArr
 
     let allPrice = this.state.priceArr.map((price, index) => {
       return <Price key={index} price={price} />
@@ -29,14 +30,12 @@ class Livestock extends Component {
       // }
 
       return (
-        <div>
-          <RSIGraph
-            key={index}
-            rsi={rsi}
+        <RSIGraph
+          key={index}
+          rsi={rsi}
             // graphObj={graphObj}
-            time={this.state.timeArr[index]}
+          time={this.state.timeArr[index]}
           />
-        </div>
       )
     })
     // let allTime = this .state.timeArr.map((time, index) => {
@@ -192,17 +191,18 @@ class Livestock extends Component {
         allRsiArr.map((rsi, index) => {
           if (index < 10) {
             this.setState({
-              rsiArr: this.state.rsiArr.concat({ name: index, price: +rsi.RSI })
+              rsiArr: this.state.rsiArr.concat(+rsi.RSI),
+              rsiDataArr: this.state.rsiDataArr.concat({ name: index, RSI: +rsi.RSI })
             })
           }
         })
-        // allTimeArr.map((time, index) => {
-        //   if (index < 10) {
-        //     this.setState({
-        //       timeArr: this.state.timeArr.concat(time)
-        //     })
-        //   }
-        // })
+        allTimeArr.map((time, index) => {
+          if (index < 10) {
+            this.setState({
+              timeArr: this.state.timeArr.concat(time)
+            })
+          }
+        })
       })
       .catch((err) => {
         console.log(err)
