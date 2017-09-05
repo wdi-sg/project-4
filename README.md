@@ -84,11 +84,21 @@ end
 
 ### APIs and other external business
 
+#### Bootstrap
+
+Bootstrap was used to give users the ability to choose dates from a calendar that automatically drops down dates and options. All we have to do is use its custom function '.datetimepicker' and attach it to the id or class of any input field.
 ```
 $('#bookRoomDateStart').datetimepicker({
   format: 'DD/MM/YYYY'
 })
 ```
+
+![Bootstrap calendar](./app/assets/images/bootstrap_calendar.png)
+
+#### Cloudinary
+
+The cloudinary API was used to give users the ability to upload pictures of their event (or advertisement) and display it.
+Cloudinary requires us to paste in two functions which we then set to run on click. This uploads the image.
 
 ```
 function openEventWidgets () {
@@ -116,17 +126,13 @@ function openEventWidget () {
   })
 }
 ```
+### Communications
 
-Did you write automated tests? If so, how do we run them.
+Our team used trello as a basic means of team management and communication. It allowed us to see what we had completed, what we still had left to do, what each of us were responsible for, and the problems we encounterd on the way.
 
+Our team also used slack to communicate with each other as well as with Prima, our teacher. To communicate with our client, we primarily used email and whatsapp.
 
-```
-Code example
-```
-
-## Live Version
-
-Where is this deployed online (github pages, heroku etc), give us the link and any access details we need.
+![trello](./app/assets/images/trello.png)
 
 ## Built With
 
