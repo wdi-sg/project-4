@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'bookrooms/slots', as: :bookroom_slots
+  post 'bookrooms/slots'
   # get 'users/new'
 
   # get 'users/index'

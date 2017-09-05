@@ -3,7 +3,12 @@ $(document).on('turbolinks:load', function () {
     $('#bookRoomDateStart').datetimepicker({
       format: 'DD/MM/YYYY'
     })
+
     $('#bookRoomDateEnd').datetimepicker({
+      format: 'DD/MM/YYYY'
+    })
+
+    $('#meetingRoomReservation').datetimepicker({
       format: 'DD/MM/YYYY'
     })
 
