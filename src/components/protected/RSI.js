@@ -49,7 +49,7 @@ class RSI extends Component {
       })
       this.getRSI(this.state.rsiArr)
 
-      console.log(this.state.rsiArr)
+      // console.log(this.state.rsiArr)
     })
 
     // .then((data) => {
