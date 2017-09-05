@@ -1,24 +1,23 @@
 <h2>Form to book a room</h2>
 
 <% if flash[:notice] %>
-  <div class="notice"><%= flash[:notice] %></div>
+<div class="notice"><%= flash[:notice] %></div>
 <% end %>
 
 <div class="container">
   <div class="form-group field">
-    <%= form_for @new_room do |f| %>
-
-<%= form_for @bookroom, url: bookroom_slots_path  do |f| %>
-  <%= f.label :meetingroom_id %>
-  <br>
-  <%= f.select :meetingroom_id, options_for_select(@meetingrooms.map {|meetingroom| meetingroom.room_title}) %>
-  <div class="row">
-    <div class='col-sm-6'>
-      <div class="form-group">
-        <%= f.label :date_start %> :
-        <%= f.text_field :date_start, required: true, id: 'meetingRoomReservation' %>
+    <%= form_for @bookroom, url: bookroom_slots_path  do |f| %>
+    <%= f.label :meetingroom_id %>
+    <br>
+    <%= f.select :meetingroom_id, options_for_select(@meetingrooms.map {|meetingroom| meetingroom.room_title}) %>
+    <div class="row">
+      <div class='col-sm-6'>
+        <div class="form-group">
+          <%= f.label :date_start %>
+          :
+          <%= f.text_field :date_start, required: true, id: 'meetingRoomReservation' %>
+        </div>
       </div>
     </div>
-  </div>
-  <%= f.submit  %>
-<% end %>
+    <%= f.submit  %>
+    <% end %>
