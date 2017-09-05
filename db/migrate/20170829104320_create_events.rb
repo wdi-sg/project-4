@@ -5,6 +5,8 @@ class CreateEvents < ActiveRecord::Migration[5.1]
       t.string :event_start
       t.string :event_end
       t.integer :total_slots
+      t.integer :remaining_slots
+      t.string :event_image
       t.string  :venue
       t.string :description
       t.integer :price_pax
