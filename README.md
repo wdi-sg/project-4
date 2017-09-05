@@ -19,9 +19,11 @@ Provide instructions here about how to get your project running on our local mac
 
 ---
 
-### Prerequisites
+## Our project
 
-What is needed to install and run the project, how do we install them
+As soon as the our group decided to accept Jerel's project, we met with him over the weekend and then set to work. Our first few interactions involved creating ERDs and figuring out the exact requirements of our client.
+
+![Rough requirements](./app/images/requirements)
 
 ```
 Code example
