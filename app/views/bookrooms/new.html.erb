@@ -1,5 +1,9 @@
 <h2>Form to book a room</h2>
 
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
 <div class="container">
   <div class="form-group field">
     <%= form_for @new_room do |f| %>

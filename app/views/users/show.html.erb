@@ -1,9 +1,13 @@
-<h2>This is what you've been up to,
-  <%= @user.name %>.</h2>
-
+<h2>Hello, <%= @user.name %>.</h2>
 <div class="container">
   <div class="row">
     <div class="col">
+
+<%#= @bookings_date.inspect %>
+<% @bookings.each_with_index do |i, index| %>
+<% end %>
+<%= @dategroup %>
+
       <h3>Your current bookings</h3>
       <% @bookings.each_with_index do |i, index| %>
       <% if Date.today.strftime("%d/%m/%Y") <= i.date_start %>
