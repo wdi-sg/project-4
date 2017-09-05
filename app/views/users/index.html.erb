@@ -1,10 +1,13 @@
 <h1>Users#index</h1>
+<h1>View all users</h1>
 
 <% @users = User.all %>
 <% @users.each do |user| %>
-  <%= user.name %><br/>
-  <%= user.email %><br/>
-<% end %>
+<ul>
+  <li>
+    Name : <%= user.name %><br/>
+    Email : <%= user.email %><br/>
+  </li>
 
-<%= link_to "Back", :back %>
-<%= link_to "Logout", destroy_user_session_path, method: :delete %>
+</ul>
+<% end %>

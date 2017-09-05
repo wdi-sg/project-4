@@ -8,6 +8,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:id])
+    @bookings = Bookroom.where(user_id: @user)
+
   end
 
   def new

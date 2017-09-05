@@ -1,0 +1,59 @@
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <a class="navbar-brand" href="/">
+    <img src="http://cdn2-www.dogtime.com/assets/uploads/gallery/pug-dog-breed-pictures/2-face.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+    Hatchpodz
+  </a>
+
+  <div id="navbarNavDropdown" class="navbar-collapse collapse">
+
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/events">Events
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/adverts">Marketplace
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav">
+      <% if current_user %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hello,
+          <%= current_user.email %></a>
+
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <%= link_to "My profile", create_user_path(current_user.id), class: "dropdown-item" %>
+
+          <a class="dropdown-item" href="/bookrooms/new">Book a room</a>
+          <a class="dropdown-item" href="#">My transactions</a>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+
+    <ul class="navbar-nav">
+      <% if current_user %>
+      <li class="nav-item">
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'nav-link btn btn-outline-secondary' %>
+      </li>
+    <% else %>
+      <li class="nav-item">
+        <a class="nav-link btn btn-outline-secondary" href="/login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link btn btn-outline-secondary" href="/register">JOIN</a>
+      </li>
+      <% end %>
+    </ul>
+
+  </div>
+</nav>

@@ -20,10 +20,10 @@ class BookroomsController < ApplicationController
         # @slot = params[:bookroom][:slot][index]
         slot = Slot.find_by(time_start: params[:bookroom][:slot][index])
         @new_room.slot = slot.id
-        @new_room.save
+        @new_room.save!
       end
     end
-    render json: params
+    render json: @new_room
   end
 
   def new
