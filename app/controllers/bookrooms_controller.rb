@@ -7,29 +7,29 @@ class BookroomsController < ApplicationController
   end
 
   def create
-    date_today = Date.today.strftime("%d/%m/%Y")
-    date_picked = params[:bookroom][:date_start]
+    # date_today = Date.today.strftime("%d/%m/%Y")
+    # date_picked = params[:bookroom][:date_start]
+    # #
+    # # p Date.today.strftime("%d/%m/%Y") < "07/10/2018"
+    # time_now = Time.parse(Time.now.strftime("%I:%M %p")).to_i
+    # time_picked =  Time.parse(params[:bookroom][:slot][1]).to_i
     #
-    # p Date.today.strftime("%d/%m/%Y") < "07/10/2018"
-    time_now = Time.parse(Time.now.strftime("%I:%M %p")).to_i
-    time_picked =  Time.parse(params[:bookroom][:slot][1]).to_i
-
-    # render json: params
-
-    if date_today > date_picked
-      flash[:notice] ='Please do not pick a day before today'
-      redirect_to new_bookroom_path
-    else
-    # if date_today <= date_picked
-      if time_now > time_picked
-        flash[:notice] ='Please do not pick a time before now'
-        redirect_to new_bookroom_path
-      else
-        flash[:notice] ='SAVED'
-        redirect_to new_bookroom_path
-      # end
-    end
-  end
+    # # render json: params
+    #
+    # if date_today > date_picked
+    #   flash[:notice] ='Please do not pick a day before today'
+    #   redirect_to new_bookroom_path
+    # else
+    # # if date_today <= date_picked
+    #   if time_now > time_picked
+    #     flash[:notice] ='Please do not pick a time before now'
+    #     redirect_to new_bookroom_path
+    #   else
+    #     flash[:notice] ='SAVED'
+    #     redirect_to new_bookroom_path
+    #   # end
+    # end
+  # end
 
   # times = params[:bookroom][:slot]
   #
@@ -53,8 +53,6 @@ class BookroomsController < ApplicationController
   # render json: params
   # # save
 end
-
-
 
 
   def new
