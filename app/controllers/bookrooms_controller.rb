@@ -28,8 +28,12 @@ class BookroomsController < ApplicationController
     @bookroom.meetingroom_id = roomID
     @bookroom.date_start = params[:bookroom][:date_start]
 
-    slots = Bookroom.where(meetingroom_id: roomID)
-    taken_slots = slots.map {|slot| slot.slot}
+    slots_same_date = Bookroom.where(date_start: params[:bookroom][:date_start])
+
+    taken_slots = slots_same_date.map do |slot|
+      slot.slot if slot.meetingroom_id == roomID
+    end
+
     @available_slots = @available_slots - taken_slots
   end
 
