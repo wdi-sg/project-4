@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 
-const Graph = (props) => {
+const RSIGraph = (props) => {
   // let graphObj = { x: props.time, y: props.rsi }
 
   return (
     <div>
       <li>
-        Obj: { props.rsiArr } || { props.timeArr }
+        Obj: { props.time } || { props.rsi }
       </li>
     </div>
   )
 }
 
-export default Graph
+export default RSIGraph

@@ -1,14 +1,14 @@
 import React, {Component} from 'react'
-import Graph from './Graph'
+import RSIGraph from './RSIGraph'
 import Price from './Price'
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Legend } from 'recharts'
 
 class Livestock extends Component {
   constructor (props) {
     super()
-
     this.state = {
       rsiArr: [],
+      rsiDataArr: [],
       timeArr: [],
       priceDataArr: []
     }
@@ -16,21 +16,27 @@ class Livestock extends Component {
   }
   render () {
     let data = this.state.priceDataArr
-    let allData = this.state.rsiArr.map((rsi, index) => {
+
+    let rsiData = this.state.rsiDataArr
+
+    let allPrice = this.state.priceArr.map((price, index) => {
+      return <Price key={index} price={price} />
+    })
+
+    let allRSI = this.state.rsiArr.map((rsi, index) => {
+
       // let graphObj = {
       //   x: this.state.timeArr[index],
       //   y: rsi
       // }
 
       return (
-        <Graph
+        <RSIGraph
           key={index}
-          // graphObj={graphObj}
-          rsiArr={rsi}
-          timeArr={this.state.timeArr[index]}
-          // rsi={rsi}
-          // time={this.state.timeArr[index]}
-        />
+          rsi={rsi}
+            // graphObj={graphObj}
+          time={this.state.timeArr[index]}
+          />
       )
     })
     // let allTime = this .state.timeArr.map((time, index) => {
@@ -100,6 +106,7 @@ class Livestock extends Component {
             </select>
           </label>
         </form>
+
         <h2>Prices</h2>
         <LineChart width={1000} height={500} data={data}
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
@@ -110,9 +117,20 @@ class Livestock extends Component {
           <Legend />
           <Line type='monotone' dataKey='price' stroke='#82ca9d' strokeWidth={2} dot={false} />
         </LineChart>
+
         <h2>RSI</h2>
+        <LineChart width={1000} height={500} data={rsiData}
+          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+          <XAxis dataKey='name' padding={{ right: 20 }} />
+          <YAxis type='number' domain={['dataMin - 2', 'dataMax + 2']} padding={{ top: 20, bottom: 20 }} />
+          <CartesianGrid strokeDasharray='3 3' />
+          <Tooltip />
+          <Legend />
+          <Line type='monotone' dataKey='RSI' stroke='#82ca9d' dot={false} />
+        </LineChart>
+
         <ol>
-          {allData}
+          { allRSI }
         </ol>
         {/* <ul>{allRSI}</ul> */}
       </div>
@@ -170,11 +188,13 @@ class Livestock extends Component {
         for (var prop in rsiObj) {
           allRsiArr.push(rsiObj[prop])
           allTimeArr.push(prop)
+          // console.log(typeof +rsiObj[prop].RSI)
         }
         allRsiArr.map((rsi, index) => {
           if (index < 10) {
             this.setState({
-              rsiArr: this.state.rsiArr.concat(rsi.RSI)
+              rsiArr: this.state.rsiArr.concat(+rsi.RSI),
+              rsiDataArr: this.state.rsiDataArr.concat({ name: index, RSI: +rsi.RSI })
             })
           }
         })
