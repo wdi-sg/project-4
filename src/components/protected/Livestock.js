@@ -10,13 +10,13 @@ class Livestock extends Component {
       rsiArr: [],
       rsiDataArr: [],
       timeArr: [],
-      priceArr: [],
       priceDataArr: []
     }
     this.handleChange = this.handleChange.bind(this)
   }
   render () {
     let data = this.state.priceDataArr
+
     let rsiData = this.state.rsiDataArr
 
     let allPrice = this.state.priceArr.map((price, index) => {
@@ -24,6 +24,7 @@ class Livestock extends Component {
     })
 
     let allRSI = this.state.rsiArr.map((rsi, index) => {
+
       // let graphObj = {
       //   x: this.state.timeArr[index],
       //   y: rsi
@@ -44,42 +45,42 @@ class Livestock extends Component {
     const option1 = [
       'INTRADAY&interval=5min&outputsize=full',
       'Time Series (5min)',
-      288
+      79
     ]
     const option2 = [
       'INTRADAY&interval=15min&outputsize=full',
       'Time Series (15min)',
-      480
+      135
     ]
     const option3 = [
       'INTRADAY&interval=60min&outputsize=full',
       'Time Series (60min)',
-      720
+      161
     ]
     const option4 = [
       'DAILY&outputsize=full',
       'Time Series (Daily)',
-      90
+      70
     ]
     const option5 = [
       'DAILY&outputsize=full',
       'Time Series (Daily)',
-      180
+      130
     ]
     const option6 = [
       'DAILY&outputsize=full',
       'Time Series (Daily)',
-      365
+      260
     ]
     const option7 = [
       'WEEKLY',
       'Weekly Time Series',
-      260
+      262
     ]
     const option8 = [
       'WEEKLY',
       'Weekly Time Series',
-      520
+      523
     ]
     const option9 = [
       'MONTHLY',
@@ -109,17 +110,13 @@ class Livestock extends Component {
         <h2>Prices</h2>
         <LineChart width={1000} height={500} data={data}
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-          <XAxis dataKey='name' padding={{ right: 20 }} />
-          <YAxis type='number' domain={['dataMin - 2', 'dataMax + 2']} padding={{ top: 20, bottom: 20 }} />
+          <XAxis hide='true' dataKey='name' padding={{ right: 20 }} />
+          <YAxis type='number' domain={['dataMin - 1', 'dataMax + 1']} padding={{ top: 0, bottom: 0 }} />
           <CartesianGrid strokeDasharray='3 3' />
           <Tooltip />
           <Legend />
-          <Line type='monotone' dataKey='price' stroke='#82ca9d' dot={false} />
+          <Line type='monotone' dataKey='price' stroke='#82ca9d' strokeWidth={2} dot={false} />
         </LineChart>
-
-        <ol>
-          { allPrice }
-        </ol>
 
         <h2>RSI</h2>
         <LineChart width={1000} height={300} data={rsiData}
@@ -141,34 +138,39 @@ class Livestock extends Component {
   }
 
   handleChange (e) {
-    this.setState({priceArr: [], priceDataArr: []})
+    this.setState({priceDataArr: []})
     var optionArr = e.target.value.split(',')
     console.log(optionArr[0])
     console.log(optionArr[1])
     console.log(optionArr[2])
     let base = this
 
-    var url = 'https://www.alphavantage.co/query?function=TIME_SERIES_' + optionArr[0] + '&symbol=AAPL&apikey=D2E5ZAQU25U0NKAE'
+    var urlPriceToChange = 'https://www.alphavantage.co/query?function=TIME_SERIES_' + optionArr[0] + '&symbol=AAPL&apikey=D2E5ZAQU25U0NKAE'
 
-    fetch(url)
+    fetch(urlPriceToChange)
         .then((response) => {
           return response.json()
         })
         .then((data) => {
           var obj = (data[optionArr[1]])
-          var randomArr = []
+          var dataArr = []
+          var counter = 0
           for (var prop in obj) {
-            randomArr.push(obj[prop])
-          }
-          randomArr.map((price, index) => {
-            if (index < optionArr[2]) {
-              base.setState({
-                priceArr:
-                this.state.priceArr.concat(price['4. close']),
-                priceDataArr: this.state.priceDataArr.concat({ name: index, price: +price['4. close'] })
-              })
+            if (counter > optionArr[2]) {
+              break
             }
+            dataArr.push({
+              name: prop,
+              price: +obj[prop]['4. close']
+            })
+            counter++
+          }
+          this.setState({
+            priceDataArr: dataArr.reverse()
           })
+        })
+        .catch((err) => {
+          console.log(err)
         })
   }
 
@@ -218,27 +220,33 @@ class Livestock extends Component {
         console.log(err)
       })
 
-    const url1 = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&interval=5min&outputsize=full&symbol=AAPL&apikey=D2E5ZAQU25U0NKAE'
+    const urlPrice = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&interval=5min&outputsize=full&symbol=AAPL&apikey=D2E5ZAQU25U0NKAE'
 
-    fetch(url1)
+    fetch(urlPrice)
         .then((response) => {
           return response.json()
         })
         .then((data) => {
           var obj = (data['Time Series (5min)'])
-          var randomArr = []
+          var dataArr = []
+          var counter = 0
           for (var prop in obj) {
-            randomArr.push(obj[prop])
-          }
-          randomArr.map((price, index) => {
-            if (index < 288) {
-              this.setState({
-                priceArr:
-                this.state.priceArr.concat(price['4. close']),
-                priceDataArr: this.state.priceDataArr.concat({ name: index, price: +price['4. close'] })
-              })
+            if (counter > 79) {
+              break
             }
+
+            dataArr.push({
+              name: prop,
+              price: +obj[prop]['4. close']
+            })
+            counter++
+          }
+          this.setState({
+            priceDataArr: dataArr.reverse()
           })
+        })
+        .catch((err) => {
+          console.log(err)
         })
   }
 
