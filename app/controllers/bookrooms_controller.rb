@@ -3,24 +3,27 @@ class BookroomsController < ApplicationController
   end
 
   def create
-
+    date_today = Date.today.strftime("%d/%m/%Y")
     date_picked = params[:bookroom][:date_start]
-    # render json: params
     #
-    p Date.today.strftime("%d/%m/%Y") < "07/10/2018"
-    p Time.now.strftime("%I:%M %p")
-    p params[:bookroom][:slot][1]
+    # p Date.today.strftime("%d/%m/%Y") < "07/10/2018"
+    time_now = Time.parse(Time.now.strftime("%I:%M %p")).to_i
+    time_picked =  Time.parse(params[:bookroom][:slot][1]).to_i
 
-    if Date.today.strftime("%d/%m/%Y") > date_picked
-      flash[:notice] ='Please pick a date after today'
+    # render json: params
+
+    if date_today > date_picked
+      flash[:notice] ='Please do not pick a day before today'
       redirect_to new_bookroom_path
     else
-      if Time.now.strftime("%I:%M %p") > params[:bookroom][:slot][1]
-        flash[:notice] ='Please pick a later time slot'
+    # if date_today <= date_picked
+      if time_now > time_picked
+        flash[:notice] ='Please do not pick a time before now'
         redirect_to new_bookroom_path
       else
         flash[:notice] ='SAVED'
         redirect_to new_bookroom_path
+      # end
     end
   end
 
