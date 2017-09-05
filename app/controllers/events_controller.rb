@@ -1,6 +1,33 @@
 class EventsController < ApplicationController
   def index
-    @all_events = Event.all.reverse
+
+
+    b= []
+    all_events = Event.find(1).event_start
+    # @all_events = DateTime.parse(all_events).strftime('%y %m %d %H:%M:%S')
+    b<<@all_events
+    @time = DateTime.now.localtime.strftime('%y %m %d %H:%M:%S')
+    b<<@time
+
+    c = '17 08 31 12:16:04'
+    b<<c
+
+    d = @time>c
+    # strftime('%d/%m/%Y %I:%M %p')
+
+    l= []
+    lemon= Event.find(2).event_start
+    nows= DateTime.now.change(:offset => "+0000")
+    men= lemon>nows
+    l << lemon
+    l << nows
+    l << men
+    Time.now.strftime("%:z")
+    b<<d
+    @all_events = Event.where('event_start>?', DateTime.now.change(:offset => "+0000"))
+
+
+
 
   end
 

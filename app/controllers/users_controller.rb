@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     before_action :authenticate_user!
-    before_action :isAdmin
+    before_action :isAdmin, except: :show
 
   def index
     @user = User.all
@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
     @bookings = Bookroom.where(user_id: @user)
 
+    # @bookings = Bookroom.where(user_id: @user)
   end
 
   def new
