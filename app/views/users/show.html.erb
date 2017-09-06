@@ -1,9 +1,12 @@
-<h2>Hello, <%= @user.name %>.</h2>
+<h2>Hello,
+  <%= @user.name %>.</h2>
 
 <div class="container">
   <div class="row">
     <div class="col">
       <h3>Your current bookings</h3>
+
+      <!-- List current bookings for meetingrooms -->
       <% @bookings.each_with_index do |i, index| %>
       <% if Date.today.strftime("%d/%m/%Y") <= i.date_start %>
       <ul>
@@ -21,10 +24,36 @@
       </ul>
       <% end %>
       <% end %>
+
+      <!-- List current bookings for events -->
+      <% @events.each do |i| %>
+      <% if Time.now.change(:offset => "+0000").to_i <= Event.find_by_id(i.event_id).event_start.to_i %>
+      <ul>
+        <li>
+          <div class="">
+            Event title :
+            <%= Event.find_by_id(i.event_id).title %>
+          </div>
+          <div class="">
+            <%= Event.find_by_id(i.event_id).event_start.strftime 'Date start: %d-%m-%Y Time: %I:%M %p' %>
+          </div>
+          <div class="">
+            <%= Event.find_by_id(i.event_id).event_end.strftime 'Date end: %d-%m-%Y Time: %I:%M %p' %>
+          </div>
+          <div class="">
+            Venue :
+            <%= Event.find_by_id(i.event_id).venue %>
+          </div>
+          <div class="">
+            <%= link_to "View more", event_path(i), class: "btn btn-primary" %>
+          </div>
+        </li>
+      </ul>
+      <% end %>
+      <% end %>
     </div>
 
-    <%#= Time.now.strftime("%H:%M") %>
-
+    <!-- List past bookings for meetingrooms -->
     <div class="col">
       <h3>Your past bookings</h3>
       <% @bookings.each_with_index do |i, index| %>
@@ -49,5 +78,34 @@
       </ul>
       <% end %>
       <% end %>
+
+      <!-- List past bookings for events -->
+      <% @events.each do |i| %>
+      <% if Time.now.change(:offset => "+0000").to_i > Event.find_by_id(i.event_id).event_start.to_i %>
+      <ul>
+        <li>
+          <div class="">
+            Event title :
+            <%= Event.find_by_id(i.event_id).title %>
+          </div>
+          <div class="">
+            <%= Event.find_by_id(i.event_id).event_start.strftime 'Date start: %d-%m-%Y Time: %I:%M %p' %>
+          </div>
+          <div class="">
+            <%= Event.find_by_id(i.event_id).event_end.strftime 'Date end: %d-%m-%Y Time: %I:%M %p' %>
+          </div>
+          <div class="">
+            Venue :
+            <%= Event.find_by_id(i.event_id).venue %>
+          </div>
+          <div class="">
+            <%= link_to "View more", event_path(i), class: "btn btn-primary" %>
+          </div>
+        </li>
+      </ul>
+      <% end %>
+      <% end %>
+    </div>
+
     </div>
   </div>

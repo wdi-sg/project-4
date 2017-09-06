@@ -61,8 +61,8 @@ ActiveRecord::Schema.define(version: 20170903081031) do
 
   create_table "events", force: :cascade do |t|
     t.string "title"
-    t.string "event_start"
-    t.string "event_end"
+    t.datetime "event_start"
+    t.datetime "event_end"
     t.integer "total_slots"
     t.integer "remaining_slots"
     t.string "event_image"
