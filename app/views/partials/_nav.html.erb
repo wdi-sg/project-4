@@ -9,9 +9,65 @@
     Hatchpodz
   </a>
 
+
+
   <div id="navbarNavDropdown" class="navbar-collapse collapse">
 
+
+
+
+
+
     <% if current_user %>
+
+    <% if current_user.isAdmin %>
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Events</a>
+
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/events">View/ Manage Events</a>
+          <a class="dropdown-item" href="/events/new">Create New Event</a>
+        </div>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Assets</a>
+
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/spaces">View/ Manage Assets</a>
+          <a class="dropdown-item" href="/spaces/new">Create New Assets</a>
+        </div>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Meeting rooms</a>
+
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/meetingrooms">View/ Manage Meeting Rooms</a>
+          <a class="dropdown-item" href="/meetingrooms/new">Create New Meeting Room</a>
+        </div>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item active">
+        <a class="nav-link" href="/adverts">Marketplace
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href=""/bookrooms/new"">Book a Room
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+    </ul>
+    <% else %>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="/events">Events
@@ -23,7 +79,15 @@
           <span class="sr-only">(current)</span>
         </a>
       </li>
+      <li class="nav-item active">
+        <a class="nav-link" href=""/bookrooms/new"">Book a Room
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
     </ul>
+
+    <% end %>
+
 
     <ul class="navbar-nav">
       <li class="nav-item dropdown">
@@ -32,8 +96,8 @@
 
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <%= link_to "My profile", create_user_path(current_user.id), class: "dropdown-item" %>
+          <%= link_to "Manage my adverts", edit_advert_path(current_user.id), class: "dropdown-item" %>
 
-          <a class="dropdown-item" href="/bookrooms/new">Book a room</a>
           <a class="dropdown-item" href="#">My transactions</a>
         </div>
       </li>

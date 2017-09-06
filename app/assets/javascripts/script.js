@@ -19,6 +19,9 @@ $(document).on('turbolinks:load', function () {
     $('#dateendasset').datetimepicker({
       format: 'DD/MM/YYYY'
     })
+    $('#datetimepicker1').datetimepicker({
+      format: 'DD/MM/YYYY'
+    })
 
     $('#datetimepickerend').datetimepicker({
       inline: true, sideBySide: true,
