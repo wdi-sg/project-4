@@ -3,38 +3,32 @@ class BookroomsController < ApplicationController
     only: [:slots]
 
   def index
-    @bookings = Bookroom.all
+    redirect_to new_bookroom_path
   end
 
-  def create
-    @new_room = Bookroom.new
-    @room_title = Meetingroom.distinct.pluck(:room_title).sort
-    params[:bookroom][:slot].each do |slot|
-      if slot != ""
-        @bookroom = Bookroom.create(params.require(:bookroom).permit(:date_start, :meetingroom_id))
-        @bookroom.slot = slot
-        @bookroom.price = 10
-        @bookroom.user_id = current_user.id
-        @bookroom.save
+    def create
+          # render json: params[:bookroom][:slot][1].to_time
+      if Date.today == Date.parse(params[:bookroom][:date_start]) && params[:bookroom][:slot][1].to_time < Time.now
+
+        flash[:date_error] = "Please input a valid time/date"
+        redirect_to new_bookroom_path
+
+      else
+        @new_room = Bookroom.new
+        @room_title = Meetingroom.distinct.pluck(:room_title).sort
+        params[:bookroom][:slot].each do |slot|
+          if slot != ""
+            @bookroom = Bookroom.create(params.require(:bookroom).permit(:date_start, :meetingroom_id))
+            @bookroom.slot = slot
+            @bookroom.price = 10
+            @bookroom.user_id = current_user.id
+            @bookroom.save
+          end
+        end
+        redirect_to create_user_path(current_user.id)
       end
-    end
-    redirect_to bookrooms_path
-  end
 
-  # def new
-  #   @new_room = Bookroom.new
-  #   @room_title = Meetingroom.distinct.pluck(:room_title).sort
-  #   params[:bookroom][:slot].each do |slot|
-  #     if slot != ""
-  #       @bookroom = Bookroom.create(params.require(:bookroom).permit(:date_start, :meetingroom_id))
-  #       @bookroom.slot = slot
-  #       @bookroom.price = 10
-  #       @bookroom.user_id = current_user.id
-  #       @bookroom.save
-  #     end
-  #   end
-  #   redirect_to bookrooms_path
-  # end
+    end
 
   def slots
       @available_slots = ['7:00 AM','8:00 AM','9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM','6:00 PM','7:00 PM']
@@ -56,12 +50,19 @@ class BookroomsController < ApplicationController
   def new
     @bookroom = Bookroom.new
     @meetingrooms = Meetingroom.all
+    @arr = []
+    @meetingrooms.each do |i|
+
+      @arr<< "#{i.room_title} (#{i.pax} pax) - $#{i.price_hr}/hour"
+    end
+
   end
 
   def edit
   end
 
   def show
+    redirect_to new_bookroom_path
   end
 
   def update
@@ -73,8 +74,10 @@ class BookroomsController < ApplicationController
   private
 
   def check_valid_date
+
     if Date.today > Date.parse(params[:bookroom][:date_start])
-      flash[:date_error] = "Please input a valid date"
+
+      flash[:date_error] = "Please input a valid time/date"
       redirect_to new_bookroom_path
     end
   end
