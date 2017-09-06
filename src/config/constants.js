@@ -1,12 +1,12 @@
 import firebase from 'firebase'
 
 const config = {
-  apiKey: 'AIzaSyA54yNxPFESKXG3VZS4p9oWyWTYE-RqyKk',
-  authDomain: 'react-router-firebase-au-32d9c.firebaseapp.com',
-  databaseURL: 'https://react-router-firebase-au-32d9c.firebaseio.com',
-  projectId: 'react-router-firebase-au-32d9c',
+  apiKey: 'AIzaSyD-4TmnFINLolgOo4NRuCdLxNbj6DMcY1k',
+  authDomain: 'graviton-eabd7.firebaseapp.com',
+  databaseURL: 'https://graviton-eabd7.firebaseio.com',
+  projectId: 'graviton-eabd7',
   storageBucket: '',
-  messagingSenderId: '895586825660'
+  messagingSenderId: '526514451200'
 }
 
 firebase.initializeApp(config)
