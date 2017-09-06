@@ -48,7 +48,7 @@
 
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="/spaces">View/ Manage Assets</a>
-          <a class="dropdown-item" href="/spaces/new">Create New Assets</a>
+          <a class="dropdown-item" href="/spaces/new">Create New Asset</a>
         </div>
       </li>
     </ul>
@@ -78,14 +78,19 @@
       </li>
     </ul>
     <% else %>
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MarketPlace</a>
+
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/adverts">All Promos</a>
+          <a class="dropdown-item" href="/adverts/new">Create Promo</a>
+        </div>
+      </li>
+    </ul>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="/events">Events
-          <span class="sr-only">(current)</span>
-        </a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="/adverts">Marketplace
           <span class="sr-only">(current)</span>
         </a>
       </li>

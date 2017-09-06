@@ -1,12 +1,12 @@
 class AssetsController < ApplicationController
   before_action :isAdmin
-  before_action :check_valid_member,
-    only: [:create]
-  before_action :check_valid_date,
-    only: [:create]
+  # before_action :check_valid_member,
+  #   only: [:create]
+  # before_action :check_valid_date,
+  #   only: [:create]
 
   def index
-    @assets = Asset.all
+    @assets = Asset.all.order(:asset_type)
   end
 
   def show
@@ -21,6 +21,10 @@ class AssetsController < ApplicationController
     @asset = Asset.create(params.require(:asset).permit(:asset_type, :user_id, :date_start, :date_end))
     # @asset.save
     redirect_to spaces_path
+  end
+
+  def edit
+
   end
 
   private
