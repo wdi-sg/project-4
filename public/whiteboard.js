@@ -75,10 +75,13 @@
   })
 
   socket.on('player disconnect', function() {
-    oppPlayerDisconnect = true
-    $('body').empty()
-    $('body').append(`<h1>Unfortunately ${oppPlayer} has disconnected. </h1>`)
-    $('body').append('<a href="/whiteboard">New Game</a>')
+    if (guessList.length !== 0 && timer >= 0 ) {
+      oppPlayerDisconnect = true
+      $('body').empty()
+      $('body').append(`<h1>Unfortunately ${oppPlayer} has disconnected. </h1>`)
+      $('body').append('<a href="/whiteboard">New Game</a>')
+
+    }
   })
 
   socket.on('turn', function(turn) {
