@@ -54,7 +54,7 @@ class Counter extends Component {
       this.setState({
         priceArr: newArr
       })
-      console.log(this.state.priceArr)
+      // console.log(this.state.priceArr)
     })
 
     .catch((err) => {

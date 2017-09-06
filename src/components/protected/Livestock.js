@@ -19,6 +19,7 @@ class Livestock extends Component {
       priceDataArr: [],
       rsi: ''
     }
+    this.handleRsiChange = this.handleRsiChange.bind(this)
   }
   render () {
     let priceData = this.state.priceDataArr
@@ -48,70 +49,32 @@ class Livestock extends Component {
     //   arraysize
     // ]
 
-    const option1 = [
-      'INTRADAY&interval=5min&outputsize=full',
-      'Time Series (5min)',
-      79
-    ]
-    const option2 = [
-      'INTRADAY&interval=15min&outputsize=full',
-      'Time Series (15min)',
-      135
-    ]
-    const option3 = [
-      'INTRADAY&interval=60min&outputsize=full',
-      'Time Series (60min)',
-      161
-    ]
-    const option4 = [
-      'DAILY&outputsize=full',
-      'Time Series (Daily)',
-      70
-    ]
-    const option5 = [
-      'DAILY&outputsize=full',
-      'Time Series (Daily)',
-      130
-    ]
-    const option6 = [
-      'DAILY&outputsize=full',
-      'Time Series (Daily)',
-      260
-    ]
-    const option7 = [
-      'WEEKLY',
-      'Weekly Time Series',
-      262
-    ]
-    const option8 = [
-      'WEEKLY',
-      'Weekly Time Series',
-      523
-    ]
-    const option9 = [
-      'MONTHLY',
-      'Monthly Time Series',
-      999
-    ]
+    const option1 = '&interval=1min'
+    const option2 = '&interval=5min'
+    const option3 = '&interval=15min'
+    const option4 = '&interval=30min'
+    const option5 = '&interval=60min'
+    const option6 = '&interval=daily'
+    const option7 = '&interval=weekly'
+    const option8 = '&interval=monthly'
 
     return (
       <div>
         <PriceGraph priceDataArr={priceData} />
 
-        <h2>RSI</h2>
+        <h2>RSI (Relative Strength Index)</h2>
         <form>
           <label>
             Please select time period:
             <select onChange={this.handleRsiChange}>
-              <option value={option1}>24 hrs</option>
-              <option value={option2}>5 days</option>
-              <option value={option3}>1 month</option>
-              <option value={option4}>3 months</option>
-              <option value={option5}>6 months</option>
-              <option value={option6}>1 year</option>
-              <option value={option7}>5 years</option>
-              <option value={option8}>10 years</option>
-              <option value={option9}>All Data</option>
+              <option value={option1}>1 min</option>
+              <option value={option2}>5 min</option>
+              <option value={option3}>15 min</option>
+              <option value={option4}>30 min</option>
+              <option value={option5}>60 min</option>
+              <option value={option6}>Daily</option>
+              <option value={option7}>Weekly</option>
+              <option value={option8}>Monthly</option>
             </select>
           </label>
         </form>
@@ -134,7 +97,7 @@ class Livestock extends Component {
     )
   }
   getRSI (rsi) {
-    console.log(rsi)
+    // console.log(rsi)
     this.setState({
       rsi
     })
@@ -143,34 +106,31 @@ class Livestock extends Component {
   handleRsiChange (e) {
     this.setState({rsiDataArr: []})
     var optionArr = e.target.value.split(',')
-    console.log('RSI optionArr', optionArr)
-    console.log(optionArr[0])
-    console.log(optionArr[1])
-    console.log(optionArr[2])
+    // console.log('RSI optionArr', optionArr)
+    // console.log(optionArr[0])
 
-    var urlPriceToChange = 'https://www.alphavantage.co/query?function=RSI' + optionArr[0] + '&symbol=AAPL&apikey=D2E5ZAQU25U0NKAE'
+    var urlRsiToChange = 'https://www.alphavantage.co/query?function=RSI&symbol=AAPL' + optionArr[0] + '&time_period=60&series_type=open&apikey=D2E5ZAQU25U0NKAE'
 
-    fetch(urlPriceToChange)
+    fetch(urlRsiToChange)
         .then((response) => {
           return response.json()
         })
         .then((data) => {
-          var obj = (data[optionArr[1]])
-          var dataArr = []
-          var counter = 0
-          for (var prop in obj) {
-            if (counter > optionArr[2]) {
-              break
-            }
-            dataArr.push({
-              name: prop,
-              price: +obj[prop]['4. close']
-            })
-            counter++
+          console.log('fetch data', data)
+          var rsiObj = (data['Technical Analysis: RSI'])
+          var timeRsiArr = []
+
+          for (var prop in rsiObj) {
+            timeRsiArr.push({date: prop, RSI: +rsiObj[prop].RSI })
           }
-          this.setState({
-            rsiDataArr: dataArr.reverse()
+          timeRsiArr.map((timeRsiData, index) => {
+            if (index < 10) {
+              this.setState({
+                rsiDataArr: this.state.rsiDataArr.concat(timeRsiData)
+              })
+            }
           })
+          this.setState({ rsiDataArr: this.state.rsiDataArr.reverse() })
         })
         .catch((err) => {
           console.log(err)
@@ -178,7 +138,7 @@ class Livestock extends Component {
   }
 
   componentDidMount () {
-    const url = 'https://www.alphavantage.co/query?function=RSI&symbol=AAPL&interval=daily&time_period=10&series_type=close&apikey=D2E5ZAQU25U0NKAE'
+    const url = 'https://www.alphavantage.co/query?function=RSI&symbol=AAPL&interval=daily&time_period=60&series_type=close&apikey=D2E5ZAQU25U0NKAE'
 
     fetch(url)
       .then((response) => {
