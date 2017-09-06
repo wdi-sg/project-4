@@ -5,8 +5,10 @@ class PriceGraph extends Component {
   constructor (props) {
     super()
     this.state = {
-      priceDataArr: props.priceDataArr
+      priceDataArr: props.priceDataArr,
+      symbol: props.symbol
     }
+    this.handlePriceDataArrChange = props.handlePriceDataArrChange
     this.handleChange = this.handleChange.bind(this)
   }
   render () {
@@ -90,8 +92,9 @@ class PriceGraph extends Component {
   handleChange (e) {
     this.setState({priceDataArr: []})
     var optionArr = e.target.value.split(',')
+    console.log(this.props.symbol)
 
-    var urlPriceToChange = 'https://www.alphavantage.co/query?function=TIME_SERIES_' + optionArr[0] + '&symbol=AAPL&apikey=D2E5ZAQU25U0NKAE'
+    var urlPriceToChange = 'https://www.alphavantage.co/query?function=TIME_SERIES_' + optionArr[0] + '&symbol=' + this.props.symbol + '&apikey=D2E5ZAQU25U0NKAE'
 
     fetch(urlPriceToChange)
         .then((response) => {
@@ -144,6 +147,7 @@ class PriceGraph extends Component {
         this.setState({
           priceDataArr: dataArr.reverse()
         })
+        this.handlePriceDataArrChange(dataArr.reverse())
       })
       .catch((err) => {
         console.log(err)

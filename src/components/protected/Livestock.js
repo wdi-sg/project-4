@@ -10,11 +10,14 @@ class Livestock extends Component {
     this.state = {
       rsiDataArr: [],
       priceDataArr: [],
-      rsi: ''
+      rsi: '',
+      symbol: 'AAPL'
     }
     this.handleRsiChange = this.handleRsiChange.bind(this)
+    this.handleSymbolChange = this.handleSymbolChange.bind(this)
   }
   render () {
+    let symbol = this.state.symbol
     let priceData = this.state.priceDataArr
     let rsiData = this.state.rsiDataArr
 
@@ -29,7 +32,19 @@ class Livestock extends Component {
 
     return (
       <div>
-        <PriceGraph priceDataArr={priceData} />
+        <h1>symbol is {symbol}</h1>
+        <h1>Choose the stocks you want to look at</h1>
+        <form>
+          <label>
+            Stock:
+            <select onChange={this.handleSymbolChange}>
+              <option value='AAPL'>Apple</option>
+              <option value='PG'>P&G</option>
+            </select>
+          </label>
+        </form>
+
+        <PriceGraph handlePriceDataArrChange={(arr) => this.handlePriceDataArrChange(arr)} priceDataArr={priceData} symbol={symbol} />
 
         <h2>RSI (Relative Strength Index)</h2>
         <form>
@@ -71,11 +86,22 @@ class Livestock extends Component {
     })
   }
 
+  handlePriceDataArrChange (arr) {
+    this.setState({
+      priceDataArr: arr
+    })
+  }
+
+  handleSymbolChange (e) {
+    this.setState({symbol: e.target.value})
+    console.log(this.state.priceDataArr)
+  }
+
   handleRsiChange (e) {
     this.setState({rsiDataArr: []})
     var optionArr = e.target.value.split(',')
 
-    var urlRsiToChange = 'https://www.alphavantage.co/query?function=RSI&symbol=AAPL' + optionArr[0] + '&time_period=60&series_type=open&apikey=D2E5ZAQU25U0NKAE'
+    var urlRsiToChange = 'https://www.alphavantage.co/query?function=RSI&symbol=' + this.state.symbol + optionArr[0] + '&time_period=60&series_type=open&apikey=D2E5ZAQU25U0NKAE'
 
     fetch(urlRsiToChange)
         .then((response) => {
