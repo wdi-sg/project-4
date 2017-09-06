@@ -6,7 +6,7 @@ import starEmpty from '../images/star-empty.png'
 import starFull from '../images/star-full.png'
 
 function saveReview (name, language, rating, review, schName) {
-  return ref.child('reviews/' + schName)
+  return ref.child('reviews/')
     .push({
       name: name,
       language: language,

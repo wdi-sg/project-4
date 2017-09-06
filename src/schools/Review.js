@@ -6,7 +6,6 @@ import IconButton from 'material-ui/IconButton'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import IconMenu from 'material-ui/IconMenu'
 import MenuItem from 'material-ui/MenuItem'
-import Avatar from 'material-ui/Avatar'
 import FontIcon from 'material-ui/FontIcon'
 import {yellow500} from 'material-ui/styles/colors'
 import German from '../images/SpeechGerman.png'
@@ -28,12 +27,25 @@ const rightIconMenu = (
   </IconMenu>
 )
 
+const styles = {
+  userSelect: 'none',
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  fontSize: 20,
+  borderRadius: 0,
+  height: 40,
+  width: 40,
+  top: 16,
+  left: 16
+}
+
 export default class Review extends Component {
   render () {
     var lang = this.props.detail.language
 
-    if (lang === 'German') { var pic = <Avatar src={German} style={{borderRadius: '0'}} /> }
-    if (lang === 'English') { var pic = <Avatar src={English} style={{borderRadius: '0'}} /> }
+    if (lang === 'German') { var pic = <img src={German} style={styles} /> }
+    if (lang === 'English') { var pic = <img src={English} style={styles} /> }
 
     return (
       <div>
