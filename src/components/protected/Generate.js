@@ -31,6 +31,7 @@ class Generate extends Component {
       var predictRSI = xRSI[0]
       var priceYTD = y[0]
 
+      // TODO: regression failed
       regression = new SimpleLinearRegression(xRSI, y)
       slope = regression.slope
       toStr = regression.toString()
@@ -47,10 +48,11 @@ class Generate extends Component {
 
     return (
       <div>
-        <h3>Slope: {slope}</h3>
-        <h3>Equation: {toStr}</h3>
-        <h3>Predicted Price Tomorrow: US${predict}</h3>
-        <h3>{prediction}</h3>
+        Regression suppose to be here
+         <h3>Slope: {slope}</h3> 
+         <h3>Equation: {toStr}</h3> 
+         <h3>Predicted Price Tomorrow: US${predict}</h3> 
+         <h3>{prediction}</h3> 
       </div>
     )
   }

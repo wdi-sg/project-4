@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Enemy from './Enemy'
+// TODO: take regression here
 import SimpleLinearRegression from 'ml-regression-simple-linear'
 import Generate from './Generate'
 
