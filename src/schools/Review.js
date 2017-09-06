@@ -20,12 +20,12 @@ const iconButtonElement = (
   </IconButton>
 )
 
-const rightIconMenu = (
-  <IconMenu iconButtonElement={iconButtonElement}>
-    <MenuItem>Edit</MenuItem>
-    <MenuItem>Delete</MenuItem>
-  </IconMenu>
-)
+// const rightIconMenu = (
+//   <IconMenu iconButtonElement={iconButtonElement}>
+//     <MenuItem>Edit</MenuItem>
+//     <MenuItem>Delete</MenuItem>
+//   </IconMenu>
+// )
 
 const styles = {
   userSelect: 'none',
@@ -52,17 +52,18 @@ export default class Review extends Component {
 
         <List>
           <ListItem
-            rightIconButton={rightIconMenu}
+            // rightIconButton={rightIconMenu}
             leftAvatar={pic}
-            primaryText= {
+            primaryText={
               <p style='fontSize: 24px'>
-                {this.props.detail.name} {''}
-                <FontIcon className="material-icons" color={yellow500}>star</FontIcon>
-                <span style={{color: darkBlack}}>Rating: {this.props.detail.rating}</span>
+                {this.props.detail.name}
               </p>
             }
             secondaryText={
-              <p> {this.props.detail.review} </p>
+              <p>
+                <span style={{color: darkBlack}}>Rating: {this.props.detail.rating}</span> <br />
+                {this.props.detail.review}
+              </p>
             }
             secondaryTextLines={2}
           />
