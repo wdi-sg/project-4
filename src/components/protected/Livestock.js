@@ -8,9 +8,7 @@ class Livestock extends Component {
   constructor (props) {
     super()
     this.state = {
-      rsiArr: [],
       rsiDataArr: [],
-      timeArr: [],
       priceDataArr: [],
       rsi: ''
     }
@@ -92,7 +90,7 @@ class Livestock extends Component {
             timeRsiArr.push({date: prop, RSI: +rsiObj[prop].RSI })
           }
           timeRsiArr.map((timeRsiData, index) => {
-            if (index < 10) {
+            if (index < 100) {
               this.setState({
                 rsiDataArr: this.state.rsiDataArr.concat(timeRsiData)
               })
@@ -106,7 +104,7 @@ class Livestock extends Component {
   }
 
   componentDidMount () {
-    const url = 'https://www.alphavantage.co/query?function=RSI&symbol=AAPL&interval=daily&time_period=60&series_type=close&apikey=D2E5ZAQU25U0NKAE'
+    const url = 'https://www.alphavantage.co/query?function=RSI&symbol=AAPL&interval=1min&time_period=60&series_type=close&apikey=D2E5ZAQU25U0NKAE'
 
     fetch(url)
       .then((response) => {
@@ -123,32 +121,14 @@ class Livestock extends Component {
           timeRsiArr.push({date: prop, RSI: +rsiObj[prop].RSI })
         }
         timeRsiArr.map((timeRsiData, index) => {
-          if (index < 10) {
+          if (index < 100) {
             this.setState({
               rsiDataArr: this.state.rsiDataArr.concat(timeRsiData)
             })
           }
         })
         this.setState({ rsiDataArr: this.state.rsiDataArr.reverse() })
-        // for the values
-        for (var prop in rsiObj) {
-          allRsiArr.push(rsiObj[prop])
-          allTimeArr.push(prop)
-        }
-        allRsiArr.map((rsi, index) => {
-          if (index < 10) {
-            this.setState({
-              rsiArr: this.state.rsiArr.concat(+rsi.RSI)
-            })
-          }
-        })
-        allTimeArr.map((time, index) => {
-          if (index < 10) {
-            this.setState({
-              timeArr: this.state.timeArr.concat(time)
-            })
-          }
-        })
+
       })
       .catch((err) => {
         console.log(err)
