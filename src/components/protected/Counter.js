@@ -1,6 +1,4 @@
 import React, {Component} from 'react'
-import Enemy from './Enemy'
-import SimpleLinearRegression from 'ml-regression-simple-linear'
 import Generate from './Generate'
 
 class Counter extends Component {
@@ -20,13 +18,9 @@ class Counter extends Component {
   }
 
   render () {
-    let allPrices = this.state.priceArr.map((number, index) => {
-      return <Enemy key={index} name={number} />
-    })
 
     return (
       <div>
-        {/* <ul>Price: {allPrices}</ul> */}
         <Generate x={this.state.priceArr} y={this.state.rsiArr} />
 
       </div>
@@ -37,7 +31,6 @@ class Counter extends Component {
 
     fetch(url)
     .then((response) => { // promise is resolved, and response is received
-      // console.log('response', response)
       return response.json() // convert response.body into json format
     })
 

@@ -1,13 +1,8 @@
 import React, {Component} from 'react'
-import RSIGraph from './RSIGraph'
 import PriceGraph from './PriceGraph'
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Legend } from 'recharts'
-// jerald part
 import Counter from './Counter.js'
 import RSI from './RSI.js'
-import Generate from './Generate.js'
-
-// jerald end
 
 class Livestock extends Component {
   constructor (props) {
@@ -24,30 +19,6 @@ class Livestock extends Component {
   render () {
     let priceData = this.state.priceDataArr
     let rsiData = this.state.rsiDataArr
-    let allRSI = this.state.rsiArr.map((rsi, index) => {
-      // let graphObj = {
-      //   x: this.state.timeArr[index],
-      //   y: rsi
-      // }
-      return (
-        <div>
-          <RSIGraph
-            key={index}
-            rsi={rsi}
-            // graphObj={graphObj}
-            time={this.state.timeArr[index]}
-          />
-        </div>
-      )
-    })
-    // let allTime = this .state.timeArr.map((time, index) => {
-    //   return <Graph key={index} time={time} />
-    // })
-    // const optionExample = [
-    //   'urlchange',
-    //   'for data manipulation',
-    //   arraysize
-    // ]
 
     const option1 = '&interval=1min'
     const option2 = '&interval=5min'
@@ -97,7 +68,6 @@ class Livestock extends Component {
     )
   }
   getRSI (rsi) {
-    // console.log(rsi)
     this.setState({
       rsi
     })
@@ -106,8 +76,6 @@ class Livestock extends Component {
   handleRsiChange (e) {
     this.setState({rsiDataArr: []})
     var optionArr = e.target.value.split(',')
-    // console.log('RSI optionArr', optionArr)
-    // console.log(optionArr[0])
 
     var urlRsiToChange = 'https://www.alphavantage.co/query?function=RSI&symbol=AAPL' + optionArr[0] + '&time_period=60&series_type=open&apikey=D2E5ZAQU25U0NKAE'
 
@@ -166,7 +134,6 @@ class Livestock extends Component {
         for (var prop in rsiObj) {
           allRsiArr.push(rsiObj[prop])
           allTimeArr.push(prop)
-          // console.log(typeof +rsiObj[prop].RSI)
         }
         allRsiArr.map((rsi, index) => {
           if (index < 10) {
