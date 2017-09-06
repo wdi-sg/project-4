@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20170903081031) do
 
   create_table "meetingrooms", force: :cascade do |t|
     t.integer "pax"
+    t.integer "price_hr"
     t.boolean "availability", default: true
     t.string "room_title"
     t.datetime "created_at", null: false

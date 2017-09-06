@@ -6,7 +6,7 @@ class MeetingroomsController < ApplicationController
 
   def create
     # render json: params
-    Meetingroom.create(params.require(:meetingroom).permit(:room_title, :pax))
+    Meetingroom.create(params.require(:meetingroom).permit(:room_title, :pax, :price_hr))
     redirect_to root_path
   end
 
