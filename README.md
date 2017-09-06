@@ -1,7 +1,5 @@
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) # General Assembly SG Web Development Immersive 11
-Project #4: **[LanGauge]()**
-
-![Website]()
+Project #4: **[LanGauge](https://langauge-wdi11.firebaseapp.com/)**
 
 ## Description
 
@@ -29,7 +27,7 @@ Singapore being an international and multicultural hub, there are many reasons w
 
 ## Moving Forward
 
-*
+* Populate the rest of the schools
 
 ## Acknowledgments
 
