@@ -3,6 +3,7 @@ import PriceGraph from './PriceGraph'
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Legend } from 'recharts'
 import Counter from './Counter.js'
 import RSI from './RSI.js'
+import ADX from './ADX.js'
 
 class Livestock extends Component {
   constructor (props) {
@@ -77,7 +78,8 @@ class Livestock extends Component {
 
         <h2>Regression</h2>
         <RSI getRSI={(rsi) => this.getRSI(rsi)} />
-        <Counter rsi={this.state.rsi} />
+        <ADX getADX={(adx) => this.getADX(adx)} />
+        <Counter rsi={this.state.rsi} adx={this.state.adx}/>
 
       </div>
     )
@@ -85,6 +87,11 @@ class Livestock extends Component {
   getRSI (rsi) {
     this.setState({
       rsi
+    })
+  }
+  getADX (adx) {
+    this.setState({
+      adx
     })
   }
 

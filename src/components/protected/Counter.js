@@ -7,13 +7,15 @@ class Counter extends Component {
 
     this.state = {
       priceArr: [],
-      rsiArr: props.rsi
+      rsiArr: props.rsi,
+      adxArr: props.adx
     }
   }
 
   componentWillReceiveProps (nextProps) {
     this.setState({
-      rsiArr: nextProps.rsi
+      rsiArr: nextProps.rsi,
+      adxArr: nextProps.adx
     })
   }
 
@@ -21,13 +23,13 @@ class Counter extends Component {
 
     return (
       <div>
-        <Generate x={this.state.priceArr} y={this.state.rsiArr} />
+        <Generate x={this.state.priceArr} y={this.state.rsiArr} z={this.state.adxArr}/>
 
       </div>
     )
   }
   componentDidMount () {
-    const url = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=AAPL&interval=15min&outputsize=full&apikey=D2E5ZAQU25U0NKAE'
+    const url = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=AAPL&outputsize=full&apikey=D2E5ZAQU25U0NKAE'
 
     fetch(url)
     .then((response) => { // promise is resolved, and response is received
@@ -35,7 +37,7 @@ class Counter extends Component {
     })
 
     .then((data) => {
-      var obj = (data['Time Series (15min)'])
+      var obj = (data['Time Series (Daily)'])
       var randomArr = []
       for (var prop in obj) {
         randomArr.push(obj[prop])
