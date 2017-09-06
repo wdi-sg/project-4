@@ -1,5 +1,7 @@
 class MeetingroomsController < ApplicationController
+  before_action :isAdmin
   def index
+    @meetingrooms = Meetingroom.all
   end
 
   def create
@@ -15,13 +17,21 @@ class MeetingroomsController < ApplicationController
   def edit
   end
 
-  def show
-  end
-
   def update
   end
 
   def destroy
+    room_to_delete = Meetingroom.find(params[:id])
+    room_to_delete.destroy
+    redirect_to meetingrooms_path
+  end
+
+  private
+
+  def isAdmin
+    if !current_user.isAdmin
+      redirect_to '/'
+    end
   end
 
 end

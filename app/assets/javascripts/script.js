@@ -3,10 +3,14 @@ $(document).on('turbolinks:load', function () {
     $('#bookRoomDateStart').datetimepicker({
       format: 'DD/MM/YYYY'
     })
+
     $('#bookRoomDateEnd').datetimepicker({
       format: 'DD/MM/YYYY'
     })
 
+    $('#meetingRoomReservation').datetimepicker({
+      format: 'DD/MM/YYYY'
+    })
 
     $('#datestartasset').datetimepicker({
       format: 'DD/MM/YYYY'
@@ -29,6 +33,10 @@ $(document).on('turbolinks:load', function () {
       inline: true, sideBySide: true,
       stepping: 30,
       format: 'DD/MM/YYYY h:mm A'
+    })
+
+    $('#datetimepicker1').datetimepicker({
+      format: 'DD/MM/YYYY'
     })
   })
 })

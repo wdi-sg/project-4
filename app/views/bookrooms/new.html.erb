@@ -1,44 +1,23 @@
 <h2>Form to book a room</h2>
 
+<% if flash[:notice] %>
+<div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
 <div class="container">
   <div class="form-group field">
-    <%= form_for @new_room do |f| %>
-
+    <%= form_for @bookroom, url: bookroom_slots_path  do |f| %>
+    <%= f.label :meetingroom_id %>
+    <br>
+    <%= f.select :meetingroom_id, options_for_select(@meetingrooms.map {|meetingroom| meetingroom.room_title}) %>
     <div class="row">
       <div class='col-sm-6'>
-        <div class="form-group field">
-          <%= f.label :pick_a_room %> :
-          <%= f.select :meetingroom, @room_title%>
+        <div class="form-group">
+          <%= f.label :date_start %>
+          :
+          <%= f.text_field :date_start, required: true, id: 'meetingRoomReservation' %>
         </div>
       </div>
     </div>
-
-    <div class="row">
-      <div class='col-sm-6'>
-        <div class="form-group field">
-          <%= f.label :date %> :
-          <%= f.text_field :date_start, required: true, id: 'datetimepicker1' %>
-        </div>
-      </div>
-    </div>
-
-<%= @taken_slots.inspect %>
-    <div class="row">
-      <div class='col-sm-6'>
-        <%= f.label :Pick_slot %> :
-        <div class="form-group field">
-          <div class="row">
-            <%= f.select :slot, @slot_avail, {}, {:multiple => true, :size => @slot_avail.length, class: "input-lg"} %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "Book now" %>
-    </div>
-
-
+    <%= f.submit  %>
     <% end %>
-  </div>
-</div>
