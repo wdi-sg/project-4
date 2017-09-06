@@ -1,29 +1,26 @@
 <h1>Create New Promo</h1>
 <div class="container">
 
-
-
-
 <%= form_for @advert do |f| %>
-<div class="">
-  <p><%= f.label :title %>:</p>
-  <p>  <%= f.text_field :title, autofocus: true, required: true  %></p>
+<div class="field">
+
+  <div class="center">
+    <img class='advert_image' onclick="openEventWidgets()" src="http://i.imgur.com/hFjTK8K.png" data-toggle="tooltip" data-placement="right" title="Click to upload event image">
+  </div>
+
+  <h4><%= f.label :title %> :</h4>
+  <%= f.text_field :title, autofocus: true, required: true, class: "form-control"  %>
 </div>
 
 <div class="">
-  <p> <%= f.label :description %>:</p>
-  <p>  <%= f.text_area :description,size: "100x15", required: true %> </p>
-</div>
-
-<div class="">
-  <p>Click to add image: </p>
-  <img class='advert_image' onclick="openEventWidgets()" src="http://i.imgur.com/hFjTK8K.png">
+  <h4><%= f.label :description %>:</h4>
+  <p><%= f.text_area :description,size: "100x5", required: true, class: "form-control" %> </p>
 </div>
 
   <%= f.hidden_field :advert_image %>
 
-<div class="">
-    <%= f.submit "Create" %>
+<div class="center">
+    <%= f.submit "Create", class: "btn btn-primary" %>
 </div>
 
   <br>

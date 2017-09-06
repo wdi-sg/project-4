@@ -1,5 +1,7 @@
 $(document).on('turbolinks:load', function () {
   $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+
     $('#bookRoomDateStart').datetimepicker({
       format: 'DD/MM/YYYY'
     })
@@ -60,7 +62,7 @@ function openEventWidget () {
     upload_preset: 'event_preset',
     multiple: false
   }, function (error, result) {
-    console.log(result);
+    console.log(result)
     $('.event_image').attr('src', result[0].eager[0].secure_url)
     $('#event_event_image').val(result[0].eager[0].secure_url)
   })

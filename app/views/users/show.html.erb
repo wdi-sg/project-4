@@ -8,7 +8,7 @@
 
       <h3>Your current bookings</h3>
 
-      <div class="">
+      <h4><div class="">
         <!-- List current bookings for meetingrooms -->
         <% @allBookingsPerGroup.each_with_index do |i, index| %>
         <% if Date.today.strftime("%d/%m/%Y") <= i[0].date_start %>
@@ -61,7 +61,7 @@
               <%= Event.find_by_id(i.event_id).venue %>
             </div>
 
-            <div class="">
+            <div class="field">
               <%= link_to "View more", event_path(i), class: "btn btn-primary" %>
             </div>
           </li>
@@ -69,7 +69,7 @@
         <% end %>
         <% end %>
 
-      </div>
+      </div></h4>
     </div>
 
     <div class="col">

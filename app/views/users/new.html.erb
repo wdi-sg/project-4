@@ -4,7 +4,7 @@
 
   <div class="field">
     <%= f.label :Select_if_admin %>
-    <%= f.check_box :isAdmin, autofocus: true %>
+    <%= f.check_box :isAdmin %>
   </div>
 
   <div class="field">
@@ -14,7 +14,7 @@
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email %>
   </div>
 
   <div class="field">
@@ -31,8 +31,8 @@
   </div>
 
   <div class="actions field">
-    <%= f.submit "Create" %>
+    <%= f.submit "Create", class: "btn btn-primary" %>
   </div>
 
+  <%= button_to "Cancel", root_path, method: "get", class: "btn btn-primary" %>
 <% end %>
-<%= button_to "Cancel", root_path, method: "get" %>
