@@ -1,13 +1,18 @@
 <h1>All Assets</h1>
 
-<%= link_to "Home", root_path %>
-<%= link_to "Create new asset", new_space_path %>
-<br>
-
 <% @assets.each do |asset| %>
-<%= asset.asset_type %>
-Belongs to user: <%= asset.user_id %>
-<br>
-<%= link_to "See more", space_path(asset.id) %>
-<br>
+<div class="">
+  <p> Asset ID: <%= asset.id %> </p>
+  <p> Asset Type: <%= asset.asset_type %></p>
+  <p> Created: <%= asset.created_at.localtime.strftime('%e %b %y, %l:%M %p') %></p>
+
+  <% if asset.user_id %>
+  <p> Assigned User: <%= asset.user.name %></p>
+  <% else %>
+  <p> Assigned User: NIL</p>
+  <% end %>
+
+  <%= link_to "Edit Asset/ Assign User to Asset", edit_space_path(asset.id)  %>
+
+</div>
 <% end %>

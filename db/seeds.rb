@@ -30,18 +30,25 @@
     time_end: "#{2+i}:00 PM"
   })
   end
+#
+#
+# 3.times do |i|
+# Meetingroom.create({
+#   room_title: "Room #{i+1}",
+#   pax: "#{i+5}",
+#   availability: true
+#   })
+# end
+#
+# Event.create({
+#   title: 'mmm',
+#   event_start: '2017-09-05 18:30:00',
+#   event_end: '2017-09-05 19:30:00'
+#   })
 
-
-3.times do |i|
-Meetingroom.create({
-  room_title: "Room #{i+1}",
-  pax: "#{i+5}",
-  availability: true
-  })
-end
-
-Event.create({
-  title: 'mmm',
-  event_start: '2017-09-05 18:30:00',
-  event_end: '2017-09-05 19:30:00'
-  })
+# User.create({
+#   name: 'admin',
+#   email: 'admin@hatchpodz.com',
+#   isAdmin: true,
+#   password: 'admin123'
+#   })

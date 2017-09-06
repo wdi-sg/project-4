@@ -1,36 +1,36 @@
 <h1>Create New Asset</h1>
-<h5><%= flash[:member_error] %></h5>
-<h5><%= flash[:date_error] %></h5>
-<%= link_to "See All Assets", spaces_path %>
-<br>
+<!-- <h5><%#= flash[:member_error] %></h5>
+<h5><%#= flash[:date_error] %></h5>
+<%#= link_to "See All Assets", spaces_path %>
+<br> -->
 
-<em><h6>Minimum booking is 10 days</h6></em>
+<!-- <em><h6>Minimum booking is 10 days</h6></em> -->
 
 <%= form_for @asset, url: spaces_path do |f| %>
   <%= f.select :asset_type, options_for_select(["Office", "Desk", "Hotdesk"]) %>
+  <!-- <br>
   <br>
+  <%#= f.label "User ID:" %>
+  <%#= f.number_field :user_id %>
   <br>
-  <%= f.label "User ID:" %>
-  <%= f.number_field :user_id %>
-  <br>
-  <br>
-  <div class="row">
+  <br> -->
+  <!-- <div class="row">
     <div class='col-sm-6'>
       <div class="form-group">
-        <%= f.label :date_start %> :
-        <%= f.text_field :date_start, required: true, id: 'bookRoomDateStart' %>
+        <%#= f.label :date_start %> :
+        <%#= f.text_field :date_start, id: 'bookRoomDateStart' %>
       </div>
     </div>
-  </div>
+  </div> -->
 
-  <div class="row">
+  <!-- <div class="row">
     <div class='col-sm-6'>
       <div class="form-group">
-        <%= f.label :date_end %> :
-        <%= f.text_field :date_end, required: true, id: 'bookRoomDateEnd' %>
+        <%#= f.label :date_end %> :
+        <%#= f.text_field :date_end, id: 'bookRoomDateEnd' %>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <%= f.submit %>
 <% end %>

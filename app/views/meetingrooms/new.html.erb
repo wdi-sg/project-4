@@ -1,6 +1,4 @@
-<h1>new meetingroom</h1>
-
-<%= link_to "See all Meeting rooms", meetingrooms_path %>
+<h1>New MeetingRoom</h1>
 
 <div class="container">
 
@@ -9,9 +7,8 @@
   <div class="row">
     <div class='col-sm-6'>
       <div class="form-group">
-        <%= f.label :Room_title %>
-        :
-        <%= f.text_field :room_title %>
+        <p><%= f.label :Room_name %>:</p>
+        <p><%= f.text_field :room_title, required: true %></p>
       </div>
     </div>
   </div>
@@ -19,15 +16,23 @@
   <div class="row">
     <div class='col-sm-6'>
       <div class="form-group">
-        <%= f.label :occupancy %>
-        :
-        <%= f.text_field :pax %>
+        <p><%= f.label :occupancy %>:</p>
+        <p><%= f.text_field :pax, required: true %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class='col-sm-6'>
+      <div class="form-group">
+        <p><%= f.label :price_hour %>:</p>
+        <p><%= f.number_field :price_hr, required: true, min: 0 %></p>
       </div>
     </div>
   </div>
 
   <div class="actions">
-    <%= f.submit "Create now" %>
+    <%= f.submit "Create" %>
   </div>
 
   <% end %>
