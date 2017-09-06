@@ -2,92 +2,108 @@
   <%= @user.name %>.</h2>
 
 <div class="container">
+
   <div class="row">
     <div class="col">
+
       <h3>Your current bookings</h3>
 
-      <!-- List current bookings for meetingrooms -->
-      <% @bookings.each_with_index do |i, index| %>
-      <% if Date.today.strftime("%d/%m/%Y") <= i.date_start %>
-      <ul>
-        <li>
-          <div class="">
-            Meetingroom :
-            <%= i.meetingroom.room_title %>
-          </div>
-          <div class="">
-            Date :
-            <%= i.date_start %>
-          </div>
-          <div class="">
-            Slot :
-            <%= i.slot %>
-          </div>
-          <div class="">
-            Price paid : $<%= i.price %>
-          </div>
-        </li>
-      </ul>
-      <% end %>
-      <% end %>
+      <div class="">
+        <!-- List current bookings for meetingrooms -->
+        <% @allBookingsPerGroup.each_with_index do |i, index| %>
+        <% if Date.today.strftime("%d/%m/%Y") <= i[0].date_start %>
 
-      <!-- List current bookings for events -->
-      <% @events.each do |i| %>
-      <% if Time.now.change(:offset => "+0000").to_i <= Event.find_by_id(i.event_id).event_start.to_i %>
-      <ul>
-        <li>
-          <div class="">
-            Event title :
-            <%= Event.find_by_id(i.event_id).title %>
-          </div>
-          <div class="">
-            <%= Event.find_by_id(i.event_id).event_start.strftime 'Starts on Date: %d/%m/%Y, Time: %I:%M %p' %>
-          </div>
-          <div class="">
-            <%= Event.find_by_id(i.event_id).event_end.strftime 'Ends on Date: %d/%m/%Y, Time: %I:%M %p' %>
-          </div>
-          <div class="">
-            Venue :
-            <%= Event.find_by_id(i.event_id).venue %>
-          </div>
-          <div class="">
-            <%= link_to "View more", event_path(i), class: "btn btn-primary" %>
-          </div>
-        </li>
-      </ul>
-      <% end %>
-      <% end %>
+        <ul>
+          <li>
+            <div class="">
+              Meeting room :
+              <%= i[0].meetingroom.room_title %>
+            </div>
+
+            <div class="">
+              Date :
+              <%= i[0].date_start %>
+            </div>
+
+            <div class="">
+              <% i.each_with_index do |j, index| %>
+              Slot :
+              <%= j.slot %>
+              <% end %>
+            </div>
+          </li>
+        </ul>
+        <% end %>
+        <% end %>
+
+        <!-- List current bookings for events -->
+        <h4>Events Attending</h4>
+        <% @events.each do |i| %>
+        <% if Time.now.change(:offset => "+0000").to_i <= Event.find_by_id(i.event_id).event_start.to_i %>
+
+        <ul>
+          <li>
+            <div class="">
+              Event title :
+              <%= Event.find_by_id(i.event_id).title %>
+            </div>
+
+            <div class="">
+              <%= Event.find_by_id(i.event_id).event_start.strftime 'Starts on Date: %d/%m/%Y, Time: %I:%M %p' %>
+            </div>
+
+            <div class="">
+              <%= Event.find_by_id(i.event_id).event_end.strftime 'Ends on Date: %d/%m/%Y, Time: %I:%M %p' %>
+            </div>
+
+            <div class="">
+              Venue :
+              <%= Event.find_by_id(i.event_id).venue %>
+            </div>
+
+            <div class="">
+              <%= link_to "View more", event_path(i), class: "btn btn-primary" %>
+            </div>
+          </li>
+        </ul>
+        <% end %>
+        <% end %>
+
+      </div>
     </div>
 
-    <!-- List past bookings for meetingrooms -->
     <div class="col">
       <h3>Your past bookings</h3>
-      <% @bookings.each_with_index do |i, index| %>
-      <% if Date.today.strftime("%d/%m/%Y") > i.date_start %>
+
+      <!-- List past bookings for meetingrooms -->
+      <% @allBookingsPerGroup.each_with_index do |i, index| %>
+      <% if Date.today.strftime("%d/%m/%Y") > i[0].date_start %>
+
       <ul>
         <li>
           <div class="">
-            Meetingroom :
-            <%= i.meetingroom.room_title %>
+            Meeting room :
+            <%= i[0].meetingroom.room_title %>
           </div>
+
           <div class="">
             Date :
-            <%= i.date_start %>
+            <%= i[0].date_start %>
           </div>
+
           <div class="">
-            Price paid : $<%= i.price %>
+            <% i.each_with_index do |j, index| %>
+            Slot :
+            <%= j.slot %>
           </div>
-        </li>
-        <li>
-          <%= Slot.find(index+1).time_start %>
-          -
-          <%= Slot.find(index+1).time_end %>
+          <% end %>
         </li>
       </ul>
       <% end %>
       <% end %>
 
       <!-- List past bookings for events -->
+      <h4>Events Attended</h4>
       <% @events.each do |i| %>
       <% if Time.now.change(:offset => "+0000").to_i > Event.find_by_id(i.event_id).event_start.to_i %>
       <ul>
@@ -113,7 +129,7 @@
       </ul>
       <% end %>
       <% end %>
+
     </div>
 
   </div>
-</div>
