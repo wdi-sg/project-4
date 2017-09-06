@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     before_action :authenticate_user!
-    before_action :isAdmin, except: :show
+    before_action :isAdmin, except: [:show, :transactions]
 
   def index
     @user = User.all
@@ -27,7 +27,8 @@ class UsersController < ApplicationController
   end
 
   def transactions
-
+    user = current_user
+    @reservations = Bookroom.where(user_id: user)
   end
 
   private

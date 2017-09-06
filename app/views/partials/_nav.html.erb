@@ -98,7 +98,7 @@
           <%= link_to "My profile", create_user_path(current_user.id), class: "dropdown-item" %>
           <%= link_to "Manage my adverts", edit_advert_path(current_user.id), class: "dropdown-item" %>
 
-          <a class="dropdown-item" href="#">My transactions</a>
+          <a class="dropdown-item" href="/transactions">My transactions</a>
         </div>
       </li>
       <% end %>
