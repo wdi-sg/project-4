@@ -29,7 +29,7 @@ export default class Home extends Component {
         <Image src={Chalkboard} responsive />
         <Row>
           <Col xs={12}>
-            <h1>European Germanic</h1>
+            <h2>European Germanic</h2>
             <Row>
               <Col xs={3}></Col>
               <Col xs={3}></Col>
@@ -54,7 +54,7 @@ export default class Home extends Component {
           <Col xs={12}>
             <Row>
               <Col xs={3}>
-                <h1>East Asian</h1>
+                <h2>East Asian</h2>
                 <div className='country'>
                   <Image src={China} className='image' responsive />
                   <p className='subtitle'>Chinese</p>
@@ -102,7 +102,7 @@ export default class Home extends Component {
               <Col xs={3}></Col>
               <Col xs={3}></Col>
               <Col xs={3}>
-                <h1>European Romance</h1>
+                <h2>European Romance</h2>
                 <div className='country'>
                   <Image src={Spain} className='image' responsive />
                   <p className='subtitle'>Spanish</p>
@@ -116,7 +116,7 @@ export default class Home extends Component {
           <Col xs={12}>
             <Row>
               <Col xs={3}>
-                <h1>Middle Eastern</h1>
+                <h2>Middle Eastern</h2>
                 <div className='country'>
                   <Image src={Arab} className='image' responsive />
                   <p className='subtitle'>Arabic</p>
@@ -159,7 +159,7 @@ export default class Home extends Component {
         </Row>
         <Row>
           <Col xs={12}>
-            <h1>European East</h1>
+            <h2>European East</h2>
             <Row>
               <Col xs={3}></Col>
               <Col xs={3}>
@@ -182,7 +182,7 @@ export default class Home extends Component {
         </Row>
         <Row>
           <Col xs={12}>
-            <h1>South East Asian</h1>
+            <h2>South East Asian</h2>
             <Row>
               <Col xs={3}>
                 <div className='country'>

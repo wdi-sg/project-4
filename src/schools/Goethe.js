@@ -14,7 +14,7 @@ export default class Goethe extends Component {
   }
 
   componentWillMount () {
-    var reviews = ref.child('reviews/')
+    var reviews = ref.child('reviews/goethe')
     reviews.on('child_added', (dataSnapshot) => {
       this.setState({
         reviewsArr: this.state.reviewsArr.concat(dataSnapshot.val())

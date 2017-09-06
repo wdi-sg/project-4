@@ -6,8 +6,7 @@
 .country .subtitle {
   font-family: 'Chewy', cursive;
   text-align: center;
-  font-size: 24px;
-  font-size: 2.5vw;
+  font-size: 3vw;
 }
 
 .country span{
@@ -42,6 +41,7 @@
 .card-img-top {
     width: 100%;
 }
+
 .card:hover {
   background-color: #EDF6F6
 }
@@ -59,7 +59,50 @@
   background-color: #F4FBFB
 }
 
+h2 {
+  font-family: 'Chewy', cursive !important;
+  font-size: 4vw !important;
+}
+
 .form {
   width: 50%;
   margin: 0 auto
 }
+
+/*aligning the image and text in the reviews list*/
+.review {
+  display: inline-block
+}
+
+.left {
+  float: left;
+  padding: 10px 1px;
+}
+
+.right {
+  float: left;
+  width: 90%;
+  padding: 5px 10px
+}
+
+@media (max-width: 575px) {
+  .subtitle .card-title .card-text {
+    font-size: 3vw !important;
+  }
+  .card {
+    padding: 15px 15px;
+  }
+  .navbar-brand {
+    height: 30px !important;
+    padding: 5px 5px !important;
+  }
+  .form {
+    width: inherit;
+  }
+  .reviewText {
+    font-size: 4vw !important;
+  }
+  .right {
+    width: 80%
+  }
+ }
