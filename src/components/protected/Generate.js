@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Enemy from './Enemy'
+
 import SimpleLinearRegression from 'ml-regression-simple-linear'
 
 class Generate extends Component {
@@ -42,17 +42,17 @@ class Generate extends Component {
       if (minus > 0) {
         var prediction = 'Price will drop'
       } else {
-        var prediction = 'Price will rise'
+        prediction = 'Price will rise'
       }
     }
 
     return (
       <div>
         Regression suppose to be here
-         <h3>Slope: {slope}</h3> 
-         <h3>Equation: {toStr}</h3> 
-         <h3>Predicted Price Tomorrow: US${predict}</h3> 
-         <h3>{prediction}</h3> 
+         <h3>Slope: {slope}</h3>
+        <h3>Equation: {toStr}</h3>
+        <h3>Predicted Price Tomorrow: US${predict}</h3>
+        <h3>{prediction}</h3>
       </div>
     )
   }
