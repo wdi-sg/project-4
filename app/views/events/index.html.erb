@@ -1,42 +1,35 @@
 <div class="container">
-  <h1>show all events</h1>
+  <h1>Events Calendar</h1>
 
   <% if flash[:notice] %>
     <div class="notice"><%= flash[:notice] %></div>
   <% end %>
 
   <% @all_events.each do |i|  %>
-  <h3> Title: <%= i.title %> </h3>
-  <h3> Start: <%= i.event_start %> || End: <%= i.event_end %></h3>
+  <p> Title: <%= i.title %> </p>
+  <p> Start: <%= i.event_start.strftime('%e %b %y, %l:%M %p') %> || End: <%= i.event_end.strftime('%e %b %y, %l:%M %p') %></p>
   <% if (i.remaining_slots > 0) %>
-    <h3>Remaining slots: <%= i.remaining_slots %> </h3>
+    <p>Remaining slots: <%= i.remaining_slots %> </p>
   <% else %>
-    <h3> **FULLY BOOKED** </h3>
+    <p> **FULLY BOOKED** </p>
   <% end %>
 
 
- <% if i.event_image %>
-  <%= image_tag i.event_image %>
+ <% if (i.event_image) %>
+  <% if i.event_image.length > 0 %>
+   <%= image_tag i.event_image, size: "160x100"%>
  <% else %>
    <!-- false -->
  <% end %>
+  <% end %>
 
  <% if (i.description.split.size > 10) %>
- <h3> Description: <%= i.description[/(\S+\s+){10}/].strip %>... </h3>
+ <p> Description: <%= i.description[/(\S+\s+){10}/].strip %>... </p>
  <% else %>
- <h3> Description: <%= i.description %> </h3>
+ <p> Description: <%= i.description %> </p>
 
  <%end %>
-
-
-
-
-
-
-
-
   <%= link_to "More details/ Book", event_path(i) %>
-
-
+<p>---------------------------------------------------------------------------------</p>
   <% end %>
 </div>

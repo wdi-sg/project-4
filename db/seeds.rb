@@ -39,3 +39,9 @@ Meetingroom.create({
   availability: true
   })
 end
+
+Event.create({
+  title: 'mmm',
+  event_start: '2017-09-05 18:30:00',
+  event_end: '2017-09-05 19:30:00'
+  })
