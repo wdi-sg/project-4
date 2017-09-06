@@ -22,10 +22,6 @@ export default class Goethe extends Component {
     })
   }
 
-  componentWillUnmount () {
-    this.ref.off()
-  }
-
   render () {
     var allReviews = this.state.reviewsArr.map(function (q, index) {
       return <Review detail={q} key={index} />
