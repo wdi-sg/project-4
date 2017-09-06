@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!
   before_action :isAdmin, except: [:index, :show]
 
   def index

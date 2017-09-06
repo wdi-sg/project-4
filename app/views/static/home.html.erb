@@ -2,14 +2,6 @@
 <p class="alert"><%= alert %></p>
 
 
-<% if current_user %>
-<% if current_user.isAdmin %>
-<%= link_to "Create user", new_create_user_path %>
-<%= link_to "View Users",  create_users_path %>
-<%= link_to "Assets", spaces_path %>
-<% end %>
-<% end %>
-
 
 <h1>List details of homepage here</h1>
 
