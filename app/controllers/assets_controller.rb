@@ -18,7 +18,7 @@ class AssetsController < ApplicationController
   end
 
   def create
-    @asset = Asset.create(params.require(:asset).permit(:asset_type, :user_id))
+    @asset = Asset.create(params.require(:asset).permit(:asset_type, :user_id, :date_start, :date_end))
     # @asset.save
     redirect_to spaces_path
   end

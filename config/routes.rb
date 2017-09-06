@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   post 'bookrooms/slots'
   # get 'users/new'
 
+  get 'transactions', to: 'users#transactions'
+
   # get 'users/index'
 
   #  temporarily change to show react abilities. Using root 'static#home will redirect to nick's user page.
