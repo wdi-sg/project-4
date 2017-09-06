@@ -64,7 +64,7 @@ io.on('connection', function(socket){
 
   socket.on('username', function(username) {
     io.of('/').adapter.clients([socket.room], (err, clients) => {
-
+      
       var index = clients.indexOf(socket.id)
       clients.splice(index, 1)
         io.to(clients[0]).emit('username', username);

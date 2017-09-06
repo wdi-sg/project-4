@@ -8,7 +8,7 @@
   var sidebar = document.getElementsByClassName('sidebar')
   var context = canvas.getContext('2d');
 
-  var guessList = ['house', 'sun', 'helicopter']
+  var guessList = ['HOUSE', 'SUN', 'HELICOPTER']
   var oppPlayer = ''
   var currentPlayerName = ''
 
@@ -37,7 +37,10 @@
 
     socket.on('username', function (username) {
       oppPlayer = username
-      $('.usernameTimer').append(`<h3>You are playing with ${oppPlayer}</h3>`)
+      if(oppPlayer) {
+
+        $('.usernameTimer').append(`<h3>You are playing with ${oppPlayer}</h3>`)
+      }
 
     })
 
@@ -49,6 +52,7 @@
     $('.secondPlayerMsg').empty()
     $('.usernameTimer').append(`<h2 class="timer"></h2>`)
     $('.timer').text(timer)
+    socket.emit('username', currentPlayerName)
 
     var timerFn = setInterval(function() {
       timer--
@@ -120,7 +124,7 @@
 
         socket.emit('guessedAns', '') // to clear guessed field for opp player
 
-        var guessedAns = $('#guessedAns').val()
+        var guessedAns = $('#guessedAns').val().toUpperCase()
         $('#guessedAns').val('')
         if (guessedAns === guessList[0]) {
           $('.sidebar').empty()
