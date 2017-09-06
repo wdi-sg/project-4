@@ -64,7 +64,7 @@ io.on('connection', function(socket){
 
   socket.on('username', function(username) {
     io.of('/').adapter.clients([socket.room], (err, clients) => {
-      
+
       var index = clients.indexOf(socket.id)
       clients.splice(index, 1)
         io.to(clients[0]).emit('username', username);
@@ -139,9 +139,13 @@ socket.on('correct answer', function () {
     users.splice(userIndex, 1)
     console.log(users)
 
-    io.emit('remove', socket.id)
+    io.of('/').adapter.clients([socket.room], (err, clients) => {
+      // var index = clients.indexOf(socket.id)
+      console.log("clients", clients)
+      // clients.splice(index, 1)
+      io.to(clients[0]).emit('player disconnect');
   })
-// })
+})
 
 });
 

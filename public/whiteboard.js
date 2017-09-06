@@ -11,9 +11,11 @@
   var guessList = ['HOUSE', 'SUN', 'HELICOPTER']
   var oppPlayer = ''
   var currentPlayerName = ''
+  var oppPlayerDisconnect = false
 
   var timer = 60
   var points = 0
+  var timerFn;
 
 
   var current = {
@@ -38,7 +40,6 @@
     socket.on('username', function (username) {
       oppPlayer = username
       if(oppPlayer) {
-
         $('.usernameTimer').append(`<h3>You are playing with ${oppPlayer}</h3>`)
       }
 
@@ -66,7 +67,18 @@
        $('body').append('<a href="/whiteboard">New Game</a>')
       }
 
+      if (oppPlayerDisconnect) {
+        clearInterval(timerFn)
+      }
+
     }, 1000)
+  })
+
+  socket.on('player disconnect', function() {
+    oppPlayerDisconnect = true
+    $('body').empty()
+    $('body').append(`<h1>Unfortunately ${oppPlayer} has disconnected. </h1>`)
+    $('body').append('<a href="/whiteboard">New Game</a>')
   })
 
   socket.on('turn', function(turn) {
@@ -80,9 +92,11 @@
         context.clearRect(0, 0, canvas.width, canvas.height)
         socket.emit('clear canvas')
       })
+      $('.colors').show()
 
       $('.sidebar').empty()
       // $('.points').empty()
+
       $('.sidebar').append($(`<p> your turn  to draw</p>`))
       $('.sidebar').append($(`<p>DRAW: ${guessList[0]}</p>`))
       // $('.sidebar').append(`<div class="points"><h1>${points}</h3></div>`)
@@ -105,6 +119,7 @@
       canvas.removeEventListener('mouseout', onMouseUp, false);
       canvas.removeEventListener('mousemove', throttle(onMouseMove, 10), false);
       $('.clearCanvas').off()
+      $('.colors').hide()
 
 
       $('.sidebar').empty()
