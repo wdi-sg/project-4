@@ -1,2 +1,7 @@
 <h1>Main page for book room</h1>
-<%#= react_component('HelloMessage', name: 'John') %>
+
+<% @bookings.each do |booking| %>
+<h5><%= booking.meetingroom.room_title %></h5>
+<h5><%= booking.slot %> at <%= booking.date_start %></h5>
+<br>
+<% end %>

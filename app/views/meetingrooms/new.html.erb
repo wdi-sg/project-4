@@ -1,6 +1,6 @@
 <h1>new meetingroom</h1>
 
-<%= @new_meeting.inspect %>
+<%= link_to "See all Meeting rooms", meetingrooms_path %>
 
 <div class="container">
 
@@ -23,11 +23,11 @@
         :
         <%= f.text_field :pax %>
       </div>
-    </div>  
+    </div>
   </div>
 
   <div class="actions">
-    <%= f.submit "Book now" %>
+    <%= f.submit "Create now" %>
   </div>
 
   <% end %>
