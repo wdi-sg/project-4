@@ -31,11 +31,11 @@ export default class Review extends Component {
         <List>
           <ListItem
             rightIconButton={rightIconMenu}
-            primaryText=''
+            primaryText={this.props.detail.name}
             secondaryText={
               <p>
-                <span style={{color: darkBlack}}>Language taken: </span>
-                <span style={{color: darkBlack}}>Rating:</span>
+                <span style={{color: darkBlack}}>Language taken: {this.props.detail.language} </span>
+                <span style={{color: darkBlack}}>Rating: {this.props.detail.rating}</span>
                 <br />
                 {this.props.detail.review}
               </p>

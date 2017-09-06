@@ -9,25 +9,28 @@ export default class Goethe extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      reviewArray: []
+      reviewsArr: []
     }
-    this.addReview = this.addReview.bind(this)
   }
 
-  addReview () {
-    var schReviews = ref.child('reviews/goethe')
-    schReviews.on('value', function (snapshot) {
-      snapshot.forEach(function (childSnapshot) {
-        var childData = childSnapshot.val()
-        this.setState({ reviewArray: this.state.reviewArray.concat(childData) })
+  componentWillMount () {
+    var reviews = ref.child('reviews/goethe')
+    reviews.on('child_added', (dataSnapshot) => {
+      this.setState({
+        reviewsArr: this.state.reviewsArr.concat(dataSnapshot.val())
       })
     })
   }
 
+  componentWillUnmount () {
+    this.ref.off()
+  }
+
   render () {
-    var allReviews = this.state.reviewArray.map(function (q, index) {
-      return <Review detail={q} />
+    var allReviews = this.state.reviewsArr.map(function (q, index) {
+      return <Review detail={q} key={index} />
     })
+
     return (
       <div className='container'>
         <SchDescription info={school.goethe} />

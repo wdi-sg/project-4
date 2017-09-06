@@ -54,7 +54,7 @@ export default class ReviewForm extends Component {
   render () {
     var allLanguages = this.props.languages.map(function (value, i) {
       return (
-        <option> {value} </option>
+        <option key={i} > {value} </option>
       )
     })
 
