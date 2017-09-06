@@ -35,6 +35,15 @@ html, body {
   right: 0;
 }
 
+.usernameTimer {
+  height: 50%;
+  width: 25%;
+  background-color: darkblue;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
 .colors {
   position: fixed;
 }

@@ -8,13 +8,13 @@
   var sidebar = document.getElementsByClassName('sidebar')
   var context = canvas.getContext('2d');
 
-  var guessList = ['house', 'sun']
+  var guessList = ['house', 'sun', 'helicopter']
   var oppPlayer = ''
+  var currentPlayerName = ''
 
+  var timer = 60
+  var points = 0
 
-  socket.on('connect', function() {
-
-  })
 
   var current = {
     color: 'black'
@@ -25,6 +25,7 @@
     console.log(e)
       if (e.keyCode === 13) {
         var username = $('.usernameInput').val()
+        currentPlayerName = username
         console.log(username)
         socket.emit('username', username)
         $('.username').fadeOut()
@@ -32,9 +33,12 @@
       }
     })
 
+  $('.usernameTimer').append(`<h1 class="points">${points}</h1>`)
+
     socket.on('username', function (username) {
       oppPlayer = username
-      $('.sidebar').append(`<h3>You are playing with ${oppPlayer}</h3>`)
+      $('.usernameTimer').append(`<h3>You are playing with ${oppPlayer}</h3>`)
+
     })
 
   socket.on('wait for player', function () {
@@ -43,10 +47,27 @@
 
   socket.on('second player arrived', function () {
     $('.secondPlayerMsg').empty()
+    $('.usernameTimer').append(`<h2 class="timer"></h2>`)
+    $('.timer').text(timer)
+
+    var timerFn = setInterval(function() {
+      timer--
+      $('.timer').text(timer)
+      console.log(".")
+      if(timer < 0 || guessList.length === 0) {
+       clearInterval(timerFn)
+       $('body').empty()
+       $('body').append('<h1>GAME OVER</h1>')
+       $('body').append(`CONGRATZ ${oppPlayer} and ${currentPlayerName}, you got ${points} points! `)
+       $('body').append('<a href="/whiteboard">New Game</a>')
+      }
+
+    }, 1000)
   })
 
   socket.on('turn', function(turn) {
     if(turn) {
+      console.log(timer)
       canvas.addEventListener('mousedown', onMouseDown, false);
       canvas.addEventListener('mouseup', onMouseUp, false);
       canvas.addEventListener('mouseout', onMouseUp, false);
@@ -57,13 +78,21 @@
       })
 
       $('.sidebar').empty()
-      $('.sidebar').append(`<h3>You are playing with ${oppPlayer}</h3>`)
+      // $('.points').empty()
       $('.sidebar').append($(`<p> your turn  to draw</p>`))
       $('.sidebar').append($(`<p>DRAW: ${guessList[0]}</p>`))
+      // $('.sidebar').append(`<div class="points"><h1>${points}</h3></div>`)
+
+
+
+        socket.on('connect', function() {
+
+        })
 
       if (guessList.length === 0) {
         $('body').empty()
         $('body').append('<h1>GAME OVER</h1>')
+        $('body').append(`CONGRATZ ${oppPlayer} and ${currentPlayerName}, you got ${points} points! `)
         $('body').append('<a href="/whiteboard">New Game</a>')
       }
     } else {
@@ -75,11 +104,11 @@
 
 
       $('.sidebar').empty()
-      $('.sidebar').append(`<h3>You are playing with ${oppPlayer}</h3>`)
       $('.sidebar').append($(`<p> your turn  to guess</p>`))
       // $('.sidebar').append($(`<form class="form"></form>`)) // do we need a form?
       $('.sidebar').append($(`<input id='guessedAns' type="text"><button class='submitBtn'>Submit</button>`))
       $('.sidebar').append($(`<div class="playerGuessedAns"></div>`))
+      // $('.sidebar').append(`<div class="points"><h1>${points}</h3></div>`)
 
       $('#guessedAns').keyup(function () {
         var guessedAns = $('#guessedAns').val()
@@ -93,12 +122,12 @@
 
         var guessedAns = $('#guessedAns').val()
         $('#guessedAns').val('')
-
         if (guessedAns === guessList[0]) {
           $('.sidebar').empty()
-          $('.sidebar').append(`<h3>You are playing with ${oppPlayer}</h3>`)
           $('.sidebar').append('<h1>GUESSED CORRECTLY</H1>')
           $('.sidebar').append('<button class="nextRoundBtn">Proceed to next round</button>')
+          points++
+          $('.points').text(points)
           socket.emit('correct answer')
           guessList.splice(0,1)
           if (guessList.length === 0) {
@@ -114,15 +143,6 @@
             context.clearRect(0, 0, canvas.width, canvas.height)
           })
 
-          if (guessList.length === 0) {
-            // socket.emit('change turn', "dummy variable")
-            $('body').empty()
-            $('body').append('<h1>GAME OVER</h1>')
-            $('body').append('<a href="/whiteboard">New Game</a>')
-          }
-
-
-
         } else {
           console.log(guessedAns)
           alert('try again')
@@ -131,9 +151,10 @@
 
       })
 
-      if (guessList.length === 0) {
+      if (guessList.length === 0 || timer < 0) {
         $('body').empty()
         $('body').append('<h1>GAME OVER</h1>')
+        $('body').append(`CONGRATZ ${oppPlayer} and ${currentPlayerName}, you got ${points} points! `)
         $('body').append('<a href="/whiteboard">New Game</a>')
       }
 
@@ -169,16 +190,16 @@
   })
 
   socket.on('correct answer', function () {
-    if (guessList.length === 1) {
 
-      // guessList.splice(0,1)//splice here?
-    }
     $('.sidebar').empty()
-    $('.sidebar').append(`<h3>You are playing with ${oppPlayer}</h3>`)
     $('.sidebar').append('<h1>player guessed correctly</h1>')
     $('.sidebar').append('<p>Waiting for player 2 to be ready to proceed to the next round</p>')
+    points++
+    $('.points').text(points)
     // $('.body').append('<img src="./colorfulLoader.gif" height ="100%" width ="75%">')
   })
+
+
 
   window.addEventListener('resize', onResize, false);
   onResize();

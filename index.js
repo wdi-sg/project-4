@@ -81,7 +81,7 @@ io.on('connection', function(socket){
 })
 
   socket.on('change turn', function () {
-    // console.log(socket.turn)
+    // console.log(socket.turn)Fuser
     socket.turn = !socket.turn // turning turn from true to false and vice versa
     console.log(socket.turn)
     io.to(socket.id).emit('turn', socket.turn)
