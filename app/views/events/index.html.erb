@@ -37,10 +37,11 @@
     <p> **FULLY BOOKED** </p>
   <% end %>
 
-  <% if current_user.isAdmin == true %>
-    <%= link_to "Delete", event_path(i), method: :delete, class: "btn btn-primary" %>
-    <% end %>
   <%= link_to "More details/ Book", event_path(i), class: "btn btn-primary" %>
+  <% if current_user.isAdmin == true %>
+  <%= link_to "Edit Event", edit_event_path(i), class: "btn btn-primary"  %>
+  <%= link_to "Delete", event_path(i), method: :delete, class: "btn btn-primary" %>
+  <% end %>
 </div>
 </div>
   <% end %>

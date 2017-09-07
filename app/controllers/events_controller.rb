@@ -41,6 +41,7 @@ class EventsController < ApplicationController
   end
 
   def edit
+    @current_event = Event.find(params[:id])
   end
 
   def show
@@ -54,6 +55,13 @@ class EventsController < ApplicationController
   end
 
   def update
+    # render json: params
+    to_update = Event.find(params[:id])
+    new_details = params.require(:event).permit(:title,:description,:venue,:total_slots,:price_pax,:event_start,:event_end,:event_image)
+    to_update.update(new_details)
+    flash[:notice] ='Event details successfully changed'
+
+    redirect_to events_path
   end
 
   def destroy
