@@ -74,7 +74,7 @@ The Relative Strength Index (RSI) is a technical momentum indicator used to indi
 
 ![](/readme_images/RSI.png)
 
-From obtaining the predicted RSI (Y value) from the equation, a simple calculation can be done to check if the stock is overbought or oversold. If subtracting the YTD price with the predicted RSI yields < 0, the stock price is expected to rise and if otherwise, is expected to drop in the foreseeable future.
+From obtaining the predicted RSI (Y value) from the equation, a simple calculation can be done to check if the stock is overbought (above 70%) or oversold (below 30%), leading to an expected price fall or increase respectively. If subtracting the YTD price with the predicted RSI yields < 0, the stock price is expected to rise and if otherwise, is expected to drop in the foreseeable future.
 
 ## Recharts
 
