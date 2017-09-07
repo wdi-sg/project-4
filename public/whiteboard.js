@@ -1,5 +1,7 @@
 'use strict';
 
+
+
 (function() {
 
   var socket = io();
@@ -23,72 +25,10 @@
   };
   var drawing = false;
 
-  $('.usernameInput').keydown(function (e) {
-    console.log(e)
-      if (e.keyCode === 13) {
-        var username = $('.usernameInput').val()
-        currentPlayerName = username
-        console.log(username)
-        socket.emit('username', username)
-        $('.username').fadeOut()
-        $('.form').empty()
-      }
-    })
-
-  $('.usernameTimer').append(`<h2 class="points">POINTS:${points}</h2>`)
-
-    socket.on('username', function (username) {
-      oppPlayer = username
-      if(oppPlayer) {
-        $('.usernameTimer').append(`<p>You are playing with ${oppPlayer}</p>`)
-      }
-
-    })
-
-  socket.on('wait for player', function () {
-    $('.sidebar').append('<div class="secondPlayerMsg" ><p >Waiting for second player to join room</p></div>')
-    $('.sidebar').append('<div class="loader"><img src="loading.gif" alt="finding" height="42" width="42"></div>')
-  })
-
-  socket.on('second player arrived', function () {
-    $('.secondPlayerMsg').empty()
-    $('.loader').empty()
-    $('.usernameTimer').append(`<h2 class="timer"></h2>`)
-    $('.timer').text(timer)
-    socket.emit('username', currentPlayerName)
-    // $('.usernameTimer').height('70%')
-    var timerFn = setInterval(function() {
-      timer--
-      $('.timer').text(timer)
-      console.log(".")
-      if(timer < 0 || guessList.length === 0) {
-       clearInterval(timerFn)
-       $('body').empty()
-       $('body').append('<h1>GAME OVER</h1>')
-       $('body').append(`CONGRATZ ${oppPlayer} and ${currentPlayerName}, you got ${points} points! `)
-       $('body').append('<a href="/whiteboard">New Game</a>')
-      }
-
-      if (oppPlayerDisconnect) {
-        clearInterval(timerFn)
-      }
-
-    }, 1000)
-  })
-
-  socket.on('player disconnect', function() {
-    if (guessList.length !== 0 && timer >= 0 ) {
-      oppPlayerDisconnect = true
-      $('body').empty()
-      $('body').append(`<h1>Unfortunately ${oppPlayer} has disconnected. </h1>`)
-      $('body').append('<a href="/whiteboard">New Game</a>')
-
-    }
-  })
-
   socket.on('turn', function(turn) {
     if(turn) {
       console.log(timer)
+      // alert("true" + turn)
       canvas.addEventListener('mousedown', onMouseDown, false);
       canvas.addEventListener('mouseup', onMouseUp, false);
       canvas.addEventListener('mouseout', onMouseUp, false);
@@ -108,9 +48,7 @@
 
 
 
-        socket.on('connect', function() {
 
-        })
 
       if (guessList.length === 0) {
         $('body').empty()
@@ -119,6 +57,8 @@
         $('body').append('<a href="/whiteboard">New Game</a>')
       }
     } else {
+
+      // alert("false" + turn)
       canvas.removeEventListener('mousedown', onMouseDown, false);
       canvas.removeEventListener('mouseup', onMouseUp, false);
       canvas.removeEventListener('mouseout', onMouseUp, false);
@@ -183,7 +123,73 @@
       }
 
     }
+    socket.on('wait for player', function () {
+      console.log(turn)
+      $('.sidebar').append('<div class="secondPlayerMsg" ><p >Waiting for second player to join room</p></div>')
+      $('.sidebar').append('<div class="loader"><img src="loading.gif" alt="finding" height="42" width="42"></div>')
+    })
+
+    socket.on('second player arrived', function () {
+      console.log(turn)
+      $('.secondPlayerMsg').empty()
+      $('.loader').empty()
+      $('.usernameTimer').append(`<h2 class="timer"></h2>`)
+      $('.timer').text(timer)
+      socket.emit('username', currentPlayerName)
+      // $('.usernameTimer').height('70%')
+      var timerFn = setInterval(function() {
+        timer--
+        $('.timer').text(timer)
+        console.log(".")
+        if(timer < 0 || guessList.length === 0) {
+         clearInterval(timerFn)
+         $('body').empty()
+         $('body').append('<h1>GAME OVER</h1>')
+         $('body').append(`CONGRATZ ${oppPlayer} and ${currentPlayerName}, you got ${points} points! `)
+         $('body').append('<a href="/whiteboard">New Game</a>')
+        }
+
+        if (oppPlayerDisconnect) {
+          clearInterval(timerFn)
+        }
+
+      }, 1000)
+    })
   })
+  $('.usernameInput').keydown(function (e) {
+    console.log(e)
+      if (e.keyCode === 13) {
+        var username = $('.usernameInput').val()
+        currentPlayerName = username
+        console.log(username)
+        socket.emit('username', username)
+        $('.username').fadeOut()
+        $('.form').empty()
+      }
+    })
+
+  $('.usernameTimer').append(`<h2 class="points">POINTS:${points}</h2>`)
+
+    socket.on('username', function (username) {
+      oppPlayer = username
+      if(oppPlayer) {
+        $('.usernameTimer').append(`<p>You are playing with ${oppPlayer}</p>`)
+      }
+
+    })
+
+
+
+  socket.on('player disconnect', function() {
+    if (guessList.length !== 0 && timer >= 0 ) {
+      oppPlayerDisconnect = true
+      $('body').empty()
+      $('body').append(`<h1>Unfortunately ${oppPlayer} has disconnected. </h1>`)
+      $('body').append('<a href="/whiteboard">New Game</a>')
+
+    }
+  })
+
 
   for (var i = 0; i < colors.length; i++){
     colors[i].addEventListener('click', onColorUpdate, false);

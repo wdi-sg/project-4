@@ -28,39 +28,71 @@ io.on('connection', function(socket){
   // console.log(socket.id, "user connected")
   // socket.on('adduser', function (username) {
     users.push(socket.id)
-    console.log(users)
-    console.log("connected")
+    // console.log(rooms.length)
 
     if(rooms.length === 0 ) {
     rooms.push(socket.id)
     socket.room = "room" + roomNum
     socket.turn = true
+    console.log(socket.id + " " + socket.turn)
     socket.join("room" + roomNum)
-    console.log(socket.id + " joined " + socket.room , rooms.length, socket.turn, 1)
+    io.of('/').adapter.clients([socket.room], (err, clients) => {
+    //   if(clients.length === 2) {
+    //     socket.turn = false
+    //   }
+    // console.log(`joined ${socket.room} with ${clients.length} people including me, current roomNum is ${roomNum}`)
+    })
+    // console.log("no of people in rooms is " + rooms.length, "is it my turn? "+ socket.turn, 1)
   } else if (rooms.length % 2 === 1) {
     rooms.push(socket.id)
-    socket.turn = false
+    // socket.turn = false
+    // console.log(socket.id + " " + socket.turn + "line 49")
     socket.room = "room" + roomNum
     socket.join("room" + roomNum)
-    console.log(socket.id + " joined " + socket.room , rooms.length, socket.turn, 2)
+    // console.log('this goes first')
+    io.of('/').adapter.clients([socket.room], (err, clients) => {
+      console.log(clients.length)
+      if (clients.length === 2) {
+        socket.turn = false
+        console.log(socket.id + " " + socket.turn + "line 57")
+      } else if(clients.length === 1) {
+        socket.turn = true
+        console.log(socket.id + " " + socket.turn + " line 61")
+        rooms.pop()
+        // console.log("this goes second")
+        // console.log("no of people in rooms is " + rooms.length, "is it my turn? "+ socket.turn, 2)
+      }
+    // console.log(`joined ${socket.room} with ${clients.length} people including me, current roomNum is ${roomNum}`)
+    })
   } else if (rooms.length % 2 === 0) {
     socket.turn = true
+    console.log(socket.id + " " + socket.turn)
     roomNum ++
     socket.room = "room" + roomNum
     rooms.push(socket.id)
     socket.join("room" + roomNum)
-    console.log(socket.id + "joined " + socket.room, rooms.length, socket.turn, 3)
+    io.of('/').adapter.clients([socket.room], (err, clients) => {
+    //   if(clients.length === 2) {
+    //     socket.turn = false
+    //   }
+    // console.log(`joined ${socket.room} with ${clients.length} people including me, current roomNum is ${roomNum}`)
+    })
+    // console.log("no of people in rooms is " + rooms.length, "is it my turn? "+ socket.turn, 3)
   }
 
-  io.of('/').adapter.clients([socket.room], (err, clients) => {
+  setTimeout(function() {
+    io.of('/').adapter.clients([socket.room], (err, clients) => {
     if(clients.length === 1) {
       io.to(socket.id).emit('wait for player')
     } else if (clients.length === 2) {
       io.to(socket.room).emit('second player arrived')
     }
   })
+}, 50)
 
-  io.to(socket.id).emit('turn', socket.turn)
+  // console.log("turn " + socket.turn)
+
+  setTimeout(function () {io.to(socket.id).emit('turn', socket.turn)}, 50)
 
   socket.on('username', function(username) {
     io.of('/').adapter.clients([socket.room], (err, clients) => {
@@ -83,7 +115,8 @@ io.on('connection', function(socket){
   socket.on('change turn', function () {
     // console.log(socket.turn)Fuser
     socket.turn = !socket.turn // turning turn from true to false and vice versa
-    console.log(socket.turn)
+    console.log(socket.id + " " + socket.turn + "from change turn")
+    // console.log(socket.turn)
     io.to(socket.id).emit('turn', socket.turn)
 
     io.of('/').adapter.clients([socket.room], (err, clients) => {
@@ -102,6 +135,7 @@ io.on('connection', function(socket){
 
   socket.on('changeTurnProcess', function () {
     socket.turn = !socket.turn
+    console.log(socket.id + " " + socket.turn + "from change turn process")
     io.to(socket.id).emit('turn', socket.turn)
   })
 
@@ -137,11 +171,15 @@ socket.on('correct answer', function () {
   socket.on('disconnect', function () {
     userIndex = users.indexOf(socket.id)
     users.splice(userIndex, 1)
-    console.log(users)
+    // console.log(rooms)
+
+    // roomIndex = rooms.indexOf(socket.id)
+    // rooms.splice(roomIndex, 1)
+    // console.log("rooms", rooms)
 
     io.of('/').adapter.clients([socket.room], (err, clients) => {
       // var index = clients.indexOf(socket.id)
-      console.log("clients", clients)
+      // console.log("clients", clients)
       // clients.splice(index, 1)
       io.to(clients[0]).emit('player disconnect');
   })
@@ -150,5 +188,5 @@ socket.on('correct answer', function () {
 });
 
 http.listen(port, function(){
-  console.log('listening on *:' + port);
+  // console.log('listening on *:' + port);
 });
