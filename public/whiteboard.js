@@ -15,7 +15,7 @@
   var currentPlayerName = ''
   var oppPlayerDisconnect = false
 
-  var timer = 5
+  var timer = 60
   var points = 0
   var timerFn;
 
@@ -187,8 +187,9 @@
     if (guessList.length !== 0 && timer >= 0 ) {
       oppPlayerDisconnect = true
       $('body').empty()
-      $('body').append(`<h1>Unfortunately ${oppPlayer} has disconnected. </h1>`)
-      $('body').append('<a href="/whiteboard">New Game</a>')
+      $('body').append('<div class="disconnect"></div>')
+      $('.disconnect').append(`<h1>Unfortunately ${oppPlayer} has disconnected. </h1>`)
+      $('.disconnect').append('<a href="/whiteboard">New Game</a>')
 
     }
   })

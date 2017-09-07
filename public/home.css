@@ -1,0 +1,62 @@
+h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 300%;
+}
+
+h3 {
+    font-family: 'Quicksand', sans-serif;
+    margin-top: -1%;
+    position: relative;
+    left: 45%;
+}
+
+a {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 50px;
+  /*padding: 25px 15px;*/
+  background: white;
+  color: black;
+  position: relative;
+  left: 40%
+  /*border-radius: 50px;*/
+  /*margin-top: 60px;*/
+  /*border: solid 1px pink;*/
+  /*box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);*/
+}
+
+a:hover {
+  background: black;
+	/*border: solid 1px #2A4E77;*/
+  transition-duration: 0.2s;
+  color: white;
+}
+
+.pencilImg {
+    /* display: inline-block; */
+    width: 6%;
+    height: 2%;
+    padding-left: 1%;
+}
+
+.quickdraw {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    height: 10%;
+    position: relative;
+    left: 35%;
+}
+
+.instructions {
+    position: relative;
+    left: 25%;
+    margin-top: 5%;
+    font-family: 'Quicksand', sans-serif;
+    margin-bottom: 7%;
+    font-size: 100%;
+}
+
+h5 {
+     font-size: 130%;
+}
+body{}
