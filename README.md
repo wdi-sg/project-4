@@ -27,8 +27,6 @@ Fork and clone this repository into your own directory. Install the dependencies
 
 ``yarn install``
 
-
-
 ### Deployment
 
 #### Hosting
@@ -41,6 +39,9 @@ This project was deployed with [Firebase](https://firebase.google.com/), create 
 * Firebase
 * [**react-router-firebase-auth**](https://github.com/tylermcginnis/react-router-firebase-auth)
 
+## APIs Used
+* Alpha Vantage (https://www.alphavantage.co/#page-top)
+* Recharts (http://recharts.org/)
 
 ## Application Overview
 ![](/readme_images/the_app.png)
@@ -54,7 +55,45 @@ This project was deployed with [Firebase](https://firebase.google.com/), create 
 
 ![](/readme_images/stocks_wireframe.png)
 
+## React
+Primarily built on ReactJS, the Live Stocks page of this app is based off several react components as follows:
 
+![](/readme_images/react_components.png)
+
+
+
+## Regression Analysis
+
+
+## Issues Faced
+
+##### Geometric Mean Calculation
+
+
+##### Deployment
+On the first deployment to Firebase, an NPM regression package used encountered an error with create-react-app, being that
+
+```npm run build``` fails to minify
+
+More information regarding the error can be found in the link below. Due to constraints of time, the NPM package had to be abandoned and the regression analysis hand coded on our own.
+
+ _https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md_
+
+##### 404 Error When Refreshing a Deployed Page
+![](/readme_images/404error.png)
+
+A 404/Not Found html file was in the root directory to handle cases when a user tries to access a page that does not exist or to prevent broken links in other cases. However, it was found on deployment, that whenever the user refreshed the current page, there will always be a redirect to this 404 html file.  
+
+A fix was to include a URL rewrite in the ``firebase.json`` file as follows:
+
+```
+"rewrites": [ {
+  "source": "**",
+  "destination": "/index.html"
+} ]
+```
+
+## Further Development
 
 
 ## Authors
@@ -65,4 +104,4 @@ This project was deployed with [Firebase](https://firebase.google.com/), create 
 
 ## Acknowledgments
 
-https://github.com/tylermcginnis/react-router-firebase-auth
+Tyler McGinnis' [react-router-firebase-auth](https://github.com/tylermcginnis/react-router-firebase-auth)
