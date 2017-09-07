@@ -12,11 +12,11 @@
 
   <div class="card d-inline-block">
 
-  <% if (i.event_image) %>
-   <% if i.event_image.length > 0 %>
+  <% if !i.event_image %>
+  <%= image_tag 'http://i.imgur.com/hFjTK8K.png', size: "370x300" %>
+   <%  else %>
     <%= image_tag i.event_image, size: "370x300" %>
   <% end %>
-   <% end %>
 
   <h3> Title : <%= i.title %> </h3>
 
