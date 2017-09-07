@@ -70,11 +70,15 @@ Linear regression aims to fit a linear equation of the form **Y = a + bX** to th
 
 ![](/readme_images/regression_line.png)
 
-The Relative Strength Index (RSI) is a technical momentum indicator used to indicated overbought or oversold conditions in the market, that compares the magnitude of recent gains and losses over a specified time period (_http://www.investopedia.com/terms/r/rsi.asp_).
+Running regression analysis on the historical Relative Stock Index and  Average Directional Index of the stock, we were able to estimate an expected price of the stock, thereby predicting the trajectory of the price (will the price increase or decrease in the forseeable future)
+
+We decided to increase the analytical tools by providing a price adjusted RSI that adjusts the overbought and oversold levels. The is a technical momentum indicator used to indicated overbought or oversold conditions in the market, that compares the magnitude of recent gains and losses over a specified time period.  (_http://www.investopedia.com/terms/r/rsi.asp_).
+
+However we find this lacking in accuracy during periods of uptrend and downtrend.
 
 ![](/readme_images/RSI.png)
 
-From obtaining the predicted RSI (Y value) from the equation, a simple calculation can be done to check if the stock is overbought (above 70%) or oversold (below 30%), leading to an expected price fall or increase respectively. If subtracting the YTD price with the predicted RSI yields < 0, the stock price is expected to rise and if otherwise, is expected to drop in the foreseeable future.
+We calculated the new overbought and oversold levels by using geometric average to determine the deviation, which provided us with a more price sensitive benchmark.
 
 ## Recharts
 
