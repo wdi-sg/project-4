@@ -20,7 +20,7 @@ import Philippines from '../images/philippines.png'
 import { Row, Col, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Chalkboard from '../images/Chalkboard.png'
-import RoadHoriz from '../images/road-horiz.png'
+import Plane from '../images/Plane.png'
 
 export default class Home extends Component {
   render () {
@@ -61,7 +61,7 @@ export default class Home extends Component {
                   <Link to="/chinese"><span></span></Link>
                 </div>
               </Col>
-              <Col xs={3}></Col>
+              <Col xs={3}><Image src={Plane} className='image' responsive /></Col>
               <Col xs={3}></Col>
               <Col xs={3}>
                 <div className='country'>
@@ -152,7 +152,7 @@ export default class Home extends Component {
                 </div>
               </Col>
               <Col xs={3}></Col>
-              <Col xs={3}><Image src={RoadHoriz} className='image' responsive /></Col>
+              <Col xs={3}></Col>
               <Col xs={3}></Col>
             </Row>
           </Col>

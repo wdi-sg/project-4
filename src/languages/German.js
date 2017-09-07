@@ -15,7 +15,7 @@ export default class German extends Component {
         <Row>
           <Col xs={12} md={12}>
             <Row>
-              <Col xs={3} md={3} />
+              <Col xs={0} md={3} />
               <Col xs={12} md={6}>
                 <h2>German</h2>
                 <p>Countries spoken: {lang.german.country}</p>
@@ -24,7 +24,7 @@ export default class German extends Component {
                 <p>What makes it difficult to learn: {lang.german.hard}</p>
                 <p>Why learn it?: {lang.german.why}</p>
               </Col>
-              <Col xs={3} md={3} />
+              <Col xs={0} md={3} />
             </Row>
           </Col>
         </Row>

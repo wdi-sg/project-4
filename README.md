@@ -11,11 +11,9 @@ Singapore being an international and multicultural hub, there are many reasons w
 
 * Each school page has description and reviews
 
-![School Page]()
+![School Page](https://i.imgur.com/O9VNLUm.png)
 
 ## Workflow
-
-![ERD]()
 
 ![Wireframes](https://i.imgur.com/lLMYYrO.png)
 
@@ -31,6 +29,8 @@ Singapore being an international and multicultural hub, there are many reasons w
 
 * Populate the rest of the schools
 * Work on sending email to an email address
+* Further styling of the page
+* Add CSS Animations
 
 ## Built With
 * [ReactJS](https://facebook.github.io/react/)
