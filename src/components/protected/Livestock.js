@@ -57,9 +57,9 @@ class Livestock extends Component {
         </div>
 
         <div className='rsi'>
-        <h4>RSI (Relative Strength Index)</h4>
-        <form>
-          <label>
+          <h4>RSI (Relative Strength Index)</h4>
+          <form>
+            <label>
             Select a time period:
             <select onChange={this.handleRsiChange}>
               <option value={option1}>1 min</option>
@@ -71,8 +71,8 @@ class Livestock extends Component {
               <option value={option7}>Weekly</option>
               <option value={option8}>Monthly</option>
             </select>
-          </label>
-        </form>
+            </label>
+          </form>
           <LineChart width={700} height={200} data={rsiData}
             margin={{ top: 5, right: 0, left: 20, bottom: 5 }}>
             <XAxis hide='true' dataKey='date' padding={{ right: 20 }} />
@@ -86,7 +86,6 @@ class Livestock extends Component {
             <Line type='monotone' dataKey='RSI' stroke='#82ca9d' strokeWidth={2} dot={false} />
           </LineChart>
         </div>
-
 
       </div>
     )
@@ -190,3 +189,15 @@ class Livestock extends Component {
 }
 
 export default Livestock
+
+const data = [
+      {x: 'Page A', y: 4000},
+      {x: 'Page B', y: 3000},
+      {x: 'Page C', y: 2000},
+      {x: 'Page D', y: 2780},
+      {x: 'Page E', y: 1890},
+      {x: 'Page F', y: 2390},
+      {x: 'Page G', y: 3490}
+]
+
+data

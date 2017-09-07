@@ -12,7 +12,7 @@ export default class Home extends Component {
  ***************************************************************************************************************** --> */}
         <div id='headerwrap'>
           <div className='container'>
-            <div id='everything' className='row'>
+            <div className='row'>
               <div className='col-lg-8 col-lg-offset-2'>
                 <h3>Make your investment decision easier with</h3>
                 <h1>GRAVITON</h1>
@@ -58,7 +58,7 @@ export default class Home extends Component {
  ***************************************************************************************************************** --> */}
         <div id='twrap'>
           <div className='container centered'>
-            <div className='everything'>
+            <div>
               <div className='col-lg-8 col-lg-offset-2'>
                 <i className='fa fa-user-circle' />
                 <p>Sign up with us today!</p>
