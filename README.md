@@ -44,7 +44,8 @@ This project was deployed with [Firebase](https://firebase.google.com/), create 
 * Recharts (http://recharts.org/)
 
 ## Application Overview
-![](/readme_images/the_app.png)
+![](/readme_images/graviton_frontpage.png)
+![](/readme_images/livestocks_page.png)
 
 ##### Process Flow
 ![](/readme_images/process_flow.png)
@@ -55,20 +56,56 @@ This project was deployed with [Firebase](https://firebase.google.com/), create 
 
 ![](/readme_images/stocks_wireframe.png)
 
-## React
-Primarily built on ReactJS, the Live Stocks page of this app is based off several react components as follows:
+## React Components
+Primarily built on ReactJS, the Live Stocks page of this app is based off the following React components:
 
 ![](/readme_images/react_components.png)
 
-
+The main components were RSI (in blue, also the landing page), stock price (green) and ADX (in red), with RSI being the parent of both stock price and ADX.
 
 ## Regression Analysis
 
 
+## Recharts
+
+To utilize the Recharts API, we had to import it into each component that has to render a graph as follows.
+
+```
+import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ReferenceLine } from 'recharts'
+```
+
+Followed by the JSX below that is called in the rendered return of the component, that can be easily customized.
+
+```
+<LineChart width={700} height={200} data={rsiData}
+  margin={{ top: 5, right: 0, left: 20, bottom: 5 }}>
+  <XAxis hide='true' dataKey='date' padding={{ right: 20 }} />
+  <YAxis type='number' domain={[25, 75]} padding={{ top: 0, bottom: 0 }} />
+  <CartesianGrid strokeDasharray='3 3' />
+  <Tooltip />
+  <ReferenceLine y={70} label='Max' stroke='red' />
+  <ReferenceLine y={30} label='Min' stroke='red' />
+
+  <Legend />
+  <Line type='monotone' dataKey='RSI' stroke='#82ca9d' strokeWidth={2} dot={false} />
+</LineChart>
+```
+
 ## Issues Faced
 
-##### Geometric Mean Calculation
+##### Infinite Geometric Mean
+In the calculation of the Geometric Average, the formula used was as such,
 
+_Geometric Average = (RSI1 x RSI2 x RSI3 .... RSI(n))^(1/n)_
+
+However, in code, an error would occur because the multiplication of a large amount of RSI data led to the value to become infinity.
+
+A fix was to manipulate the mathematical formula into
+
+_Geometric Average = (RSI1^(1/n) x RSI2^(1/n) x RSI3^(1/n) .... RSI(n)^(1/n))_
+
+Code used:
+``parseFloat(Math.pow(x, (1/xRSI.length))).toFixed(2)``
 
 ##### Deployment
 On the first deployment to Firebase, an NPM regression package used encountered an error with create-react-app, being that
@@ -94,6 +131,9 @@ A fix was to include a URL rewrite in the ``firebase.json`` file as follows:
 ```
 
 ## Further Development
+* Incorporate more stocks
+* Have multiple regression lines inside the graph
+* Include more technical indicators
 
 
 ## Authors
