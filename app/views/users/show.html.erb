@@ -1,7 +1,7 @@
 <h2>This is what you have been up to,
   <%= @user.name %>.</h2>
-
-  <% if @bookings && @events == 0 %>
+  
+  <% if @bookings.length && @events.length == 0 %>
 
   <div class="center">
 
