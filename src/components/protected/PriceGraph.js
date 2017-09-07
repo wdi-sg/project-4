@@ -79,7 +79,7 @@ class PriceGraph extends Component {
           </label>
         </form>
         <LineChart width={700} height={200} data={priceData}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+          margin={{ top: 5, right: 0, left: 20, bottom: 5 }}>
           <XAxis hide='true' dataKey='name' padding={{ right: 20 }} />
           <YAxis type='number' domain={['auto', 'auto']} padding={{ top: 0, bottom: 0 }} />
           <CartesianGrid strokeDasharray='3 3' />

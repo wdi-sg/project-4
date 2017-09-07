@@ -88,6 +88,7 @@ class Generate extends Component {
       } else {
         prediction = 'Price is expected to rise in the forseeable future'
       }
+
       console.log(minus, 'minus')
 
       // Regression for ADX =================================
@@ -154,7 +155,6 @@ class Generate extends Component {
 
      var newTop = parseFloat(70 - deviation).toFixed(2)
       var newLow = parseFloat(30 - deviation).toFixed(2)
-
     }
 
     return (
