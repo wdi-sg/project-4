@@ -4,6 +4,7 @@ import ReviewForm from './ReviewForm'
 import Review from './Review'
 import { ref } from '../fire'
 import { school } from './schoolinfo'
+import building from '../images/BuildingGoethe.jpg'
 
 export default class Goethe extends Component {
   constructor (props) {
@@ -28,8 +29,19 @@ export default class Goethe extends Component {
     })
 
     return (
-      <div className='container'>
-        <SchDescription info={school.goethe} />
+      <div>
+        <div className="row">
+          <div className="col-xs-0 col-md-2"></div>
+          <div className="col-xs-10 col-md-4">
+            <br />
+            <img src={building} />
+          </div>
+          <div className="col-xs-10 col-md-5">
+            <SchDescription info={school.goethe} />
+          </div>
+          <div className="col-xs-0 col-md-1"></div>
+        </div>
+
         <ReviewForm sch='goethe' languages={school.goethe.languages} />
         { allReviews }
       </div>

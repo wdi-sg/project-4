@@ -7,7 +7,7 @@ import Contact from './Contact'
 import French from './languages/French'
 import German from './languages/German'
 import Goethe from './schools/Goethe'
-import Chalkboard from './images/Chalkboard.png'
+import Inlingua from './schools/Inlingua'
 
 import Login from './authen/Login'
 import Register from './authen/Register'
@@ -66,6 +66,7 @@ export default class App extends Component {
                 <Route path='/french' component={French} />
                 <Route path='/german' component={German} />
                 <Route authed={this.state.authed} path='/goethe' component={Goethe} />
+                <Route authed={this.state.authed} path='/inlingua' component={Inlingua} />
                 <Route render={() => <h3>No Match</h3>} />
               </Switch>
             </div>

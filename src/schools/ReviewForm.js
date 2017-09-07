@@ -59,9 +59,10 @@ export default class ReviewForm extends Component {
     })
 
     return (
-      <div className='container'>
-
+      <div>
         <form className='form' onSubmit={this.handleSubmit}>
+          <h3>Leave your review of the school below</h3>
+          <br />
           <div className='form-row'>
             <div className='form-group col-xs-6'>
               <label>Name</label>
@@ -80,6 +81,7 @@ export default class ReviewForm extends Component {
               start={0}
               stop={10}
               initialRate={this.state.rate}
+              fractions={1}
               onClick={rate => this.handleRate(rate)}
               empty={<img src={starEmpty} className="icon" alt='' />}
               full={<img src={starFull} className="icon" alt='' />}
@@ -87,7 +89,7 @@ export default class ReviewForm extends Component {
           </div>
           <div className='form-group'>
             <label>Review</label>
-            <textarea className="form-control" placeholder="Review" rows="3" ref={(review) => this.review = review} />
+            <textarea className="form-control" placeholder="What made you decide to study at this school? How was the learning experience? Was your teacher engaging? How hard was it to register for the next course? Any advice for others who are interested in taking up this course?" rows="4" ref={(review) => this.review = review} />
           </div>
           <button type='submit' className='btn btn-primary'>Submit Review</button>
         </form>

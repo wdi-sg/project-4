@@ -29,7 +29,7 @@ export default class Register extends Component {
 
     return (
       <div className="col-sm-6 col-sm-offset-3">
-        <h1>Register</h1>
+        <h2>Register</h2>
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label>Email</label>

@@ -61,7 +61,12 @@
 
 h2 {
   font-family: 'Chewy', cursive !important;
-  font-size: 4vw !important;
+  font-size: 4.5vw !important;
+}
+
+.form h3 {
+  font-family: 'Chewy', cursive;
+  font-size: 3vw;
 }
 
 .form {
@@ -70,19 +75,10 @@ h2 {
 }
 
 /*aligning the image and text in the reviews list*/
-.review {
-  display: inline-block
-}
-
-.left {
-  float: left;
-  padding: 10px 1px;
-}
-
 .right {
-  float: left;
-  width: 90%;
-  padding: 5px 10px
+  float: right !important;
+  margin: 0 auto;
+  padding: 15px 10px
 }
 
 @media (max-width: 575px) {
@@ -99,10 +95,10 @@ h2 {
   .form {
     width: inherit;
   }
-  .reviewText {
-    font-size: 4vw !important;
+  h2 {
+    font-size: 5vw !important;
   }
-  .right {
-    width: 80%
+  .form h3 {
+    font-size: 4.5vw;
   }
  }
