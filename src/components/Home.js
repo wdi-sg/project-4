@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 // import source from './assets/img/clients'
+import bannerimg from './source.gif'
 
 export default class Home extends Component {
   render () {
@@ -18,7 +19,7 @@ export default class Home extends Component {
                 <h3>Revolutionizing Stock Analysis. Be a part of it.</h3>
               </div>
               <div className='col-lg-8 col-lg-offset-2 himg'>
-                <img src='assets/img/clients/source.gif' className='img-responsive' />
+                <img src={bannerimg} className='img-responsive' />
               </div>
             </div>
           </div>
