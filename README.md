@@ -1,6 +1,6 @@
-# ![](/readme_images/logo.png) Graviton
+# Graviton
 
-_**Investment Decision Maker**_
+_**Revolutionizing Stock Analysis**_
 
 > **_Graviton_** _is an app that provides realtime stock information and charting of historical data, with a technical predictive algorithm._
 
@@ -30,7 +30,7 @@ Fork and clone this repository into your own directory. Install the dependencies
 ### Deployment
 
 #### Hosting
-This project was deployed with [Firebase](https://firebase.google.com/), create an account and follow the instructions for your deployment.
+This project was deployed with [Firebase](https://firebase.google.com/) follow the documentation for your deployment.
 
 ## Built With
 
@@ -64,7 +64,17 @@ Primarily built on ReactJS, the Live Stocks page of this app is based off the fo
 The main components were RSI (in blue, also the landing page), stock price (green) and ADX (in red), with RSI being the parent of both stock price and ADX.
 
 ## Regression Analysis
+Linear regression aims to fit a linear equation of the form **Y = a + bX** to the observed data (think a line of best fit). In which for this project, X will be the historical RSI, also known as the explanatory variable while Y is the predicted RSI, the dependent variable.
 
+**_a_**, the intersect and **_b_**, the slope can then be determined as shown in the formula below, based on historical records of the RSI and stock price.  
+
+![](/readme_images/regression_line.png)
+
+The Relative Strength Index (RSI) is a technical momentum indicator used to indicated overbought or oversold conditions in the market, that compares the magnitude of recent gains and losses over a specified time period (_http://www.investopedia.com/terms/r/rsi.asp_).
+
+![](/readme_images/RSI.png)
+
+From obtaining the predicted RSI (Y value) from the equation, a simple calculation can be done to check if the stock is overbought (above 70%) or oversold (below 30%), leading to an expected price fall or increase respectively. If subtracting the YTD price with the predicted RSI yields < 0, the stock price is expected to rise and if otherwise, is expected to drop in the foreseeable future.
 
 ## Recharts
 
@@ -145,3 +155,5 @@ A fix was to include a URL rewrite in the ``firebase.json`` file as follows:
 ## Acknowledgments
 
 Tyler McGinnis' [react-router-firebase-auth](https://github.com/tylermcginnis/react-router-firebase-auth)
+
+Our GA instructor Prima Aulia Gusta and teaching assistant Shimei Wong
