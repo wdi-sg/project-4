@@ -5,6 +5,7 @@ class AdvertsController < ApplicationController
 
   def show
     @advert = Advert.find_by_id(params[:id])
+    @edit_advert_by_id = @advert.user_id
   end
 
   def new
@@ -29,6 +30,7 @@ class AdvertsController < ApplicationController
   end
 
   def edit
+    @current_advert = Advert.find(params[:id])
   end
 
   def update

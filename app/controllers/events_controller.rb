@@ -2,14 +2,11 @@ class EventsController < ApplicationController
   before_action :isAdmin, except: [:index, :show]
 
   def index
-
     @all_events = Event.where('event_start>?', DateTime.now.change(:offset => "+0000"))
-
   end
 
   def create
     # render json: params
-
     time2 = params[:event][:event_end]
     time = params[:event][:event_start]
 
@@ -31,13 +28,10 @@ class EventsController < ApplicationController
       flash[:notice] ='Start date/time must be greater than current time'
       redirect_to new_event_path
     end
-
   end
-
 
   def new
     @new_event = Event.new
-
   end
 
   def edit
@@ -51,7 +45,6 @@ class EventsController < ApplicationController
     end
     @new_reservation = Bookevent.new
     @current_booking = Bookevent.where("event_id = #{params[:id]}").sum(:no_pax)
-
   end
 
   def update
@@ -60,7 +53,6 @@ class EventsController < ApplicationController
     new_details = params.require(:event).permit(:title,:description,:venue,:total_slots,:price_pax,:event_start,:event_end,:event_image)
     to_update.update(new_details)
     flash[:notice] ='Event details successfully changed'
-
     redirect_to events_path
   end
 

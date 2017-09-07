@@ -26,6 +26,8 @@
   <% end %>
 
   <p>Posted by:<%= advert.user.name %></p>
+
+    <%= link_to "More details", advert_path(advert), class: "btn btn-primary" %>
 </div>
 </div>
 <% end %>
