@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import Register from './Register'
+import {Link} from 'react-router-dom'
+// import source from './assets/img/clients'
 
 export default class Home extends Component {
   render () {
@@ -14,10 +15,10 @@ export default class Home extends Component {
               <div className='col-lg-8 col-lg-offset-2'>
                 <h3>Make your investment decision easier with</h3>
                 <h1>GRAVITON</h1>
-                <h5>You choose the stocks, we will do the prediction for YOU!</h5>
+                <h3>Revolutionizing Stock Analysis. Be a part of it.</h3>
               </div>
               <div className='col-lg-8 col-lg-offset-2 himg'>
-                <img src='https://media.giphy.com/media/3oKIPEqDGUULpEU0aQ/source.gif' className='img-responsive' />
+                <img src='assets/img/clients/source.gif' className='img-responsive' />
               </div>
             </div>
           </div>
@@ -60,7 +61,7 @@ export default class Home extends Component {
               <div className='col-lg-8 col-lg-offset-2'>
                 <i className='fa fa-user-circle' />
                 <p>Sign up with us today!</p>
-                <button type='button' className='btn btn-secondary'>Register</button>
+                <button type='button' className='btn btn-secondary'><Link to='/register' className='navbar-brand'>Register</Link></button>
               </div>
             </div>
           </div>
@@ -72,18 +73,12 @@ export default class Home extends Component {
         <div id='cwrap'>
           <div className='container'>
             <div className='row centered'>
-              <h3>OUR CLIENTS</h3>
+              <h3>Our Partners</h3>
               <div className='col-lg-3 col-md-3 col-sm-3'>
-                <img src='assets/img/clients/client01.png' className='img-responsive' />
+                <img src='http://static-assets.generalassemb.ly/logos/generalassembly-open-graph.png' className='img-responsive' />
               </div>
               <div className='col-lg-3 col-md-3 col-sm-3'>
-                <img src='assets/img/clients/client02.png' className='img-responsive' />
-              </div>
-              <div className='col-lg-3 col-md-3 col-sm-3'>
-                <img src='assets/img/clients/client03.png' className='img-responsive' />
-              </div>
-              <div className='col-lg-3 col-md-3 col-sm-3'>
-                <img src='assets/img/clients/client04.png' className='img-responsive' />
+                <img src='http://www.business-science.io/assets/alphavantager-0-1-0.png' className='img-responsive' />
               </div>
             </div>
           </div>
