@@ -136,39 +136,37 @@ class Generate extends Component {
       }
 
       var predictedArr = [rsiPredicts, adxPredicts].reduce(
-        (p1,p2) => p1 * p2
+        (p1, p2) => p1 * p2
       )
 
-      var predictedPrice = parseFloat(Math.pow(predictedArr, 1/2)).toFixed(4)
-
+      var predictedPrice = parseFloat(Math.pow(predictedArr, 1 / 2)).toFixed(4)
 
       //  ==============================================================
       // finding Geometric Mean of RSI
 
-     var geoVariables = xRSI.map(function (x) {
-        return parseFloat(Math.pow(x, (1/xRSI.length))).toFixed(2)
+      var geoVariables = xRSI.map(function (x) {
+        return parseFloat(Math.pow(x, (1 / xRSI.length))).toFixed(2)
       })
       var geoRSI = geoVariables.reduce(
           (sum, val) => sum * val
         )
-     var deviation = 50 - geoRSI
+      var deviation = 50 - geoRSI
 
-     var newTop = parseFloat(70 - deviation).toFixed(2)
+      var newTop = parseFloat(70 - deviation).toFixed(2)
       var newLow = parseFloat(30 - deviation).toFixed(2)
     }
 
     return (
 
       <div className='generate'>
-        <h3><strong>RSI says: </strong> <br/><span className='prediction'>{prediction}</span></h3>
+        <h3><strong>RSI says: </strong> <br /><span className='prediction'>{prediction}</span></h3>
 
-        <h3><strong>ADX says: </strong> <br/><span className='prediction'>{prediction2}</span></h3>
-        <h3><strong>Estimated Price :</strong> <br/>US${predictedPrice}<span className='bracket'> (Based on Geometric Mean)</span></h3>
-        <h3><strong>Price Adjusted Range: </strong><br/>
-        <strong className='red'>Overbought: </strong>{newTop}%
+        <h3><strong>ADX says: </strong> <br /><span className='prediction'>{prediction2}</span></h3>
+        <h3><strong>Estimated Price :</strong> <br />US${predictedPrice}<span className='bracket'> (Based on Geometric Mean)</span></h3>
+        <h3><strong>Price Adjusted Range: </strong><br />
+          <strong className='red'>Overbought: </strong>{newTop}%
         <strong className='green'> Oversold: </strong>{newLow}%
         </h3>
-
 
         <br /><br /><br /><br />
       </div>
