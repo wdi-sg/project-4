@@ -7,7 +7,7 @@ class BookroomsController < ApplicationController
   end
 
     def create
-          # render json: params[:bookroom][:slot][1].to_time
+          # render json: Meetingroom.find(params[:bookroom][:meetingroom_id]).price_hr
       if Date.today == Date.parse(params[:bookroom][:date_start]) && params[:bookroom][:slot][1].to_time < Time.now
 
         flash[:date_error] = "Please input a valid time/date"
@@ -15,12 +15,13 @@ class BookroomsController < ApplicationController
 
       else
         @new_room = Bookroom.new
+        cost = Meetingroom.find(params[:bookroom][:meetingroom_id]).price_hr
         @room_title = Meetingroom.distinct.pluck(:room_title).sort
         params[:bookroom][:slot].each do |slot|
           if slot != ""
             @bookroom = Bookroom.create(params.require(:bookroom).permit(:date_start, :meetingroom_id))
             @bookroom.slot = slot
-            @bookroom.price = 10
+            @bookroom.price = cost
             @bookroom.user_id = current_user.id
             @bookroom.save
           end
@@ -31,9 +32,10 @@ class BookroomsController < ApplicationController
     end
 
   def slots
+      # render json: params[:bookroom][:meetingroom_id].partition(' (').first
       @available_slots = ['7:00 AM','8:00 AM','9:00 AM','10:00 AM','11:00 AM','12:00 PM','1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM','6:00 PM','7:00 PM']
-      # render json: params
-      roomID = Meetingroom.find_by(room_title: params[:bookroom][:meetingroom_id]).id
+
+      roomID = Meetingroom.find_by(room_title: params[:bookroom][:meetingroom_id].partition(' (').first).id
       @bookroom = Bookroom.new
       @bookroom.meetingroom_id = roomID
       @bookroom.date_start = params[:bookroom][:date_start]
@@ -45,7 +47,7 @@ class BookroomsController < ApplicationController
       end
 
       @available_slots = @available_slots - taken_slots
-    end
+  end
 
   def new
     @bookroom = Bookroom.new
