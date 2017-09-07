@@ -45,14 +45,15 @@ This project was deployed with [Firebase](https://firebase.google.com/), create 
 ## Application Overview
 ![](/readme_images/the_app.png)
 
+##### Process Flow
+![](/readme_images/process_flow.png)
+
 ##### Initial Wireframes
 
 ![](/readme_images/initial_visualization.png)
 
 ![](/readme_images/stocks_wireframe.png)
 
-##### Process Flow
-![](/readme_images/process_flow.png)
 
 
 
