@@ -18,16 +18,15 @@
   <% end %>
    <% end %>
 
-  <p> Title : <%= i.title %> </p>
-  <p> Start : <%= i.event_start.strftime('%e %b %y, %l:%M %p') %> || End : <%= i.event_end.strftime('%e %b %y, %l:%M %p') %></p>
+  <h3> Title : <%= i.title %> </h3>
 
-
-  <% if (i.description.split.size > 10) %>
-  <p> Description : <%= i.description[/(\S+\s+){10}/].strip %>... </p>
+  <% if (i.description.split.size > 5) %>
+  <h4> Description : <%= i.description[/(\S+\s+){5}/].strip %>... </h4>
   <% else %>
-  <p> Description : <%= i.description %> </p>
+  <h4> Description : <%= i.description %> </h4>
   <%end %>
 
+  <p> Start : <%= i.event_start.strftime('%e %b %y, %l:%M %p') %> || End : <%= i.event_end.strftime('%e %b %y, %l:%M %p') %></p>
 
   <% if (i.remaining_slots > 0) %>
     <p>Remaining slots : <%= i.remaining_slots %> </p>

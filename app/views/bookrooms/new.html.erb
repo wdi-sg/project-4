@@ -9,7 +9,7 @@
     <%= form_for @bookroom, url: bookroom_slots_path do |f| %>
 
     <h4><div class="field">
-      <%= f.label :meetingroom_id %>
+      <%= f.label :meetingroom_id %>:
       <%#= f.select :meetingroom_id, options_for_select(@meetingrooms.map {|meetingroom| meetingroom.room_title}) %>
       <%= f.select :meetingroom_id, options_for_select(@arr) %>
     </div>
