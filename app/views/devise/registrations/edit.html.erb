@@ -1,4 +1,9 @@
+<% if current_user.sign_in_count == 1 %>
+<h2>First Login: Please Change Your Password</h2>
+<% else %>
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
+<% end %>
+
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -13,7 +18,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.label :new_password %> <i></i><br />
     <%= f.password_field :password, autocomplete: "off", autofocus: true %>
     <% if @minimum_password_length %>
       <br />
