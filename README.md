@@ -1,6 +1,6 @@
-# ![](/readme_images/logo.png) Graviton
+# Graviton
 
-_**Investment Decision Maker**_
+_**Revolutionizing Stock Analysis**_
 
 > **_Graviton_** _is an app that provides realtime stock information and charting of historical data, with a technical predictive algorithm._
 
@@ -155,3 +155,5 @@ A fix was to include a URL rewrite in the ``firebase.json`` file as follows:
 ## Acknowledgments
 
 Tyler McGinnis' [react-router-firebase-auth](https://github.com/tylermcginnis/react-router-firebase-auth)
+
+Our GA instructor Prima Aulia Gusta and teaching assistant Shimei Wong
