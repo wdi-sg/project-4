@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import PriceGraph from './PriceGraph'
-import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Legend } from 'recharts'
+import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ReferenceLine } from 'recharts'
 import Counter from './Counter.js'
 import RSI from './RSI.js'
 import ADX from './ADX.js'
@@ -39,20 +39,27 @@ class Livestock extends Component {
 
     return (
       <div>
-        <h1>Choose the stocks you want to look at</h1>
+        <h3>Choose the stocks you want to look at</h3>
         <form>
           <label>
             Stock:
             <select onChange={this.handleSymbolChange}>
               <option value='AAPL'>Apple</option>
-              <option value='PG'>P&G</option>
+              {/* <option value='PG'>P&G</option> */}
             </select>
           </label>
         </form>
 
         <PriceGraph handlePriceDataArrChange={(arr) => this.handlePriceDataArrChange(arr)} handlePriceOptionChange={(optionArr) => this.handlePriceOptionChange(optionArr)} priceDataArr={this.state.priceDataArr} symbol={symbol} />
+        <div className='regression'>
+          <h4 className='stats'>Stock Statistics </h4>
+          <RSI getRSI={(rsi) => this.getRSI(rsi)} />
+          <ADX getADX={(adx) => this.getADX(adx)} />
+          <Counter rsi={this.state.rsi} adx={this.state.adx} />
+        </div>
 
-        <h2>RSI (Relative Strength Index)</h2>
+        <div className='rsi'>
+        <h4>RSI (Relative Strength Index)</h4>
         <form>
           <label>
             Please select time period:
@@ -68,21 +75,20 @@ class Livestock extends Component {
             </select>
           </label>
         </form>
+          <LineChart width={700} height={200} data={rsiData}
+            margin={{ top: 5, right: 0, left: 20, bottom: 5 }}>
+            <XAxis hide='true' dataKey='date' padding={{ right: 20 }} />
+            <YAxis type='number' domain={[25, 75]} padding={{ top: 0, bottom: 0 }} />
+            <CartesianGrid strokeDasharray='3 3' />
+            <Tooltip />
+            <ReferenceLine y={70} label='Max' stroke='red' />
+            <ReferenceLine y={30} label='Min' stroke='red' />
 
-        <LineChart width={1000} height={300} data={rsiData}
-          margin={{ top: 5, right: 0, left: 20, bottom: 5 }}>
-          <XAxis hide='true' dataKey='date' padding={{ right: 20 }} />
-          <YAxis type='number' domain={['dataMin - 2', 'dataMax + 2']} padding={{ top: 0, bottom: 0 }} />
-          <CartesianGrid strokeDasharray='3 3' />
-          <Tooltip />
-          <Legend />
-          <Line type='monotone' dataKey='RSI' stroke='#82ca9d' strokeWidth={2} dot={false} />
-        </LineChart>
+            <Legend />
+            <Line type='monotone' dataKey='RSI' stroke='#82ca9d' strokeWidth={2} dot={false} />
+          </LineChart>
+        </div>
 
-        <h2>Regression</h2>
-        <RSI getRSI={(rsi) => this.getRSI(rsi)} />
-        <ADX getADX={(adx) => this.getADX(adx)} />
-        <Counter rsi={this.state.rsi} adx={this.state.adx} />
 
       </div>
     )
