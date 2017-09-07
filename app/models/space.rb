@@ -1,3 +1,3 @@
-class Asset < ApplicationRecord
+class Space < ApplicationRecord
   belongs_to :user, optional: true
 end

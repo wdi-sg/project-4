@@ -1,0 +1,19 @@
+<h1>All Spaces</h1>
+
+<% @spaces.each do |space| %>
+<div class="">
+  <p> Space ID: <%= space.id %> </p>
+  <p> Space Type: <%= space.space_type %></p>
+  <p> Created: <%= space.created_at.localtime.strftime('%e %b %y, %l:%M %p') %></p>
+
+  <% if space.user_id %>
+  <p> Assigned User: <%= space.user.name %></p>
+  <% else %>
+  <p> Assigned User: NIL</p>
+  <% end %>
+
+  <%= link_to "Edit Space/ Assign User", edit_space_path(space), class: "btn btn-primary"  %>
+  <%= link_to "Delete", space_path(space), method: :delete, class: "btn btn-primary" %>
+
+</div>
+<% end %>
