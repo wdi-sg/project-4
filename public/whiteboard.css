@@ -30,18 +30,20 @@ html, body {
 .sidebar {
   height: 100%;
   width: 25%;
-  background-color: grey;
+  background-color: lightgrey;
   position: absolute;
   right: 0;
+  text-align: center;
 }
 
 .usernameTimer {
   height: 50%;
   width: 25%;
-  background-color: darkblue;
+  background-color: lightgrey;
   position: absolute;
   right: 0;
   bottom: 0;
+  text-align: center;
 }
 
 .colors {
@@ -114,4 +116,13 @@ input.usernameInput {
     color: white;
     font-size: 300%;
     text-align: center;
+}
+
+p {
+  font-family: 'Baloo Tammudu', cursive;
+  font-size: 120%;
+}
+
+h2 {
+  /*font-family: 'Baloo Tammudu', cursive;*/
 }

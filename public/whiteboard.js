@@ -13,7 +13,7 @@
   var currentPlayerName = ''
   var oppPlayerDisconnect = false
 
-  var timer = 60
+  var timer = 60000
   var points = 0
   var timerFn;
 
@@ -35,26 +35,28 @@
       }
     })
 
-  $('.usernameTimer').append(`<h1 class="points">${points}</h1>`)
+  $('.usernameTimer').append(`<h2 class="points">POINTS:${points}</h2>`)
 
     socket.on('username', function (username) {
       oppPlayer = username
       if(oppPlayer) {
-        $('.usernameTimer').append(`<h3>You are playing with ${oppPlayer}</h3>`)
+        $('.usernameTimer').append(`<p>You are playing with ${oppPlayer}</p>`)
       }
 
     })
 
   socket.on('wait for player', function () {
-    $('.sidebar').append('<div class="secondPlayerMsg" ><h1 >Waiting for second player to join room</h1></div>')
+    $('.sidebar').append('<div class="secondPlayerMsg" ><p >Waiting for second player to join room</p></div>')
+    $('.sidebar').append('<div class="loader"><img src="loading.gif" alt="finding" height="42" width="42"></div>')
   })
 
   socket.on('second player arrived', function () {
     $('.secondPlayerMsg').empty()
+    $('.loader').empty()
     $('.usernameTimer').append(`<h2 class="timer"></h2>`)
     $('.timer').text(timer)
     socket.emit('username', currentPlayerName)
-
+    // $('.usernameTimer').height('70%')
     var timerFn = setInterval(function() {
       timer--
       $('.timer').text(timer)
@@ -100,8 +102,8 @@
       $('.sidebar').empty()
       // $('.points').empty()
 
-      $('.sidebar').append($(`<p> your turn  to draw</p>`))
-      $('.sidebar').append($(`<p>DRAW: ${guessList[0]}</p>`))
+      $('.sidebar').append($(`<p> Your turn  to draw</p>`))
+      $('.sidebar').append($(`<p>DRAW:<br> ${guessList[0]}</p>`))
       // $('.sidebar').append(`<div class="points"><h1>${points}</h3></div>`)
 
 
@@ -126,7 +128,7 @@
 
 
       $('.sidebar').empty()
-      $('.sidebar').append($(`<p> your turn  to guess</p>`))
+      $('.sidebar').append($(`<p> Your turn  to guess</p>`))
       // $('.sidebar').append($(`<form class="form"></form>`)) // do we need a form?
       $('.sidebar').append($(`<input id='guessedAns' type="text"><button class='submitBtn'>Submit</button>`))
       $('.sidebar').append($(`<div class="playerGuessedAns"></div>`))
@@ -149,7 +151,7 @@
           $('.sidebar').append('<h1>GUESSED CORRECTLY</H1>')
           $('.sidebar').append('<button class="nextRoundBtn">Proceed to next round</button>')
           points++
-          $('.points').text(points)
+          $('.points').text("POINTS:" + points)
           socket.emit('correct answer')
           guessList.splice(0,1)
           if (guessList.length === 0) {
@@ -198,7 +200,7 @@
   socket.on('guessedAns', function(guessedAns) {
     $('.playerGuessedAns').remove()
     $('.sidebar').append($(`<div class="playerGuessedAns"></div>`))
-    $('.playerGuessedAns').append($(`<p>${guessedAns}</p>`))
+    $('.playerGuessedAns').append($(`<p>See what ${oppPlayer} is guessing: <br>${guessedAns}</p>`))
   })
 
   socket.on('changeTurnProcess', function () {
@@ -216,8 +218,9 @@
     $('.sidebar').empty()
     $('.sidebar').append('<h1>player guessed correctly</h1>')
     $('.sidebar').append('<p>Waiting for player 2 to be ready to proceed to the next round</p>')
+      $('.sidebar').append('<div class="loader"><img src="loading.gif" alt="finding" height="42" width="42"></div>')
     points++
-    $('.points').text(points)
+    $('.points').text("POINTS:" + points)
     // $('.body').append('<img src="./colorfulLoader.gif" height ="100%" width ="75%">')
   })
 
