@@ -1,4 +1,4 @@
-<h2>Form to book a room</h2>
+<h2>Book a meeting room</h2>
 
 <% if flash[:date_error] %>
 <div class="notice"><%= flash[:date_error] %></div>
@@ -9,9 +9,10 @@
     <%= form_for @bookroom, url: bookroom_slots_path do |f| %>
 
     <h4><div class="field">
-      <%= f.label :meetingroom_id %>
-      <%= f.select :meetingroom_id, options_for_select(@meetingrooms.map {|meetingroom| meetingroom.room_title}), class: 'form-control' %>
-    </div></h4>
+      <%= f.label :meetingroom_id %>:
+      <%#= f.select :meetingroom_id, options_for_select(@meetingrooms.map {|meetingroom| meetingroom.room_title}) %>
+      <%= f.select :meetingroom_id, options_for_select(@arr) %>
+    </div>
 
     <!-- <div class="row">
       <div class='col-sm-2'> -->
@@ -26,3 +27,5 @@
     <% end %>
   </div>
 </div>
+
+<p>*Please note that all bookings are non- refundable.</p>

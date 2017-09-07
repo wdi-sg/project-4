@@ -1,6 +1,10 @@
 <h1>Create New Promo</h1>
 <div class="container">
 
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
 <%= form_for @advert do |f| %>
 <div class="field">
 
