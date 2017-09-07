@@ -1,14 +1,19 @@
 <h1>All meeting rooms</h1>
 
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
 
 <% @meetingrooms.each_with_index do |room, index| %>
 <p><%= index+1 %>) <%= room.room_title %></p>
 <p> No.of pax: <%= room.pax %></p>
-<p> Price (hour): <%= room.price_hr %></p>
+<p> Price (hour): $<%= room.price_hr %></p>
 <% if room.availability %>
 <% else %>
 <p>Status: Not Available</p>
 <% end %>
-<%= link_to "Delete", meetingroom_path(room), method: :delete %>
+<%= link_to "Edit", edit_meetingroom_path(room), class: "btn btn-primary" %>
+<%= link_to "Delete", meetingroom_path(room), method: :delete, class: "btn btn-primary" %>
 <br>
 <% end %>

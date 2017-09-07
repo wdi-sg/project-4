@@ -12,7 +12,8 @@
   <p> Assigned User: NIL</p>
   <% end %>
 
-  <%= link_to "Edit Asset/ Assign User to Asset", edit_space_path(asset.id)  %>
+  <%= link_to "Edit Asset/ Assign User", edit_space_path(asset), class: "btn btn-primary"  %>
+  <%= link_to "Delete", space_path(asset), method: :delete, class: "btn btn-primary" %>
 
 </div>
 <% end %>
