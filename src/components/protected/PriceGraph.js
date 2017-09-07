@@ -9,6 +9,7 @@ class PriceGraph extends Component {
       symbol: props.symbol
     }
     this.handlePriceDataArrChange = props.handlePriceDataArrChange
+    this.handlePriceOptionChange = props.handlePriceOptionChange
     this.handleChange = this.handleChange.bind(this)
   }
   render () {
@@ -59,8 +60,8 @@ class PriceGraph extends Component {
       999
     ]
     return (
-      <div>
-        <h2>Price of Stock</h2>
+      <div className='stock'>
+        <h4>Price of Stock</h4>
         <form>
           <label>
             Please select time period:
@@ -77,7 +78,7 @@ class PriceGraph extends Component {
             </select>
           </label>
         </form>
-        <LineChart width={1000} height={500} data={priceData}
+        <LineChart width={700} height={200} data={priceData}
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
           <XAxis hide='true' dataKey='name' padding={{ right: 20 }} />
           <YAxis type='number' domain={['auto', 'auto']} padding={{ top: 0, bottom: 0 }} />
@@ -117,6 +118,8 @@ class PriceGraph extends Component {
           this.setState({
             priceDataArr: dataArr.reverse()
           })
+          this.handlePriceDataArrChange(dataArr.reverse())
+          this.handlePriceOptionChange(optionArr)
         })
         .catch((err) => {
           console.log(err)

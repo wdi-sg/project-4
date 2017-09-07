@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import PriceGraph from './PriceGraph'
-import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Legend } from 'recharts'
+import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ReferenceLine } from 'recharts'
 import Counter from './Counter.js'
 import RSI from './RSI.js'
 import ADX from './ADX.js'
@@ -13,14 +13,17 @@ class Livestock extends Component {
       priceDataArr: [],
       rsi: '',
       symbol: 'AAPL',
-      rsiInterval: '&interval=1min'
+      priceOptionChange: [
+        'INTRADAY&interval=5min&outputsize=full',
+        'Time Series (5min)',
+        79
+      ]
     }
     this.handleRsiChange = this.handleRsiChange.bind(this)
     this.handleSymbolChange = this.handleSymbolChange.bind(this)
   }
   render () {
     let symbol = this.state.symbol
-    let priceData = this.state.priceDataArr
     let rsiData = this.state.rsiDataArr
 
     const option1 = '&interval=1min'
@@ -34,20 +37,27 @@ class Livestock extends Component {
 
     return (
       <div>
-        <h1>Stock: {symbol}</h1>
+        <h3>Choose the stocks you want to look at</h3>
         <form>
           <label>
             Choose a Stock:
             <select onChange={this.handleSymbolChange}>
               <option value='AAPL'>Apple</option>
-              <option value='PG'>P&G</option>
+              {/* <option value='PG'>P&G</option> */}
             </select>
           </label>
         </form>
 
-        <PriceGraph handlePriceDataArrChange={(arr) => this.handlePriceDataArrChange(arr)} priceDataArr={priceData} symbol={symbol} />
+        <PriceGraph handlePriceDataArrChange={(arr) => this.handlePriceDataArrChange(arr)} handlePriceOptionChange={(optionArr) => this.handlePriceOptionChange(optionArr)} priceDataArr={this.state.priceDataArr} symbol={symbol} />
+        <div className='regression'>
+          <h4 className='stats'>Stock Statistics </h4>
+          <RSI getRSI={(rsi) => this.getRSI(rsi)} />
+          <ADX getADX={(adx) => this.getADX(adx)} />
+          <Counter rsi={this.state.rsi} adx={this.state.adx} />
+        </div>
 
-        <h2>RSI (Relative Strength Index)</h2>
+        <div className='rsi'>
+        <h4>RSI (Relative Strength Index)</h4>
         <form>
           <label>
             Select a time period:
@@ -63,21 +73,20 @@ class Livestock extends Component {
             </select>
           </label>
         </form>
+          <LineChart width={700} height={200} data={rsiData}
+            margin={{ top: 5, right: 0, left: 20, bottom: 5 }}>
+            <XAxis hide='true' dataKey='date' padding={{ right: 20 }} />
+            <YAxis type='number' domain={[25, 75]} padding={{ top: 0, bottom: 0 }} />
+            <CartesianGrid strokeDasharray='3 3' />
+            <Tooltip />
+            <ReferenceLine y={70} label='Max' stroke='red' />
+            <ReferenceLine y={30} label='Min' stroke='red' />
 
-        <LineChart width={1000} height={300} data={rsiData}
-          margin={{ top: 5, right: 0, left: 20, bottom: 5 }}>
-          <XAxis hide='true' dataKey='date' padding={{ right: 20 }} />
-          <YAxis type='number' domain={['dataMin - 2', 'dataMax + 2']} padding={{ top: 0, bottom: 0 }} />
-          <CartesianGrid strokeDasharray='3 3' />
-          <Tooltip />
-          <Legend />
-          <Line type='monotone' dataKey='RSI' stroke='#82ca9d' strokeWidth={2} dot={false} />
-        </LineChart>
+            <Legend />
+            <Line type='monotone' dataKey='RSI' stroke='#82ca9d' strokeWidth={2} dot={false} />
+          </LineChart>
+        </div>
 
-        <h2>Regression</h2>
-        <RSI getRSI={(rsi) => this.getRSI(rsi)} />
-        <ADX getADX={(adx) => this.getADX(adx)} />
-        <Counter rsi={this.state.rsi} adx={this.state.adx} />
 
       </div>
     )
@@ -93,44 +102,24 @@ class Livestock extends Component {
     })
   }
 
+  clickMe () {
+    console.log(this)
+  }
+
   handlePriceDataArrChange (arr) {
     this.setState({
       priceDataArr: arr
     })
   }
 
+  handlePriceOptionChange (optionArr) {
+    this.setState({
+      priceOptionChange: optionArr
+    })
+  }
+
   handleSymbolChange (e) {
-    this.setState({rsiDataArr: [], symbol: e.target.value})
-    console.log('this.state.priceDataArr: ', this.state.priceDataArr)
-
-    var urlSymbolToChange = 'https://www.alphavantage.co/query?function=RSI&symbol=' + this.state.symbol + this.state.rsiInterval + '&time_period=60&series_type=open&apikey=D2E5ZAQU25U0NKAE'
-
-    console.log('url after symbol change is, ', urlSymbolToChange)
-
-    fetch(urlSymbolToChange)
-      .then((response) => {
-        return response.json()
-      })
-      .then((data) => {
-        console.log('this.state.symbol: ', this.state.symbol)
-        var rsiObj = (data['Technical Analysis: RSI'])
-        var timeRsiArr = []
-
-        for (var prop in rsiObj) {
-          timeRsiArr.push({date: prop, RSI: +rsiObj[prop].RSI })
-        }
-        timeRsiArr.map((timeRsiData, index) => {
-          if (index < 100) {
-            this.setState({
-              rsiDataArr: this.state.rsiDataArr.concat(timeRsiData)
-            })
-          }
-        })
-        this.setState({ rsiDataArr: this.state.rsiDataArr.reverse() })
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+    this.setState({symbol: e.target.value})
   }
 
   handleRsiChange (e) {

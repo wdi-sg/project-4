@@ -34,7 +34,6 @@ class Generate extends Component {
       var predictADX = xADX[0]
       var priceYTD = y[0]
 
-
       // finding Σy
       var sumY = y.reduce(
           (acc, cur) => acc + cur
@@ -80,47 +79,65 @@ class Generate extends Component {
       var b = b1 / b2
       // console.log(b)
 
+<<<<<<< HEAD
       var predict = parseFloat(a + (b * predictRSI)).toFixed(2)
 
       // console.log(predict, ' Brian, Shaun and Jerald were here beeches')
+=======
+      var rsiPredicts = parseFloat(a + (b * predictRSI)).toFixed(2)
+>>>>>>> upstream/master
 
-      var minus = priceYTD - predict
+      var minus = priceYTD - rsiPredicts
 
       if (minus > 0) {
-        var prediction = 'Price will drop'
+        var prediction = 'Price is expected to drop in the forseeable future'
       } else {
-        prediction = 'Price will rise'
+        prediction = 'Price is expected to rise in the forseeable future'
       }
+<<<<<<< HEAD
 // console.log(minus, 'minus');
+=======
+      console.log(minus, 'minus')
+>>>>>>> upstream/master
 
-      // second =================================
+      // Regression for ADX =================================
       // finding Σx
-      var sumX = xADX.reduce(
-          (acc, cur) => acc + cur
+      var sum2X = xADX.reduce(
+          (x1, x2) => x1 + x2
         )
+<<<<<<< HEAD
       // console.log(sumX, 'Σx')
+=======
+>>>>>>> upstream/master
 
       // finding Σx2
-      var XSqr = xADX.map(function (x) {
+      var XSqr2 = xADX.map(function (x) {
         return x * x
       })
-      var sumXSqr = XSqr.reduce(
-          (sum, val) => sum + val
+      var sum2XSqr = XSqr2.reduce(
+          (x1, x2) => x1 + x2
         )
+<<<<<<< HEAD
       // console.log(sumXSqr, 'Σx2')
 
       // finding n = sample size
       var ss = y.length
       // console.log(ss, 'this is sample size')
+=======
+
+      // finding n = sample size
+      var ss2 = y.length
+>>>>>>> upstream/master
 
       // finding Σxy
-      var boom = xADX.map(function (x, index) { // here x = a[index]
+      var priceADX = xADX.map(function (x, index) { // here x = a[index]
         return y[index] * x
       })
 
-      var sumXY = boom.reduce(
-          (sum, val) => sum + val
+      var sum2XY = priceADX.reduce(
+          (x1, x2) => x1 + x2
         )
+<<<<<<< HEAD
       // console.log(sumXY, 'Σxy')
 
       var a1 = (sumY * sumXSqr) - (sumX * sumXY)
@@ -132,30 +149,74 @@ class Generate extends Component {
       var b2 = a2
       var b = b1 / b2
       // console.log(b)
+=======
 
-      var predict2 = parseFloat(a + (b * predictADX)).toFixed(2)
+      var a4 = (sumY * sum2XSqr) - (sum2X * sum2XY)
+      var a5 = (ss2 * sum2XSqr) - (sum2X * sum2X)
+      var a3 = a4 / a5
 
+      var b4 = (ss2 * sum2XY) - (sum2X * sumY)
+      var b5 = a5
+      var b3 = b4 / b5
+>>>>>>> upstream/master
+
+      var adxPredicts = parseFloat(a3 + (b3 * predictADX)).toFixed(2)
+
+<<<<<<< HEAD
       // console.log(predict2, ' Brian, Shaun and Jerald were here beeches')
 
       var minus2 = priceYTD - predict2
+=======
+      var minus2 = priceYTD - adxPredicts
+>>>>>>> upstream/master
 
       if (minus2 > 0) {
-        var prediction2 = 'Price will drop'
+        var prediction2 = 'Price is expected to drop in the forseeable future'
       } else {
-        prediction2 = 'Price will rise'
+        prediction2 = 'Price is expected to rise in the forseeable'
       }
+<<<<<<< HEAD
       // console.log(minus2, 'minus2');
+=======
+
+      var predictedArr = [rsiPredicts, adxPredicts].reduce(
+        (p1,p2) => p1 * p2
+      )
+
+      var predictedPrice = parseFloat(Math.pow(predictedArr, 1/2)).toFixed(4)
+
+
+      //  ==============================================================
+      // finding Geometric Mean of RSI
+
+     var geoVariables = xRSI.map(function (x) {
+        return parseFloat(Math.pow(x, (1/xRSI.length))).toFixed(2)
+      })
+      var geoRSI = geoVariables.reduce(
+          (sum, val) => sum * val
+        )
+     var deviation = 50 - geoRSI
+
+     var newTop = parseFloat(70 - deviation).toFixed(2)
+      var newLow = parseFloat(30 - deviation).toFixed(2)
+
+>>>>>>> upstream/master
     }
 
     return (
 
+      <div className='generate'>
+        <h3><strong>RSI says: </strong> <br/><span className='prediction'>{prediction}</span></h3>
 
-      <div>
-        <h3>RSI says: {prediction}</h3>
-        <h3>ADX says: {prediction2}</h3>
-        {/* <input placeholder='Enter historical price' name='hxprice'></input> */}
+        <h3><strong>ADX says: </strong> <br/><span className='prediction'>{prediction2}</span></h3>
+        <h3><strong>Estimated Price :</strong> <br/>US${predictedPrice}<span className='bracket'> (Based on Geometric Mean)</span></h3>
+        <h3><strong>Price Adjusted Range: </strong><br/>
+        <strong className='red'>Overbought: </strong>{newTop}%
+        <strong className='green'> Oversold: </strong>{newLow}%
+        </h3>
 
-        <br/><br/><br/><br/>
+
+        <br /><br /><br /><br />
       </div>
     )
   }
