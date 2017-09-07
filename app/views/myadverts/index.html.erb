@@ -1,0 +1,17 @@
+<h1>My Promos</h1>
+
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
+<% @myadverts.each do |advert| %>
+<h3>Title: <%= advert.title %> </h3>
+  <% if advert.advert_image.length > 0 %>
+  <img src="<%= advert.advert_image %>" alt="Event Image">
+  <% end %>
+
+  <br>
+  <h3>Description:<%= advert.description %><br></h3>
+  <%= link_to "Edit", edit_myadvert_path(advert), class: "btn btn-primary" %>
+  <%= link_to "Delete", myadvert_path(advert), method: :delete, class: "btn btn-primary" %>
+<% end %>

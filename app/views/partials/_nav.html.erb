@@ -44,11 +44,11 @@
 
     <ul class="navbar-nav">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Assets</a>
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Spaces</a>
 
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="/spaces">View/ Manage Assets</a>
-          <a class="dropdown-item" href="/spaces/new">Create New Asset</a>
+          <a class="dropdown-item" href="/spaces">View/ Manage Spaces</a>
+          <a class="dropdown-item" href="/spaces/new">Create New Space</a>
         </div>
       </li>
     </ul>
@@ -114,7 +114,7 @@
 
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <%= link_to "My profile", create_user_path(current_user.id), class: "dropdown-item" %>
-          <%= link_to "Manage my adverts", edit_advert_path(current_user.id), class: "dropdown-item" %>
+          <%= link_to "Manage my promos", myadverts_path, class: "dropdown-item" %>
 
           <a class="dropdown-item" href="/transactions">My transactions</a>
         </div>
