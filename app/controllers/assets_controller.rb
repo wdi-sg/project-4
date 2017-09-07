@@ -24,7 +24,19 @@ class AssetsController < ApplicationController
   end
 
   def edit
+    # render json: Asset.find(params[:id])
+      @current_asset = Asset.find(params[:id])
+  end
 
+  def destroy
+    asset_to_delete = Asset.find(params[:id])
+    asset_to_delete.destroy
+    redirect_to spaces_path
+
+  end
+
+  def update
+    #code
   end
 
   private

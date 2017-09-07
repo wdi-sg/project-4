@@ -5,6 +5,7 @@
 <% @users.each do |user| %>
 <ul>
   <li>
+    User id: <%= user.id %> <br/>
     Name : <%= user.name %><br/>
     Email : <%= user.email %><br/>
     Created : <%= user.created_at.localtime.strftime('%e %b %y, %l:%M %p') %><br/>
