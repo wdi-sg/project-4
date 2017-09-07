@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170903081031) do
+ActiveRecord::Schema.define(version: 20170907063452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,16 @@ ActiveRecord::Schema.define(version: 20170903081031) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "spaces", force: :cascade do |t|
+    t.string "space_type"
+    t.bigint "user_id"
+    t.string "date_start"
+    t.string "date_end"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_spaces_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.boolean "isAdmin", default: false, null: false
     t.string "name"
@@ -114,4 +124,5 @@ ActiveRecord::Schema.define(version: 20170903081031) do
   add_foreign_key "bookevents", "users"
   add_foreign_key "bookrooms", "meetingrooms"
   add_foreign_key "bookrooms", "users"
+  add_foreign_key "spaces", "users"
 end

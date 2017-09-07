@@ -6,8 +6,8 @@
 
 <!-- <em><h6>Minimum booking is 10 days</h6></em> -->
 
-<%= form_for @asset, url: spaces_path do |f| %>
-  <%= f.select :asset_type, options_for_select(["Office", "Desk", "Hotdesk"]) %>
+<%= form_for @space do |f| %>
+  <%= f.select :space_type, options_for_select(["Office", "Desk", "Hotdesk"]) %>
   <!-- <br>
   <br>
   <%#= f.label "User ID:" %>
