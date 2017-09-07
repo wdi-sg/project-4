@@ -29,7 +29,9 @@ export default class Home extends Component {
         <Image src={Chalkboard} responsive />
         <Row>
           <Col xs={12}>
+            <Col xsOffset={6}>
             <h2>European Germanic</h2>
+            </Col>
             <Row>
               <Col xs={3}></Col>
               <Col xs={3}></Col>
@@ -152,14 +154,16 @@ export default class Home extends Component {
                 </div>
               </Col>
               <Col xs={3}></Col>
-              <Col xs={3}></Col>
+              <Col xs={3}><Image src={Plane} className='image' responsive /></Col>
               <Col xs={3}></Col>
             </Row>
           </Col>
         </Row>
         <Row>
           <Col xs={12}>
-            <h2>European East</h2>
+            <Col xsOffset={3}>
+              <h2>European East</h2>
+            </Col>
             <Row>
               <Col xs={3}></Col>
               <Col xs={3}>
