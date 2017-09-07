@@ -30,14 +30,12 @@ Singapore being an international and multicultural hub, there are many reasons w
 ## Moving Forward
 
 * Populate the rest of the schools
-
-## Acknowledgments
-
-*
+* Work on sending email to an email address
 
 ## Built With
 * [ReactJS](https://facebook.github.io/react/)
 * [Firebase](https://firebase.google.com/)
-* [React-Bootstrap CSS Framework](https://react-bootstrap.github.io/)
+* [Bootstrap CSS Framework](http://getbootstrap.com/)
 * [Material-UI](http://www.material-ui.com/)
 * [React-Rating](https://github.com/dreyescat/react-rating)
+* Adobe Photoshop

@@ -34,7 +34,7 @@ export default class Inlingua extends Component {
           <div className="col-xs-0 col-md-2"></div>
           <div className="col-xs-10 col-md-4">
             <br />
-            <img src={building} />
+            <img src={building} alt='building' />
           </div>
           <div className="col-xs-10 col-md-5">
             <SchDescription info={school.inlingua} />

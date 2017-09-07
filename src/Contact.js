@@ -59,7 +59,7 @@ export default class Contact extends Component {
           <div className='form-group'>
             <label>Subject</label>
             <select className="form-control" ref={(subject) => this.subject = subject} required >
-              <option value="" disabled selected hidden>Please Choose...</option>
+              <option value="" disabled hidden>Please Choose...</option>
               <option> Add new school </option>
               <option> Update information on website </option>
               <option> Edit your review </option>

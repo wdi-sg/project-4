@@ -45,7 +45,7 @@ export default class Nav extends Component {
               <Link to="/register" className="navbar-brand">Register</Link>
               </span> }
 
-              <DropdownButton className="navbar-brand" title='Languages' style={{border: 'none', background: 'transparent'}}>
+              <DropdownButton className="navbar-brand" title='Languages' id='' style={{border: 'none', background: 'transparent'}}>
                 <MenuItem href='/arabic'>Arabic</MenuItem>
                 <MenuItem href='/Bahasaindo'>Bahasa Indo</MenuItem>
                 <MenuItem href='/chinese'>Chinese</MenuItem>

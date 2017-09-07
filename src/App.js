@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import './App.css'
 import Nav from './navbar'
 import Home from './homepage/Home'
@@ -8,7 +7,7 @@ import French from './languages/French'
 import German from './languages/German'
 import Goethe from './schools/Goethe'
 import Inlingua from './schools/Inlingua'
-
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Login from './authen/Login'
 import Register from './authen/Register'
 import { firebaseAuth } from './fire'
@@ -55,22 +54,22 @@ export default class App extends Component {
     return (
       <div className='App container'>
         <MuiThemeProvider>
-          <Router>
-            <div>
-              <Nav />
-              <Switch>
-                <Route exact path='/' component={Home} />
-                <Route path='/login' component={Login} />
-                <Route path='/register' component={Register} />
-                <Route exact path='/contact' component={Contact} />
-                <Route path='/french' component={French} />
-                <Route path='/german' component={German} />
-                <Route authed={this.state.authed} path='/goethe' component={Goethe} />
-                <Route authed={this.state.authed} path='/inlingua' component={Inlingua} />
-                <Route render={() => <h3>No Match</h3>} />
-              </Switch>
-            </div>
-          </Router>
+        <Router>
+          <div>
+            <Nav />
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route path='/login' component={Login} />
+              <Route path='/register' component={Register} />
+              <Route exact path='/contact' component={Contact} />
+              <Route path='/french' component={French} />
+              <Route path='/german' component={German} />
+              <PrivateRoute authed={this.state.authed} path='/goethe' component={Goethe} />
+              <PrivateRoute authed={this.state.authed} path='/inlingua' component={Inlingua} />
+              <Route render={() => <h3>No Match</h3>} />
+            </Switch>
+          </div>
+        </Router>
         </MuiThemeProvider>
       </div>
     )

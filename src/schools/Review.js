@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
-import { Row, Col } from 'react-bootstrap'
-import {List, ListItem} from 'material-ui/List'
 import Divider from 'material-ui/Divider'
-import Paper from 'material-ui/Paper'
 import German from '../images/SpeechGerman.png'
 import English from '../images/SpeechEnglish.png'
 
@@ -21,8 +18,8 @@ export default class Review extends Component {
   render () {
     var lang = this.props.detail.language
 
-    if (lang === 'German') { var pic = <img src={German} style={styles} /> }
-    if (lang === 'English') { var pic = <img src={English} style={styles} /> }
+    if (lang === 'German') { var pic = <img src={German} alt='Flag' style={styles} /> }
+    if (lang === 'English') { pic = <img src={English} alt='Flag' style={styles} /> }
 
     return (
       <div>
