@@ -10,12 +10,12 @@
   var sidebar = document.getElementsByClassName('sidebar')
   var context = canvas.getContext('2d');
 
-  var guessList = ['HOUSE', 'SUN', 'HELICOPTER']
+  var guessList = ['SHOE','CAMERA','BALL','FAN','PLANE','SINGAPORE','FENCE','CHICKEN','HOUSE', 'SUN', 'HELICOPTER']
   var oppPlayer = ''
   var currentPlayerName = ''
   var oppPlayerDisconnect = false
 
-  var timer = 60000
+  var timer = 5
   var points = 0
   var timerFn;
 
@@ -52,9 +52,10 @@
 
       if (guessList.length === 0) {
         $('body').empty()
-        $('body').append('<h1>GAME OVER</h1>')
-        $('body').append(`CONGRATZ ${oppPlayer} and ${currentPlayerName}, you got ${points} points! `)
-        $('body').append('<a href="/whiteboard">New Game</a>')
+        $('body').append('<div class="gameover"></div>')
+        $('.gameover').append('<h1>GAME OVER</h1>')
+        $('.gameover').append(`<p>CONGRAGULATIONS <br> ${oppPlayer} and ${currentPlayerName}<br>you got ${points} points! </p>`)
+        $('.gameover').append('<a href="/whiteboard">New Game</a>')
       }
     } else {
 
@@ -117,9 +118,10 @@
 
       if (guessList.length === 0 || timer < 0) {
         $('body').empty()
-        $('body').append('<h1>GAME OVER</h1>')
-        $('body').append(`CONGRATZ ${oppPlayer} and ${currentPlayerName}, you got ${points} points! `)
-        $('body').append('<a href="/whiteboard">New Game</a>')
+        $('body').append('<div class="gameover"></div>')
+        $('.gameover').append('<h1>GAME OVER</h1>')
+        $('.gameover').append(`<p>CONGRAGULATIONS <br> ${oppPlayer} and ${currentPlayerName}<br>you got ${points} points! </p>`)
+        $('.gameover').append('<a href="/whiteboard">New Game</a>')
       }
 
     }
@@ -144,9 +146,10 @@
         if(timer < 0 || guessList.length === 0) {
          clearInterval(timerFn)
          $('body').empty()
-         $('body').append('<h1>GAME OVER</h1>')
-         $('body').append(`CONGRATZ ${oppPlayer} and ${currentPlayerName}, you got ${points} points! `)
-         $('body').append('<a href="/whiteboard">New Game</a>')
+         $('body').append('<div class="gameover"></div>')
+         $('.gameover').append('<h1>GAME OVER</h1>')
+         $('.gameover').append(`<p>CONGRAGULATIONS <br> ${oppPlayer} and ${currentPlayerName}<br>you got ${points} points! </p>`)
+         $('.gameover').append('<a href="/whiteboard">New Game</a>')
         }
 
         if (oppPlayerDisconnect) {
