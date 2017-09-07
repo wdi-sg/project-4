@@ -12,7 +12,8 @@ class Livestock extends Component {
       rsiDataArr: [],
       priceDataArr: [],
       rsi: '',
-      symbol: 'AAPL'
+      symbol: 'AAPL',
+      rsiInterval: '&interval=1min'
     }
     this.handleRsiChange = this.handleRsiChange.bind(this)
     this.handleSymbolChange = this.handleSymbolChange.bind(this)
@@ -33,11 +34,10 @@ class Livestock extends Component {
 
     return (
       <div>
-        <h1>symbol is {symbol}</h1>
-        <h1>Choose the stocks you want to look at</h1>
+        <h1>Stock: {symbol}</h1>
         <form>
           <label>
-            Stock:
+            Choose a Stock:
             <select onChange={this.handleSymbolChange}>
               <option value='AAPL'>Apple</option>
               <option value='PG'>P&G</option>
@@ -50,7 +50,7 @@ class Livestock extends Component {
         <h2>RSI (Relative Strength Index)</h2>
         <form>
           <label>
-            Please select time period:
+            Select a time period:
             <select onChange={this.handleRsiChange}>
               <option value={option1}>1 min</option>
               <option value={option2}>5 min</option>
@@ -77,7 +77,7 @@ class Livestock extends Component {
         <h2>Regression</h2>
         <RSI getRSI={(rsi) => this.getRSI(rsi)} />
         <ADX getADX={(adx) => this.getADX(adx)} />
-        <Counter rsi={this.state.rsi} adx={this.state.adx}/>
+        <Counter rsi={this.state.rsi} adx={this.state.adx} />
 
       </div>
     )
@@ -100,13 +100,44 @@ class Livestock extends Component {
   }
 
   handleSymbolChange (e) {
-    this.setState({symbol: e.target.value})
-    console.log(this.state.priceDataArr)
+    this.setState({rsiDataArr: [], symbol: e.target.value})
+    console.log('this.state.priceDataArr: ', this.state.priceDataArr)
+
+    var urlSymbolToChange = 'https://www.alphavantage.co/query?function=RSI&symbol=' + this.state.symbol + this.state.rsiInterval + '&time_period=60&series_type=open&apikey=D2E5ZAQU25U0NKAE'
+
+    console.log('url after symbol change is, ', urlSymbolToChange)
+
+    fetch(urlSymbolToChange)
+      .then((response) => {
+        return response.json()
+      })
+      .then((data) => {
+        console.log('this.state.symbol: ', this.state.symbol)
+        var rsiObj = (data['Technical Analysis: RSI'])
+        var timeRsiArr = []
+
+        for (var prop in rsiObj) {
+          timeRsiArr.push({date: prop, RSI: +rsiObj[prop].RSI })
+        }
+        timeRsiArr.map((timeRsiData, index) => {
+          if (index < 100) {
+            this.setState({
+              rsiDataArr: this.state.rsiDataArr.concat(timeRsiData)
+            })
+          }
+        })
+        this.setState({ rsiDataArr: this.state.rsiDataArr.reverse() })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   handleRsiChange (e) {
-    this.setState({rsiDataArr: []})
+    this.setState({rsiDataArr: [], rsiInterval: e.target.value})
     var optionArr = e.target.value.split(',')
+    console.log('e.target.value: ', e.target.value)
+    console.log('this.state.rsiInterval: ', this.state.rsiInterval)
 
     var urlRsiToChange = 'https://www.alphavantage.co/query?function=RSI&symbol=' + this.state.symbol + optionArr[0] + '&time_period=60&series_type=open&apikey=D2E5ZAQU25U0NKAE'
 
@@ -161,7 +192,6 @@ class Livestock extends Component {
           }
         })
         this.setState({ rsiDataArr: this.state.rsiDataArr.reverse() })
-
       })
       .catch((err) => {
         console.log(err)
