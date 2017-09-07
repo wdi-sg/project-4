@@ -1,4 +1,4 @@
-<h2>Hello,
+<h2>This is what you have been up to,
   <%= @user.name %>.</h2>
 
 <div class="container">
@@ -6,70 +6,79 @@
   <div class="row">
     <div class="col">
 
+      <% if @bookings && @events == 0 %>
+      <div class="center">
+      <h3><%= "You have no bookings currently." %></h3>
+      <%= link_to "Join events", "/events", class: "btn btn-primary" %>
+      <%= link_to "Book a room", "/bookrooms/new", class: "btn btn-primary" %>
+    </div>
+    <% else %>
       <h3>Your current bookings</h3>
 
-      <h4><div class="">
-        <!-- List current bookings for meetingrooms -->
-        <% @allBookingsPerGroup.each_with_index do |i, index| %>
-        <% if Date.today.strftime("%d/%m/%Y") <= i[0].date_start %>
+      <h4>
+        <div class="">
+          <!-- List current bookings for meetingrooms -->
+          <% @allBookingsPerGroup.each_with_index do |i, index| %>
+          <% if Date.today.strftime("%d/%m/%Y") <= i[0].date_start %>
 
-        <ul>
-          <li>
-            <div class="">
-              Meeting room :
-              <%= i[0].meetingroom.room_title %>
-            </div>
+          <ul>
+            <li>
+              <div class="">
+                Meeting room :
+                <%= i[0].meetingroom.room_title %>
+              </div>
 
-            <div class="">
-              Date :
-              <%= i[0].date_start %>
-            </div>
+              <div class="">
+                Date :
+                <%= i[0].date_start %>
+              </div>
 
-            <div class="">
-              <% i.each_with_index do |j, index| %>
-              Slot :
-              <%= j.slot %>
-              <% end %>
-            </div>
-          </li>
-        </ul>
-        <% end %>
-        <% end %>
+              <div class="">
+                <% i.each_with_index do |j, index| %>
+                Slot :
+                <%= j.slot %>
+                <% end %>
+              </div>
+            </li>
+          </ul>
+          <% end %>
+          <% end %>
 
-        <!-- List current bookings for events -->
-        <h4>Events Attending</h4>
-        <% @events.each do |i| %>
-        <% if Time.now.change(:offset => "+0000").to_i <= Event.find_by_id(i.event_id).event_start.to_i %>
+          <!-- List current bookings for events -->
+          <h4>Events Attending</h4>
+          <% @events.each do |i| %>
+          <% if Time.now.change(:offset => "+0000").to_i <= Event.find_by_id(i.event_id).event_start.to_i %>
 
-        <ul>
-          <li>
-            <div class="">
-              Event title :
-              <%= Event.find_by_id(i.event_id).title %>
-            </div>
+          <ul>
+            <li>
+              <div class="">
+                Event title :
+                <%= Event.find_by_id(i.event_id).title %>
+              </div>
 
-            <div class="">
-              <%= Event.find_by_id(i.event_id).event_start.strftime 'Starts on Date: %d/%m/%Y, Time: %I:%M %p' %>
-            </div>
+              <div class="">
+                <%= Event.find_by_id(i.event_id).event_start.strftime 'Starts on Date: %d/%m/%Y, Time: %I:%M %p' %>
+              </div>
 
-            <div class="">
-              <%= Event.find_by_id(i.event_id).event_end.strftime 'Ends on Date: %d/%m/%Y, Time: %I:%M %p' %>
-            </div>
+              <div class="">
+                <%= Event.find_by_id(i.event_id).event_end.strftime 'Ends on Date: %d/%m/%Y, Time: %I:%M %p' %>
+              </div>
 
-            <div class="">
-              Venue :
-              <%= Event.find_by_id(i.event_id).venue %>
-            </div>
+              <div class="">
+                Venue :
+                <%= Event.find_by_id(i.event_id).venue %>
+              </div>
 
-            <div class="field">
-              <%= link_to "View more", event_path(i), class: "btn btn-primary" %>
-            </div>
-          </li>
-        </ul>
-        <% end %>
-        <% end %>
+              <div class="field">
+                <%= link_to "View more", event_path(i), class: "btn btn-primary" %>
+              </div>
+            </li>
+          </ul>
+          <% end %>
+          <% end %>
 
-      </div></h4>
+        </div>
+      </h4>
     </div>
 
     <div class="col">
@@ -129,7 +138,7 @@
       </ul>
       <% end %>
       <% end %>
-
     </div>
-
+    <% end %>
   </div>
+</div>

@@ -19,10 +19,6 @@ class UsersController < ApplicationController
       @allBookingsPerGroup << Bookroom.where(user_id: current_user.id, date_start: group.date_start)
     end
 
-
-
-
-
     # @bookings_date = Bookroom.where(user_id: @user, date_start: "09/09/2017")
     # @dategroup = Bookroom.includes(:date_start)
     @events = Bookevent.where(user_id: @user)
