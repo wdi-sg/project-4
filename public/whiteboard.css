@@ -71,11 +71,32 @@ html, body {
 
 /*username*/
 .username{
-  background-color: white;
+  background-color: black;
   position: relative;
   height: 100%;
   width: 100%;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.
+.form{
+    display: flex;
+    flex-direction: column;
+}
+
+h1.usernameTitle {
+    font-size: 400%;
+    color: white;
+}
+
+input.usernameInput {
+    background-color: black;
+    caret-color: white;
+    outline: none;
+    border-color: black;
+    border-bottom-color: white;
+    color: white;
+    font-size: 300%;
+    text-align: center;
+}
