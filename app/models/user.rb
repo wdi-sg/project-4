@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :adverts
-  has_many :assets
+  has_many :spaces
   has_many :bookrooms
   has_many :bookevents
 end

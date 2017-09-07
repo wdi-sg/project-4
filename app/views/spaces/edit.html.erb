@@ -1,13 +1,13 @@
 <h1>Edit Asset/ Assign User</h1>
-<h5><%= flash[:member_error] %></h5>
-<h5><%= flash[:date_error] %></h5>
+<h5><%= flash[:notice1] %></h5>
+<h5><%= flash[:notice2] %></h5>
 <%#= link_to "See All Assets", spaces_path %>
 <br>
 
 <em><h6>Minimum booking is 10 days</h6></em>
-<%= form_for @current_asset, url: edit_space_path(@current_asset) do |f| %>
+<%= form_for @current_space do |f| %>
 
-  <%= f.select :asset_type, options_for_select(["Office", "Desk", "Hotdesk"]) %>
+  <%= f.select :space_type, options_for_select(["Office", "Desk", "Hotdesk"]) %>
   <br>
   <br>
   <%= f.label "User ID:" %>
