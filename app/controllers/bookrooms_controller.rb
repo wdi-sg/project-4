@@ -53,7 +53,7 @@ class BookroomsController < ApplicationController
     @arr = []
     @meetingrooms.each do |i|
 
-      @arr<< "#{i.room_title} (#{i.pax} pax) - $#{i.price_hr}/hour"
+      @arr<< "#{i.room_title} (#{i.pax})- $#{i.price_hr}/hour"
     end
 
   end

@@ -17,7 +17,7 @@
 
   <p> Remaining tickets: <%= @event.remaining_slots %>/ <%= @event.total_slots %></p> </p>
 
-  <% if @event.price_pax = 0 %>
+  <% if @event.price_pax == 0 %>
   <p>Price per ticket: FREE ADMISSION!</p>
   <% else %>
   <p>Price per ticket: <%= @event.price_pax %></p>

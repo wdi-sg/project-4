@@ -1,35 +1,44 @@
-<div class="container">
+<div class="container center">
   <h1>Events Calendar</h1>
+
 
   <% if flash[:notice] %>
     <div class="notice"><%= flash[:notice] %></div>
   <% end %>
 
+
   <% @all_events.each do |i|  %>
-  <p> Title: <%= i.title %> </p>
-  <p> Start: <%= i.event_start.strftime('%e %b %y, %l:%M %p') %> || End: <%= i.event_end.strftime('%e %b %y, %l:%M %p') %></p>
+  <div class="card-group d-inline" style="width: 55rem;">
+
+  <div class="card d-inline-block">
+
+  <% if (i.event_image) %>
+   <% if i.event_image.length > 0 %>
+    <%= image_tag i.event_image, size: "370x300" %>
+  <% end %>
+   <% end %>
+
+  <p> Title : <%= i.title %> </p>
+  <p> Start : <%= i.event_start.strftime('%e %b %y, %l:%M %p') %> || End : <%= i.event_end.strftime('%e %b %y, %l:%M %p') %></p>
+
+
+  <% if (i.description.split.size > 10) %>
+  <p> Description : <%= i.description[/(\S+\s+){10}/].strip %>... </p>
+  <% else %>
+  <p> Description : <%= i.description %> </p>
+  <%end %>
+
+
   <% if (i.remaining_slots > 0) %>
-    <p>Remaining slots: <%= i.remaining_slots %> </p>
+    <p>Remaining slots : <%= i.remaining_slots %> </p>
   <% else %>
     <p> **FULLY BOOKED** </p>
   <% end %>
 
 
- <% if (i.event_image) %>
-  <% if i.event_image.length > 0 %>
-   <%= image_tag i.event_image, size: "160x100"%>
- <% else %>
-   <!-- false -->
- <% end %>
+  <%= link_to "More details/ Book", event_path(i), class: "btn btn-primary" %>
+</div>
+</div>
   <% end %>
 
- <% if (i.description.split.size > 10) %>
- <p> Description: <%= i.description[/(\S+\s+){10}/].strip %>... </p>
- <% else %>
- <p> Description: <%= i.description %> </p>
-
- <%end %>
-  <%= link_to "More details/ Book", event_path(i) %>
-<p>---------------------------------------------------------------------------------</p>
-  <% end %>
 </div>

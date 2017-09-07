@@ -4,24 +4,24 @@
 <div class="notice"><%= flash[:date_error] %></div>
 <% end %>
 
-<div class="container">
+<div class="container center">
   <div class="form-group field">
     <%= form_for @bookroom, url: bookroom_slots_path do |f| %>
 
-    <div class="field">
+    <h4><div class="field">
       <%= f.label :meetingroom_id %>
       <%#= f.select :meetingroom_id, options_for_select(@meetingrooms.map {|meetingroom| meetingroom.room_title}) %>
       <%= f.select :meetingroom_id, options_for_select(@arr) %>
     </div>
 
-    <div class="row">
-      <div class='col-sm-6'>
-        <div class="form-group field">
+    <!-- <div class="row">
+      <div class='col-sm-2'> -->
+        <h4><div class="form-group field">
           <%= f.label :date_start %> :
-          <%= f.text_field :date_start, required: true, id: 'meetingRoomReservation' %>
-        </div>
-      </div>
-    </div>
+          <%= f.text_field :date_start, required: true, id: 'meetingRoomReservation', class: 'form-control, mx-auto' %>
+        <!-- </div>
+      </div> -->
+    </div></h4>
 
     <%= f.submit "View available slots", class: "btn btn-primary" %>
     <% end %>

@@ -1,16 +1,16 @@
 <h3>Available Slots</h3>
-<div class="container">
+<div class="container center">
 
   <%= form_for @bookroom do |f| %>
 
-  <div class="field">
+  <h3><div class="field">
     <%= f.select :slot, options_for_select(@available_slots.map {|slot| slot}), {}, {:multiple => true, :size => @available_slots.length} %>
     <%= f.hidden_field :date_start, :value => @bookroom.date_start %>
-  </div>
+  </div></h3>
 
   <div class="field">
     <%= f.hidden_field :meetingroom_id, :value => @bookroom.meetingroom_id %>
-    <%= f.submit "Book MeetingRoom",class: "btn btn-primary" %>
+    <%= f.submit "Book Meeting Room",class: "btn btn-primary" %>
   </div>
 
   <% end %>
