@@ -45,13 +45,23 @@ html, body {
 }
 
 .colors {
-  position: fixed;
+    width: 75%;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    border: black;
+    border-style: outset;
+    border-radius: 20px;
 }
 
 .color {
-  display: inline-block;
-  height: 48px;
-  width: 48px;
+    display: inline-block;
+    width: 10%;
+    height: 100%;
+    border-radius: 20px;
+    background-size: 100% 100%;
+
 }
 
 .color.black { background-color: black; }
@@ -59,20 +69,25 @@ html, body {
 .color.green { background-color: green; }
 .color.blue { background-color: blue; }
 .color.yellow { background-color: yellow; }
-.color.white { background-color: grey; }
+.color.white { background-image: url("eraser.png") }
 
 .clearCanvas {
-  height: 48px;
-  width: 48px;
-  background-color: pink;
-  display: inline-block;
+    height: 100%;
+    width: 10%;
+    background-color: black;
+    border-radius: 20px;
+    display: inline-block;
+    color: white;
+    font-size: 100%;
+    font-weight: bold;
+    font-family: cursive;
 }
 
 
 /*username*/
 .username{
   background-color: black;
-  position: relative;
+  position: absolute;
   height: 100%;
   width: 100%;
   display: flex;

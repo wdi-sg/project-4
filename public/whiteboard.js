@@ -122,7 +122,7 @@
       canvas.removeEventListener('mouseout', onMouseUp, false);
       canvas.removeEventListener('mousemove', throttle(onMouseMove, 10), false);
       $('.clearCanvas').off()
-      $('.colors').hide()
+      // $('.colors').hide() //REMEMBER TO UNCOMMENT
 
 
       $('.sidebar').empty()
