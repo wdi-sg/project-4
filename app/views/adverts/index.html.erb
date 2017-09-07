@@ -1,15 +1,34 @@
+<div class="container center">
+
 <h1>All Promos</h1>
 
+
 <% @adverts.each do |advert| %>
-<p>Title: <%= advert.title %> </p>
-  <% if advert.advert_image.length > 0 %>
-  <img src="<%= advert.advert_image %>" alt="Event Image">
+<div class="card-group d-inline" style="width: 20%">
+
+  <div class="card d-inline-block">
+
+<% if advert.advert_image.to_s == "" %>
+<%= image_tag 'http://i.imgur.com/hFjTK8K.png', size: "370x300" %>
+ <%  else %>
+ <%= image_tag advert.advert_image, size: "370x300" %>
+<% end %>
+
+<h3>Title: <%= advert.title %> </h3>
+
+  <% if !advert.description %>
+  <h4> Description : No description</h4>
+  <p>Description:<%= advert.description %></p>
+  <% elsif (advert.description.split.size >= 5) %>
+  <h4> Description : <%= advert.description[/(\S+\s+){5}/].to_s.strip %>... </h4>
+  <% else %>
+  <h4> Description : <%= advert.description %></h4>
   <% end %>
 
-  <br>
-  <p>Description:<%= advert.description %><br></p>
-
-  <br>
-  <p>Posted by:<%= advert.user.name %><br></p>
-
+  <p>Posted by:<%= advert.user.name %></p>
+</div>
+</div>
 <% end %>
+
+
+</div>
