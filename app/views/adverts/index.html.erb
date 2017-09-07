@@ -1,11 +1,15 @@
 <h1>All Promos</h1>
 
 <% @adverts.each do |advert| %>
-<h3>Title: <%= advert.title %> </h3>
+<p>Title: <%= advert.title %> </p>
   <% if advert.advert_image.length > 0 %>
   <img src="<%= advert.advert_image %>" alt="Event Image">
   <% end %>
 
   <br>
-  <h3>Description:<%= advert.description %><br></h3>
+  <p>Description:<%= advert.description %><br></p>
+
+  <br>
+  <p>Posted by:<%= advert.user.name %><br></p>
+
 <% end %>

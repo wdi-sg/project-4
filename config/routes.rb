@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get 'transactions', to: 'users#transactions'
 
+
+
   # get 'users/index'
 
   #  temporarily change to show react abilities. Using root 'static#home will redirect to nick's user page.
@@ -17,6 +19,7 @@ Rails.application.routes.draw do
   resources :bookrooms
   resources :adverts
   resources :spaces
+  resources :myadverts, only: [:index, :edit, :destroy]
 
   # resources :bookevents
 

@@ -28,4 +28,20 @@ class AdvertsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    # render json: params
+    to_update = Advert.find(params[:id])
+    new_details = params.require(:advert).permit(:title, :description, :advert_image)
+    to_update.update(new_details)
+    flash[:notice] ='Details successfully changed'
+
+    redirect_to myadverts_path
+  end
+
+  def destroy
+  end
+
 end

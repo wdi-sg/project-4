@@ -4,7 +4,11 @@
 <div class="field">
   <p> Space ID: <%= space.id %> </p>
   <p> Space Type: <%= space.space_type %></p>
-  <p> Created: <%= space.created_at.localtime.strftime('%e %b %y, %l:%M %p') %></p>
+  <% if space.date_start && space.date_end %>
+  <p> Start Date: <%= space.date_start.to_date.strftime('%e %b %Y') %></p>
+  <p> End Date: <%= space.date_end.to_date.strftime('%e %b %Y')%></p>
+  <% end %>
+
 
   <% if space.user_id %>
   <p> Assigned User: <%= space.user.name %></p>
