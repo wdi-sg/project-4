@@ -14,14 +14,18 @@ class Livestock extends Component {
       timeArr: [],
       priceDataArr: [],
       rsi: '',
-      symbol: 'AAPL'
+      symbol: 'AAPL',
+      priceOptionChange: [
+        'INTRADAY&interval=5min&outputsize=full',
+        'Time Series (5min)',
+        79
+      ]
     }
     this.handleRsiChange = this.handleRsiChange.bind(this)
     this.handleSymbolChange = this.handleSymbolChange.bind(this)
   }
   render () {
     let symbol = this.state.symbol
-    let priceData = this.state.priceDataArr
     let rsiData = this.state.rsiDataArr
 
     const option1 = '&interval=1min'
@@ -35,7 +39,6 @@ class Livestock extends Component {
 
     return (
       <div>
-        <h1>symbol is {symbol}</h1>
         <h1>Choose the stocks you want to look at</h1>
         <form>
           <label>
@@ -47,7 +50,7 @@ class Livestock extends Component {
           </label>
         </form>
 
-        <PriceGraph handlePriceDataArrChange={(arr) => this.handlePriceDataArrChange(arr)} priceDataArr={priceData} symbol={symbol} />
+        <PriceGraph handlePriceDataArrChange={(arr) => this.handlePriceDataArrChange(arr)} handlePriceOptionChange={(optionArr) => this.handlePriceOptionChange(optionArr)} priceDataArr={this.state.priceDataArr} symbol={symbol} />
 
         <h2>RSI (Relative Strength Index)</h2>
         <form>
@@ -79,7 +82,7 @@ class Livestock extends Component {
         <h2>Regression</h2>
         <RSI getRSI={(rsi) => this.getRSI(rsi)} />
         <ADX getADX={(adx) => this.getADX(adx)} />
-        <Counter rsi={this.state.rsi} adx={this.state.adx}/>
+        <Counter rsi={this.state.rsi} adx={this.state.adx} />
 
       </div>
     )
@@ -95,15 +98,24 @@ class Livestock extends Component {
     })
   }
 
+  clickMe () {
+    console.log(this)
+  }
+
   handlePriceDataArrChange (arr) {
     this.setState({
       priceDataArr: arr
     })
   }
 
+  handlePriceOptionChange (optionArr) {
+    this.setState({
+      priceOptionChange: optionArr
+    })
+  }
+
   handleSymbolChange (e) {
     this.setState({symbol: e.target.value})
-    console.log(this.state.priceDataArr)
   }
 
   handleRsiChange (e) {

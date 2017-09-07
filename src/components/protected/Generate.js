@@ -34,7 +34,6 @@ class Generate extends Component {
       var predictADX = xADX[0]
       var priceYTD = y[0]
 
-
       // finding Σy
       var sumY = y.reduce(
           (acc, cur) => acc + cur
@@ -91,7 +90,7 @@ class Generate extends Component {
       } else {
         prediction = 'Price will rise'
       }
-console.log(minus, 'minus');
+      console.log(minus, 'minus')
 
       // second =================================
       // finding Σx
@@ -144,18 +143,17 @@ console.log(minus, 'minus');
       } else {
         prediction2 = 'Price will rise'
       }
-      console.log(minus2, 'minus2');
+      console.log(minus2, 'minus2')
     }
 
     return (
-
 
       <div>
         <h3>RSI says: {prediction}</h3>
         <h3>ADX says: {prediction2}</h3>
         {/* <input placeholder='Enter historical price' name='hxprice'></input> */}
 
-        <br/><br/><br/><br/>
+        <br /><br /><br /><br />
       </div>
     )
   }
