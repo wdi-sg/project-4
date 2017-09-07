@@ -9,7 +9,7 @@
   <% if @event.event_image %>
   <%= image_tag @event.event_image %>
 <% else %>
-  <h1>hi</h1>
+  <%= image_tag 'http://i.imgur.com/hFjTK8K.png', size: "370x300" %>
   <% end %>
 
   <h3><%= @event.title %></h3>

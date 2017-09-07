@@ -1,17 +1,43 @@
-<h1>My Promos</h1>
+<div class="container center">
 
-<% if flash[:notice] %>
+  <h1>My Promos</h1>
+
+  <% if flash[:notice] %>
   <div class="notice"><%= flash[:notice] %></div>
-<% end %>
-
-<% @myadverts.each do |advert| %>
-<h3>Title: <%= advert.title %> </h3>
-  <% if advert.advert_image.length > 0 %>
-  <img src="<%= advert.advert_image %>" alt="Event Image">
   <% end %>
 
-  <br>
-  <h3>Description:<%= advert.description %><br></h3>
-  <%= link_to "Edit", edit_myadvert_path(advert), class: "btn btn-primary" %>
-  <%= link_to "Delete", myadvert_path(advert), method: :delete, class: "btn btn-primary" %>
-<% end %>
+  <% @myadverts.each do |advert| %>
+  <div class="card-group d-inline" style="width: 55rem;">
+
+    <div class="card d-inline-block">
+
+      <% if advert.advert_image.to_s == "" %>
+      <%= image_tag 'http://i.imgur.com/hFjTK8K.png', size: "370x300" %>
+    <% else %>
+      <%= image_tag advert.advert_image, size: "370x300" %>
+      <% end %>
+
+      <h3>Title:
+        <%= advert.title %>
+      </h3>
+
+      <% if !advert.description %>
+      <h4>
+        Description : No description</h4>
+      <% elsif (advert.description.split.size >= 5) %>
+      <h4>Description:<%= advert.description[/(\S+\s+){5}/].strip  %>...</h4>
+    <% else %>
+      <h4>
+        Description :
+        <%= advert.description %></h4>
+      <% end %>
+
+      <%= link_to "Edit", edit_myadvert_path(advert), class: "btn btn-primary" %>
+      <%= link_to "Delete", myadvert_path(advert), method: :delete, class: "btn btn-primary" %>
+
+    </div>
+  </div>
+
+  <% end %>
+
+</div>

@@ -4,13 +4,6 @@
     <div class="notice"><%= flash[:notice] %></div>
   <% end %>
 
-<!-- <p>Upload Event Image</p>
-  <div class="center">
-     <div class="input-field inline">
-       <img onclick="openEventWidget()" src="http://i.imgur.com/hFjTK8K.png" class="event_image">
-       <p>Click on image above to upload or change</p>
-     </div>
-   </div> -->
 
 <br><br>
   <%= form_for @new_event do |f| %>
@@ -59,16 +52,13 @@
 
   <div class="">
     <p><%= f.label :Description %>:</p>
-    <p><%= f.text_area :description, size: "100x15", required: true %></p>
+    <p><%= f.text_area :description, size: "100x5", required: true %></p>
   </div>
 
 <div class="">
-  <p>Event Image: </p>
-    <div class="center">
        <div class="input-field inline">
          <img onclick="openEventWidget()" src="http://i.imgur.com/hFjTK8K.png" class="event_image">
 
-       </div>
      </div>
 </div>
 
