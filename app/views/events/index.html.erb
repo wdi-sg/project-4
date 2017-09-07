@@ -20,11 +20,14 @@
 
   <h3> Title : <%= i.title %> </h3>
 
-  <% if (i.description.split.size > 5) %>
-  <h4> Description : <%= i.description[/(\S+\s+){5}/].strip %>... </h4>
-  <% else %>
-  <h4> Description : <%= i.description %> </h4>
-  <%end %>
+<% if !i.description %>
+<h4> Description : No description</h4>
+<% elsif (i.description.split.size >= 5) %>
+<h4> Description : <%= i.description[/(\S+\s+){5}/].strip %>... </h4>
+<% else %>
+<h4> Description : <%= i.description %></h4>
+
+<% end %>
 
   <p> Start : <%= i.event_start.strftime('%e %b %y, %l:%M %p') %> || End : <%= i.event_end.strftime('%e %b %y, %l:%M %p') %></p>
 
@@ -34,7 +37,9 @@
     <p> **FULLY BOOKED** </p>
   <% end %>
 
-
+  <% if current_user.isAdmin == true %>
+    <%= link_to "Delete", event_path(i), method: :delete, class: "btn btn-primary" %>
+    <% end %>
   <%= link_to "More details/ Book", event_path(i), class: "btn btn-primary" %>
 </div>
 </div>

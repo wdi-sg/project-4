@@ -50,12 +50,21 @@ class EventsController < ApplicationController
     end
     @new_reservation = Bookevent.new
     @current_booking = Bookevent.where("event_id = #{params[:id]}").sum(:no_pax)
+
   end
 
   def update
   end
 
   def destroy
+    # render json: params
+    event_to_delete = Event.find(params[:id])
+    bookings_to_delete = Bookevent.where(event_id: params[:id])
+    bookings_to_delete.each do |i|
+      i.destroy
+    end
+    event_to_delete.destroy
+    redirect_to events_path
   end
 
   private
