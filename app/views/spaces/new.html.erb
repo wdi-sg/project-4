@@ -8,29 +8,9 @@
 
 <%= form_for @space do |f| %>
   <%= f.select :space_type, options_for_select(["Office", "Desk", "Hotdesk"]) %>
-  <!-- <br>
-  <br>
-  <%#= f.label "User ID:" %>
-  <%#= f.number_field :user_id %>
-  <br>
-  <br> -->
-  <!-- <div class="row">
-    <div class='col-sm-6'>
-      <div class="form-group">
-        <%#= f.label :date_start %> :
-        <%#= f.text_field :date_start, id: 'bookRoomDateStart' %>
-      </div>
-    </div>
-  </div> -->
 
-  <!-- <div class="row">
-    <div class='col-sm-6'>
-      <div class="form-group">
-        <%#= f.label :date_end %> :
-        <%#= f.text_field :date_end, id: 'bookRoomDateEnd' %>
-      </div>
-    </div>
-  </div> -->
+<div class="field">
+  <%= f.submit "Create", class: "btn btn-primary" %>
 
-  <%= f.submit %>
-<% end %>
+</div>
+    <% end %>

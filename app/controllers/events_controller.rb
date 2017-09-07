@@ -41,6 +41,7 @@ class EventsController < ApplicationController
   end
 
   def edit
+    @current_event = Event.find(params[:id])
   end
 
   def show
@@ -50,12 +51,28 @@ class EventsController < ApplicationController
     end
     @new_reservation = Bookevent.new
     @current_booking = Bookevent.where("event_id = #{params[:id]}").sum(:no_pax)
+
   end
 
   def update
+    # render json: params
+    to_update = Event.find(params[:id])
+    new_details = params.require(:event).permit(:title,:description,:venue,:total_slots,:price_pax,:event_start,:event_end,:event_image)
+    to_update.update(new_details)
+    flash[:notice] ='Event details successfully changed'
+
+    redirect_to events_path
   end
 
   def destroy
+    # render json: params
+    event_to_delete = Event.find(params[:id])
+    bookings_to_delete = Bookevent.where(event_id: params[:id])
+    bookings_to_delete.each do |i|
+      i.destroy
+    end
+    event_to_delete.destroy
+    redirect_to events_path
   end
 
   private

@@ -1,7 +1,5 @@
 <h1>New MeetingRoom</h1>
 
-<div class="container">
-
   <% if flash[:notice] %>
     <div class="notice"><%= flash[:notice] %></div>
   <% end %>
@@ -36,8 +34,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Create" %>
+    <%= f.submit "Create", class: 'btn btn-primary' %>
   </div>
 
   <% end %>
-</div>
