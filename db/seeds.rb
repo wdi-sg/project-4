@@ -16,30 +16,35 @@ end
 
 Event.create({
   title: 'mmm',
-  event_start: '2017-09-05 18:30:00',
-  event_end: '2017-09-05 19:30:00'
+  event_start: '2018-09-05 18:30:00',
+  event_end: '2018-09-05 19:30:00',
+  total_slots: 100,
+  remaining_slots:100,
+
   })
 
   Event.create({
     title: 'Movie screening',
-    event_start: '2017-09-05 21:30:00',
-    event_end: '2017-09-05 23:30:00',
+    event_start: '2018-09-05 21:30:00',
+    event_end: '2018-09-05 23:30:00',
     total_slots: 100,
     remaining_slots: 100,
     event_image: 'https://res.cloudinary.com/ddanielnp/image/upload/c_scale,h_400/v1504690598/giftloop_events/yrihdqnftjvbxmqzqgtz.jpg',
     description: "Come kill some white walkers. Kill the Night King. Fly with Daenerys and her dragons to the North of the wall.",
-    price_pax: 10
+    price_pax: 10,
+    venue: 'SHAW building'
     })
 
     Event.create({
       title: "Where's Wally?",
-      event_start: '2017-09-10 18:30:00',
-      event_end: '2017-09-10 20:30:00',
+      event_start: '2018-09-10 18:30:00',
+      event_end: '2018-09-10 20:30:00',
       total_slots: 100,
       remaining_slots: 100,
-      event_image: 'https://res.cloudinary.com/ddanielnp/image/upload/c_scale,h_400/v1504690598/giftloop_events/yrihdqnftjvbxmqzqgtz.jpg',
+      event_image: 'http://res.cloudinary.com/ddanielnp/image/upload/v1504762937/giftloop_events/iuruyqv6nt7ucwwgv0bl.jpg',
       description: "Where's Wally?, published in the US as Where's Waldo?, is a British series of children's books created by the English illustrator Martin Handford.",
-      price_pax: 10
+      price_pax: 10,
+      venue: '8 Claymore Hill Spacemob'
       })
 
 User.create({
