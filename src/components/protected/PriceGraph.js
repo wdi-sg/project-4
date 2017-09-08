@@ -118,7 +118,7 @@ class PriceGraph extends Component {
           this.setState({
             priceDataArr: dataArr.reverse()
           })
-          this.handlePriceDataArrChange(dataArr.reverse())
+          this.handlePriceDataArrChange(dataArr)
           this.handlePriceOptionChange(optionArr)
         })
         .catch((err) => {
@@ -150,7 +150,7 @@ class PriceGraph extends Component {
         this.setState({
           priceDataArr: dataArr.reverse()
         })
-        this.handlePriceDataArrChange(dataArr.reverse())
+        this.handlePriceDataArrChange(dataArr)
       })
       .catch((err) => {
         console.log(err)
