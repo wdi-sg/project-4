@@ -1,0 +1,15 @@
+<h1>My transactions</h1>
+
+<% @reservations.each do |i| %>
+<ul>
+  <li>
+    Date :
+    <%= i.date_start %>
+
+    <div class="">
+      $<%= i.price %> paid for Meeting Room : <%= Meetingroom.find_by_id(i.meetingroom_id).room_title %>
+    </div>
+
+  </li>
+</ul>
+<% end %>

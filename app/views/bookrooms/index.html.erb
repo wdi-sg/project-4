@@ -1,0 +1,8 @@
+<h1>All meeting room bookings</h1>
+
+<% @bookings.each do |booking| %>
+<h5><%= booking.meetingroom.room_title %></h5>
+<h5><%= booking.slot %> at <%= booking.date_start %></h5>
+<h5>User: <%= booking.user.name %></h5>
+<br>
+<% end %>

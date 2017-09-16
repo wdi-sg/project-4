@@ -1,0 +1,64 @@
+<div class="container">
+
+  <h2>Event Details & Booking</h2>
+
+  <% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
+  <% if @event.event_image %>
+  <%= image_tag @event.event_image %>
+<% else %>
+  <%= image_tag 'http://i.imgur.com/hFjTK8K.png', size: "370x300" %>
+  <% end %>
+
+  <h3><%= @event.title %></h3>
+
+  <h4>Starts :
+    <%= @event.event_start.strftime('%e %b %y, %l:%M %p') %>
+    || Ends :
+    <%= @event.event_end.strftime('%e %b %y, %l:%M %p') %>
+  </h4>
+
+  <h4>Venue :
+    <%= @event.venue %></h4>
+
+  <h4>
+    <%= @event.remaining_slots %> tickets left /
+    <%= @event.total_slots %> tickets</h4>
+</h4>
+
+<% if @event.price_pax == 0 %>
+<h4>Price per ticket : FREE ADMISSION!</h4>
+<% else %>
+<h4>Price per ticket :
+  <%= @event.price_pax %></h4>
+<% end %>
+
+<div class="">
+  <h4>Description :</h4>
+  <h4><%= @event.description %></h4>
+</div>
+
+<% if @event.remaining_slots > 0 %>
+<div class="">
+  <h2>BOOK TICKETS</h2>
+  <%= form_for @new_reservation do |f| %>
+  <%= f.label :Number_tix %>
+  <%= f.number_field :no_pax, min: 1 %>
+  <%= f.hidden_field :event_id, value: @event.id %>
+
+  <div class="actions">
+    <br>
+    <%= f.submit "Book tickets", class: "btn btn-primary" %>
+  </div>
+
+  <% end %>
+</div>
+<% end %>
+
+<p>*Please note that all bookings are non- refundable.</p>
+
+
+
+</div>

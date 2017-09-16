@@ -1,0 +1,40 @@
+<h1>New MeetingRoom</h1>
+
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
+  <%= form_for @new_meeting do |f| %>
+
+  <div class="row">
+    <div class='col-sm-6'>
+      <div class="form-group">
+        <p><%= f.label :Room_name %>:</p>
+        <p><%= f.text_field :room_title, required: true %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class='col-sm-6'>
+      <div class="form-group">
+        <p><%= f.label :occupancy %>:</p>
+        <p><%= f.number_field :pax, required: true, min:0 %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class='col-sm-6'>
+      <div class="form-group">
+        <p><%= f.label :price_hour %>:</p>
+        <p><%= f.number_field :price_hr, required: true, min: 0 %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Create", class: 'btn btn-primary' %>
+  </div>
+
+  <% end %>

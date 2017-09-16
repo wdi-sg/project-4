@@ -1,0 +1,18 @@
+<h1>Promo details</h1>
+
+<% if @advert.advert_image.to_s != "" %>
+<%= image_tag @advert.advert_image %>
+<% else %>
+<%= image_tag 'http://i.imgur.com/hFjTK8K.png', size: "370x300" %>
+<% end %>
+
+<h2><%= @advert.title %></h2>
+
+<p><%= @advert.description %></p>
+
+<% if @edit_advert_by_id == current_user.id %>
+<div class="field">
+
+  <%= link_to "Edit Promo", edit_advert_path, class: "btn btn-primary"  %>
+</div>
+<% end %>

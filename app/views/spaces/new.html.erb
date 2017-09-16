@@ -1,0 +1,16 @@
+<h1>Create New Asset</h1>
+<!-- <h5><%#= flash[:member_error] %></h5>
+<h5><%#= flash[:date_error] %></h5>
+<%#= link_to "See All Assets", spaces_path %>
+<br> -->
+
+<!-- <em><h6>Minimum booking is 10 days</h6></em> -->
+
+<%= form_for @space do |f| %>
+  <%= f.select :space_type, options_for_select(["Office", "Desk", "Hotdesk"]) %>
+
+<div class="field">
+  <%= f.submit "Create", class: "btn btn-primary" %>
+
+</div>
+    <% end %>

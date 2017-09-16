@@ -1,0 +1,15 @@
+
+<h1>All users</h1>
+
+<% @users = User.all %>
+<% @users.each do |user| %>
+<ul>
+  <li>
+    User id: <%= user.id %> <br/>
+    Name : <%= user.name %><br/>
+    Email : <%= user.email %><br/>
+    Created : <%= user.created_at.localtime.strftime('%e %b %y, %l:%M %p') %><br/>
+  </li>
+
+</ul>
+<% end %>

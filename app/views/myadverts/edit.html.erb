@@ -1,0 +1,33 @@
+<h1>Edit My Promos</h1>
+<div class="container">
+
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
+<%= form_for @advert, :url => advert_path(@advert), :method => :put  do |f| %>
+<div class="field">
+
+  <div class="center">
+    <img class='advert_image' onclick="openEventWidgets()" src="http://i.imgur.com/hFjTK8K.png" data-toggle="tooltip" data-placement="right" title="Click to upload event image">
+  </div>
+
+  <h4><%= f.label :title %> :</h4>
+  <%= f.text_field :title, autofocus: true, required: true, class: "form-control"  %>
+</div>
+
+<div class="">
+  <h4><%= f.label :description %>:</h4>
+  <p><%= f.text_area :description,size: "100x5", required: true, class: "form-control" %> </p>
+</div>
+
+  <%= f.hidden_field :advert_image %>
+
+<div class="center">
+    <%= f.submit "Create", class: "btn btn-primary" %>
+</div>
+
+  <br>
+<% end %>
+
+</div>
