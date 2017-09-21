@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>QUIKDRAW</title>
+  <link href="https://fonts.googleapis.com/css?family=Baloo+Tammudu" rel="stylesheet">
+  <link rel="stylesheet" href="whiteboard.css">
+</head>
+<body>
+
+  <canvas class="whiteboard" ></canvas>
+
+  <div class = "sidebar">
+  </div>
+
+  <div class="usernameTimer">
+  </div>
+
+  <div class="colors">
+    <div class="color black"></div>
+    <div class="color red"></div>
+    <div class="color green"></div>
+    <div class="color blue"></div>
+    <div class="color yellow"></div>
+    <div class="color white"></div>
+    <!-- <div class="clearCanvas"></div> -->
+    <button class="clearCanvas"> clear all</button>
+  </div>
+
+  <div class="username">
+    <div class="form">
+      <h1 class="usernameTitle">Key in your username</h1>
+      <input type="text" class="usernameInput" maxlength="10" autofocus>
+    </div>
+  </div>
+
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <script src="whiteboard.js"></script>
+</body>
+</html>

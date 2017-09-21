@@ -1,0 +1,144 @@
+
+/**
+ * Fix user-agent
+ */
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * Canvas
+ */
+
+.whiteboard {
+  height: 100%;
+  width: 75%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+
+.sidebar {
+  height: 100%;
+  width: 25%;
+  background-color: lightgrey;
+  position: absolute;
+  right: 0;
+  text-align: center;
+}
+
+.usernameTimer {
+  height: 50%;
+  width: 25%;
+  background-color: lightgrey;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+}
+
+.colors {
+    width: 75%;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    border: black;
+    border-style: outset;
+    border-radius: 20px;
+}
+
+.color {
+    display: inline-block;
+    width: 10%;
+    height: 100%;
+    border-radius: 20px;
+    background-size: 100% 100%;
+
+}
+
+.color.black { background-color: black; }
+.color.red { background-color: red; }
+.color.green { background-color: green; }
+.color.blue { background-color: blue; }
+.color.yellow { background-color: yellow; }
+.color.white { background-image: url("eraser.png") }
+
+.clearCanvas {
+    height: 100%;
+    width: 10%;
+    background-color: black;
+    border-radius: 20px;
+    display: inline-block;
+    color: white;
+    font-size: 100%;
+    font-weight: bold;
+    font-family: cursive;
+}
+
+
+/*username*/
+.username{
+  background-color: black;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+}
+
+h1.usernameTitle {
+    font-size: 400%;
+    color: white;
+}
+
+input.usernameInput {
+    background-color: black;
+    caret-color: white;
+    outline: none;
+    border-color: black;
+    border-bottom-color: white;
+    color: white;
+    font-size: 300%;
+    text-align: center;
+}
+
+p {
+  font-family: 'Baloo Tammudu', cursive;
+  font-size: 120%;
+}
+
+h2 {
+  /*font-family: 'Baloo Tammudu', cursive;*/
+}
+
+.gameover {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    font-size: xx-large;
+}
+
+.disconnect {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: large;
+}
