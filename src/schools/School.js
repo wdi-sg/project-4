@@ -4,18 +4,19 @@ import ReviewForm from './ReviewForm'
 import Review from './Review'
 import { ref } from '../fire'
 import { school } from './schoolinfo'
-import building from '../images/goethe.jpg'
 
-export default class Goethe extends Component {
+export default class Schools extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      reviewsArr: []
+      reviewsArr: [],
+      name: this.props.match.params.name
     }
   }
 
   componentWillMount () {
-    var reviews = ref.child('reviews/goethe')
+    const { name } = this.state
+    var reviews = ref.child('reviews/' + name)
     reviews.on('child_added', (dataSnapshot) => {
       this.setState({
         reviewsArr: this.state.reviewsArr.concat(dataSnapshot.val())
@@ -28,21 +29,31 @@ export default class Goethe extends Component {
       return <Review detail={q} key={index} />
     })
 
+    const { name } = this.state
+    let building = null
+    switch (name) {
+      case 'goethe':
+        building = require('../images/goethe.jpg')
+        break
+      case 'inlingua':
+        building = require('../images/inlingua.jpg')
+        break
+    }
     return (
       <div>
-        <div className="row">
-          <div className="col-xs-0 col-md-2"></div>
-          <div className="col-xs-10 col-md-4">
+        <div className='row'>
+          <div className='col-xs-0 col-md-2'></div>
+          <div className='col-xs-10 col-md-4'>
             <br />
             <img src={building} alt='building' />
           </div>
-          <div className="col-xs-10 col-md-5">
-            <SchDescription info={school.goethe} />
+          <div className='col-xs-10 col-md-5'>
+            <SchDescription info={school[name]} />
           </div>
-          <div className="col-xs-0 col-md-1"></div>
+          <div className='col-xs-0 col-md-1'></div>
         </div>
 
-        <ReviewForm sch='goethe' languages={school.goethe.languages} />
+        <ReviewForm sch= {name} languages={school[name].languages} />
         { allReviews }
       </div>
     )

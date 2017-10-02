@@ -83,13 +83,13 @@ export default class ReviewForm extends Component {
               initialRate={this.state.rate}
               fractions={1}
               onClick={rate => this.handleRate(rate)}
-              empty={<img src={starEmpty} className="icon" alt='' />}
-              full={<img src={starFull} className="icon" alt='' />}
+              empty={<img src={starEmpty} className='icon' alt='' />}
+              full={<img src={starFull} className='icon' alt='' />}
             />
           </div>
           <div className='form-group'>
             <label>Review</label>
-            <textarea className="form-control" placeholder="What made you decide to study at this school? How was the learning experience? Was your teacher engaging? How hard was it to register for the next course? Any advice for others who are interested in taking up this course?" rows="4" ref={(review) => this.review = review} />
+            <textarea className="form-control" placeholder="Your review" rows="4" ref={(review) => this.review = review} />
           </div>
           <button type='submit' className='btn btn-primary'>Submit Review</button>
         </form>

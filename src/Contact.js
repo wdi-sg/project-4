@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { ref } from './fire'
-import Snackbar from 'material-ui/Snackbar'
+import { Alert } from 'react-bootstrap'
 
 function saveContact (name, email, subject, feedback) {
   return ref.child('contact/')
@@ -16,15 +16,16 @@ export default class Contact extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      open: false // to open the snackbar after submission
+      alertVisible: false
     }
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleAlertDismiss = this.handleAlertDismiss.bind(this)
   }
   handleSubmit (e) {
     e.preventDefault()
     saveContact(this.name.value, this.email.value, this.subject.value, this.feedback.value)
     this.setState({
-      open: true
+      alertVisible: true
     })
     // clear all the fields after submission
     this.name.value = ''
@@ -33,14 +34,20 @@ export default class Contact extends Component {
     this.feedback.value = ''
   }
 
-  // to manually close the snackbar
-  handleRequestClose (event) {
+  handleAlertDismiss (event) {
     this.setState({
-      open: false
+      alertVisible: false
     })
   }
 
   render () {
+    if (this.state.alertVisible) {
+      var submission =
+        <Alert bsStyle='success' onDismiss={this.handleAlertDismiss}>
+          <h4>Feedback submitted!</h4>
+        </Alert>
+    }
+
     return (
       <div>
         <form className='form' onSubmit={this.handleSubmit}>
@@ -59,7 +66,7 @@ export default class Contact extends Component {
           <div className='form-group'>
             <label>Subject</label>
             <select className="form-control" ref={(subject) => this.subject = subject} required >
-              <option value="" disabled hidden>Please Choose...</option>
+              <option value='' selected disabled>Please Choose...</option>
               <option> Add new school </option>
               <option> Update information on website </option>
               <option> Edit your review </option>
@@ -73,13 +80,10 @@ export default class Contact extends Component {
           </div>
           <button type='submit' className='btn btn-primary'>Submit</button>
         </form>
+        <br></br>
 
-        <Snackbar
-          open={this.state.open}
-          message='Feedback submitted'
-          autoHideDuration={4000}
-          onRequestClose={event => this.handleRequestClose(event)}
-        />
+        {submission}
+
       </div>
     )
   }

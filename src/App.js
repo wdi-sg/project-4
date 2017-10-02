@@ -14,7 +14,8 @@ import { firebaseAuth } from './fire'
 import {
   BrowserRouter as Router,
   Route, Redirect, Switch
-  } from 'react-router-dom'
+} from 'react-router-dom'
+import School from './schools/School'
 
 function PrivateRoute ({component: Component, authed, ...rest}) {
   return (
@@ -61,11 +62,10 @@ export default class App extends Component {
               <Route exact path='/' component={Home} />
               <Route path='/login' component={Login} />
               <Route path='/register' component={Register} />
-              <Route exact path='/contact' component={Contact} />
+              <Route path='/contact' component={Contact} />
               <Route path='/french' component={French} />
               <Route path='/german' component={German} />
-              <PrivateRoute authed={this.state.authed} path='/goethe' component={Goethe} />
-              <PrivateRoute authed={this.state.authed} path='/inlingua' component={Inlingua} />
+              <Route path='/:name' component={School} />
               <Route render={() => <h3>No Match</h3>} />
             </Switch>
           </div>

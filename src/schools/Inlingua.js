@@ -4,7 +4,7 @@ import ReviewForm from './ReviewForm'
 import Review from './Review'
 import { ref } from '../fire'
 import { school } from './schoolinfo'
-import building from '../images/BuildingInlingua.jpg'
+import building from '../images/inlingua.jpg'
 
 export default class Inlingua extends Component {
   constructor (props) {
