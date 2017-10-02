@@ -1,0 +1,104 @@
+/* styling for country squares in homepage */
+.country .image {
+  position: relative;
+}
+
+.country .subtitle {
+  font-family: 'Chewy', cursive;
+  text-align: center;
+  font-size: 3vw;
+}
+
+.country span{
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left: 0;
+  z-index: 1;
+}
+
+/* make all bootstrap columns the same height */
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+}
+.row > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
+
+/* styling for school cards in language page */
+.card {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 6px 0 rgba(0, 0, 0, 0.19);
+  padding: 15px 15px 20px 15px;
+  background-color: #FFFFFF;
+  display: block
+}
+.card-img-top {
+    width: 100%;
+}
+
+.card:hover {
+  background-color: #EDF6F6
+}
+.card span{
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left: 0;
+  z-index: 1;
+}
+
+/* background color for every page */
+.App {
+  background-color: #F4FBFB
+}
+
+h2 {
+  font-family: 'Chewy', cursive !important;
+  font-size: 4.5vw !important;
+}
+
+.form h3 {
+  font-family: 'Chewy', cursive;
+  font-size: 3vw;
+}
+
+.form {
+  width: 50%;
+  margin: 0 auto
+}
+
+/*aligning the image and text in the reviews list*/
+.right {
+  float: right !important;
+  margin: 0 auto;
+  padding: 15px 10px
+}
+
+@media (max-width: 575px) {
+  .subtitle .card-title .card-text {
+    font-size: 3vw !important;
+  }
+  .card {
+    padding: 15px 15px;
+  }
+  .navbar-brand {
+    height: 30px !important;
+    padding: 5px 5px !important;
+  }
+  .form {
+    width: inherit;
+  }
+  h2 {
+    font-size: 5vw !important;
+  }
+  .form h3 {
+    font-size: 4.5vw;
+  }
+ }

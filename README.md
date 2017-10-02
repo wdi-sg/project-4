@@ -1,65 +1,41 @@
-# Your Project Name
+# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) # General Assembly SG Web Development Immersive 11
+Project #4: **[LanGauge](https://langauge-wdi11.firebaseapp.com/)**
 
-This is the starter code for WDI projects. Please update this README file with information specific to your project. Replace this paragraph for instance, with a short description of your project. Then update the sections below. Refer to your project specificaion for instructions on how to submit your projects.
+## Description
 
-## Getting Started
+Singapore being an international and multicultural hub, there are many reasons why people would learn a foreign language. The question is, which school offers the right balance of learning experience, schedule and cost? This site aims to allow people who have studied in a language school to share their experiences with those who are looking to start their language journey.
 
-Provide instructions here about how to get your project running on our local machine. Do we just need to clone and open a certain file or do we need to install anything first.
+* Each language lists out which schools offer it
 
-### Prerequisites
+![Language Page]()
 
-What is needed to install and run the project, how do we install them
+* Each school page has description and reviews
 
-```
-Code example
-```
-
-### How to Use
-
-A step by step guide on how to install and use the project, for example if this is a game, how do we play it.
-
-
-```
-Code example
-```
-
-More steps...
-
-```
-until finished
-```
-
-
-## Tests
-
-Did you write automated tests? If so, how do we run them.
-
-
-```
-Code example
-```
-
-## Live Version
-
-Where is this deployed online (github pages, heroku etc), give us the link and any access details we need.
-
-## Built With
-
-What did you use to build it, list the technologies, plugins, gems, packages etc.
-
-* [jQuery](http://jquery.com/) - jQuery for example is something you likely used
+![School Page](https://i.imgur.com/O9VNLUm.png)
 
 ## Workflow
 
-Did you write user stories, draw wireframes, use task tracking, produce ERDs? Did you use source control, with regular commits? Include links to them here.
+![Wireframes](https://i.imgur.com/lLMYYrO.png)
 
-## Authors
+## Challenges faced
 
-Did you collaborate with others on this project, list them here
+* Making the grids of the front page responsive
+* 1. The columns are split into 4 but the height of the pictures do not scale. [The Solution](https://stackoverflow.com/questions/19695784/how-can-i-make-bootstrap-columns-all-the-same-height)
+* 2. Bootstrap does not scale typography in response to display size changes. [The Solution](https://stackoverflow.com/questions/14431411/pure-css-to-make-font-size-responsive-based-on-dynamic-amount-of-characters)
+* Material-UI ListItem doesn't support multiple secondaryTextLines
+* Adjusting the CSS to support every phone screen size
 
-* **John McClain** - *Responsible for keeping vests white* - [GithubUserName](https://github.com/GithubUserName)
+## Moving Forward
 
-## Acknowledgments
+* Populate the rest of the schools
+* Work on sending email to an email address
+* Further styling of the page
+* Add CSS Animations
 
-* Hat tip to anyone who's code was used, for example [this was a useful starting point for creating this template](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2).
-
+## Built With
+* [ReactJS](https://facebook.github.io/react/)
+* [Firebase](https://firebase.google.com/)
+* [Bootstrap CSS Framework](http://getbootstrap.com/)
+* [Material-UI](http://www.material-ui.com/)
+* [React-Rating](https://github.com/dreyescat/react-rating)
+* Adobe Photoshop
