@@ -20,7 +20,7 @@ const MapWithAMarker = compose(
   withGoogleMap
 )(props =>
   <GoogleMap
-    defaultZoom={12}
+    defaultZoom={14}
     center={{ lat: props.places.lat(), lng: props.places.lng() }}
   >
     {props.allPlaces.map(({ place_id, formatted_address, name, geometry: { location } }) =>
