@@ -1,7 +1,7 @@
 const Location = require('../models/location')
 
 exports.create = (req, res) => {
-  console.log(req);
+  console.log(req)
   Location.create({
     locationID: req.body.id,
     locationName: req.body.name,
@@ -10,9 +10,9 @@ exports.create = (req, res) => {
     longitude: req.body.longitude
   }, (err, location) => {
     if (err) {
-      console.log(err);
+      console.log(err)
     } else {
-      res.sendStatus(200);
+      res.sendStatus(200)
     }
   });
 };
@@ -20,9 +20,20 @@ exports.create = (req, res) => {
 exports.getAllForTrip = (req, res) => {
   Location.find({}).exec((err, location) => {
     if (err) {
-      console.log(err);
+      console.log(err)
     } else {
-      res.send(location);
+      res.send(location)
     }
-  });
+  })
+}
+
+exports.delete = (req, res) => {
+  let id = req.body.id // dummy
+  Location.remove({ locationID: id }, (err) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.sendStatus(200)
+    }
+  })
 }
