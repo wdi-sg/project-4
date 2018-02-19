@@ -48,8 +48,35 @@ class App extends Component {
     this.retrieveFromList();
   }
 
+  // Event creation Test
+
+  handleClick = (e) => {
+    console.log(e.target)
+  }
+
+  addToEvent = async (e, req) => {
+
+    // write to Express server
+    var params = {
+      location_id: e.target.id,
+      trip_id: req.params.id,
+      name: e.target.name
+    };
+    console.log(params);
+    // let response = await fetch('/event/new', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(params)
+    // });
+  };
+
+  // End of Event Creation Test
+
   render() {
-    let locationList = this.state.locationList.map(location => <p key={location.locationID}>{location.locationName}, {location.locationAddress} at {location.latitude}, {location.longitude}</p>)
+    let locationList = this.state.locationList.map(location => <p key={location.locationID} id={location.locationID} onClick={this.handleClick} name={location.locationName} >{location.locationName}, {location.locationAddress} at {location.latitude}, {location.longitude}</p>)
 
     return (
       <div className="App">
