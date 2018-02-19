@@ -48,8 +48,12 @@ class App extends Component {
     this.retrieveFromList();
   }
 
+  handleClick = (e) => {
+    console.log(e.target.id)
+  }
+
   render() {
-    let locationList = this.state.locationList.map(location => <p key={location.locationID}>{location.locationName}, {location.locationAddress} at {location.latitude}, {location.longitude}</p>)
+    let locationList = this.state.locationList.map(location => <p key={location.locationID} id={location.locationID} onClick={this.handleClick}>{location.locationName}, {location.locationAddress} at {location.latitude}, {location.longitude}</p>)
 
     return (
       <div className="App">
