@@ -12,10 +12,9 @@ router.get('*', homeController.fourZeroFour)
 
 
 //==================== Trip Control ====================
-router.get('/trip/new', tripController.new) // ???
 router.post('/trip/new', tripController.create) // create
 router.get('/trip/main', tripController.main) // read
-router.post('/trip/new', tripController.update) // update
+router.post('/trip/update', tripController.update) // update
 router.post('/trip/delete', tripController.delete)
 
 //==================== Location Control ====================
