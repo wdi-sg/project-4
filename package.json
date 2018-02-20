@@ -1,7 +1,6 @@
 {
-  "name": "tripcollab v2 (project 4)",
+  "name": "tripcollab-v2-project4",
   "main": "index.js",
-  "repository": {},
   "license": "MIT",
   "dependencies": {
     "concurrently": "^3.5.1"
