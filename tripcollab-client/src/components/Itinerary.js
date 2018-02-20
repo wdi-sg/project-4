@@ -18,7 +18,7 @@ import {
 import classnames from 'classnames';
 
 import DayTable from './DayTable';
-let days = 5;
+// let days = 5;
 export default class Itinerary extends React.Component {
   constructor(props) {
     super(props);
@@ -38,12 +38,16 @@ export default class Itinerary extends React.Component {
   }
 
 
+
+
   // Sets the active tab upon clicking
-  toggle(tab) {
+  toggle = async (tab) => {
     if (this.state.activeTab !== tab) {
-      this.setState({
+      await this.setState({
         activeTab: tab
       });
+      this.props.getActiveTab(tab)
+
     }
   }
 

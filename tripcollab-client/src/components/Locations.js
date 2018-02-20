@@ -9,6 +9,8 @@ import {
 
 class Locations extends Component {
 
+
+
   render() {
     console.log(this.props)
 
@@ -23,7 +25,7 @@ class Locations extends Component {
         {location.locationName}, {location.locationAddress} at {location.latitude}, {location.longitude}
       </td>
       <td>
-        <Button color="primary" size="sm">Add to Itinerary</Button>{' '}
+        <Button color="primary" size="sm" onClick={this.props.addToEvent}>Add to Itinerary</Button>{' '}
       </td>
       <td>
         <Button outline color="danger" size="sm">Remove Location</Button>{' '}

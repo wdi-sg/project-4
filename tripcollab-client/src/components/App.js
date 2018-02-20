@@ -24,7 +24,8 @@ class App extends Component {
     super();
     this.state = {
       locationList: [],
-      numberOfDays: [1]
+      numberOfDays: [1,2,3],
+      activeTab: 1
     };
   }
 
@@ -67,15 +68,21 @@ class App extends Component {
     this.retrieveFromList();
   }
 
+  getActiveTab = (data) => {
+    console.log(data)
+    this.setState({activeTab: data})
+  }
+
   // Event creation Test
 
   addToEvent = async (e, req) => {
 
     // write to Express server
     var params = {
-      location_id: e.target.parentNode.id
+      location_id: e.target.parentNode.parentNode.id,
       // trip_id: req.params.id,
-      // name: this.state.locationList[e.target]
+      // name: this.state.locationList[e.target],
+      date: this.state.activeTab
     };
     console.log(params);
     let response = await fetch('/event/new', {
@@ -149,6 +156,9 @@ getNumberOfDays = (props) => {
 
 
 
+
+
+
   render() {
     return (
       <div  >
@@ -164,12 +174,12 @@ getNumberOfDays = (props) => {
             </Col>
             <Col className="col-5">
               <Dates getNumberOfDays={this.getNumberOfDays}/>
-              <Locations locations={this.state.locationList}/>
+              <Locations locations={this.state.locationList} addToEvent={this.addToEvent}/>
             </Col>
           </Row>
           <Row className="mt-5">
             <Col>
-              <Itinerary numberOfDays={this.state.numberOfDays}/>
+              <Itinerary numberOfDays={this.state.numberOfDays} getActiveTab={this.getActiveTab}/>
             </Col>
           </Row>
         </Container>
