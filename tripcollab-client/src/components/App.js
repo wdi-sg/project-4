@@ -23,7 +23,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      locationList: []
+      locationList: [],
+      numberOfDays: [1]
     };
   }
 
@@ -137,6 +138,17 @@ class App extends Component {
 
   // End of Test Code
 
+
+// get the number of days from dates
+
+getNumberOfDays = (props) => {
+  let days = Array(props).fill().map((_,i) => i + 1)
+  console.log("days", days)
+  this.setState({numberOfDays: days})
+}
+
+
+
   render() {
     return (
       <div  >
@@ -151,13 +163,13 @@ class App extends Component {
               <PlacesWithStandaloneSearchBox onAdd={this.addToList}/>
             </Col>
             <Col className="col-5">
-              <Dates/>
+              <Dates getNumberOfDays={this.getNumberOfDays}/>
               <Locations locations={this.state.locationList}/>
             </Col>
           </Row>
           <Row className="mt-5">
             <Col>
-              <Itinerary/>
+              <Itinerary numberOfDays={this.state.numberOfDays}/>
             </Col>
           </Row>
         </Container>

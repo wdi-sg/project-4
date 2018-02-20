@@ -18,9 +18,7 @@ import {
 import classnames from 'classnames';
 
 import DayTable from './DayTable';
-
 let days = 5;
-
 export default class Itinerary extends React.Component {
   constructor(props) {
     super(props);
@@ -28,9 +26,17 @@ export default class Itinerary extends React.Component {
     this.toggle = this.toggle.bind(this);
     this.state = {
       activeTab: 1,
-      days: Array(days).fill().map((_,i) => i + 1)
+      days: [1]
     };
   }
+
+  componentWillReceiveProps(nextProps) {
+    // You don't have to do this check first, but it can help prevent an unneeded render
+    if (nextProps.numberOfDays !== this.state.numberOfDays) {
+      this.setState({ days: nextProps.numberOfDays });
+    }
+  }
+
 
   // Sets the active tab upon clicking
   toggle(tab) {
@@ -72,7 +78,6 @@ export default class Itinerary extends React.Component {
 
     // Generates tabs for every day in the trip
     const dayTabs = this.state.days.map(day => <DayTab key={`day-tab-${day}`} activeTab={this.state.activeTab} tabId={day}/>)
-
     // Generates tab panes for every day in the trip
     const dayPanes = this.state.days.map(day => <DayPane key={`day-pane-${day}`} tabId={day}/>)
 

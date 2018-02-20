@@ -52,3 +52,8 @@
 .subtitle{
   font-size: 12px;
 }
+
+.locationDiv {
+  overflow-y: scroll;
+  height: 250px;
+}
