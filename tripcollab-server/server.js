@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const dbConfig = require('./config/dbConfig')
 const routes = require('./routes/routes')
 
-const port = 3001
+const port = process.env.PORT || 3001
 const app = express()
 
 mongoose.Promise = global.Promise

@@ -1,0 +1,15 @@
+{
+  "name": "tripcollab v2 (project 4)",
+  "main": "index.js",
+  "repository": {},
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^3.5.1"
+  },
+  "scripts": {
+    "build": "concurrently \"cd tripcollab-client && yarn build\" \"cd tripcollab-server && yarn build\"",
+    "install": "(cd tripcollab-client && yarn) && (cd tripcollab-server && yarn)",
+    "start": "concurrently \"cd tripcollab-client && PORT=3000 yarn start\" \"cd tripcollab-server && PORT=3001 yarn start\"",
+    "start:prod": "cd tripcollab-server && yarn start:prod"
+  }
+}
