@@ -15,13 +15,13 @@ router.get('/trip/view/:id', tripController.view) // read
 //==================== Location Control ====================
 router.post('/location/new', locationController.create) // create
 router.get('/location/getAllForTrip', locationController.getAllForTrip) // read
-router.post('/location/delete', locationController.delete)
+router.delete('/location/delete', locationController.delete)
 
 //==================== Event Control ====================
-// router.post('/event/new', eventController.create) // create
-// router.get('/event/view', eventController.view) // read
-// router.post('/event/new', eventController.update) // update
-// router.post('/event/delete', eventController.delete) // delete
+router.post('/event/new', eventController.create) // create
+router.get('/event/view', eventController.view) // read
+router.put('/event/update/:id', eventController.update) // update
+router.delete('/event/delete/:id', eventController.delete) // delete
 
 //==================== 404 ====================
 router.get('*', homeController.fourZeroFour)
