@@ -10,7 +10,7 @@ const app = express()
 
 mongoose.Promise = global.Promise
 mongoose.connect(dbConfig.urlLive, {
-  useMongoClient: true
+  // options empty on purpose
 }).then(() => {
   console.log("----Mongoose ok----")
 }, (err) => {

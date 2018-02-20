@@ -21,3 +21,8 @@ exports.view = (req,res) => {
   console.log(req.params.id)
   res.send(req.params.id)
 }
+
+exports.update = (req,res) => {
+  console.log(req.params.id)
+  res.send(req.params.id)
+}
