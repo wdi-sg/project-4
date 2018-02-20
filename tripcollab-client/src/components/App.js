@@ -141,8 +141,8 @@ class App extends Component {
     return (
       <div  >
         <Col className="header">
-          <img src={logo} class="logo"/>
-          <div class="title">TripCollab</div>
+          <img src={logo} className="logo"/>
+          <div className="title">TripCollab</div>
         </Col>
 
         <Container>

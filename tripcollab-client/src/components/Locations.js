@@ -14,38 +14,29 @@ class Locations extends Component {
 
     let locationAll = this.props.locations
 
-    let locationList = locationAll.map((location, i) => <p key={location.locationID} id={location._id} index={i} name={location.locationName} >{location.locationName}, {location.locationAddress} at {location.latitude}, {location.longitude}</p>)
+    let locationList = locationAll.map((location, i) => <tr
+      key={location.locationID}
+      id={location._id}
+      index={i}
+      name={location.locationName} >
+      <td>
+        {location.locationName}, {location.locationAddress} at {location.latitude}, {location.longitude}
+      </td>
+      <td>
+        <Button color="primary" size="sm">Add to Itinerary</Button>{' '}
+      </td>
+      <td>
+        <Button outline color="danger" size="sm">Remove Location</Button>{' '}
+      </td>
+    </tr>)
 
     return (
       <div className="locationDiv">
         <div className="locationHeader">Locations</div>
         <Table responsive>
           <tbody>
-            <tr>
-              <td>
-                Location Name
-                {/* { locationName } */}
-              </td>
-              <td>
-                <Button color="primary" size="sm">Add to Itinerary</Button>{' '}
-              </td>
-              <td>
-                <Button outline color="danger" size="sm">Remove Location</Button>{' '}
-              </td>
-            </tr>
 
-            <tr>
-              <td>
-                Location Name
-                { locationList }
-              </td>
-              <td>
-                <Button color="primary" size="sm">Add to Itinerary</Button>{' '}
-              </td>
-              <td>
-                <Button outline color="danger" size="sm">Remove Location</Button>{' '}
-              </td>
-            </tr>
+            { locationList }
 
           </tbody>
         </Table>

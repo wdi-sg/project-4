@@ -13,7 +13,7 @@ class Dates extends Component {
   render() {
     return (
       <div>
-        <div class="dates">
+        <div className="dates">
           <FormGroup>
             <Label for="startDate">Start Date</Label>
             <Input type="date" name="startDate" id="startDate" placeholder="Start Date" />
