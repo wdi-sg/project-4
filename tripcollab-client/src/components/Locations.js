@@ -4,6 +4,7 @@ import {
   Row,
   Col,
   Table,
+  Button,
 } from 'reactstrap';
 
 class Locations extends Component {
@@ -16,23 +17,36 @@ class Locations extends Component {
     let locationList = locationAll.map((location, i) => <p key={location.locationID} id={location._id} index={i} name={location.locationName} >{location.locationName}, {location.locationAddress} at {location.latitude}, {location.longitude}</p>)
 
     return (
-      <div>
+      <div className="locationDiv">
+        <div className="locationHeader">Locations</div>
         <Table responsive>
-          <thead>
-            <tr>
-              <th></th>
-              <th>
-                Location Name
-              </th>
-            </tr>
-          </thead>
           <tbody>
             <tr>
               <td>
-                {/* Dummy text */}
-                { locationList }
+                Location Name
+                {/* { locationName } */}
+              </td>
+              <td>
+                <Button color="primary" size="sm">Add to Itinerary</Button>{' '}
+              </td>
+              <td>
+                <Button outline color="danger" size="sm">Remove Location</Button>{' '}
               </td>
             </tr>
+
+            <tr>
+              <td>
+                Location Name
+                { locationList }
+              </td>
+              <td>
+                <Button color="primary" size="sm">Add to Itinerary</Button>{' '}
+              </td>
+              <td>
+                <Button outline color="danger" size="sm">Remove Location</Button>{' '}
+              </td>
+            </tr>
+
           </tbody>
         </Table>
       </div>

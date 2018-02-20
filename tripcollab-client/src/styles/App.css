@@ -26,3 +26,29 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.locationHeader{
+  font-weight: bold;
+  text-align: center;
+}
+
+
+
+.header{
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+}
+
+.logo{
+  width:50px;
+  height: auto;
+}
+
+.title{
+  font-size: 24px;
+}
+
+.subtitle{
+  font-size: 12px;
+}

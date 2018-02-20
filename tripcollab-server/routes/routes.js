@@ -2,18 +2,13 @@ const express = require('express');
 const router = express.Router();
 
 const tripController = require('../controllers/tripController')
-const eventController = require('../controllers/eventController')
+// const eventController = require('../controllers/eventController')
 const locationController = require('../controllers/locationController')
 const homeController = require('../controllers/homeController')
 
-//==================== index ====================
-router.get('/', homeController.index)
-// router.get('*', homeController.fourZeroFour)
-
-
 //==================== Trip Control ====================
 router.post('/trip/new', tripController.create) // create
-// router.get('/trip/main', tripController.main) // read
+router.get('/trip/view/:id', tripController.view) // read
 // router.post('/trip/update', tripController.update) // update
 // router.post('/trip/delete', tripController.delete)
 
@@ -29,8 +24,6 @@ router.put('/event/update/:id', eventController.update) // update
 router.delete('/event/delete/:id', eventController.delete) // delete
 
 //==================== 404 ====================
-// router.get('*', authController.fourZeroFour)
+router.get('*', homeController.fourZeroFour)
 
-
-
-module.exports = router;
+module.exports = router
