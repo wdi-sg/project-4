@@ -50,10 +50,6 @@ class App extends Component {
 
   // Event creation Test
 
-  handleClick = (e) => {
-    console.log(e.target.parentNode)
-  }
-
   addToEvent = async (e, req) => {
 
     // write to Express server

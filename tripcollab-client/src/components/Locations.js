@@ -9,6 +9,12 @@ import {
 class Locations extends Component {
 
   render() {
+    console.log(this.props)
+
+    let locationAll = this.props.locations
+
+    let locationList = locationAll.map((location, i) => <p key={location.locationID} id={location._id} index={i} name={location.locationName} >{location.locationName}, {location.locationAddress} at {location.latitude}, {location.longitude}</p>)
+
     return (
       <div>
         <Table responsive>
@@ -23,8 +29,8 @@ class Locations extends Component {
           <tbody>
             <tr>
               <td>
-                Dummy text
-                {/* { locationName } */}
+                {/* Dummy text */}
+                { locationList }
               </td>
             </tr>
           </tbody>
