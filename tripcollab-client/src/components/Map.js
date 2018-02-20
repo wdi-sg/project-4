@@ -39,7 +39,7 @@ const MapWithAMarker = compose(
           <InfoWindow>
             <div>
               <h2>{props.allPlaces[length - 1].name}</h2>
-              <Button color="primary">Add</Button>
+              <Button color="primary" onClick={() => props.onAdd(props.allPlaces[length - 1])}>Add</Button>
             </div>
           </InfoWindow>
         </Marker>)
