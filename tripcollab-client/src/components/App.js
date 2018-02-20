@@ -20,7 +20,7 @@ import logo from '../icon.png'
 class App extends Component {
   render() {
     return (
-      <div  >
+      <div>
         <Col className="header">
           <img src={logo} class="logo"/>
           <div class="title">TripCollab</div>
