@@ -1,7 +1,6 @@
 const Trip = require('../models/trip')
-const Hashids = require('hashids')
-const hashids = new Hashids()
-
+// const Hashids = require('hashids')
+// const hashids = new Hashids()
 
 exports.create = (req,res) => {
   Trip.create({
@@ -16,4 +15,9 @@ exports.create = (req,res) => {
       res.send(trip.id)
     }
   })
+}
+
+exports.view = (req,res) => {
+  console.log(req.params.id)
+  res.send(req.params.id)
 }

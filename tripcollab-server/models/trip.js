@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const Hashids = require('hashids')
 
 const tripSchema = new Schema ({
   dateFrom : {
