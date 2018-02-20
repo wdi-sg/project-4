@@ -3,7 +3,8 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "concurrently": "^3.5.1"
+    "concurrently": "^3.5.1",
+    "dotenv": "^5.0.0"
   },
   "scripts": {
     "build": "concurrently \"cd tripcollab-client && yarn build\" \"cd tripcollab-server && yarn build\"",

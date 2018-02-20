@@ -1,3 +1,4 @@
+require('dotenv').config({path: '../secrets.env'}) // For env file
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
@@ -30,5 +31,5 @@ app.use(function(req, res, next) {
 app.use('/', routes)
 
 app.listen(port, () => {
-  console.log(`----Express Server Started----`)
+  console.log('----Express Server Started on Port ' + port + '----')
 })
