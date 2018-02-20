@@ -2,7 +2,7 @@ require('dotenv').config({path: '../secrets.env'}) // For env file
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
-
+const path = require('path')
 const dbConfig = require('./config/dbConfig')
 const routes = require('./routes/routes')
 
@@ -21,6 +21,12 @@ mongoose.connect(dbConfig.urlLive, {
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
+// Serve static files for production
+const staticFiles = express.static(path.join(__dirname, '../tripcollab-client/build'))
+
+// Pass the static files from react to the express
+app.use(staticFiles)
+
 // allow CORS
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*")
@@ -29,6 +35,7 @@ app.use(function(req, res, next) {
 })
 
 app.use('/', routes)
+app.use('/*', staticFiles)
 
 app.listen(port, () => {
   console.log('----Express Server Started on Port ' + port + '----')
