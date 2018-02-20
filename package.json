@@ -10,6 +10,7 @@
     "build": "concurrently \"cd tripcollab-client && yarn build\" \"cd tripcollab-server && yarn build\"",
     "install": "(cd tripcollab-client && yarn) && (cd tripcollab-server && yarn)",
     "start": "concurrently \"cd tripcollab-client && PORT=3000 yarn start\" \"cd tripcollab-server && PORT=3001 yarn start\"",
-    "start:prod": "cd tripcollab-server && yarn start:prod"
+    "start:prod": "cd tripcollab-server && yarn start:prod",
+    "heroku-postbuild": "yarn build"
   }
 }
