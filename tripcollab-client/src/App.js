@@ -51,33 +51,79 @@ class App extends Component {
   // Event creation Test
 
   handleClick = (e) => {
-    console.log(e.target)
+    console.log(e.target.parentNode)
   }
 
   addToEvent = async (e, req) => {
 
     // write to Express server
     var params = {
-      location_id: e.target.id,
-      trip_id: req.params.id,
-      name: e.target.name
+      location_id: e.target.parentNode.id
+      // trip_id: req.params.id,
+      // name: this.state.locationList[e.target]
     };
     console.log(params);
-    // let response = await fetch('/event/new', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(params)
-    // });
+    let response = await fetch('/event/new', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(params)
+    });
   };
 
   // End of Event Creation Test
 
-  render() {
-    let locationList = this.state.locationList.map(location => <p key={location.locationID} id={location.locationID} onClick={this.handleClick} name={location.locationName} >{location.locationName}, {location.locationAddress} at {location.latitude}, {location.longitude}</p>)
+  // Update Event Test
+  updateEvent = async (e, req) => {
 
+    // write to Express server
+    var params = {
+      // eventID: e.target.parentNode.id,
+      description: 'Testing123',
+      // Mock data to represent event ID
+      id: '5a8bcdd420581688a8dcf1bf'
+      // locationID: '5a8b8f5ec4e9267e17d6a63c'
+      // trip_id: req.params.id,
+      // name: this.state.locationList[e.target]
+    };
+    // console.log(e.target.parentNode)
+    console.log(params);
+    let response = await fetch(`/event/update/${params.id}`, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(params)
+    });
+  };
+  // End of Update Event Test
+
+  // Delete Event Test
+  deleteEvent = async (e, req) => {
+
+    // write to Express server
+    var params = {
+      // Mock data to represent event ID
+      id: '5a8be2f709de0d8cbd9d2ece'
+    };
+    // console.log(e.target.parentNode)
+    console.log(params);
+    let response = await fetch(`/event/delete/${params.id}`, {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(params)
+    });
+  };
+  // End of Delete Event Test
+  render() {
+    let locationList = this.state.locationList.map((location, i) => <p key={location.locationID} id={location._id} index={i} name={location.locationName} >{location.locationName}, {location.locationAddress} at {location.latitude}, {location.longitude} <button onClick={this.addToEvent}>Create</button><button onClick={this.updateEvent}>Update</button><button onClick={this.deleteEvent}>Delete</button></p>)
+    console.log(locationList)
     return (
       <div className="App">
         {/* <header className="App-header">

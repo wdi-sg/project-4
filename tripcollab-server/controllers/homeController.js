@@ -1,5 +1,5 @@
 exports.index = (req, res) => {
-  res.redirect('/')
+  res.send('/')
 }
 
 exports.fourZeroFour = (req, res) => {
