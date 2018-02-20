@@ -4,29 +4,44 @@ import {
   Row,
   Col,
   Table,
+  Button,
 } from 'reactstrap';
+import 
 
 class Locations extends Component {
 
   render() {
     return (
-      <div>
+      <div className="locationDiv">
+        <div className="locationHeader">Locations</div>
         <Table responsive>
-          <thead>
-            <tr>
-              <th></th>
-              <th>
-                Location Name
-              </th>
-            </tr>
-          </thead>
           <tbody>
             <tr>
               <td>
-                Dummy text
+                Location Name
                 {/* { locationName } */}
               </td>
+              <td>
+                <Button color="primary" size="sm">Add to Itinerary</Button>{' '}
+              </td>
+              <td>
+                <Button outline color="danger" size="sm">Remove Location</Button>{' '}
+              </td>
             </tr>
+
+            <tr>
+              <td>
+                Location Name
+                {/* { locationName } */}
+              </td>
+              <td>
+                <Button color="primary" size="sm">Add to Itinerary</Button>{' '}
+              </td>
+              <td>
+                <Button outline color="danger" size="sm">Remove Location</Button>{' '}
+              </td>
+            </tr>
+
           </tbody>
         </Table>
       </div>
