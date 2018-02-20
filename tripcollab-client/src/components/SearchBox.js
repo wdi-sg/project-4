@@ -55,21 +55,27 @@ const PlacesWithStandaloneSearchBox = compose(
           placeholder="Search Google Maps"
           style={{
             boxSizing: `border-box`,
-            border: `1px solid transparent`,
-            width: `240px`,
+            borderTop: `1px solid #ced4da`,
+            borderRight: `1px solid #ced4da`,
+            borderLeft: `1px solid #ced4da`,
+            borderBottom: `none`,
+            width: `100%`,
             height: `32px`,
             padding: `0 12px`,
-            borderRadius: `3px`,
-            boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+            borderTopLeftRadius: `3px`,
+            borderTopRightRadius: `3px`,
             fontSize: `14px`,
-            outline: `none`,
             textOverflow: `ellipses`
+            // border: `1px  solid`,
+            // border: `1px solid transparent`,
+            // boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+            // outline: `none`,
           }}
         />
       </StandaloneSearchBox>
+      {/* <Button color="primary" onClick={() => props.onAdd(props.allPlaces[props.allPlaces.length - 1])}>Add Searched Location to List</Button> */}
 
       <MapWithAMarker places={props.places} allPlaces={props.allPlaces} />
-      <Button color="primary" onClick={() => props.onAdd(props.allPlaces[props.allPlaces.length - 1])}>Add Searched Location to List</Button>
     </div>
   )
 });
