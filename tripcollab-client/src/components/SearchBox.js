@@ -41,7 +41,7 @@ const PlacesWithStandaloneSearchBox = compose(
   }),
   withScriptjs
 )(props => {
-  console.log(props);
+  console.log(props)
   return (
     <div data-standalone-searchbox="">
       <StandaloneSearchBox
@@ -75,7 +75,7 @@ const PlacesWithStandaloneSearchBox = compose(
       </StandaloneSearchBox>
       {/* <Button color="primary" onClick={() => props.onAdd(props.allPlaces[props.allPlaces.length - 1])}>Add Searched Location to List</Button> */}
 
-      <MapWithAMarker places={props.places} allPlaces={props.allPlaces} />
+      <MapWithAMarker places={props.places} allPlaces={props.allPlaces} onAdd={props.onAdd}/>
     </div>
   )
 });

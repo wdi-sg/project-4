@@ -16,6 +16,21 @@ import PlacesWithStandaloneSearchBox from './SearchBox';
 // import Alternative from './Alternative'
 
 class App extends Component {
+  addToList = (place) => {
+    console.log(place)
+    let { id, name, formatted_address, geometry } = place
+    console.log(geometry)
+    // let response = await fetch('/location/new', {
+    //
+    //   method: 'POST',
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify()
+    // )
+  }
+
   render() {
     return (
       <div>
