@@ -6,7 +6,6 @@ import {
   Table,
   Button,
 } from 'reactstrap';
-import 
 
 class Locations extends Component {
 
