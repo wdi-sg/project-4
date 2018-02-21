@@ -31,6 +31,7 @@ export default class Itinerary extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log("What is the nextProps", nextProps);
     // You don't have to do this check first, but it can help prevent an unneeded render
     if (nextProps.numberOfDays !== this.state.numberOfDays) {
       this.setState({ days: nextProps.numberOfDays });
@@ -41,13 +42,14 @@ export default class Itinerary extends React.Component {
 
 
   // Sets the active tab upon clicking
-  toggle = async (tab) => {
-    if (this.state.activeTab !== tab) {
-      await this.setState({
-        activeTab: tab
-      });
+  toggle = (tab) => {
+    if (this.props.activeTab !== tab) {
+      // await this.setState({
+      //   activeTab: tab
+      // });
+      console.log("This is the props activeTab", this.props.activeTab, tab);
+      // setting the state of activeTab at App.js
       this.props.getActiveTab(tab)
-
     }
   }
 
@@ -81,7 +83,7 @@ export default class Itinerary extends React.Component {
     }
 
     // Generates tabs for every day in the trip
-    const dayTabs = this.state.days.map(day => <DayTab key={`day-tab-${day}`} activeTab={this.state.activeTab} tabId={day}/>)
+    const dayTabs = this.state.days.map(day => <DayTab key={`day-tab-${day}`} activeTab={this.props.activeTab} tabId={day}/>)
     // Generates tab panes for every day in the trip
     const dayPanes = this.state.days.map(day => <DayPane key={`day-pane-${day}`} tabId={day}/>)
 
@@ -94,7 +96,7 @@ export default class Itinerary extends React.Component {
             </Nav>
           </CardHeader>
           <CardBody>
-            <TabContent activeTab={this.state.activeTab}>
+            <TabContent activeTab={this.props.activeTab}>
               {dayPanes}
             </TabContent>
           </CardBody>

@@ -24,13 +24,14 @@ class App extends Component {
     super();
     this.state = {
       locationList: [],
-      numberOfDays: [1,2,3],
-      activeTab: 1
+      numberOfDays: [1],
+      activeTab: 1,
+      itineraryList: []
     };
   }
 
   // Test Code
-
+  // adding location to list
   addToList = async ({ place_id, formatted_address, name, geometry: { location } }) => {
     // display on React client
     var node = document.createElement("LI");
@@ -57,6 +58,16 @@ class App extends Component {
     });
   };
 
+  // fetching from db the itineray list
+  getItineraryList = async () => {
+      const response = await fetch('/event/view');
+      const body = await response.json();
+      if (response.status !== 200) throw Error(body.message);
+      console.log("This is my itinerry list", body)
+      this.setState({ itineraryList: body });
+    }
+
+  // fetching from db the location list
   retrieveFromList = async () => {
     const response = await fetch('/location/getAllForTrip');
     const body = await response.json();
@@ -69,7 +80,7 @@ class App extends Component {
   }
 
   getActiveTab = (data) => {
-    console.log(data)
+    console.log("This is the tab data",data)
     this.setState({activeTab: data})
   }
 
@@ -93,6 +104,8 @@ class App extends Component {
       },
       body: JSON.stringify(params)
     });
+    this.getItineraryList()
+
   };
 
   // End of Event Creation Test
@@ -155,10 +168,6 @@ getNumberOfDays = (props) => {
 }
 
 
-
-
-
-
   render() {
     return (
       <div  >
@@ -179,7 +188,7 @@ getNumberOfDays = (props) => {
           </Row>
           <Row className="mt-5">
             <Col>
-              <Itinerary numberOfDays={this.state.numberOfDays} getActiveTab={this.getActiveTab}/>
+              <Itinerary numberOfDays={this.state.numberOfDays} getActiveTab={this.getActiveTab} activeTab={this.state.activeTab} itineraryList={this.state.itineraryList}/>
             </Col>
           </Row>
         </Container>

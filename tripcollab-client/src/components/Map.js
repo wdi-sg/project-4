@@ -10,13 +10,13 @@ const MapWithAMarker = compose(
     containerElement: <div style={{ height: `400px` }} />,
     mapElement: <div style={{ height: `100%` }} />
   }),
-  // withStateHandlers(() => ({
-  //   isOpen: false
-  // }), {
-  //   onToggleOpen: ({ isOpen }) => () => ({
-  //     isOpen: !isOpen
-  //   })
-  // }),
+  withStateHandlers(() => ({
+    isOpen: true
+  }), {
+    onToggleOpen: ({ isOpen }) => () => ({
+      isOpen: !isOpen
+    })
+  }),
   withScriptjs,
   withGoogleMap
 )(props => {
@@ -36,12 +36,12 @@ const MapWithAMarker = compose(
         (<Marker
           position={{ lat: props.places.lat(), lng: props.places.lng() }}
           onClick={props.onToggleOpen}>
-          <InfoWindow>
+          {props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}>
             <div>
               <h2>{props.allPlaces[length - 1].name}</h2>
               <Button color="primary">Add</Button>
             </div>
-          </InfoWindow>
+          </InfoWindow>}
         </Marker>)
       }
     </GoogleMap>
