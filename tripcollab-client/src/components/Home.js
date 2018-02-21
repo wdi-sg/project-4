@@ -9,7 +9,7 @@ import {
   Input,
   InputGroupAddon
 } from 'reactstrap';
-import '../styles/App.css';
+import '../styles/Home.css';
 
 
 class Home extends Component {
