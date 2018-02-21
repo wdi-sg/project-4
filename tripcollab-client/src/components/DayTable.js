@@ -16,11 +16,14 @@ export default class DayTable extends React.Component {
   render() {
 
     let currentDayEvents = this.props.events
+    // console.log(this.props.events)
     let displayEvents = currentDayEvents.map((event, i) =>
+    // console.log(event.locationID)
       <tr key={event._id}>
         <td className="px-2">{i+1}</td>
-        <td className="px-2"><input className="form-control" type="time" value={event.time} ref={i*10} /></td>
-        <td>{event.locationID}</td>
+        <td className="px-2"><input className="form-control" type="time" defaultValue={event.time} ref={i*10} /></td>
+        <td>{event.locationID.locationName}</td>
+        {/* {console.log("Hello event", event)} */}
         <td>{event.address}</td>
         <td><input type="text" defaultValue={event.description} ref={i+1} /></td>
         <td><button
@@ -31,9 +34,13 @@ export default class DayTable extends React.Component {
           })}>
           Update
         </button></td>
-        <td><button>Delete</button></td>
+        <td><button
+          onClick={() => this.props.onMinus(event._id)}>
+          Delete
+        </button></td>
       </tr>
     )
+    // console.log(displayEvents)
     return (
       <TabPane tabId="1">
         <Row>

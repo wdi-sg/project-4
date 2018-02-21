@@ -1,4 +1,4 @@
-require('dotenv').config({path: '../secrets.env'}) // For env file
+// require('dotenv').config({path: '../secrets.env'}) // For env file
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')

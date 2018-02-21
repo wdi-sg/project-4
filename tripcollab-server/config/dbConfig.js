@@ -1,3 +1,3 @@
 module.exports = {
-  "urlLive": "mongodb://"+process.env.DB_USER+":"+process.env.DB_PASS+"@"+process.env.DB_HOST
+  "urlLive": "mongodb://tripcollab:tripcollab@ds239128.mlab.com:39128/project-4"
 }
