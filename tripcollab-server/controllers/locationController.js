@@ -12,7 +12,13 @@ exports.create = (req, res) => {
     if (err) {
       console.log(err)
     } else {
-      res.sendStatus(location)
+      Location.find({}).exec((err, location) => {
+        if (err) {
+          console.log(err)
+        } else {
+          res.send(location)
+        }
+      })
     }
   });
 };
