@@ -23,12 +23,15 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      locationList: []
+      locationList: [],
+      numberOfDays: [1],
+      activeTab: 1,
+      itineraryList: []
     };
   }
 
   // Test Code
-
+  // adding location to list
   addToList = async ({ place_id, formatted_address, name, geometry: { location } }) => {
     // display on React client
     // var node = document.createElement("LI");
@@ -58,6 +61,17 @@ class App extends Component {
     this.setState({ locationList: body })
   }
 
+  // fetching from db the itineray list
+  getItineraryList = async () => {
+      const response = await fetch('/event/view');
+      const body = await response.json();
+      if (response.status !== 200) throw Error(body.message);
+      console.log("This is my itinerry list", body)
+      this.setState({ itineraryList: body });
+      console.log(body)
+    }
+
+  // fetching from db the location list
   retrieveFromList = async () => {
     const response = await fetch('/location/getAllForTrip');
     const body = await response.json();
@@ -79,7 +93,13 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.retrieveFromList();
+    this.retrieveFromList()
+    this.getItineraryList()
+  }
+
+  getActiveTab = (data) => {
+    console.log("This is the tab data",data)
+    this.setState({activeTab: data})
   }
 
   // Event creation Test
@@ -88,9 +108,10 @@ class App extends Component {
 
     // write to Express server
     var params = {
-      location_id: e.target.parentNode.id
+      location_id: e.target.parentNode.parentNode.id,
       // trip_id: req.params.id,
-      // name: this.state.locationList[e.target]
+      // name: this.state.locationList[e.target],
+      date: this.state.activeTab
     };
     console.log(params);
     let response = await fetch('/event/new', {
@@ -101,6 +122,8 @@ class App extends Component {
       },
       body: JSON.stringify(params)
     });
+    this.getItineraryList()
+
   };
 
   // End of Event Creation Test
@@ -153,6 +176,16 @@ class App extends Component {
 
   // End of Test Code
 
+
+// get the number of days from dates
+
+getNumberOfDays = (props) => {
+  let days = Array(props).fill().map((_,i) => i + 1)
+  console.log("days", days)
+  this.setState({numberOfDays: days})
+}
+
+
   render() {
     return (
       <div  >
@@ -167,13 +200,13 @@ class App extends Component {
               <PlacesWithStandaloneSearchBox onAdd={this.addToList}/>
             </Col>
             <Col className="col-5">
-              <Dates/>
-              <Locations locations={this.state.locationList} onDelete={this.deleteFromList}/>
+              <Dates getNumberOfDays={this.getNumberOfDays}/>
+              <Locations locations={this.state.locationList} addToEvent={this.addToEvent}/>
             </Col>
           </Row>
           <Row className="mt-5">
             <Col>
-              <Itinerary/>
+              <Itinerary numberOfDays={this.state.numberOfDays} getActiveTab={this.getActiveTab} activeTab={this.state.activeTab} itineraryList={this.state.itineraryList}/>
             </Col>
           </Row>
         </Container>

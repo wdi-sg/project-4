@@ -23,7 +23,7 @@ class Locations extends Component {
         {location.locationName}
       </td>
       <td>
-        <Button color="primary" size="sm">Add to Itinerary</Button>{' '}
+        <Button color="primary" size="sm" onClick={this.props.addToEvent}>Add to Itinerary</Button>{' '}
       </td>
       <td>
         <Button outline color="danger" size="sm" onClick={() => this.props.onDelete(location._id)}>Remove Location</Button>{' '}

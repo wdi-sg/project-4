@@ -37,7 +37,7 @@ const MapWithAMarker = compose(
         (<Marker
           position={{ lat: props.places.lat(), lng: props.places.lng() }}
           onClick={props.onToggleOpen}>
-          {props.isOpen &&<InfoWindow onCloseClick={props.onToggleOpen}>
+          {props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}>
             <div>
               <h2>{props.allPlaces[length - 1].name}</h2>
               <Button color="primary" onClick={() => props.onAdd(props.allPlaces[length - 1])}>Add</Button>
