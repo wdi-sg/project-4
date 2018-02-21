@@ -27,7 +27,7 @@ class App extends Component {
       longitude: location.lng()
     };
     console.log(params);
-    let response = await fetch('/location/new', {
+    let response = await fetch('/api/location/new', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -38,7 +38,7 @@ class App extends Component {
   };
 
   retrieveFromList = async () => {
-    const response = await fetch('/location/getAllForTrip');
+    const response = await fetch('/api/location/getAllForTrip');
     const body = await response.json();
     if (response.status !== 200) throw Error(body.message);
     this.setState({ locationList: body });

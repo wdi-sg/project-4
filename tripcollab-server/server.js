@@ -22,10 +22,8 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
 // Serve static files for production
-const staticFiles = express.static(path.join(__dirname, '../tripcollab-client/build'))
-
-// Pass the static files from react to the express
-app.use(staticFiles)
+app.use(express.static(path.resolve(__dirname, '../tripcollab-client/build')))
+// const staticFiles = express.static(path.join(__dirname, '../tripcollab-client/build'))
 
 // allow CORS
 app.use(function(req, res, next) {
@@ -34,8 +32,12 @@ app.use(function(req, res, next) {
   next()
 })
 
-app.use('/', routes)
-app.use('/*', staticFiles)
+app.use('/api', routes)
+
+// All remaining requests return the React app, so it can handle routing.
+app.get('*', function(req, res) {
+  res.sendFile(path.resolve(__dirname, '../tripcollab-client/build', 'index.html'))
+})
 
 app.listen(port, () => {
   console.log('----Express Server Started on Port ' + port + '----')
