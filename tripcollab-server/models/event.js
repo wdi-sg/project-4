@@ -6,18 +6,21 @@ const eventSchema = new Schema ({
     type : String
   },
   date : {
-    type : Date
+    type : Number
+  },
+  time : {
+    type : String
   },
   description : {
     type : String
   },
   tripID : {
     type : Schema.Types.ObjectId,
-    ref : 'Trip'
+    ref : 'trip'
   },
   locationID : {
     type : Schema.Types.ObjectId,
-    ref : 'Location'
+    ref : 'location'
   }
 })
 

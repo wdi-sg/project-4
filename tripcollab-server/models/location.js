@@ -19,7 +19,7 @@ const locationSchema = new Schema ({
   },
   tripID : {
     type : Schema.Types.ObjectId,
-    ref : 'Trip'
+    ref : 'trip'
   }
 })
 

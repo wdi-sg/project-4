@@ -71,11 +71,44 @@ export default class Itinerary extends React.Component {
 
     // Creates a pane for each day in the trip which will be toggled when the respective day table is pressed
     const DayPane = (props) => {
+      console.log("This is inside the props of DayPane", this.props.itineraryList);
       return (
         <TabPane tabId={props.tabId}>
           <Row>
             <Col sm="12">
-              <DayTable data={props}/>
+                    <Table hover size="sm">
+                      <thead className="thead-dark">
+                        <tr>
+                          <th className="px-2">#</th>
+                          <th className="px-2">Time</th>
+                          <th>Name</th>
+                          <th>Address</th>
+                          <th>Remarks</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td className="px-2">1</td>
+                          <td className="px-2">12:00pm</td>
+                          <td>Victoria Market</td>
+                          <td>Queen Street, Melbourne VIC, Australia</td>
+                          <td>Something</td>
+                        </tr>
+                        <tr>
+                          <td className="px-2">2</td>
+                          <td className="px-2">2:00pm</td>
+                          <td>Moonlight Cinema Sydney</td>
+                          <td>Paddington NSW, Australia</td>
+                          <td>Something</td>
+                        </tr>
+                      </tbody>
+                      <DayTable data={props.data}/>
+                    </Table>
+
+
+
+
+
             </Col>
           </Row>
         </TabPane>
@@ -85,7 +118,18 @@ export default class Itinerary extends React.Component {
     // Generates tabs for every day in the trip
     const dayTabs = this.state.days.map(day => <DayTab key={`day-tab-${day}`} activeTab={this.props.activeTab} tabId={day}/>)
     // Generates tab panes for every day in the trip
-    const dayPanes = this.state.days.map(day => <DayPane key={`day-pane-${day}`} tabId={day}/>)
+    // const dayPanes = this.state.days.map(day => <DayPane key={`day-pane-${day}`} tabId={day} data={data}/>)
+    const dayPanes = this.props.itineraryList.map(item => <DayPane key={`day-pane-${item.date}`} tabId={item.date} data={item}/>)
+
+// you get the list [{...}, {...}. {...}]
+// so you loop through the array
+// target each object element
+// get the date value
+// if date value same as day
+// throw in that data
+
+
+
 
     return (
       <div>
@@ -97,7 +141,9 @@ export default class Itinerary extends React.Component {
           </CardHeader>
           <CardBody>
             <TabContent activeTab={this.props.activeTab}>
+
               {dayPanes}
+
             </TabContent>
           </CardBody>
         </Card>

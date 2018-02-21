@@ -19,6 +19,7 @@ const DayTable = (props) => {
                 <th className="px-2">Time</th>
                 <th>Name</th>
                 <th>Address</th>
+                <th>Remarks</th>
               </tr>
             </thead>
             <tbody>
