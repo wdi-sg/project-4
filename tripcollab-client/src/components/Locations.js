@@ -8,33 +8,31 @@ import {
 } from 'reactstrap';
 
 class Locations extends Component {
-
-
-
   render() {
+
     console.log(this.props)
 
     let locationAll = this.props.locations
 
     let locationList = locationAll.map((location, i) => <tr
-      key={location.locationID}
+      key={location._id}
       id={location._id}
       index={i}
       name={location.locationName} >
       <td>
-        {location.locationName}, {location.locationAddress} at {location.latitude}, {location.longitude}
+        {location.locationName}
       </td>
       <td>
         <Button color="primary" size="sm" onClick={this.props.addToEvent}>Add to Itinerary</Button>{' '}
       </td>
       <td>
-        <Button outline color="danger" size="sm">Remove Location</Button>{' '}
+        <Button outline color="danger" size="sm" onClick={() => this.props.onDelete(location._id)}>Remove Location</Button>{' '}
       </td>
     </tr>)
 
     return (
       <div className="locationDiv">
-        <div className="locationHeader">Locations</div>
+        <div className="locationHeader">Searched Locations</div>
         <Table responsive>
           <tbody>
 
