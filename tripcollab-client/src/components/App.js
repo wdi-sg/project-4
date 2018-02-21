@@ -71,7 +71,7 @@ class App extends Component {
     this.setState({ itineraryList: body });
 
     this.setState({
-      currentDayItinerary: this.state.itineraryList.filter(event => event.date == this.state.activeTab)
+      currentDayItinerary: this.state.itineraryList.filter(event => event.date === this.state.activeTab)
     })
   }
 
@@ -84,7 +84,7 @@ class App extends Component {
   };
 
   deleteFromList = async (id) => {
-    console.log(id)
+    // console.log(id)
     const response = await fetch(`/location/delete/${id}`, {
       method: 'DELETE',
       headers: {
@@ -106,7 +106,7 @@ class App extends Component {
     await this.setState({activeTab: data})
 
     await this.setState({
-      currentDayItinerary: this.state.itineraryList.filter(event => event.date == this.state.activeTab)
+      currentDayItinerary: this.state.itineraryList.filter(event => event.date === this.state.activeTab)
     })
   }
 
@@ -142,36 +142,39 @@ class App extends Component {
     // write to Express server
     var params = {
       // eventID: e.target.parentNode.id,
-      description: 'Testing123',
+      description: req.description,
       // Mock data to represent event ID
-      id: '5a8ced2a84a452959050e58f'
+      id: req.id,
+      time: req.time
       // locationID: '5a8b8f5ec4e9267e17d6a63c'
       // trip_id: req.params.id,
       // name: this.state.locationList[e.target]
     };
-    console.log(req)
-    console.log(params);
-    // let response = await fetch(`/event/update/${params.id}`, {
-    //   method: 'PUT',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(params)
-    // });
+    // console.log(req)
+    // console.log(params);
+    let response = await fetch(`/event/update/${params.id}`, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(params)
+    });
+
+    this.getItineraryList()
   };
   // End of Update Event Test
 
   // Delete Event Test
-  deleteEvent = async (e, req) => {
+  deleteEvent = async (req) => {
 
     // write to Express server
     var params = {
       // Mock data to represent event ID
-      id: '5a8be2f709de0d8cbd9d2ece'
+      id: req
     };
     // console.log(e.target.parentNode)
-    console.log(params);
+    // console.log(req);
     let response = await fetch(`/event/delete/${params.id}`, {
       method: 'DELETE',
       headers: {
@@ -180,17 +183,18 @@ class App extends Component {
       },
       body: JSON.stringify(params)
     });
+    this.getItineraryList()
   };
 
   // End of Test Code
 
-// get the number of days from dates
+  // get the number of days from dates
 
-getNumberOfDays = (props) => {
-  let days = Array(props).fill().map((_,i) => i + 1)
-  console.log("days", days)
-  this.setState({numberOfDays: days})
-}
+  getNumberOfDays = (props) => {
+    let days = Array(props).fill().map((_,i) => i + 1)
+    console.log("days", days)
+    this.setState({numberOfDays: days})
+  }
 
   render() {
     return (
@@ -207,13 +211,16 @@ getNumberOfDays = (props) => {
             </Col>
             <Col className="col-5">
               <Dates getNumberOfDays={this.getNumberOfDays}/>
-              <Locations locations={this.state.locationList} addToEvent={this.addToEvent}/>
+              <Locations
+                locations={this.state.locationList} addToEvent={this.addToEvent}
+                onDelete={this.deleteFromList}/>
             </Col>
           </Row>
           <Row className="mt-5">
             <Col>
               <Itinerary numberOfDays={this.state.numberOfDays} getActiveTab={this.getActiveTab} activeTab={this.state.activeTab} itineraryList={this.state.currentDayItinerary}
               updateMethod={this.updateEvent}
+              deleteMethod={this.deleteEvent}
                />
             </Col>
           </Row>

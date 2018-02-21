@@ -79,7 +79,8 @@ export default class Itinerary extends React.Component {
         <TabPane tabId={props.tabId}>
           <Row>
             <Col sm="12">
-              <DayTable data={props} events={itineraryList} onAdd={this.props.updateMethod} />
+              <DayTable data={props} events={itineraryList} onAdd={this.props.updateMethod}
+              onMinus={this.props.deleteMethod} />
             </Col>
           </Row>
         </TabPane>

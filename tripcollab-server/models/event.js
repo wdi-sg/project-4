@@ -11,6 +11,9 @@ const eventSchema = new Schema ({
   description : {
     type : String
   },
+  time : {
+    type : String
+  },
   tripID : {
     type : Schema.Types.ObjectId,
     ref : 'Trip'
