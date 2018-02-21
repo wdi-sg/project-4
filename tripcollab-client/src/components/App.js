@@ -97,13 +97,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-<<<<<<< HEAD
-    this.retrieveFromList();
-    this.getItineraryList();
-=======
     this.retrieveFromList()
     this.getItineraryList()
->>>>>>> a8c1715458227a7c16c1dfd52ae359382524984c
   }
 
   getActiveTab = async (data) => {
