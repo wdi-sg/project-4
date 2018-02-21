@@ -3,10 +3,10 @@ import {
   Container,
   Row,
   Col,
-  Input,
-  Label,
-  Form,
-  FormGroup
+  // Input,
+  // Label,
+  // Form,
+  // FormGroup
 } from 'reactstrap';
 import '../styles/App.css'
 
@@ -26,7 +26,8 @@ class App extends Component {
       locationList: [],
       numberOfDays: [1],
       activeTab: 1,
-      itineraryList: []
+      itineraryList: [],
+      currentDayItinerary: []
     };
   }
 
@@ -60,12 +61,16 @@ class App extends Component {
 
   // fetching from db the itineray list
   getItineraryList = async () => {
-      const response = await fetch('/event/view');
-      const body = await response.json();
-      if (response.status !== 200) throw Error(body.message);
-      console.log("This is my itinerry list", body)
-      this.setState({ itineraryList: body });
-    }
+    const response = await fetch('/event/view');
+    const body = await response.json();
+    if (response.status !== 200) throw Error(body.message);
+    console.log("This is my itinerary list", body)
+    this.setState({ itineraryList: body });
+
+    this.setState({
+      currentDayItinerary: this.state.itineraryList.filter(event => event.date == this.state.activeTab)
+    })
+  }
 
   // fetching from db the location list
   retrieveFromList = async () => {
@@ -77,11 +82,16 @@ class App extends Component {
 
   componentDidMount() {
     this.retrieveFromList();
+    this.getItineraryList()
   }
 
-  getActiveTab = (data) => {
+  getActiveTab = async (data) => {
     console.log("This is the tab data",data)
-    this.setState({activeTab: data})
+    await this.setState({activeTab: data})
+
+    await this.setState({
+      currentDayItinerary: this.state.itineraryList.filter(event => event.date == this.state.activeTab)
+    })
   }
 
   // Event creation Test
@@ -111,28 +121,28 @@ class App extends Component {
   // End of Event Creation Test
 
   // Update Event Test
-  updateEvent = async (e, req) => {
+  updateEvent = async (req) => {
 
     // write to Express server
     var params = {
       // eventID: e.target.parentNode.id,
       description: 'Testing123',
       // Mock data to represent event ID
-      id: '5a8bcdd420581688a8dcf1bf'
+      id: '5a8ced2a84a452959050e58f'
       // locationID: '5a8b8f5ec4e9267e17d6a63c'
       // trip_id: req.params.id,
       // name: this.state.locationList[e.target]
     };
-    // console.log(e.target.parentNode)
+    console.log(req)
     console.log(params);
-    let response = await fetch(`/event/update/${params.id}`, {
-      method: 'PUT',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(params)
-    });
+    // let response = await fetch(`/event/update/${params.id}`, {
+    //   method: 'PUT',
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(params)
+    // });
   };
   // End of Update Event Test
 
@@ -158,7 +168,6 @@ class App extends Component {
 
   // End of Test Code
 
-
 // get the number of days from dates
 
 getNumberOfDays = (props) => {
@@ -166,7 +175,6 @@ getNumberOfDays = (props) => {
   console.log("days", days)
   this.setState({numberOfDays: days})
 }
-
 
   render() {
     return (
@@ -188,7 +196,9 @@ getNumberOfDays = (props) => {
           </Row>
           <Row className="mt-5">
             <Col>
-              <Itinerary numberOfDays={this.state.numberOfDays} getActiveTab={this.getActiveTab} activeTab={this.state.activeTab} itineraryList={this.state.itineraryList}/>
+              <Itinerary numberOfDays={this.state.numberOfDays} getActiveTab={this.getActiveTab} activeTab={this.state.activeTab} itineraryList={this.state.currentDayItinerary}
+              updateMethod={this.updateEvent}
+               />
             </Col>
           </Row>
         </Container>

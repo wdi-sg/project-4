@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const tripController = require('../controllers/tripController')
-// const eventController = require('../controllers/eventController')
+const eventController = require('../controllers/eventController')
 const locationController = require('../controllers/locationController')
 const homeController = require('../controllers/homeController')
 
