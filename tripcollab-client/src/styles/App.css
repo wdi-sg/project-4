@@ -32,15 +32,19 @@
   text-align: center;
 }
 
-
+.locationBody{
+  height: 400px;
+  overflow-y: auto;
+}
 
 .header{
-  padding-top: 15px;
-  padding-bottom: 15px;
   text-align: center;
+  background-color: rgba(255, 255, 255, 0);
 }
 
 .logo{
+  padding-top: 5px;
+  padding-bottom: 5px;
   width:50px;
   height: auto;
 }
@@ -51,4 +55,15 @@
 
 .subtitle{
   font-size: 12px;
+}
+
+.container{
+  /* This is the <Container> */
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.main{
+  /* background-color: red; */
+  background: url(https://images.unsplash.com/photo-1444723121867-7a241cacace9?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=34bb642ed1de30a476afee732c4e0c3e&auto=format&fit=crop&w=1050&q=80) no-repeat center center fixed;
+  background-size: cover;
 }

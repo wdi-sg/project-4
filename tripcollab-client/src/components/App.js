@@ -1,3 +1,4 @@
+// ############### React ###############
 import React, { Component } from 'react';
 import {
   Container,
@@ -8,14 +9,18 @@ import {
   Form,
   FormGroup
 } from 'reactstrap';
-import '../styles/App.css'
 
+// ############### Components ###############
 import Locations from './Locations'
 import Dates from './Dates'
 import Itinerary from './Itinerary'
 import PlacesWithStandaloneSearchBox from './SearchBox';
+
+// ############### Styling ###############
+import '../styles/App.css'
 import logo from '../icon.png'
-// import Alternative from './Alternative'
+
+
 
 class App extends Component {
 
@@ -142,23 +147,29 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Col className="header">
-          <img src={logo} className="logo"/>
-          <div className="title">TripCollab</div>
-        </Col>
-
+      <div className="main">
         <Container>
+          <Col className="header col-12">
+            <img src={logo} className="logo"/>
+            <span className="title">TripCollab</span>
+          </Col>
+
           <Row>
             <Col className="col-7">
               <PlacesWithStandaloneSearchBox onAdd={this.addToList}/>
             </Col>
             <Col className="col-5">
-              <Dates/>
               <Locations locations={this.state.locationList}/>
             </Col>
           </Row>
+
           <Row className="mt-5">
+            <Col>
+              <Dates/>
+            </Col>
+          </Row>
+
+          <Row>
             <Col>
               <Itinerary/>
             </Col>

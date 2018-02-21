@@ -6,6 +6,8 @@ import {
   Table,
   Button,
 } from 'reactstrap';
+import '../styles/App.css'
+import FontAwesome from 'react-fontawesome'
 
 class Locations extends Component {
 
@@ -20,26 +22,29 @@ class Locations extends Component {
       index={i}
       name={location.locationName} >
       <td>
+        <Button outline size="sm"><FontAwesome name='times' size='1x' /> </Button>{' '}
+      </td>
+      <td>
         {location.locationName}, {location.locationAddress} at {location.latitude}, {location.longitude}
       </td>
       <td>
         <Button color="primary" size="sm">Add to Itinerary</Button>{' '}
       </td>
-      <td>
-        <Button outline color="danger" size="sm">Remove Location</Button>{' '}
-      </td>
+
     </tr>)
 
     return (
       <div className="locationDiv">
-        <div className="locationHeader">Locations</div>
-        <Table responsive>
-          <tbody>
-
-            { locationList }
-
-          </tbody>
-        </Table>
+        <div className="locationHeader">
+          <h5><FontAwesome name='map-marker' size='1x' /> Saved Locations</h5>
+        </div>
+        <div className="locationBody">
+          <Table responsive>
+            <tbody>
+              { locationList }
+            </tbody>
+          </Table>
+        </div>
       </div>
     );
   }
