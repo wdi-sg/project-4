@@ -19,15 +19,15 @@ export default class DayTable extends React.Component {
     let displayEvents = currentDayEvents.map((event, i) =>
       <tr key={event._id}>
         <td className="px-2">{i+1}</td>
-        <td className="px-2"><input className="form-control" type="time" value={event.time} /></td>
+        <td className="px-2"><input className="form-control" type="time" value={event.time} ref={i*10} /></td>
         <td>{event.locationID}</td>
         <td>{event.address}</td>
         <td><input type="text" defaultValue={event.description} ref={i+1} /></td>
         <td><button
           onClick={() => this.props.onAdd({
             id: event._id,
-            time: event.time,
-            description: this.refs.{test}
+            time: this.refs[i*10].value,
+            description: this.refs[i+1].value
           })}>
           Update
         </button></td>
