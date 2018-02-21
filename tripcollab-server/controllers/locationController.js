@@ -34,12 +34,18 @@ exports.getAllForTrip = (req, res) => {
 }
 
 exports.delete = (req, res) => {
-  let id = req.body.id // dummy
-  Location.remove({ locationID: id }, (err) => {
+  console.log(req.params.id)
+  Location.remove({ _id: req.params.id }, (err) => {
     if (err) {
       console.log(err)
     } else {
-      res.sendStatus(200)
+      Location.find({}).exec((err, location) => {
+        if (err) {
+          console.log(err)
+        } else {
+          res.send(location)
+        }
+      })
     }
   })
 }

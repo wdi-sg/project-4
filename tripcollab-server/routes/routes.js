@@ -15,7 +15,7 @@ router.get('/trip/view/:id', tripController.view) // read
 //==================== Location Control ====================
 router.post('/location/new', locationController.create) // create
 router.get('/location/getAllForTrip', locationController.getAllForTrip) // read
-router.delete('/location/delete', locationController.delete)
+router.delete('/location/delete/:id', locationController.delete)
 
 //==================== Event Control ====================
 router.post('/event/new', eventController.create) // create
