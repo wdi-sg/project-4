@@ -20,7 +20,7 @@ class Locations extends Component {
       index={i}
       name={location.locationName} >
       <td>
-        {location.locationName}, {location.locationAddress} at {location.latitude}, {location.longitude}
+        {location.locationName}
       </td>
       <td>
         <Button color="primary" size="sm">Add to Itinerary</Button>{' '}
@@ -32,7 +32,7 @@ class Locations extends Component {
 
     return (
       <div className="locationDiv">
-        <div className="locationHeader">Locations</div>
+        <div className="locationHeader">Searched Locations</div>
         <Table responsive>
           <tbody>
 
