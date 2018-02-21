@@ -21,10 +21,9 @@ import '../styles/App.css'
 import logo from '../icon.png'
 
 
-
 class App extends Component {
 
-  // Constructors
+  // ========== Constructors ==========
   constructor() {
     super();
     this.state = {
@@ -37,7 +36,7 @@ class App extends Component {
   }
 
   // Test Code
-  // adding location to list
+  // ========== adding location to list ==========
   addToList = async ({ place_id, formatted_address, name, geometry: { location } }) => {
     // display on React client
     // var node = document.createElement("LI");
@@ -53,7 +52,6 @@ class App extends Component {
       latitude: location.lat(),
       longitude: location.lng()
     }
-    console.log(params)
     const response = await fetch('/location/new', {
       method: 'POST',
       headers: {
@@ -63,16 +61,14 @@ class App extends Component {
       body: JSON.stringify(params)
     })
     const body = await response.json()
-    console.log(body)
     this.setState({ locationList: body })
   }
 
-  // fetching from db the itineray list
+  // ========== fetching from db the itineray list ==========
   getItineraryList = async () => {
     const response = await fetch('/event/view');
     const body = await response.json();
     if (response.status !== 200) throw Error(body.message);
-    console.log("This is my itinerary list", body)
     this.setState({ itineraryList: body });
 
     this.setState({
@@ -80,7 +76,7 @@ class App extends Component {
     })
   }
 
-  // fetching from db the location list
+  // ========== fetching from db the location list ==========
   retrieveFromList = async () => {
     const response = await fetch('/location/getAllForTrip');
     const body = await response.json();
@@ -88,8 +84,8 @@ class App extends Component {
     this.setState({ locationList: body });
   };
 
+  // ========== deleting location from list ==========
   deleteFromList = async (id) => {
-    // console.log(id)
     const response = await fetch(`/location/delete/${id}`, {
       method: 'DELETE',
       headers: {
@@ -101,13 +97,14 @@ class App extends Component {
     this.setState({ locationList: body })
   }
 
+  // ========== mounting of component ==========
   componentDidMount() {
     this.retrieveFromList()
     this.getItineraryList()
   }
 
+// ========== setting state for activeTab and currentDayItinerary ==========
   getActiveTab = async (data) => {
-    console.log("This is the tab data",data)
     await this.setState({activeTab: data})
 
     await this.setState({
@@ -116,7 +113,7 @@ class App extends Component {
   }
 
   // Event creation Test
-
+  // ========== adding from location list to itineray list ==========
   addToEvent = async (e, req) => {
 
     // write to Express server
@@ -124,9 +121,9 @@ class App extends Component {
       location_id: e.target.parentNode.parentNode.id,
       // trip_id: req.params.id,
       // name: this.state.locationList[e.target],
+      time: "00:00",
       date: this.state.activeTab
     };
-    console.log(params);
     let response = await fetch('/event/new', {
       method: 'POST',
       headers: {
@@ -136,12 +133,12 @@ class App extends Component {
       body: JSON.stringify(params)
     });
     this.getItineraryList()
-
   };
 
   // End of Event Creation Test
 
   // Update Event Test
+  // ========== updating of event ==========
   updateEvent = async (req) => {
 
     // write to Express server
@@ -156,7 +153,6 @@ class App extends Component {
       // name: this.state.locationList[e.target]
     };
     // console.log(req)
-    // console.log(params);
     let response = await fetch(`/event/update/${params.id}`, {
       method: 'PUT',
       headers: {
@@ -165,12 +161,12 @@ class App extends Component {
       },
       body: JSON.stringify(params)
     });
-
     this.getItineraryList()
   };
   // End of Update Event Test
 
   // Delete Event Test
+  // ========== deleting event from the db ==========
   deleteEvent = async (req) => {
 
     // write to Express server
@@ -197,7 +193,6 @@ class App extends Component {
 
   getNumberOfDays = (props) => {
     let days = Array(props).fill().map((_,i) => i + 1)
-    console.log("days", days)
     this.setState({numberOfDays: days})
   }
 
@@ -209,8 +204,8 @@ class App extends Component {
             <Col className="col-8">
               <span>
                 <img src={logo} className="logo"/>
+                <span className="title">TripCollab</span>
               </span>
-              <span className="title">TripCollab</span>
             </Col>
             <Col className="col-4">hello</Col>
           </Row>
@@ -224,13 +219,11 @@ class App extends Component {
                 onDelete={this.deleteFromList}/>
             </Col>
           </Row>
-
           <Row className="mt-5">
             <Col>
               <Dates getNumberOfDays={this.getNumberOfDays}/>
             </Col>
           </Row>
-
           <Row>
             <Col>
               <Itinerary numberOfDays={this.state.numberOfDays} getActiveTab={this.getActiveTab} activeTab={this.state.activeTab} itineraryList={this.state.currentDayItinerary}

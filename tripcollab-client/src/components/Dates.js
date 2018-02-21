@@ -20,7 +20,6 @@ constructor() {
 }
 
 setDate() {
-  console.log(this.state.startDate)
   let {startDate, endDate} = this.state
   if (startDate !== '' & endDate !== '') {
     let oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds

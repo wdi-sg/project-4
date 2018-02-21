@@ -47,14 +47,15 @@
 }
 
 .logo{
-  padding-top: 5px;
+  /* padding-top: 5px; */
   padding-bottom: 5px;
   width:50px;
   height: auto;
 }
 
 .title{
-  margin-top: 50px;
+  display: inline-block;
+  margin: 10px;
   font-family: 'Pacifico', cursive;
   font-size: 30px;
   background-color: red;
@@ -64,7 +65,6 @@
   font-size: 12px;
 }
 
-<<<<<<< HEAD
 .container{
   /* This is the <Container> */
   background-color: rgba(255, 255, 255, 0.85);
@@ -79,6 +79,10 @@
   text-align: center;
 }
 
+.textarea {
+  resize: none;
+  width: 300px;
+}
 
 
 
@@ -106,9 +110,7 @@
 }
 
 /* End Scrollbar */
-=======
-.locationDiv {
+/* .locationDiv {
   overflow-y: scroll;
   height: 250px;
-}
->>>>>>> 935d1532a41870b9d1a031f839f5216e6b934f3c
+} */

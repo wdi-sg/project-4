@@ -4,6 +4,7 @@ exports.create = (req, res) => {
   console.log(req);
   Event.create({
     eventID: req.body.eventID,
+    time: req.body.time,
     date: req.body.date,
     description: req.body.description,
     tripID: req.body.tripID,
