@@ -32,7 +32,7 @@ app.use(function(req, res, next) {
   next()
 })
 
-app.use('/api', routes)
+app.use('/', routes)
 
 // All remaining requests return the React app, so it can handle routing.
 app.get('*', function(req, res) {
