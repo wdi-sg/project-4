@@ -1,33 +1,52 @@
 /* Home */
+html {
+  min-width: 320px
+}
 
 body {
-  background: url("/assets/friends.jpg");
+  background-image: url("/assets/friends.jpg");
   background-size: cover;
+  background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center;
   width: 100%;
   height: 100vh;
+  user-select: none;
+}
+
+.panel-text {
+  margin-bottom: 0em;
+  padding: 0;
 }
 
 .logo {
   font-family: 'Pacifico', cursive;
   font-size: 1.6em;
+  padding: 1em;
+}
+
+#text-field-container {
+  margin-top: 1em;
+  margin-bottom: 20em;
+}
+
+#destination-field {
+  max-width: 400px;
+  margin: 0 1em 0 1em;
 }
 
 #back-panel {
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.6);
   width: 100%;
   padding: 1em 1em;
-  position: absolute;
-  bottom: 10%;
-  z-index: -1;
+  margin-bottom: 4em;
 }
-
 
 .main-text {
   font-family: 'Francois One', sans-serif;
   font-size: 1.6em;
   text-align: center;
+  padding: 2em 0 0 0;
 }
 
 .icon-header {
@@ -44,26 +63,14 @@ body {
   width: 40%;
 }
 
-.btn-primary {
-  background-image: none;
-  border: none;
-  border-radius: 0;
-  background-color: rgba(76, 197, 218, 0.705);
-  letter-spacing: 2px;
-}
-
-/* Itinerary */
-.map {
-  width: 100%;
-  padding-top: 5em;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  flex: 0 0 auto;
+footer a {
+  color: #f8f9fa;
 }
 
 footer a:link {
   text-decoration: none;
+}
+
+footer a:visited {
+  color: #f8f9fa;
 }
