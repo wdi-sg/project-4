@@ -35,10 +35,10 @@ class App extends Component {
   // adding location to list
   addToList = async ({ place_id, formatted_address, name, geometry: { location } }) => {
     // display on React client
-    var node = document.createElement("LI");
-    var textnode = document.createTextNode(`${name}, ${formatted_address} at ${location.lat()}, ${location.lng()}`);
-    node.appendChild(textnode);
-    document.getElementById("locationList").appendChild(node);
+    // var node = document.createElement("LI");
+    // var textnode = document.createTextNode(`${name}, ${formatted_address} at ${location.lat()}, ${location.lng()}`);
+    // node.appendChild(textnode);
+    // document.getElementById("locationList").appendChild(node);
 
     // write to Express server
     var params = {
@@ -47,17 +47,20 @@ class App extends Component {
       address: formatted_address,
       latitude: location.lat(),
       longitude: location.lng()
-    };
-    console.log(params);
-    let response = await fetch('/location/new', {
+    }
+    console.log(params)
+    const response = await fetch('/location/new', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(params)
-    });
-  };
+    })
+    const body = await response.json()
+    console.log(body)
+    this.setState({ locationList: body })
+  }
 
   // fetching from db the itineray list
   getItineraryList = async () => {
@@ -80,8 +83,21 @@ class App extends Component {
     this.setState({ locationList: body });
   };
 
+  deleteFromList = async (id) => {
+    console.log(id)
+    const response = await fetch(`/location/delete/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+    })
+    const body = await response.json()
+    this.setState({ locationList: body })
+  }
+
   componentDidMount() {
-    this.retrieveFromList();
+    this.retrieveFromList()
     this.getItineraryList()
   }
 

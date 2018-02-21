@@ -5,7 +5,11 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.16.2",
-    "hashids": "^1.1.4",
-    "mongoose": "^5.0.6"
+    "mongoose": "^5.0.6",
+    "path": "^0.12.7"
+  },
+  "scripts": {
+    "start": "nodemon server.js",
+    "start:prod": "node server.js"
   }
 }

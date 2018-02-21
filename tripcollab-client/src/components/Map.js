@@ -25,6 +25,7 @@ const MapWithAMarker = compose(
   if (props.allPlaces.length > 0) {
     search = true
   }
+  console.log(search)
   let length = props.allPlaces.length
   return (
     <GoogleMap
@@ -39,7 +40,7 @@ const MapWithAMarker = compose(
           {props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}>
             <div>
               <h2>{props.allPlaces[length - 1].name}</h2>
-              <Button color="primary">Add</Button>
+              <Button color="primary" onClick={() => props.onAdd(props.allPlaces[length - 1])}>Add</Button>
             </div>
           </InfoWindow>}
         </Marker>)

@@ -18,7 +18,7 @@ exports.create = (req, res) => {
 };
 
 exports.view = (req, res) => {
-  Event.find({}).exec((err, event) => {
+  Event.find({}).populate('locationID').exec((err, event) => {
     if (err) {
       console.log(err);
     } else {

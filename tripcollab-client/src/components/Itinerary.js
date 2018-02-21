@@ -58,6 +58,7 @@ export default class Itinerary extends React.Component {
     // console.log(currentDayItinerary)
 
     const DayTab = (props) => {
+      console.log(props)
       console.log('Toggled Day', props.activeTab)
       return(
         <NavItem>
