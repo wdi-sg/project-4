@@ -40,7 +40,7 @@
 }
 
 .header{
-  text-align: center;
+  text-align: left;
   background-color: white;
   border-bottom: 2px solid #C0C0C0;
   margin-bottom: 15px;
@@ -54,9 +54,10 @@
 }
 
 .title{
+  margin-top: 50px;
   font-family: 'Pacifico', cursive;
   font-size: 30px;
-  /* line-height: 5%; */
+  background-color: red;
 }
 
 .subtitle{
@@ -76,3 +77,31 @@
 .mapPopUp{
   text-align: center;
 }
+
+
+
+
+
+
+/* Scrollbar */
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* End Scrollbar */

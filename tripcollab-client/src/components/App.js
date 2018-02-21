@@ -162,11 +162,14 @@ class App extends Component {
     return (
       <div className="main">
         <Container>
-          <Row>
-            <Col className="header col-12">
-              <img src={logo} className="logo"/>
-              <p className="title">TripCollab</p>
+          <Row className="header">
+            <Col className="col-8">
+              <span>
+                <img src={logo} className="logo"/>
+              </span>
+              <span className="title">TripCollab</span>
             </Col>
+            <Col className="col-4">hello</Col>
           </Row>
           <Row>
             <Col className="col-7">
