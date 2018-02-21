@@ -18,7 +18,7 @@ exports.create = (req, res) => {
 };
 
 exports.view = (req, res) => {
-  Event.find({}).exec((err, event) => {
+  Event.find({}).populate('locationID').exec((err, event) => {
     if (err) {
       console.log(err);
     } else {
@@ -30,7 +30,7 @@ exports.view = (req, res) => {
 exports.update = (req, res) => {
   console.log(req);
   Event.findByIdAndUpdate(req.body.id,
-    {$set: { description: req.body.description }},
+    {$set: { description: req.body.description, time: req.body.time }},
     (err, event) => {
       if (err) {
         console.log(err)

@@ -4,10 +4,10 @@ import {
   Container,
   Row,
   Col,
-  Input,
-  Label,
-  Form,
-  FormGroup
+  // Input,
+  // Label,
+  // Form,
+  // FormGroup
 } from 'reactstrap';
 
 // ############### Components ###############
@@ -28,12 +28,16 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      locationList: []
+      locationList: [],
+      numberOfDays: [1],
+      activeTab: 1,
+      itineraryList: [],
+      currentDayItinerary: []
     };
   }
 
   // Test Code
-
+  // adding location to list
   addToList = async ({ place_id, formatted_address, name, geometry: { location } }) => {
     // display on React client
     // var node = document.createElement("LI");
@@ -63,6 +67,20 @@ class App extends Component {
     this.setState({ locationList: body })
   }
 
+  // fetching from db the itineray list
+  getItineraryList = async () => {
+    const response = await fetch('/event/view');
+    const body = await response.json();
+    if (response.status !== 200) throw Error(body.message);
+    console.log("This is my itinerary list", body)
+    this.setState({ itineraryList: body });
+
+    this.setState({
+      currentDayItinerary: this.state.itineraryList.filter(event => event.date === this.state.activeTab)
+    })
+  }
+
+  // fetching from db the location list
   retrieveFromList = async () => {
     const response = await fetch('/location/getAllForTrip');
     const body = await response.json();
@@ -71,7 +89,7 @@ class App extends Component {
   };
 
   deleteFromList = async (id) => {
-    console.log(id)
+    // console.log(id)
     const response = await fetch(`/location/delete/${id}`, {
       method: 'DELETE',
       headers: {
@@ -84,7 +102,17 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.retrieveFromList();
+    this.retrieveFromList()
+    this.getItineraryList()
+  }
+
+  getActiveTab = async (data) => {
+    console.log("This is the tab data",data)
+    await this.setState({activeTab: data})
+
+    await this.setState({
+      currentDayItinerary: this.state.itineraryList.filter(event => event.date === this.state.activeTab)
+    })
   }
 
   // Event creation Test
@@ -93,9 +121,10 @@ class App extends Component {
 
     // write to Express server
     var params = {
-      location_id: e.target.parentNode.id
+      location_id: e.target.parentNode.parentNode.id,
       // trip_id: req.params.id,
-      // name: this.state.locationList[e.target]
+      // name: this.state.locationList[e.target],
+      date: this.state.activeTab
     };
     console.log(params);
     let response = await fetch('/event/new', {
@@ -106,25 +135,28 @@ class App extends Component {
       },
       body: JSON.stringify(params)
     });
+    this.getItineraryList()
+
   };
 
   // End of Event Creation Test
 
   // Update Event Test
-  updateEvent = async (e, req) => {
+  updateEvent = async (req) => {
 
     // write to Express server
     var params = {
       // eventID: e.target.parentNode.id,
-      description: 'Testing123',
+      description: req.description,
       // Mock data to represent event ID
-      id: '5a8bcdd420581688a8dcf1bf'
+      id: req.id,
+      time: req.time
       // locationID: '5a8b8f5ec4e9267e17d6a63c'
       // trip_id: req.params.id,
       // name: this.state.locationList[e.target]
     };
-    // console.log(e.target.parentNode)
-    console.log(params);
+    // console.log(req)
+    // console.log(params);
     let response = await fetch(`/event/update/${params.id}`, {
       method: 'PUT',
       headers: {
@@ -133,19 +165,21 @@ class App extends Component {
       },
       body: JSON.stringify(params)
     });
+
+    this.getItineraryList()
   };
   // End of Update Event Test
 
   // Delete Event Test
-  deleteEvent = async (e, req) => {
+  deleteEvent = async (req) => {
 
     // write to Express server
     var params = {
       // Mock data to represent event ID
-      id: '5a8be2f709de0d8cbd9d2ece'
+      id: req
     };
     // console.log(e.target.parentNode)
-    console.log(params);
+    // console.log(req);
     let response = await fetch(`/event/delete/${params.id}`, {
       method: 'DELETE',
       headers: {
@@ -154,9 +188,18 @@ class App extends Component {
       },
       body: JSON.stringify(params)
     });
+    this.getItineraryList()
   };
 
   // End of Test Code
+
+  // get the number of days from dates
+
+  getNumberOfDays = (props) => {
+    let days = Array(props).fill().map((_,i) => i + 1)
+    console.log("days", days)
+    this.setState({numberOfDays: days})
+  }
 
   render() {
     return (
@@ -176,19 +219,24 @@ class App extends Component {
               <PlacesWithStandaloneSearchBox onAdd={this.addToList}/>
             </Col>
             <Col className="col-5">
-              <Locations locations={this.state.locationList} onDelete={this.deleteFromList}/>
+              <Locations
+                locations={this.state.locationList} addToEvent={this.addToEvent}
+                onDelete={this.deleteFromList}/>
             </Col>
           </Row>
 
           <Row className="mt-5">
             <Col>
-              <Dates/>
+              <Dates getNumberOfDays={this.getNumberOfDays}/>
             </Col>
           </Row>
 
           <Row>
             <Col>
-              <Itinerary/>
+              <Itinerary numberOfDays={this.state.numberOfDays} getActiveTab={this.getActiveTab} activeTab={this.state.activeTab} itineraryList={this.state.currentDayItinerary}
+              updateMethod={this.updateEvent}
+              deleteMethod={this.deleteEvent}
+               />
             </Col>
           </Row>
         </Container>
