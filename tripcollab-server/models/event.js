@@ -7,12 +7,9 @@ const eventSchema = new Schema ({
   },
   date : {
     type : Number
-<<<<<<< HEAD
   },
   time : {
     type : String
-=======
->>>>>>> a8c1715458227a7c16c1dfd52ae359382524984c
   },
   description : {
     type : String
