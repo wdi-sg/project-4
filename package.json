@@ -1,0 +1,16 @@
+{
+  "name": "tripcollab-v2-project4",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^3.5.1",
+    "dotenv": "^5.0.0"
+  },
+  "scripts": {
+    "build": "concurrently \"cd tripcollab-client && yarn build\" \"cd tripcollab-server && yarn build\"",
+    "install": "(cd tripcollab-client && yarn) && (cd tripcollab-server && yarn)",
+    "start": "concurrently \"cd tripcollab-client && PORT=3000 yarn start\" \"cd tripcollab-server && PORT=3001 yarn start\"",
+    "start:prod": "cd tripcollab-server && yarn start:prod",
+    "heroku-postbuild": "cd tripcollab-client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+  }
+}

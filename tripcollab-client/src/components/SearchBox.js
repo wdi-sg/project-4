@@ -52,7 +52,7 @@ const PlacesWithStandaloneSearchBox = compose(
         <input
           id="searchBox"
           type="text"
-          placeholder="Search Google Maps"
+          placeholder="Search for Locations"
           style={{
             boxSizing: `border-box`,
             borderTop: `1px solid #ced4da`,

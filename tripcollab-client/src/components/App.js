@@ -70,6 +70,19 @@ class App extends Component {
     this.setState({ locationList: body });
   };
 
+  deleteFromList = async (id) => {
+    console.log(id)
+    const response = await fetch(`/location/delete/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+    })
+    const body = await response.json()
+    this.setState({ locationList: body })
+  }
+
   componentDidMount() {
     this.retrieveFromList();
   }
@@ -149,17 +162,18 @@ class App extends Component {
     return (
       <div className="main">
         <Container>
-          <Col className="header col-12">
-            <img src={logo} className="logo"/>
-            <span className="title">TripCollab</span>
-          </Col>
-
+          <Row>
+            <Col className="header col-12">
+              <img src={logo} className="logo"/>
+              <p className="title">TripCollab</p>
+            </Col>
+          </Row>
           <Row>
             <Col className="col-7">
               <PlacesWithStandaloneSearchBox onAdd={this.addToList}/>
             </Col>
             <Col className="col-5">
-              <Locations locations={this.state.locationList}/>
+              <Locations locations={this.state.locationList} onDelete={this.deleteFromList}/>
             </Col>
           </Row>
 

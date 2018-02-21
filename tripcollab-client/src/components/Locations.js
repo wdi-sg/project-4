@@ -10,22 +10,22 @@ import '../styles/App.css'
 import FontAwesome from 'react-fontawesome'
 
 class Locations extends Component {
-
   render() {
+
     console.log(this.props)
 
     let locationAll = this.props.locations
 
     let locationList = locationAll.map((location, i) => <tr
-      key={location.locationID}
+      key={location._id}
       id={location._id}
       index={i}
       name={location.locationName} >
       <td>
-        <Button outline size="sm"><FontAwesome name='times' size='1x' /> </Button>{' '}
+        <Button outline color="danger" size="sm" onClick={() => this.props.onDelete(location._id)}><FontAwesome name='times' size='1x' /> </Button>{' '}
       </td>
       <td>
-        {location.locationName}, {location.locationAddress} at {location.latitude}, {location.longitude}
+        {location.locationName}
       </td>
       <td>
         <Button color="primary" size="sm">Add to Itinerary</Button>{' '}

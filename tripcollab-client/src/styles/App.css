@@ -27,6 +27,8 @@
   to { transform: rotate(360deg); }
 }
 
+
+/* Customised Stuff */
 .locationHeader{
   font-weight: bold;
   text-align: center;
@@ -39,7 +41,9 @@
 
 .header{
   text-align: center;
-  background-color: rgba(255, 255, 255, 0);
+  background-color: white;
+  border-bottom: 2px solid #C0C0C0;
+  margin-bottom: 15px;
 }
 
 .logo{
@@ -50,7 +54,9 @@
 }
 
 .title{
-  font-size: 24px;
+  font-family: 'Pacifico', cursive;
+  font-size: 30px;
+  /* line-height: 5%; */
 }
 
 .subtitle{
@@ -63,7 +69,10 @@
 }
 
 .main{
-  /* background-color: red; */
   background: url(https://images.unsplash.com/photo-1444723121867-7a241cacace9?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=34bb642ed1de30a476afee732c4e0c3e&auto=format&fit=crop&w=1050&q=80) no-repeat center center fixed;
   background-size: cover;
+}
+
+.mapPopUp{
+  text-align: center;
 }
