@@ -8,6 +8,9 @@ const eventSchema = new Schema ({
   date : {
     type : Number
   },
+  time : {
+    type : String
+  },
   description : {
     type : String
   },
@@ -16,13 +19,13 @@ const eventSchema = new Schema ({
   },
   tripID : {
     type : Schema.Types.ObjectId,
-    ref : 'Trip'
+    ref : 'trip'
   },
   locationID : {
     type : Schema.Types.ObjectId,
-    ref : 'Location'
+    ref : 'location'
   }
 })
 
-const Event = mongoose.model('Event', eventSchema)
+const Event = mongoose.model('event', eventSchema)
 module.exports = Event

@@ -14,13 +14,16 @@ class Dates extends Component {
 constructor() {
   super()
   this.state = {
-    startDate: '',
-    endDate: '',
+    startDate: '2018-02-23',
+    endDate: '2018-02-24'
   }
 }
 
+componentDidMount() {
+  this.setDate()
+}
+
 setDate() {
-  console.log(this.state.startDate)
   let {startDate, endDate} = this.state
   if (startDate !== '' & endDate !== '') {
     let oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
@@ -55,7 +58,7 @@ setDate() {
             <FormGroup>
               <FontAwesome name='calendar' size='1x' />
               <Label for="startDate">&nbsp;Start Date</Label>
-              <Input type="date" name="startDate" id="startDate" placeholder="Start Date" onChange={this.handleStart} />
+              <Input type="date" name="startDate" id="startDate" placeholder="Start Date" defaultValue={this.state.startDate} onChange={this.handleStart} />
             </FormGroup>
           </Col>
 
@@ -63,7 +66,7 @@ setDate() {
             <FormGroup>
               <FontAwesome name='calendar' size='1x' />
               <Label for="endDate">&nbsp;End Date</Label>
-              <Input type="date" name="endDate" id="endDate" placeholder="End Date" onChange={this.handleEnd} />
+              <Input type="date" name="endDate" id="endDate" placeholder="End Date" defaultValue={this.state.endDate} onChange={this.handleEnd} />
             </FormGroup>
           </Col>
         </Row>

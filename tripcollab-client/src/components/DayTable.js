@@ -9,31 +9,39 @@ import {
 
 export default class DayTable extends React.Component {
   // console.log(props)
-  constructor(props){
-    super(props)
-  }
+
 
   render() {
 
     let currentDayEvents = this.props.events
-    // console.log(this.props.events)
-    let displayEvents = currentDayEvents.map((event, i) =>
-    // console.log(event.locationID)
+    let events = currentDayEvents.sort((a, b) => {
+        return a.time.replace(/:/,'') - b.time.replace(/:/,'');
+    });
+    let displayEvents = events.map((event, i) =>
       <tr key={event._id}>
         <td className="px-2">{i+1}</td>
-        <td className="px-2"><input className="form-control" type="time" defaultValue={event.time} ref={i*10} /></td>
+        <td className="px-2"><input className="form-control" type="time" defaultValue={event.time} ref={i*10} onBlur={() => this.props.onAdd({
+          id: event._id,
+          time: this.refs[i*10].value,
+          description: this.refs[i+1].value
+        })}/></td>
         <td>{event.locationID.locationName}</td>
-        {/* {console.log("Hello event", event)} */}
-        <td>{event.address}</td>
-        <td><input type="text" defaultValue={event.description} ref={i+1} /></td>
-        <td><button
+        <td>{event.locationID.locationAddress}</td>
+        <td><textarea className="textarea" defaultValue={event.description} ref={i+1} onBlur={() => this.props.onAdd({
+            id: event._id,
+            time: this.refs[i*10].value,
+            description: this.refs[i+1].value
+          })}/></td>
+
+        {/* <td><input type="text" defaultValue={event.description} ref={i+1} /></td> */}
+        {/* <td><button
           onClick={() => this.props.onAdd({
             id: event._id,
             time: this.refs[i*10].value,
             description: this.refs[i+1].value
           })}>
           Update
-        </button></td>
+        </button></td> */}
         <td><button
           onClick={() => this.props.onMinus(event._id)}>
           Delete
@@ -52,6 +60,8 @@ export default class DayTable extends React.Component {
                   <th className="px-2">Time</th>
                   <th>Name</th>
                   <th>Address</th>
+                  <th>Descriptions</th>
+                  <th colSpan="2">Options</th>
                 </tr>
               </thead>
               <tbody>

@@ -22,12 +22,10 @@ const MapWithAMarker = compose(
   withScriptjs,
   withGoogleMap
 )(props => {
-  console.log(props)
   let search = false
   if (props.allPlaces.length > 0) {
     search = true
   }
-  console.log(search)
   let length = props.allPlaces.length
   return (
     <GoogleMap

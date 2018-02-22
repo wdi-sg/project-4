@@ -28,7 +28,6 @@ const PlacesWithStandaloneSearchBox = compose(
           var searchBox = document.getElementById("searchBox");
           searchBox.value = "";
           const places = refs.searchBox.getPlaces();
-          console.log(places);
           this.setState({
             // 1. set state for the current location,
             // 2. concat all places. if just want to show single marker can remove allPlaces
@@ -41,7 +40,6 @@ const PlacesWithStandaloneSearchBox = compose(
   }),
   withScriptjs
 )(props => {
-  console.log(props)
   return (
     <div data-standalone-searchbox="">
       <StandaloneSearchBox
@@ -60,7 +58,8 @@ const PlacesWithStandaloneSearchBox = compose(
             height: `40px`,
             padding: `0 12px`,
             fontSize: `18px`,
-            textOverflow: `ellipses`
+            textOverflow: `ellipses`,
+            marginBottom: `5px`
           }}
         />
       </StandaloneSearchBox>
