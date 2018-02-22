@@ -106,7 +106,11 @@
 .sharePromptText{
   margin: 5px 0 2px 0;
   font-style: italic;
+}
 
+.tabText{
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .dateLabels{
@@ -136,6 +140,14 @@
   height: 400px;
   overflow-y: scroll;
 }
+
+.event-content{
+  width: 11vw;
+}
+.event-des{
+  width: 40vw;
+}
+
 
 /* For The Scrollbar // Do not touch*/
 /* width */

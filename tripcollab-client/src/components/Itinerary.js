@@ -12,8 +12,9 @@ import {
   CardBody
 } from 'reactstrap';
 import classnames from 'classnames';
-
 import DayTable from './DayTable';
+
+
 export default class Itinerary extends React.Component {
   constructor(props) {
     super(props);
@@ -36,47 +37,47 @@ export default class Itinerary extends React.Component {
           <NavLink
             className={classnames({ active: props.activeTab === props.tabId })}
             onClick={() => { this.toggle(props.tabId); }}
-          >
-            Day {props.tabId}
-          </NavLink>
-        </NavItem>
-      )
+            >
+              <span className="tabText">Day {props.tabId}</span>
+            </NavLink>
+          </NavItem>
+        )
+      }
+
+      // Creates a pane for each day in the trip which will be toggled when the respective day table is pressed
+      const DayPane = (props) => {
+        return (
+          <TabPane tabId={props.tabId}>
+            <Row>
+              <Col sm="12">
+                <DayTable data={props} events={itineraryList} onAdd={this.props.updateMethod}
+                  onMinus={this.props.deleteMethod} />
+                </Col>
+              </Row>
+            </TabPane>
+          )
+        }
+
+        // Generates tabs for every day in the trip
+        const dayTabs = this.props.numberOfDays.map(day => <DayTab key={`day-tab-${day}`} activeTab={this.props.activeTab} tabId={day}/>)
+        // Generates tab panes for every day in the trip
+        const dayPanes = this.props.numberOfDays.map(day => <DayPane key={`day-pane-${day}`} tabId={day}/>)
+
+        return (
+          <div>
+            <Card>
+              <CardHeader>
+                <Nav tabs fill className="card-header-tabs">
+                  {dayTabs}
+                </Nav>
+              </CardHeader>
+              <CardBody>
+                <TabContent activeTab={this.props.activeTab}>
+                  {dayPanes}
+                </TabContent>
+              </CardBody>
+            </Card>
+          </div>
+        );
+      }
     }
-
-    // Creates a pane for each day in the trip which will be toggled when the respective day table is pressed
-    const DayPane = (props) => {
-      return (
-        <TabPane tabId={props.tabId}>
-          <Row>
-            <Col sm="12">
-              <DayTable data={props} events={itineraryList} onAdd={this.props.updateMethod}
-              onMinus={this.props.deleteMethod} />
-            </Col>
-          </Row>
-        </TabPane>
-      )
-    }
-
-    // Generates tabs for every day in the trip
-    const dayTabs = this.props.numberOfDays.map(day => <DayTab key={`day-tab-${day}`} activeTab={this.props.activeTab} tabId={day}/>)
-    // Generates tab panes for every day in the trip
-    const dayPanes = this.props.numberOfDays.map(day => <DayPane key={`day-pane-${day}`} tabId={day}/>)
-
-    return (
-      <div>
-        <Card>
-          <CardHeader>
-            <Nav tabs fill className="card-header-tabs">
-              {dayTabs}
-            </Nav>
-          </CardHeader>
-          <CardBody>
-            <TabContent activeTab={this.props.activeTab}>
-              {dayPanes}
-            </TabContent>
-          </CardBody>
-        </Card>
-      </div>
-    );
-  }
-}
