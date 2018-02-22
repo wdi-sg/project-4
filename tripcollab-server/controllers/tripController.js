@@ -28,7 +28,7 @@ exports.read = (req,res) => {
   }
   Trip.findOne(query).exec((err, data) => {
     if (err) {
-      console.log(err)
+      console.log("This is the error", err)
       res.sendStatus(404)
     }
     else {
