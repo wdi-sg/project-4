@@ -95,7 +95,7 @@ class App extends Component {
         'Content-Type': 'application/json'
       },
     })
-    this.retrieveFromList()
+    this.retrieveFromList(this.state.tripID._id)
   }
 
   // ========== mounting of component ==========
