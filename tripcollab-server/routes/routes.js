@@ -20,7 +20,7 @@ router.delete('/location/delete/:id', locationController.delete)
 
 //==================== Event Control ====================
 router.post('/event/new', eventController.create) // create
-router.get('/event/view', eventController.view) // read
+router.get('/event/view/:id', eventController.view) // read
 router.put('/event/update/:id', eventController.update) // update
 router.delete('/event/delete/:id', eventController.delete) // delete
 

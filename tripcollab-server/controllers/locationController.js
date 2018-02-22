@@ -25,7 +25,6 @@ exports.create = (req, res) => {
 };
 
 exports.getAllForTrip = (req, res) => {
-  console.log(req.params)
   // base on the trip id, populate all the location under it
   Location.find({tripID: req.params.id}).exec((err, location) => {
     if (err) {
