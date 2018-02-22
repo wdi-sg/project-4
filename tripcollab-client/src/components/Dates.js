@@ -39,13 +39,7 @@ componentDidMount() {
 }
 
 getDate = async () => {
-  const response = await fetch(`/trip/read/${this.props.tripID.url}`, {
-    method: 'GET',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-  })
+  const response = await fetch(`/trip/read/${this.props.tripID.url}`)
   const body = await response.json()
   console.log(body);
   let startDate = body.dateFrom.slice(0,10)
