@@ -9,7 +9,7 @@ Live version: https://tripcollab-v2.herokuapp.com/
 ## Getting Started
 ### How to Use
 * Fork and clone this repository.
-* Open your terminal and run ```yarn install``` to install dependencies.
+* Open terminal and run ```yarn install``` to install dependencies.
 * Run ```yarn start```.
 
 ---
@@ -29,7 +29,7 @@ Live version: https://tripcollab-v2.herokuapp.com/
 
 ## Workflow
 ### Entity-Relationship Diagram
-![p4_erd](https://user-images.githubusercontent.com/31798170/36536154-eac2c782-1806-11e8-9916-06d9efa7065a.png)
+![p4_erd](https://user-images.githubusercontent.com/31798170/36540300-cb5d74a6-1814-11e8-92b7-dd616885589a.png)
 
 ---
 
@@ -51,6 +51,7 @@ Live version: https://tripcollab-v2.herokuapp.com/
 ### Wireframe
 ![p4_wireframe](https://user-images.githubusercontent.com/31798170/36517183-58883ca2-17bc-11e8-90c0-e9d5028f26f0.png)
 
+![wireframe](https://user-images.githubusercontent.com/31798170/36540329-e53e5174-1814-11e8-8fa0-f153f6e1f86f.png)
 ---
 
 # Scalable Areas
