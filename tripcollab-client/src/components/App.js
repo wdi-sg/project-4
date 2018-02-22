@@ -17,8 +17,6 @@ import '../styles/App.css'
 import logo from '../icon.png'
 import FontAwesome from 'react-fontawesome'
 
-
-
 class App extends Component {
 
   // ========== Constructors ==========
@@ -49,9 +47,9 @@ class App extends Component {
       address: formatted_address,
       latitude: location.lat(),
       longitude: location.lng(),
-      tripID: "5a8a93ec30f13825204253ab" // just an example
+      tripID: "5a8e88c81e15aed8297de7a3" // just an example
     }
-    const response = await fetch('/location/new', {
+    const response = await fetch('/location/new/', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -60,6 +58,7 @@ class App extends Component {
       body: JSON.stringify(params)
     })
     const body = await response.json()
+    console.log(body)
     this.setState({ locationList: body })
   }
 
@@ -120,7 +119,8 @@ class App extends Component {
       locationName: req.locationName,
       locationAddress: req.locationAddress,
       time: "00:00",
-      date: this.state.activeTab
+      date: this.state.activeTab,
+      tripID: '5a8e88c81e15aed8297de7a3'
     };
     console.log(req);
     let response = await fetch('/event/new', {
@@ -161,7 +161,6 @@ class App extends Component {
   // Delete Event Test
   // ========== deleting event from the db ==========
   deleteEvent = async (req) => {
-
     // write to Express server
     var params = {
       id: req
@@ -188,6 +187,20 @@ class App extends Component {
   }
 
   render() {
+
+    let newStartDate = new Date()
+    let newStartDay = ("0" + newStartDate.getDate()).slice(-2)
+    let newStartMonth =("0" + (newStartDate.getMonth() + 1)).slice(-2)
+    let newStartYear = newStartDate.getFullYear()
+    let formattedStartDate = `${newStartYear}-${newStartMonth}-${newStartDay}`
+
+    let newEndDate = new Date()
+    newEndDate.setDate(newEndDate.getDate() + 1)
+    let newEndDay = ("0" + newEndDate.getDate()).slice(-2)
+    let newEndMonth = ("0" + (newEndDate.getMonth() + 1)).slice(-2)
+    let newEndYear = newEndDate.getFullYear()
+    let formattedEndDate = `${newEndYear}-${newEndMonth}-${newEndDay}`
+
     return (
       <div className="main" id="main">
         <Container>
@@ -198,7 +211,6 @@ class App extends Component {
                 <span className="title">TripCollab</span>
               </span>
             </Col>
-<<<<<<< HEAD
 
             <Col className="col-5 headerRight">
               <div>
@@ -207,12 +219,10 @@ class App extends Component {
                   Share this link with your friends!
                 </p>
 
-                <label for="shareLink"><FontAwesome name='link' size='1x' />&nbsp;</label>
-                <input type="input" name="shareLink" id="shareLink" value="tripcollab.com/asdf1234asd123" />
+                <label><FontAwesome name='link' />&nbsp;</label>
+                <input type="input" name="shareLink" id="shareLink" defaultValue="tripcollab.com/asdf1234asd123" />
               </div>
             </Col>
-=======
->>>>>>> 21feb
           </Row>
 
           <Row>

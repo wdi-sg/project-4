@@ -8,6 +8,10 @@ import {
 
 export default class DayTable extends React.Component {
 
+  handleBlur = (e) => {
+    e.preventDefault()
+  }
+
   render () {
 
     let currentDayEvents = this.props.events
@@ -25,10 +29,10 @@ export default class DayTable extends React.Component {
         <td>{event.locationName}</td>
         <td>{event.locationAddress}</td>
         <td><textarea className="textarea" defaultValue={event.description} ref={i + "text"} onBlur={() => this.props.onAdd({
-            id: event._id,
-            time: this.refs[i + "time"].value,
-            description: this.refs[i + "text"].value
-          })}/></td>
+          id: event._id,
+          time: this.refs[i + "time"].value,
+          description: this.refs[i + "text"].value
+        })} /></td>
         <td><button
           onClick={() => this.props.onMinus(event._id)}>
           Delete

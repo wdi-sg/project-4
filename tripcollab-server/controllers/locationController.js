@@ -7,7 +7,7 @@ exports.create = (req, res) => {
     locationName: req.body.name,
     locationAddress: req.body.address,
     latitude: req.body.latitude,
-    longitude: req.body.longitude
+    longitude: req.body.longitude,
     tripID: req.body.tripID
   }, (err, location) => {
     if (err) {
