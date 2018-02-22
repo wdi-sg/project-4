@@ -35,7 +35,7 @@ exports.read = (req,res) => {
       if (data != null) {
         res.send(data)
       } else {
-        res.sendStatus(404)
+        res.send({})
       }
     }
   })
@@ -55,7 +55,7 @@ exports.updateFrom = (req,res) => {
       if (data != null) {
         res.send(data)
       } else {
-        res.sendStatus(404)
+        res.send({})
       }
     }
   })
@@ -75,7 +75,7 @@ exports.updateTo = (req,res) => {
       if (data != null) {
         res.send(data)
       } else {
-        res.sendStatus(404)
+        res.send({})
       }
     }
   })

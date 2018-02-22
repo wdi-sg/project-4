@@ -49,7 +49,7 @@ class App extends Component {
       address: formatted_address,
       latitude: location.lat(),
       longitude: location.lng(),
-      tripID: this.state.tripID
+      tripID: this.state.tripID._id
     }
     const response = await fetch('/location/new/', {
       method: 'POST',
@@ -65,8 +65,8 @@ class App extends Component {
   }
 
   // ========== fetching from db the itineray list ==========
-  getItineraryList = async () => {
-    const response = await fetch('/event/view');
+  getItineraryList = async (id) => {
+    const response = await fetch(`/event/view/${id}`);
     const body = await response.json();
     if (response.status !== 200) throw Error(body.message);
     this.setState({ itineraryList: body });
@@ -101,7 +101,6 @@ class App extends Component {
   componentDidMount() {
     let urlLength = window.location.href.split('/').length
     this.getTripId(window.location.href.split('/')[urlLength - 1])
-    this.getItineraryList()
   }
 
   // ========== setting state for activeTab and currentDayItinerary ==========
@@ -116,14 +115,14 @@ class App extends Component {
   // Event creation Test
 
   addToEvent = async (req) => {
-
+    console.log(this.state.tripID)
     // write to Express server
     var params = {
       locationName: req.locationName,
       locationAddress: req.locationAddress,
       time: "00:00",
       date: this.state.activeTab,
-      tripID: '5a8e88c81e15aed8297de7a3'
+      tripID: this.state.tripID._id
     };
     let response = await fetch('/event/new', {
       method: 'POST',
@@ -133,7 +132,7 @@ class App extends Component {
       },
       body: JSON.stringify(params)
     });
-    this.getItineraryList()
+    this.getItineraryList(this.state.tripID._id)
   };
 
   // End of Event Creation Test
@@ -163,6 +162,7 @@ class App extends Component {
   // Delete Event Test
   // ========== deleting event from the db ==========
   deleteEvent = async (req) => {
+    console.log(this.state.tripID)
     // write to Express server
     var params = {
       id: req
@@ -176,7 +176,7 @@ class App extends Component {
       },
       body: JSON.stringify(params)
     });
-    this.getItineraryList()
+    this.getItineraryList(this.state.tripID._id)
   };
 
   // End of Test Code
@@ -200,6 +200,7 @@ class App extends Component {
     const body = await response.json()
     this.setState({ tripID: body })
     this.retrieveFromList(body._id)
+    this.getItineraryList(body._id)
   }
 
   render() {

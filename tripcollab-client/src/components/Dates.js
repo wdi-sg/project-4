@@ -77,18 +77,18 @@ setDate() {
 handleStart = async (e) => {
   // write to Express server
   await this.setState({startDate: e.target.value})
-  // var params = {
-  //   dateFrom: this.state.startDate,
-  //   id: "5a8e9ee965e46ee76b9a493f"
-  // };
-  // let response = await fetch(`/trip/update/${params.id}`, {
-  //   method: 'PUT',
-  //   headers: {
-  //     'Accept': 'application/json',
-  //     'Content-Type': 'application/json'
-  //   },
-  //   body: JSON.stringify(params)
-  // });
+  var params = {
+    dateFrom: this.state.startDate,
+    id: "5a8e9ee965e46ee76b9a493f"
+  };
+  let response = await fetch(`/trip/update/${params.id}`, {
+    method: 'PUT',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(params)
+  });
   this.setDate()
 };
 
@@ -98,33 +98,33 @@ handleStart = async (e) => {
 
   handleEnd = async (e) => {
     await this.setState({endDate: e.target.value})
-    // var params = {
-    //   dateTo: this.state.endDate,
-    //   id: "5a8e9ee965e46ee76b9a493f"
-    // };
-    // let response = await fetch(`/trip/update/${params.id}`, {
-    //   method: 'PUT',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(params)
-    // });
+    var params = {
+      dateTo: this.state.endDate,
+      id: "5a8e9ee965e46ee76b9a493f"
+    };
+    let response = await fetch(`/trip/update/${params.id}`, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(params)
+    });
     this.setDate()
   }
 
   componentDidMount () {
     this.setDate()
-    this.setInitialStartDate()
+    // this.setInitialStartDate()
   }
 
-  setInitialStartDate = () => {
-    let newStartDate = new Date()
-    let newDay = newStartDate.getDate()
-    let newMonth = newStartDate.getMonth() + 1
-    let newYear = newStartDate.getFullYear()
-    let formattedDate = `${newYear}-${newMonth}-${newDay}`
-  }
+  // setInitialStartDate = () => {
+  //   let newStartDate = new Date()
+  //   let newDay = newStartDate.getDate()
+  //   let newMonth = newStartDate.getMonth() + 1
+  //   let newYear = newStartDate.getFullYear()
+  //   let formattedDate = `${newYear}-${newMonth}-${newDay}`
+  // }
 
   render() {
     return (

@@ -8,7 +8,7 @@ exports.create = (req, res) => {
     date: req.body.date,
     description: req.body.description,
     // tripID: req.body.tripID,
-    tripID: "5a8e9ee965e46ee76b9a493f",
+    tripID: req.body.tripID,
     locationName: req.body.locationName,
     locationAddress: req.body.locationAddress,
     time: req.body.time
@@ -23,11 +23,15 @@ exports.create = (req, res) => {
 
 exports.view = (req, res) => {
   // Event.find({}).populate('locationID').exec((err, event) => {
-  Event.find({tripID: "5a8e9ee965e46ee76b9a493f"}, (err, event) => {
+  Event.find({tripID: req.params.id}, (err, event) => {
     if (err) {
       console.log(err);
     } else {
-      res.send(event);
+      if (event != null) {
+        res.send(event);
+      } else {
+        res.send({})
+      }
     }
   });
 }
