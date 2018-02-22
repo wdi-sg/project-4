@@ -236,7 +236,7 @@ class App extends Component {
                 </p>
 
                 <label><FontAwesome name='link' />&nbsp;</label>
-                <input type="input" name="shareLink" id="shareLink" defaultValue="tripcollab.com/asdf1234asd123" />
+                <input type="input" name="shareLink" id="shareLink" value={`https://tripcollab-v2.herokuapp.com/trip/${this.state.tripID.url}`} />
               </div>
             </Col>
           </Row>
