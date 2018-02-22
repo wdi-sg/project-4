@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { compose, withProps, withStateHandlers } from 'recompose';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
 import { Button } from 'reactstrap';
+import '../styles/App.css'
+
 
 const MapWithAMarker = compose(
   withProps({
@@ -37,10 +39,11 @@ const MapWithAMarker = compose(
         (<Marker
           position={{ lat: props.places.lat(), lng: props.places.lng() }}
           onClick={props.onToggleOpen}>
-          {props.isOpen && <InfoWindow onCloseClick={props.onToggleOpen}>
-            <div>
-              <h2>{props.allPlaces[length - 1].name}</h2>
-              <Button color="primary" onClick={() => props.onAdd(props.allPlaces[length - 1])}>Add</Button>
+          {props.isOpen &&<InfoWindow onCloseClick={props.onToggleOpen}>
+            <div className="mapPopUp">
+              <h4>{props.allPlaces[length - 1].name}</h4>
+              <p>{props.allPlaces[length - 1].formatted_address}</p>
+              <Button color="primary" size="sm" onClick={() => props.onAdd(props.allPlaces[length - 1])}>Save Location</Button>{' '}
             </div>
           </InfoWindow>}
         </Marker>)

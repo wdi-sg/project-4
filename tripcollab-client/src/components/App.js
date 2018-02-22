@@ -1,3 +1,4 @@
+// ############### React ###############
 import React, { Component } from 'react';
 import {
   Container,
@@ -8,14 +9,18 @@ import {
   // Form,
   // FormGroup
 } from 'reactstrap';
-import '../styles/App.css'
 
+// ############### Components ###############
 import Locations from './Locations'
 import Dates from './Dates'
 import Itinerary from './Itinerary'
 import PlacesWithStandaloneSearchBox from './SearchBox';
+
+// ############### Styling ###############
+import '../styles/App.css'
 import logo from '../icon.png'
-// import Alternative from './Alternative'
+
+
 
 class App extends Component {
 
@@ -198,34 +203,40 @@ class App extends Component {
 
   render() {
     return (
-      <div  >
-        <Col className="header">
-          <img src={logo} className="logo"/>
-          <div className="title">TripCollab</div>
-        </Col>
-
+      <div className="main">
         <Container>
+          <Row className="header">
+            <Col className="col-8">
+              <span>
+                <img src={logo} className="logo"/>
+              </span>
+              <span className="title">TripCollab</span>
+            </Col>
+            <Col className="col-4">hello</Col>
+          </Row>
           <Row>
             <Col className="col-7">
               <PlacesWithStandaloneSearchBox onAdd={this.addToList}/>
             </Col>
             <Col className="col-5">
-              <Dates getNumberOfDays={this.getNumberOfDays}/>
               <Locations
                 locations={this.state.locationList}
                 addToEvent={this.addToEvent}
                 onDelete={this.deleteFromList}/>
             </Col>
           </Row>
+
           <Row className="mt-5">
             <Col>
-              <Itinerary
-                numberOfDays={this.state.numberOfDays}
-                getActiveTab={this.getActiveTab}
-                activeTab={this.state.activeTab}
-                itineraryList={this.state.currentDayItinerary}
-                updateMethod={this.updateEvent}
-                deleteMethod={this.deleteEvent}
+              <Dates getNumberOfDays={this.getNumberOfDays}/>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col>
+              <Itinerary numberOfDays={this.state.numberOfDays} getActiveTab={this.getActiveTab} activeTab={this.state.activeTab} itineraryList={this.state.currentDayItinerary}
+              updateMethod={this.updateEvent}
+              deleteMethod={this.deleteEvent}
                />
             </Col>
           </Row>

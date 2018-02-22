@@ -27,33 +27,88 @@
   to { transform: rotate(360deg); }
 }
 
+
+/* Customised Stuff */
 .locationHeader{
   font-weight: bold;
   text-align: center;
 }
 
-
+.locationBody{
+  height: 400px;
+  overflow-y: auto;
+}
 
 .header{
-  padding-top: 15px;
-  padding-bottom: 15px;
-  text-align: center;
+  text-align: left;
+  background-color: white;
+  border-bottom: 2px solid #C0C0C0;
+  margin-bottom: 15px;
 }
 
 .logo{
+  padding-top: 5px;
+  padding-bottom: 5px;
   width:50px;
   height: auto;
 }
 
 .title{
-  font-size: 24px;
+  margin-top: 50px;
+  font-family: 'Pacifico', cursive;
+  font-size: 30px;
+  background-color: red;
 }
 
 .subtitle{
   font-size: 12px;
 }
 
+<<<<<<< HEAD
+.container{
+  /* This is the <Container> */
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.main{
+  background: url(https://images.unsplash.com/photo-1444723121867-7a241cacace9?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=34bb642ed1de30a476afee732c4e0c3e&auto=format&fit=crop&w=1050&q=80) no-repeat center center fixed;
+  background-size: cover;
+}
+
+.mapPopUp{
+  text-align: center;
+}
+
+
+
+
+
+
+/* Scrollbar */
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* End Scrollbar */
+=======
 .locationDiv {
   overflow-y: scroll;
   height: 250px;
 }
+>>>>>>> 935d1532a41870b9d1a031f839f5216e6b934f3c

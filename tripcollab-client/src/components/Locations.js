@@ -6,6 +6,8 @@ import {
   Table,
   Button,
 } from 'reactstrap';
+import '../styles/App.css'
+import FontAwesome from 'react-fontawesome'
 
 class Locations extends Component {
   render() {
@@ -20,26 +22,33 @@ class Locations extends Component {
       index={i}
       name={location.locationName} >
       <td>
+        <Button outline color="danger" size="sm" onClick={() => this.props.onDelete(location._id)}><FontAwesome name='times' size='1x' /> </Button>{' '}
+      </td>
+      <td>
+<<<<<<< HEAD
         {location.locationName}
-      </td>
-      <td>
+=======
         <Button color="primary" size="sm" onClick={this.props.addToEvent}>Add to Itinerary</Button>{' '}
+>>>>>>> 935d1532a41870b9d1a031f839f5216e6b934f3c
       </td>
       <td>
-        <Button outline color="danger" size="sm" onClick={() => this.props.onDelete(location._id)}>Remove Location</Button>{' '}
+        <Button color="primary" size="sm">Add to Itinerary</Button>{' '}
       </td>
+
     </tr>)
 
     return (
       <div className="locationDiv">
-        <div className="locationHeader">Searched Locations</div>
-        <Table responsive>
-          <tbody>
-
-            { locationList }
-
-          </tbody>
-        </Table>
+        <div className="locationHeader">
+          <h5><FontAwesome name='map-marker' size='1x' /> Saved Locations</h5>
+        </div>
+        <div className="locationBody">
+          <Table responsive>
+            <tbody>
+              { locationList }
+            </tbody>
+          </Table>
+        </div>
       </div>
     );
   }
