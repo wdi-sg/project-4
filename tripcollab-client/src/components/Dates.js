@@ -11,42 +11,43 @@ import '../styles/App.css'
 import FontAwesome from 'react-fontawesome'
 
 // Get initial dates and set in constructor
-// let newStartDate = new Date()
-// let newStartDay = ("0" + newStartDate.getDate()).slice(-2)
-// let newStartMonth =("0" + (newStartDate.getMonth() + 1)).slice(-2)
-// let newStartYear = newStartDate.getFullYear()
-// let formattedStartDate = `${newStartYear}-${newStartMonth}-${newStartDay}`
-//
-// let newEndDate = new Date()
-// newEndDate.setDate(newEndDate.getDate() + 1)
-// let newEndDay = ("0" + newEndDate.getDate()).slice(-2)
-// let newEndMonth = ("0" + (newEndDate.getMonth() + 1)).slice(-2)
-// let newEndYear = newEndDate.getFullYear()
-// let formattedEndDate = `${newEndYear}-${newEndMonth}-${newEndDay}`
+let newStartDate = new Date()
+let newStartDay = ("0" + newStartDate.getDate()).slice(-2)
+let newStartMonth =("0" + (newStartDate.getMonth() + 1)).slice(-2)
+let newStartYear = newStartDate.getFullYear()
+let formattedStartDate = `${newStartYear}-${newStartMonth}-${newStartDay}`
+
+let newEndDate = new Date()
+newEndDate.setDate(newEndDate.getDate() + 4)
+let newEndDay = ("0" + newEndDate.getDate()).slice(-2)
+let newEndMonth = ("0" + (newEndDate.getMonth() + 1)).slice(-2)
+let newEndYear = newEndDate.getFullYear()
+let formattedEndDate = `${newEndYear}-${newEndMonth}-${newEndDay}`
 
 class Dates extends Component {
 constructor() {
   super()
   this.state = {
-    startDate: '',
-    endDate: ''
+    startDate: formattedStartDate,
+    endDate: formattedEndDate
   }
 }
 
 componentDidMount() {
-  this.getDate()
+  // this.getDate()
   this.setDate()
 }
 
-getDate = async () => {
-  const response = await fetch(`/trip/read/${this.props.tripID.url}`)
-  const body = await response.json()
-  console.log(body);
-  let startDate = body.dateFrom.slice(0,10)
-  let endDate = body.dateTo.slice(0,10)
-  await this.setState({ startDate, endDate })
-  console.log("Date", this.state.startDate, this.state.endDate);
-}
+// getDate = async () => {
+//   console.log("something", this.props.tripID.url);
+//   const response = await fetch(`/trip/read/${ this.props.tripID.url}`)
+//   const body = await response.json()
+//   console.log(body);
+//   let startDate = body.dateFrom.slice(0,10)
+//   let endDate = body.dateTo.slice(0,10)
+//   await this.setState({ startDate, endDate })
+//   console.log("Date", this.state.startDate, this.state.endDate);
+// }
 
 setDate() {
   let {startDate, endDate} = this.state
@@ -107,10 +108,10 @@ handleStart = async (e) => {
     this.setDate()
   }
 
-  componentDidMount () {
-    this.setDate()
-    // this.setInitialStartDate()
-  }
+  // componentDidMount () {
+  //   this.setDate()
+  //   // this.setInitialStartDate()
+  // }
 
   // setInitialStartDate = () => {
   //   let newStartDate = new Date()

@@ -203,6 +203,7 @@ class App extends Component {
     const response = await fetch(`/trip/read/${id}`)
     const body = await response.json()
     this.setState({ tripID: body })
+    console.log("hellllooo");
     this.retrieveFromList(body._id)
     this.getItineraryList(body._id)
   }
