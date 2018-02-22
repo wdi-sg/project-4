@@ -44,7 +44,7 @@ Live version: https://tripcollab-v2.herokuapp.com/
 ---
 
 ### Flowchart
-![p4 flowchart](https://user-images.githubusercontent.com/31798170/36517141-222913c0-17bc-11e8-9d53-66b6d3e1ef5b.png)
+![p4 flowchart](https://user-images.githubusercontent.com/31798170/36543397-9fb85cd0-181e-11e8-8d5b-a90f7354bb96.png)
 
 ---
 
