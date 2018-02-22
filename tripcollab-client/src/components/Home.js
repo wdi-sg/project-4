@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import {
   Container,
   Row,
@@ -29,7 +29,7 @@ class Home extends Component {
           <InputGroup id="destination-field">
             <Input placeholder="Where are you going to?"/>
             <InputGroupAddon addonType="append">
-              <Button id="go-button" color="primary">Go!</Button>
+              <Button id="go-button" color="primary" /*onClick={} */>Go!</Button>
             </InputGroupAddon>
           </InputGroup>
         </Container>
