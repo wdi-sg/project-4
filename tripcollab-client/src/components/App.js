@@ -3,11 +3,7 @@ import React, { Component } from 'react';
 import {
   Container,
   Row,
-  Col,
-  // Input,
-  // Label,
-  // Form,
-  // FormGroup
+  Col
 } from 'reactstrap';
 
 // ############### Components ###############
@@ -144,16 +140,10 @@ class App extends Component {
 
     // write to Express server
     var params = {
-      // eventID: e.target.parentNode.id,
       description: req.description,
-      // Mock data to represent event ID
       id: req.id,
       time: req.time
-      // locationID: '5a8b8f5ec4e9267e17d6a63c'
-      // trip_id: req.params.id,
-      // name: this.state.locationList[e.target]
     };
-    // console.log(req)
     let response = await fetch(`/event/update/${params.id}`, {
       method: 'PUT',
       headers: {
@@ -172,11 +162,9 @@ class App extends Component {
 
     // write to Express server
     var params = {
-      // Mock data to represent event ID
       id: req
     };
-    // console.log(e.target.parentNode)
-    // console.log(req);
+
     let response = await fetch(`/event/delete/${params.id}`, {
       method: 'DELETE',
       headers: {
@@ -208,7 +196,6 @@ class App extends Component {
                 <span className="title">TripCollab</span>
               </span>
             </Col>
-            {/* <Col className="col-4">hello</Col> */}
           </Row>
           <Row>
             <Col className="col-7">

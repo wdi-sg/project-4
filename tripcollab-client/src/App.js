@@ -59,14 +59,14 @@ class App extends Component {
       // name: this.state.locationList[e.target]
     };
     console.log(params);
-    let response = await fetch('/event/new', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(params)
-    });
+    // let response = await fetch('/event/new', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(params)
+    // });
   };
 
   // End of Event Creation Test
