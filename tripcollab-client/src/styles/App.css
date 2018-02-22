@@ -133,3 +133,22 @@
 }
 
 /* End Scrollbar */
+
+/* Day Table */
+.event thead tr {
+  display: block;
+}
+
+.event .event-content {
+  width: 20%;
+}
+
+.event .event-des {
+  width: 30%;
+}
+
+.event tbody {
+  display: block;
+  height: 400px;
+  overflow: auto;
+}

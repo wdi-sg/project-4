@@ -19,20 +19,19 @@ export default class DayTable extends React.Component {
     let displayEvents = events.map((event, i) =>
       <tr key={event._id}>
         <td className="px-2">{i+1}</td>
-        <td className="px-2"><input className="form-control" type="time" defaultValue={event.time} ref={i*10} onBlur={() => this.props.onAdd({
+        <td className="px-2 event-content"><input className="form-control" type="time" defaultValue={event.time} ref={i*10} onBlur={() => this.props.onAdd({
           id: event._id,
           time: this.refs[i*10].value,
           description: this.refs[i+1].value
         })}/></td>
-        <td>{event.locationName}</td>
-        <td>{event.locationAddress}</td>
-        <td><textarea className="textarea" defaultValue={event.description} ref={i+1} onBlur={() => this.props.onAdd({
+        <td className="event-content">{event.locationName}</td>
+        <td className="event-content">{event.locationAddress}</td>
+        <td className="event-des"><textarea className="textarea" defaultValue={event.description} ref={i+1} onBlur={() => this.props.onAdd({
             id: event._id,
             time: this.refs[i*10].value,
             description: this.refs[i+1].value
           })}/></td>
 
-        <td><input type="text" defaultValue={event.description} ref={i+1} /></td>
         {/* <td><button
           onClick={() => this.props.onAdd({
             id: event._id,
@@ -41,7 +40,7 @@ export default class DayTable extends React.Component {
           })}>
           Update
         </button></td> */}
-        <td><button
+        <td className="event-content"><button
           onClick={() => this.props.onMinus(event._id)}>
           Delete
         </button></td>
@@ -52,15 +51,15 @@ export default class DayTable extends React.Component {
       <TabPane tabId="1">
         <Row>
           <Col sm="12">
-            <Table hover size="sm">
-              <thead className="thead-dark">
+            <Table hover size="sm" className="event">
+              <thead className="thead-light">
                 <tr>
                   <th className="px-2">#</th>
-                  <th className="px-2">Time</th>
-                  <th>Name</th>
-                  <th>Address</th>
-                  <th>Descriptions</th>
-                  <th colSpan="2">Options</th>
+                  <th className="px-2 event-content">Time</th>
+                  <th className="event-content">Name</th>
+                  <th className="event-content">Address</th>
+                  <th className="event-des">Descriptions</th>
+                  <th colSpan="2" className="event-content">Options</th>
                 </tr>
               </thead>
               <tbody>
