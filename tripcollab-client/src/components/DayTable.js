@@ -4,9 +4,17 @@ import {
   Row,
   Col,
   Table,
+  Button,
 } from 'reactstrap';
 
+import FontAwesome from 'react-fontawesome'
+
+
 export default class DayTable extends React.Component {
+
+  handleBlur = (e) => {
+    e.preventDefault()
+  }
 
   render () {
 
@@ -18,10 +26,13 @@ export default class DayTable extends React.Component {
     <tr key={event._id}>
       {/* <td className="px-2">{i + 1}</td> */}
 
-      <td><button
-        onClick={() => this.props.onMinus(event._id)}>
-        Delete
-      </button></td>
+      <td>
+        <Button outline color="danger" size="sm" onClick={() => this.props.onMinus(event._id)}><FontAwesome name='times' /> </Button>
+      </td>
+
+
+
+
 
       <td className="px-2"><input className="form-control" type="time" defaultValue={event.time} ref={i + "time"} onBlur={() => this.props.onAdd({
         id: event._id,
@@ -33,12 +44,11 @@ export default class DayTable extends React.Component {
 
       <td>{event.locationAddress}</td>
 
-      <td><textarea className="textarea" defaultValue={event.description} ref={i + "text"} onBlur={() => this.props.onAdd({
+      <td><textarea className="textarea" placeholder="Add a description for your event here" defaultValue={event.description} ref={i + "text"} onBlur={() => this.props.onAdd({
         id: event._id,
         time: this.refs[i + "time"].value,
         description: this.refs[i + "text"].value
       })}/></td>
-
     </tr>
   )
   return (
@@ -47,12 +57,12 @@ export default class DayTable extends React.Component {
         <Col>
           <Table hover size="sm" className="event">
             <thead className="thead-light">
-              <tr className="col-12">
-                <th className="event-content">Options</th>
+              <tr>
+                <th className="event-content">Delete</th>
                 <th className="px-2 event-content">Time</th>
                 <th className="event-content">Name</th>
                 <th className="event-content">Address</th>
-                <th className="event-des">Descriptions</th>
+                <th className="event-des">Description</th>
               </tr>
             </thead>
             <tbody>

@@ -7,6 +7,7 @@ exports.create = (req, res) => {
     time: req.body.time,
     date: req.body.date,
     description: req.body.description,
+    // tripID: req.body.tripID,
     tripID: req.body.tripID,
     locationName: req.body.locationName,
     locationAddress: req.body.locationAddress,
@@ -21,11 +22,16 @@ exports.create = (req, res) => {
 };
 
 exports.view = (req, res) => {
-  Event.find({}).exec((err, event) => {
+  // Event.find({}).populate('locationID').exec((err, event) => {
+  Event.find({tripID: req.params.id}, (err, event) => {
     if (err) {
       console.log(err);
     } else {
-      res.send(event);
+      if (event != null) {
+        res.send(event);
+      } else {
+        res.send({})
+      }
     }
   });
 }

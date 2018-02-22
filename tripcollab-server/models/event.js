@@ -14,9 +14,6 @@ const eventSchema = new Schema ({
   description : {
     type : String
   },
-  time : {
-    type : String
-  },
   locationName : {
     type : String
   },

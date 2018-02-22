@@ -39,7 +39,7 @@ class Locations extends Component {
   return (
     <div className="locationDiv">
       <div className="locationHeader">
-        <h5 class="locationTitle"><FontAwesome name='map-marker' /> Saved Locations</h5>
+        <h5 className="locationTitle"><FontAwesome name='map-marker' /> Saved Locations</h5>
       </div>
       <div className="locationBody">
         <Table responsive>
