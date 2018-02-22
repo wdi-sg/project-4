@@ -39,15 +39,15 @@ export default class DayTable extends React.Component {
       <TabPane tabId="1">
         <Row>
           <Col sm="12">
-            <Table hover size="sm">
-              <thead className="thead-dark">
+            <Table hover size="sm" className="event">
+              <thead className="thead-light">
                 <tr>
                   <th className="px-2">#</th>
-                  <th className="px-2">Time</th>
-                  <th>Name</th>
-                  <th>Address</th>
-                  <th>Descriptions</th>
-                  <th colSpan="2">Options</th>
+                  <th className="px-2 event-content">Time</th>
+                  <th className="event-content">Name</th>
+                  <th className="event-content">Address</th>
+                  <th className="event-des">Descriptions</th>
+                  <th colSpan="2" className="event-content">Options</th>
                 </tr>
               </thead>
               <tbody>

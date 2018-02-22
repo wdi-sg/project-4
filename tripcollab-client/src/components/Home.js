@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import {
   Container,
   Row,
@@ -28,7 +28,7 @@ class Home extends Component {
           <InputGroup id="destination-field">
             <Input placeholder="Where are you going to?"/>
             <InputGroupAddon addonType="append">
-              <Button id="go-button" color="primary">Go!</Button>
+              <Button id="go-button" color="primary" /*onClick={} */>Go!</Button>
             </InputGroupAddon>
           </InputGroup>
         </Container>
@@ -44,19 +44,19 @@ class Home extends Component {
             <Col xs={6} sm={3}>
               <img src="assets/calendar.svg" className="image-icon" alt="calendar icon"/>
               <h4 className="icon-header">Personalised Itinerary</h4>
-              <p className="panel-text">Lorem ipsum dolor sit ame adipiscing elit.</p>
+              <p className="panel-text">Able to customise itinerary.</p>
             </Col>
 
             <Col xs={6} sm={3}>
               <img src="assets/add-contact.svg" alt="add contact icon" className="image-icon"/>
               <h4 className="icon-header">Seamless Collaboration</h4>
-              <p className="panel-text">Lorem ipsum dolor sit ame adipiscing elit.</p>
+              <p className="panel-text">Able to share itinerary with friends.</p>
             </Col>
 
             <Col xs={6} sm={3}>
               <img src="assets/offline.svg" alt="no Wi-Fi icon" className="image-icon"/>
               <h4 className="icon-header">Offline Access</h4>
-              <p className="panel-text">Lorem ipsum dolor sit ame adipiscing elit..</p>
+              <p className="panel-text">View itinerary even in remote locations.</p>
             </Col>
           </Row>
         </Container>
