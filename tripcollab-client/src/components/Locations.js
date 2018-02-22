@@ -11,12 +11,9 @@ import FontAwesome from 'react-fontawesome'
 
 class Locations extends Component {
   render() {
-
-    console.log(this.props)
-
     let locationAll = this.props.locations
-
-    let locationList = locationAll.map((location, i) => <tr
+    let locationSort = locationAll.reverse()
+    let locationList = locationSort.map((location, i) => <tr
       key={location._id}
       id={location._id}
       index={i}

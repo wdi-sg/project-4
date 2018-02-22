@@ -19,9 +19,9 @@ const locationSchema = new Schema ({
   },
   tripID : {
     type : Schema.Types.ObjectId,
-    ref : 'Trip'
+    ref : 'trip'
   }
 })
 
-const Location = mongoose.model('Location', locationSchema)
+const Location = mongoose.model('location', locationSchema)
 module.exports = Location
