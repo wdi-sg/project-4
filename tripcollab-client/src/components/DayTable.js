@@ -8,6 +8,10 @@ import {
 
 export default class DayTable extends React.Component {
 
+  handleBlur = (e) => {
+    e.preventDefault()
+  }
+
   render () {
 
     let currentDayEvents = this.props.events
