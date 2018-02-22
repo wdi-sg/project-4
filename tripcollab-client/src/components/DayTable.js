@@ -9,9 +9,6 @@ import {
 
 export default class DayTable extends React.Component {
   // console.log(props)
-  constructor(props){
-    super(props)
-  }
 
   render() {
 
@@ -22,9 +19,9 @@ export default class DayTable extends React.Component {
       <tr key={event._id}>
         <td className="px-2">{i+1}</td>
         <td className="px-2"><input className="form-control" type="time" defaultValue={event.time} ref={i*10} /></td>
-        <td>{event.locationID.locationName}</td>
+        <td>{event.locationName}</td>
         {/* {console.log("Hello event", event)} */}
-        <td>{event.address}</td>
+        <td>{event.locationAddress}</td>
         <td><input type="text" defaultValue={event.description} ref={i+1} /></td>
         <td><button
           onClick={() => this.props.onAdd({

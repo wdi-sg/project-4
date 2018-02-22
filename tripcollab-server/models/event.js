@@ -14,13 +14,15 @@ const eventSchema = new Schema ({
   time : {
     type : String
   },
+  locationName : {
+    type : String
+  },
+  locationAddress : {
+    type : String
+  },
   tripID : {
     type : Schema.Types.ObjectId,
     ref : 'Trip'
-  },
-  locationID : {
-    type : Schema.Types.ObjectId,
-    ref : 'Location'
   }
 })
 

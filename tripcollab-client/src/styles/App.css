@@ -64,7 +64,6 @@
   font-size: 12px;
 }
 
-<<<<<<< HEAD
 .container{
   /* This is the <Container> */
   background-color: rgba(255, 255, 255, 0.85);
@@ -78,11 +77,6 @@
 .mapPopUp{
   text-align: center;
 }
-
-
-
-
-
 
 /* Scrollbar */
 /* width */
@@ -106,9 +100,7 @@
 }
 
 /* End Scrollbar */
-=======
-.locationDiv {
+/*.locationDiv {
   overflow-y: scroll;
   height: 250px;
-}
->>>>>>> 935d1532a41870b9d1a031f839f5216e6b934f3c
+}*/

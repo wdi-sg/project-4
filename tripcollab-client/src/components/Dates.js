@@ -14,8 +14,8 @@ class Dates extends Component {
 constructor() {
   super()
   this.state = {
-    startDate: '',
-    endDate: '',
+    startDate: '2018-02-21',
+    endDate: '2018-02-23',
   }
 }
 
@@ -47,6 +47,20 @@ setDate() {
     this.setDate()
   }
 
+  componentDidMount () {
+    this.setDate()
+    this.setInitialStartDate()
+  }
+
+  setInitialStartDate = () => {
+    let newStartDate = new Date()
+    let newDay = newStartDate.getDate()
+    let newMonth = newStartDate.getMonth() + 1
+    let newYear = newStartDate.getFullYear()
+    let formattedDate = `${newYear}-${newMonth}-${newDay}`
+    console.log(formattedDate)
+  }
+
   render() {
     return (
       <div>
@@ -55,7 +69,7 @@ setDate() {
             <FormGroup>
               <FontAwesome name='calendar' size='1x' />
               <Label for="startDate">&nbsp;Start Date</Label>
-              <Input type="date" name="startDate" id="startDate" placeholder="Start Date" onChange={this.handleStart} />
+              <Input type="date" name="startDate" id="startDate" placeholder="Start Date" defaultValue={this.state.startDate} onChange={this.handleStart} />
             </FormGroup>
           </Col>
 
@@ -63,14 +77,13 @@ setDate() {
             <FormGroup>
               <FontAwesome name='calendar' size='1x' />
               <Label for="endDate">&nbsp;End Date</Label>
-              <Input type="date" name="endDate" id="endDate" placeholder="End Date" onChange={this.handleEnd} />
+              <Input type="date" name="endDate" id="endDate" placeholder="End Date" defaultValue={this.state.endDate} onChange={this.handleEnd} />
             </FormGroup>
           </Col>
         </Row>
       </div>
     );
   }
-
 }
 
 export default Dates;

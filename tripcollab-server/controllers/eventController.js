@@ -7,7 +7,9 @@ exports.create = (req, res) => {
     date: req.body.date,
     description: req.body.description,
     tripID: req.body.tripID,
-    locationID: req.body.location_id
+    locationName: req.body.locationName,
+    locationAddress: req.body.locationAddress,
+    time: req.body.time
   }, (err, event) => {
     if (err) {
       console.log(err);

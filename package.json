@@ -4,7 +4,8 @@
   "license": "MIT",
   "dependencies": {
     "concurrently": "^3.5.1",
-    "dotenv": "^5.0.0"
+    "dotenv": "^5.0.0",
+    "react-fontawesome": "^1.6.1"
   },
   "scripts": {
     "build": "concurrently \"cd tripcollab-client && yarn build\" \"cd tripcollab-server && yarn build\"",
