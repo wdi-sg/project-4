@@ -201,21 +201,23 @@ class App extends Component {
 
   render() {
     return (
-      <div className="main">
+      <div className="main" id="main">
         <Container>
           <Row className="header">
-            <Col className="col-8">
+            <Col className="col-7">
               <span>
                 <img src={logo} className="logo"/>
                 <span className="title">TripCollab</span>
               </span>
             </Col>
 
-            <Col className="col-4 headerRight">
-              <span className="sharePromptText">
-                Share this link with your friends!
-              </span>
+            <Col className="col-5 headerRight">
               <div>
+
+                <p className="sharePromptText">
+                  Share this link with your friends!
+                </p>
+
                 <label for="shareLink"><FontAwesome name='link' size='1x' />&nbsp;</label>
                 <input type="input" name="shareLink" id="shareLink" value="tripcollab.com/asdf1234asd123" />
               </div>
@@ -248,10 +250,25 @@ class App extends Component {
                 />
               </Col>
             </Row>
-          </Container>
-        </div>
-      );
-    }
-  }
 
-  export default App;
+            <Row className="footer">
+              <Col className="col-12">
+                <div>
+                  <a href="https://github.com/chongct/project-4" target="_blank">
+                  <FontAwesome name='github' size='2x' />
+                  &nbsp;Visit our Github!
+                </a>
+                <p>
+                  © WDI-13-SG <br/>
+                  <a href="#main">Back to Top</a>
+                </p>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+    );
+  }
+}
+
+export default App;

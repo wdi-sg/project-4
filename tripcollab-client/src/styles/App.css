@@ -31,7 +31,6 @@
 /* Customised Stuff */
 .locationHeader{
   background-color: white;
-  font-weight: bold;
   text-align: center;
 }
 
@@ -40,6 +39,8 @@
   padding-top: 7px;
   padding-bottom: 7px;
   border-bottom: 1px solid #d1d1d1;
+  font-weight: bold;
+
 }
 
 .locationBody{
@@ -100,16 +101,34 @@
 }
 
 .sharePromptText{
+  margin: 5px 0 2px 0;
   font-style: italic;
+
 }
 
 .dateLabels{
   font-size: 20px;
+  font-weight: bold;
+
 }
 
 .dates{
   margin-top: 30px;
 }
+
+#shareLink{
+  width: 250px;
+}
+
+.footer{
+  margin-top: 10px;
+  padding-top: 5px;
+  text-align: center;
+  background-color: white;
+  border-top: 2px solid #D1D1D1;
+}
+
+
 
 /* For The Scrollbar // Do not touch*/
 /* width */
