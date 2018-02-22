@@ -29,7 +29,7 @@ Live version: https://tripcollab-v2.herokuapp.com/
 
 ## Workflow
 ### Entity-Relationship Diagram
-![p4_erd](https://user-images.githubusercontent.com/31798170/36517170-4131fb74-17bc-11e8-9a6a-8ecdcfdcd1f1.png)
+![p4_erd](https://user-images.githubusercontent.com/31798170/36536154-eac2c782-1806-11e8-9916-06d9efa7065a.png)
 
 ---
 

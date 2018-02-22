@@ -3,10 +3,7 @@ const Hashids = require('hashids')
 const hashids = new Hashids()
 
 exports.create = (req,res) => {
-  Trip.create({
-    dateFrom: req.body.dateFrom,
-    dateTo: req.body.dateTo
-  }, (err, trip) => {
+  Trip.create({}, (err, trip) => {
     if (err) {
       console.log(err)
     } else {
