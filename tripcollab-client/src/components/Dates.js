@@ -39,7 +39,7 @@ componentDidMount() {
 }
 
 getDate = async () => {
-  const response = await fetch(`/trip/view/5a8e9ee965e46ee76b9a493f`, {
+  const response = await fetch(`/trip/read/${this.props.tripID.url}`, {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
@@ -79,9 +79,9 @@ handleStart = async (e) => {
   await this.setState({startDate: e.target.value})
   var params = {
     dateFrom: this.state.startDate,
-    id: "5a8e9ee965e46ee76b9a493f"
+    id: this.props.tripID._id
   };
-  let response = await fetch(`/trip/update/${params.id}`, {
+  let response = await fetch(`/trip/updateFrom/${params.id}`, {
     method: 'PUT',
     headers: {
       'Accept': 'application/json',
@@ -100,9 +100,9 @@ handleStart = async (e) => {
     await this.setState({endDate: e.target.value})
     var params = {
       dateTo: this.state.endDate,
-      id: "5a8e9ee965e46ee76b9a493f"
+      id: this.props.tripID._id
     };
-    let response = await fetch(`/trip/update/${params.id}`, {
+    let response = await fetch(`/trip/updateTo/${params.id}`, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',

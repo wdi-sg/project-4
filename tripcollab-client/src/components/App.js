@@ -256,7 +256,7 @@ class App extends Component {
 
             <Row>
               <Col>
-                <Dates getNumberOfDays={this.getNumberOfDays}/>
+                <Dates getNumberOfDays={this.getNumberOfDays} tripID={this.state.tripID}/>
               </Col>
             </Row>
 
