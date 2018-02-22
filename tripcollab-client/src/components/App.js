@@ -124,7 +124,6 @@ class App extends Component {
       time: "00:00",
       date: this.state.activeTab
     };
-    console.log(req);
     let response = await fetch('/event/new', {
       method: 'POST',
       headers: {
@@ -153,7 +152,6 @@ class App extends Component {
       // trip_id: req.params.id,
       // name: this.state.locationList[e.target]
     };
-    // console.log(req)
     let response = await fetch(`/event/update/${params.id}`, {
       method: 'PUT',
       headers: {
@@ -175,8 +173,6 @@ class App extends Component {
       // Mock data to represent event ID
       id: req
     };
-    // console.log(e.target.parentNode)
-    // console.log(req);
     let response = await fetch(`/event/delete/${params.id}`, {
       method: 'DELETE',
       headers: {

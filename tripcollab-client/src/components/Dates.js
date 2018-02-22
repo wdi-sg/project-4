@@ -61,9 +61,6 @@ setDate() {
     let newMonth = newStartDate.getMonth() + 1
     let newYear = newStartDate.getFullYear()
     let formattedDate = `${newYear}-${newMonth}-${newDay}`
-
-    // let newEndDate = newStartDate.setDate(news)
-    console.log(formattedDate)
   }
 
   render() {
