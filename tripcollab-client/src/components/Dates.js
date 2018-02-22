@@ -10,12 +10,26 @@ import {
 import '../styles/App.css'
 import FontAwesome from 'react-fontawesome'
 
+// Get initial dates and set in constructor
+let newStartDate = new Date()
+let newStartDay = ("0" + newStartDate.getDate()).slice(-2)
+let newStartMonth =("0" + (newStartDate.getMonth() + 1)).slice(-2)
+let newStartYear = newStartDate.getFullYear()
+let formattedStartDate = `${newStartYear}-${newStartMonth}-${newStartDay}`
+
+let newEndDate = new Date()
+newEndDate.setDate(newEndDate.getDate() + 1)
+let newEndDay = ("0" + newEndDate.getDate()).slice(-2)
+let newEndMonth = ("0" + (newEndDate.getMonth() + 1)).slice(-2)
+let newEndYear = newEndDate.getFullYear()
+let formattedEndDate = `${newEndYear}-${newEndMonth}-${newEndDay}`
+
 class Dates extends Component {
 constructor() {
   super()
   this.state = {
-    startDate: '2018-02-21',
-    endDate: '2018-02-23',
+    startDate: formattedStartDate,
+    endDate: formattedEndDate
   }
 }
 
@@ -65,21 +79,21 @@ setDate() {
 
   render() {
     return (
-      <div>
+      <div className="dates">
         <Row>
-          <Col className="dates">
+          <Col>
             <FormGroup>
               <FontAwesome name='calendar' />
-              <Label for="startDate">&nbsp;Start Date</Label>
-              <Input type="date" name="startDate" id="startDate" placeholder="Start Date" defaultValue={this.state.startDate} onChange={this.handleStart} />
+              <Label className="dateLabels" for="startDate">&nbsp;Trip Start Date</Label>
+              <Input type="date" name="startDate" id="startDate" defaultValue={this.state.startDate} onChange={this.handleStart} />
             </FormGroup>
           </Col>
 
           <Col>
             <FormGroup>
               <FontAwesome name='calendar' />
-              <Label for="endDate">&nbsp;End Date</Label>
-              <Input type="date" name="endDate" id="endDate" placeholder="End Date" defaultValue={this.state.endDate} onChange={this.handleEnd} />
+              <Label className="dateLabels" for="endDate">&nbsp;Trip End Date</Label>
+              <Input type="date" name="endDate" id="endDate" defaultValue={this.state.endDate} onChange={this.handleEnd} />
             </FormGroup>
           </Col>
         </Row>

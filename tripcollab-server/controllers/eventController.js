@@ -3,7 +3,7 @@ const Event = require('../models/event')
 exports.create = (req, res) => {
   console.log(req);
   Event.create({
-    eventID: req.body.eventID,
+    // eventID: req.body.eventID,
     time: req.body.time,
     date: req.body.date,
     description: req.body.description,
@@ -21,7 +21,7 @@ exports.create = (req, res) => {
 };
 
 exports.view = (req, res) => {
-  Event.find({}).populate('locationID').exec((err, event) => {
+  Event.find({}).exec((err, event) => {
     if (err) {
       console.log(err);
     } else {
