@@ -52,7 +52,7 @@ class Home extends Component {
       { isShowHome && (
         <div id="HomePage">
           <Container>
-            <h1 className="logo text-center">TripCollab</h1>
+            <h1 className="brand text-center">TripCollab</h1>
             <Row>
               <Col>
                 <h3 className="main-text text-center">Plan a trip with your friends now!</h3>

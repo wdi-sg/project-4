@@ -3,11 +3,7 @@ import React, { Component } from 'react';
 import {
   Container,
   Row,
-  Col,
-  // Input,
-  // Label,
-  // Form,
-  // FormGroup
+  Col
 } from 'reactstrap';
 
 // ############### Components ###############
@@ -18,7 +14,9 @@ import PlacesWithStandaloneSearchBox from './SearchBox';
 
 // ############### Styling ###############
 import '../styles/App.css'
+import FontAwesome from 'react-fontawesome'
 // import logo from '../icon.png'
+
 
 
 class App extends Component {
@@ -108,7 +106,7 @@ class App extends Component {
     this.getTripId(window.location.href.split('/')[urlLength - 1])
   }
 
-// ========== setting state for activeTab and currentDayItinerary ==========
+  // ========== setting state for activeTab and currentDayItinerary ==========
   getActiveTab = async (data) => {
     await this.setState({activeTab: data})
 
@@ -147,14 +145,9 @@ class App extends Component {
 
     // write to Express server
     var params = {
-      // eventID: e.target.parentNode.id,
       description: req.description,
-      // Mock data to represent event ID
       id: req.id,
       time: req.time
-      // locationID: '5a8b8f5ec4e9267e17d6a63c'
-      // trip_id: req.params.id,
-      // name: this.state.locationList[e.target]
     };
     let response = await fetch(`/event/update/${params.id}`, {
       method: 'PUT',
@@ -174,9 +167,9 @@ class App extends Component {
 
     // write to Express server
     var params = {
-      // Mock data to represent event ID
       id: req
     };
+
     let response = await fetch(`/event/delete/${params.id}`, {
       method: 'DELETE',
       headers: {
@@ -207,17 +200,29 @@ class App extends Component {
 
   render() {
     return (
-      <div className="main">
-        <Container>
+      <div className="main" id="main">
+        <Container className="fpContainer">
           <Row className="header">
-            <Col className="col-8">
+            <Col className="col-7">
               <span>
-                {/* <img src={logo} className="logo"/> */}
+                <img src="/assets/icon.png" className="logo"/>
                 <span className="title">TripCollab</span>
               </span>
             </Col>
-            {/* <Col className="col-4">hello</Col> */}
+
+            <Col className="col-5 headerRight">
+              <div>
+
+                <p className="sharePromptText">
+                  Share this link with your friends!
+                </p>
+
+                <label for="shareLink"><FontAwesome name='link' size='1x' />&nbsp;</label>
+                <input type="input" name="shareLink" id="shareLink" value="tripcollab.com/asdf1234asd123" />
+              </div>
+            </Col>
           </Row>
+
           <Row>
             <Col className="col-7">
               <PlacesWithStandaloneSearchBox onAdd={this.addToList}/>
@@ -227,19 +232,36 @@ class App extends Component {
                 locations={this.state.locationList}
                 onAdd={this.addToEvent}
                 onDelete={this.deleteFromList}/>
-            </Col>
-          </Row>
-          <Row className="mt-5">
-            <Col>
-              <Dates getNumberOfDays={this.getNumberOfDays}/>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Itinerary numberOfDays={this.state.numberOfDays} getActiveTab={this.getActiveTab} activeTab={this.state.activeTab} itineraryList={this.state.currentDayItinerary}
-              updateMethod={this.updateEvent}
-              deleteMethod={this.deleteEvent}
-               />
+              </Col>
+            </Row>
+
+            <Row>
+              <Col>
+                <Dates getNumberOfDays={this.getNumberOfDays}/>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col>
+                <Itinerary numberOfDays={this.state.numberOfDays} getActiveTab={this.getActiveTab} activeTab={this.state.activeTab} itineraryList={this.state.currentDayItinerary}
+                  updateMethod={this.updateEvent}
+                  deleteMethod={this.deleteEvent}
+                />
+              </Col>
+            </Row>
+
+            <Row className="footer">
+              <Col className="col-12">
+                <div>
+                  <a href="https://github.com/chongct/project-4" target="_blank">
+                  <FontAwesome name='github' size='2x' />
+                  &nbsp;Visit our Github!
+                </a>
+                <p>
+                  © WDI-13-SG <br/>
+                  <a href="#main">Back to the Top</a>
+                </p>
+              </div>
             </Col>
           </Row>
         </Container>
