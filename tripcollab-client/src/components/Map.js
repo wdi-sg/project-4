@@ -30,22 +30,22 @@ const MapWithAMarker = compose(
     <GoogleMap
       defaultZoom={14}
       center={{ lat: props.places.lat(), lng: props.places.lng() }}
-    >
-      {
-        search &&
-        (<Marker
-          position={{ lat: props.places.lat(), lng: props.places.lng() }}
-          onClick={props.onToggleOpen}>
-          {props.isOpen &&<InfoWindow onCloseClick={props.onToggleOpen}>
-            <div>
-              <h2>{props.allPlaces[length - 1].name}</h2>
-              <Button color="primary" onClick={() => props.onAdd(props.allPlaces[length - 1])}>Add</Button>
-            </div>
-          </InfoWindow>}
-        </Marker>)
-      }
-    </GoogleMap>
-  )
-})
+      >
+        {
+          search &&
+          (<Marker
+            position={{ lat: props.places.lat(), lng: props.places.lng() }}
+            onClick={props.onToggleOpen}>
+            {props.isOpen &&<InfoWindow onCloseClick={props.onToggleOpen}>
+              <div className="mapPopUp">
+                <h4>{props.allPlaces[length - 1].name}</h4>
+                <Button color="primary" onClick={() => props.onAdd(props.allPlaces[length - 1])} size="sm">Save Location</Button>{' '}
+              </div>
+            </InfoWindow>}
+          </Marker>)
+        }
+      </GoogleMap>
+    )
+  })
 
-export default MapWithAMarker
+  export default MapWithAMarker
