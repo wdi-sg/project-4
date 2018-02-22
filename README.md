@@ -9,7 +9,7 @@ Live version: https://tripcollab-v2.herokuapp.com/
 ## Getting Started
 ### How to Use
 * Fork and clone this repository.
-* Open your terminal and run ```yarn install``` to install dependencies.
+* Open terminal and run ```yarn install``` to install dependencies.
 * Run ```yarn start```.
 
 ---
