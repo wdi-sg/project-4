@@ -212,15 +212,20 @@ class App extends Component {
             <Col className="col-5">
               <Dates getNumberOfDays={this.getNumberOfDays}/>
               <Locations
-                locations={this.state.locationList} addToEvent={this.addToEvent}
+                locations={this.state.locationList}
+                addToEvent={this.addToEvent}
                 onDelete={this.deleteFromList}/>
             </Col>
           </Row>
           <Row className="mt-5">
             <Col>
-              <Itinerary numberOfDays={this.state.numberOfDays} getActiveTab={this.getActiveTab} activeTab={this.state.activeTab} itineraryList={this.state.currentDayItinerary}
-              updateMethod={this.updateEvent}
-              deleteMethod={this.deleteEvent}
+              <Itinerary
+                numberOfDays={this.state.numberOfDays}
+                getActiveTab={this.getActiveTab}
+                activeTab={this.state.activeTab}
+                itineraryList={this.state.currentDayItinerary}
+                updateMethod={this.updateEvent}
+                deleteMethod={this.deleteEvent}
                />
             </Col>
           </Row>
