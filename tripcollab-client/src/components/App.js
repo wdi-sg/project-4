@@ -19,6 +19,8 @@ import PlacesWithStandaloneSearchBox from './SearchBox';
 // ############### Styling ###############
 import '../styles/App.css'
 import logo from '../icon.png'
+import FontAwesome from 'react-fontawesome'
+
 
 
 
@@ -212,7 +214,12 @@ class App extends Component {
               </span>
               <span className="title">TripCollab</span>
             </Col>
-            <Col className="col-4">hello</Col>
+            <Col className="col-4 headerRight">hello hello hello
+                <div>
+                  <label for="shareLink"><FontAwesome name='link' size='1x' />&nbsp;</label>
+                  <input type="input" name="shareLink" id="shareLink" value="tripcollab.com/asdf1234asd123" />
+                </div>
+              </Col>
           </Row>
           <Row>
             <Col className="col-7">
@@ -222,27 +229,27 @@ class App extends Component {
               <Locations
                 locations={this.state.locationList} addToEvent={this.addToEvent}
                 onDelete={this.deleteFromList}/>
-            </Col>
-          </Row>
+              </Col>
+            </Row>
 
-          <Row className="mt-5">
-            <Col>
-              <Dates getNumberOfDays={this.getNumberOfDays}/>
-            </Col>
-          </Row>
+            <Row className="mt-5">
+              <Col>
+                <Dates getNumberOfDays={this.getNumberOfDays}/>
+              </Col>
+            </Row>
 
-          <Row>
-            <Col>
-              <Itinerary numberOfDays={this.state.numberOfDays} getActiveTab={this.getActiveTab} activeTab={this.state.activeTab} itineraryList={this.state.currentDayItinerary}
-              updateMethod={this.updateEvent}
-              deleteMethod={this.deleteEvent}
-               />
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    );
+            <Row>
+              <Col>
+                <Itinerary numberOfDays={this.state.numberOfDays} getActiveTab={this.getActiveTab} activeTab={this.state.activeTab} itineraryList={this.state.currentDayItinerary}
+                  updateMethod={this.updateEvent}
+                  deleteMethod={this.deleteEvent}
+                />
+              </Col>
+            </Row>
+          </Container>
+        </div>
+      );
+    }
   }
-}
 
-export default App;
+  export default App;

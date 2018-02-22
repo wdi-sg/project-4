@@ -20,7 +20,8 @@ class Locations extends Component {
       key={location._id}
       id={location._id}
       index={i}
-      name={location.locationName} >
+      name={location.locationName}
+      className="locationRow" >
       <td>
         <Button outline color="danger" size="sm" onClick={() => this.props.onDelete(location._id)}><FontAwesome name='times' size='1x' /> </Button>{' '}
       </td>
