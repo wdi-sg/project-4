@@ -10,8 +10,9 @@ import {
   InputGroupAddon,
   Form
 } from 'reactstrap';
-import '../styles/Home.css';
+import FontAwesome from 'react-fontawesome'
 
+import '../styles/Home.css';
 import App from './App'
 
 
@@ -55,18 +56,15 @@ class Home extends Component {
             <h1 className="brand text-center">TripCollab</h1>
             <Row>
               <Col>
-                <h3 className="main-text text-center">Plan a trip with your friends now!</h3>
+                <h3 className="main-text text-center">Plan a trip with your friends</h3>
               </Col>
             </Row>
           </Container>
 
           <Container id="text-field-container" className="d-flex justify-content-center align-items-center">
-              <InputGroup id="destination-field">
-                <Input placeholder="Where are you going to?"/>
-                <InputGroupAddon addonType="append">
-                    <Button id="go-button" color="primary" onClick={this.loadNewTrip} >Go!</Button>
-                </InputGroupAddon>
-              </InputGroup>
+              <div id="destination-field">
+                <Button id="go-button" size="lg" color="primary" onClick={this.loadNewTrip} block>Start now!</Button>
+              </div>
           </Container>
 
           <Container fluid id="back-panel">
@@ -98,7 +96,7 @@ class Home extends Component {
           </Container>
 
           <footer className="text-center text-light">
-            <p>Copyright © 2018 <a id="github" href='https://github.com/chongct/project-4'><strong>TripCollab</strong></a>. All Rights Reserved.</p>
+            <p className="footer-text">Copyright © 2018 <strong>TripCollab by WDI’13</strong> <a id="github" href="https://github.com/chongct/project-4" target="_blank"><FontAwesome name='github' size='2x' /></a></p>
           </footer>
         </div>
       )
