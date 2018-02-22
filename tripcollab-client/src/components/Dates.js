@@ -64,6 +64,22 @@ setDate() {
     this.setDate()
   }
 
+<<<<<<< HEAD
+=======
+  componentDidMount () {
+    this.setDate()
+    this.setInitialStartDate()
+  }
+
+  setInitialStartDate = () => {
+    let newStartDate = new Date()
+    let newDay = newStartDate.getDate()
+    let newMonth = newStartDate.getMonth() + 1
+    let newYear = newStartDate.getFullYear()
+    let formattedDate = `${newYear}-${newMonth}-${newDay}`
+  }
+
+>>>>>>> master
   render() {
     return (
       <div className="dates">

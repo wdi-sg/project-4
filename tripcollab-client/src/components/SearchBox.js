@@ -1,45 +1,46 @@
-import React, { Component } from 'react';
-import { compose, withProps, lifecycle } from 'recompose';
-import { withScriptjs } from 'react-google-maps';
-import { StandaloneSearchBox } from 'react-google-maps/lib/components/places/StandaloneSearchBox';
-import MapWithAMarker from './Map';
-import { Button } from 'reactstrap';
+import React, { Component } from 'react'
+import { compose, withProps, lifecycle } from 'recompose'
+import { withScriptjs } from 'react-google-maps'
+import { StandaloneSearchBox } from 'react-google-maps/lib/components/places/StandaloneSearchBox'
+import MapWithAMarker from './Map'
+import { Button } from 'reactstrap'
 
 const PlacesWithStandaloneSearchBox = compose(
   withProps({
-    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places",
+    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyC3HfusZwcksvRVy2HBRGbZeW83crtWOao&v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div style={{ height: `400px` }} />
   }),
   lifecycle({
     componentWillMount() {
-      const refs = {};
+      const refs = {}
       // set the default focus of the map
-      const places = { lat: () => 1.352083 , lng: () => 103.819836};
+      const places = { lat: () => 1.352083 , lng: () => 103.819836}
 
       this.setState({
         places,
         allPlaces: [],
         onSearchBoxMounted: ref => {
-          refs.searchBox = ref;
+          refs.searchBox = ref
         },
         onPlacesChanged: () => {
           // target the input to clear after location is selected
-          var searchBox = document.getElementById("searchBox");
-          searchBox.value = "";
-          const places = refs.searchBox.getPlaces();
+          var searchBox = document.getElementById("searchBox")
+          searchBox.value = ""
+          const places = refs.searchBox.getPlaces()
           this.setState({
             // 1. set state for the current location,
             // 2. concat all places. if just want to show single marker can remove allPlaces
             places: places[0].geometry.location,
             allPlaces: this.state.allPlaces.concat(places)
-          });
+          })
         }
       })
     }
   }),
   withScriptjs
 )(props => {
+
   return (
     <div data-standalone-searchbox="">
       <StandaloneSearchBox
@@ -50,24 +51,32 @@ const PlacesWithStandaloneSearchBox = compose(
         <input
           id="searchBox"
           type="text"
-          placeholder="Search for Locations!"
+          placeholder="Search Google Maps"
           style={{
             boxSizing: `border-box`,
-            border: `none`,
+            borderTop: `1px solid #ced4da`,
+            borderRight: `1px solid #ced4da`,
+            borderLeft: `1px solid #ced4da`,
+            borderBottom: `none`,
             width: `100%`,
-            height: `40px`,
+            height: `32px`,
             padding: `0 12px`,
-            fontSize: `18px`,
-            textOverflow: `ellipses`,
-            marginBottom: `5px`
+            borderTopLeftRadius: `3px`,
+            borderTopRightRadius: `3px`,
+            fontSize: `14px`,
+            textOverflow: `ellipses`
+            // border: `1px  solid`,
+            // border: `1px solid transparent`,
+            // boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+            // outline: `none`,
           }}
         />
       </StandaloneSearchBox>
       {/* <Button color="primary" onClick={() => props.onAdd(props.allPlaces[props.allPlaces.length - 1])}>Add Searched Location to List</Button> */}
 
-      <MapWithAMarker places={props.places} allPlaces={props.allPlaces} onAdd={props.onAdd}/>
+      <MapWithAMarker places={props.places} allPlaces={props.allPlaces} onAdd={props.onAdd} mapKey={props.mapKey}/>
     </div>
   )
-});
+})
 
-export default PlacesWithStandaloneSearchBox;
+export default PlacesWithStandaloneSearchBox
