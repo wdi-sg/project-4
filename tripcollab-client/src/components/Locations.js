@@ -25,14 +25,11 @@ class Locations extends Component {
         <Button outline color="danger" size="sm" onClick={() => this.props.onDelete(location._id)}><FontAwesome name='times' size='1x' /> </Button>{' '}
       </td>
       <td>
-<<<<<<< HEAD
         {location.locationName}
-=======
-        <Button color="primary" size="sm" onClick={this.props.addToEvent}>Add to Itinerary</Button>{' '}
->>>>>>> 935d1532a41870b9d1a031f839f5216e6b934f3c
       </td>
+
       <td>
-        <Button color="primary" size="sm">Add to Itinerary</Button>{' '}
+        <Button color="primary" size="sm" onClick={this.props.addToEvent}>Add to Itinerary</Button>{' '}
       </td>
 
     </tr>)
