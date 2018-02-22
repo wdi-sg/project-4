@@ -78,8 +78,9 @@ class App extends Component {
   }
 
   // ========== fetching from db the location list ==========
-  retrieveFromList = async () => {
-    const response = await fetch('/location/getAllForTrip');
+  retrieveFromList = async (id) => {
+    console.log(id)
+    const response = await fetch(`/location/getAllForTrip/${id}`);
     const body = await response.json();
     if (response.status !== 200) throw Error(body.message);
     this.setState({ locationList: body });
@@ -94,16 +95,14 @@ class App extends Component {
         'Content-Type': 'application/json'
       },
     })
-    const body = await response.json()
-    this.setState({ locationList: body })
+    this.retrieveFromList()
   }
 
   // ========== mounting of component ==========
   componentDidMount() {
-    this.retrieveFromList()
-    this.getItineraryList()
     let urlLength = window.location.href.split('/').length
     this.getTripId(window.location.href.split('/')[urlLength - 1])
+    this.getItineraryList()
   }
 
   // ========== setting state for activeTab and currentDayItinerary ==========
@@ -192,10 +191,10 @@ class App extends Component {
 
   // get tripID
   getTripId = async (id) => {
-    const response = await fetch(`/trip/${id}`)
+    const response = await fetch(`/trip/read/${id}`)
     const body = await response.json()
     this.setState({ tripID: body })
-    console.log(body)
+    this.retrieveFromList(body._id)
   }
 
   render() {

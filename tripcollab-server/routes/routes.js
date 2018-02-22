@@ -8,13 +8,13 @@ const homeController = require('../controllers/homeController')
 
 //==================== Trip Control ====================
 router.post('/trip/new', tripController.create) // create
-router.get('/trip/:id', tripController.read) // read
+router.get('/trip/read/:id', tripController.read) // read
 router.post('/trip/update/:id', tripController.update) // update
 // router.post('/trip/delete', tripController.delete)
 
 //==================== Location Control ====================
 router.post('/location/new', locationController.create) // create
-router.get('/location/getAllForTrip', locationController.getAllForTrip) // read
+router.get('/location/getAllForTrip/:id', locationController.getAllForTrip) // read
 router.delete('/location/delete/:id', locationController.delete)
 
 //==================== Event Control ====================
