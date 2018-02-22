@@ -14,18 +14,35 @@ class Dates extends Component {
 constructor() {
   super()
   this.state = {
-    startDate: '2018-02-21',
-    endDate: '2018-02-23',
+    startDate: '',
+    endDate: ''
   }
 }
 
-componentDidMount() {
+componentDidMount = async () => {
+  await this.getDate()
   this.setDate()
+}
+
+getDate = async () => {
+  const response = await fetch(`/trip/view/5a8e432c7b188780787fe1bd`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+  })
+  const body = await response.json()
+  console.log(body);
+  let startDate = body.dateFrom.slice(0,10)
+  let endDate = body.dateTo.slice(0,10)
+  await this.setState({ startDate, endDate })
+  console.log("Date", this.state.startDate, this.state.endDate);
 }
 
 setDate() {
   let {startDate, endDate} = this.state
-  if (startDate !== '' & endDate !== '') {
+  if (startDate !== '' && endDate !== '') {
     let oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
 
     let d1 = new Date(startDate);
@@ -35,9 +52,11 @@ setDate() {
     let diffDays = d3 / oneDay
     if (diffDays >= 0) {
       this.props.getNumberOfDays(diffDays + 1)
-    }
     // this.setState({numberOfDays: diffDays + 1})
   }
+
+
+}
 }
 
   handleStart = async (e) => {
@@ -50,22 +69,6 @@ setDate() {
     this.setDate()
   }
 
-  componentDidMount () {
-    this.setDate()
-    this.setInitialStartDate()
-  }
-
-  setInitialStartDate = () => {
-    let newStartDate = new Date()
-    let newDay = newStartDate.getDate()
-    let newMonth = newStartDate.getMonth() + 1
-    let newYear = newStartDate.getFullYear()
-    let formattedDate = `${newYear}-${newMonth}-${newDay}`
-
-    // let newEndDate = newStartDate.setDate(news)
-    console.log(formattedDate)
-  }
-
   render() {
     return (
       <div>
@@ -74,7 +77,7 @@ setDate() {
             <FormGroup>
               <FontAwesome name='calendar' />
               <Label for="startDate">&nbsp;Start Date</Label>
-              <Input type="date" name="startDate" id="startDate" placeholder="Start Date" defaultValue={this.state.startDate} onChange={this.handleStart} />
+              <Input type="date" name="startDate" id="startDate" placeholder="Start Date" value={this.state.startDate} onChange={this.handleStart} />
             </FormGroup>
           </Col>
 
@@ -82,7 +85,7 @@ setDate() {
             <FormGroup>
               <FontAwesome name='calendar' />
               <Label for="endDate">&nbsp;End Date</Label>
-              <Input type="date" name="endDate" id="endDate" placeholder="End Date" defaultValue={this.state.endDate} onChange={this.handleEnd} />
+              <Input type="date" name="endDate" id="endDate" placeholder="End Date" value={this.state.endDate} onChange={this.handleEnd} />
             </FormGroup>
           </Col>
         </Row>
