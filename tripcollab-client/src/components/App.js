@@ -15,6 +15,8 @@ import PlacesWithStandaloneSearchBox from './SearchBox';
 // ############### Styling ###############
 import '../styles/App.css'
 import logo from '../icon.png'
+import FontAwesome from 'react-fontawesome'
+
 
 
 class App extends Component {
@@ -100,7 +102,7 @@ class App extends Component {
     this.getItineraryList()
   }
 
-// ========== setting state for activeTab and currentDayItinerary ==========
+  // ========== setting state for activeTab and currentDayItinerary ==========
   getActiveTab = async (data) => {
     await this.setState({activeTab: data})
 
@@ -187,16 +189,32 @@ class App extends Component {
 
   render() {
     return (
-      <div className="main">
+      <div className="main" id="main">
         <Container>
           <Row className="header">
-            <Col className="col-8">
+            <Col className="col-7">
               <span>
                 <img src={logo} className="logo"/>
                 <span className="title">TripCollab</span>
               </span>
             </Col>
+<<<<<<< HEAD
+
+            <Col className="col-5 headerRight">
+              <div>
+
+                <p className="sharePromptText">
+                  Share this link with your friends!
+                </p>
+
+                <label for="shareLink"><FontAwesome name='link' size='1x' />&nbsp;</label>
+                <input type="input" name="shareLink" id="shareLink" value="tripcollab.com/asdf1234asd123" />
+              </div>
+            </Col>
+=======
+>>>>>>> 21feb
           </Row>
+
           <Row>
             <Col className="col-7">
               <PlacesWithStandaloneSearchBox onAdd={this.addToList}/>
@@ -206,19 +224,36 @@ class App extends Component {
                 locations={this.state.locationList}
                 onAdd={this.addToEvent}
                 onDelete={this.deleteFromList}/>
-            </Col>
-          </Row>
-          <Row className="mt-5">
-            <Col>
-              <Dates getNumberOfDays={this.getNumberOfDays}/>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Itinerary numberOfDays={this.state.numberOfDays} getActiveTab={this.getActiveTab} activeTab={this.state.activeTab} itineraryList={this.state.currentDayItinerary}
-              updateMethod={this.updateEvent}
-              deleteMethod={this.deleteEvent}
-               />
+              </Col>
+            </Row>
+
+            <Row>
+              <Col>
+                <Dates getNumberOfDays={this.getNumberOfDays}/>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col>
+                <Itinerary numberOfDays={this.state.numberOfDays} getActiveTab={this.getActiveTab} activeTab={this.state.activeTab} itineraryList={this.state.currentDayItinerary}
+                  updateMethod={this.updateEvent}
+                  deleteMethod={this.deleteEvent}
+                />
+              </Col>
+            </Row>
+
+            <Row className="footer">
+              <Col className="col-12">
+                <div>
+                  <a href="https://github.com/chongct/project-4" target="_blank">
+                  <FontAwesome name='github' size='2x' />
+                  &nbsp;Visit our Github!
+                </a>
+                <p>
+                  © WDI-13-SG <br/>
+                  <a href="#main">Back to Top</a>
+                </p>
+              </div>
             </Col>
           </Row>
         </Container>

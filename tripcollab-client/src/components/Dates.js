@@ -66,21 +66,21 @@ setDate() {
 
   render() {
     return (
-      <div>
+      <div className="dates">
         <Row>
-          <Col className="dates">
+          <Col>
             <FormGroup>
               <FontAwesome name='calendar' />
-              <Label for="startDate">&nbsp;Start Date</Label>
-              <Input type="date" name="startDate" id="startDate" placeholder="Start Date" defaultValue={this.state.startDate} onChange={this.handleStart} />
+              <Label className="dateLabels" for="startDate">&nbsp;Trip Start Date</Label>
+              <Input type="date" name="startDate" id="startDate" defaultValue={this.state.startDate} onChange={this.handleStart} />
             </FormGroup>
           </Col>
 
           <Col>
             <FormGroup>
               <FontAwesome name='calendar' />
-              <Label for="endDate">&nbsp;End Date</Label>
-              <Input type="date" name="endDate" id="endDate" placeholder="End Date" defaultValue={this.state.endDate} onChange={this.handleEnd} />
+              <Label className="dateLabels" for="endDate">&nbsp;Trip End Date</Label>
+              <Input type="date" name="endDate" id="endDate" defaultValue={this.state.endDate} onChange={this.handleEnd} />
             </FormGroup>
           </Col>
         </Row>
