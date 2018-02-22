@@ -31,13 +31,15 @@ class App extends Component {
       numberOfDays: [1],
       activeTab: 1,
       itineraryList: [],
-      currentDayItinerary: []
+      currentDayItinerary: [],
+      tripID: ''
     };
   }
 
   // Test Code
   // ========== adding location to list ==========
   addToList = async ({ place_id, formatted_address, name, geometry: { location } }) => {
+    console.log(this.state.tripID)
     // display on React client
     // var node = document.createElement("LI");
     // var textnode = document.createTextNode(`${name}, ${formatted_address} at ${location.lat()}, ${location.lng()}`);
@@ -51,7 +53,7 @@ class App extends Component {
       address: formatted_address,
       latitude: location.lat(),
       longitude: location.lng(),
-      tripID: "5a8a93ec30f13825204253ab" // just an example
+      tripID: this.state.tripID
     }
     const response = await fetch('/location/new', {
       method: 'POST',
@@ -102,6 +104,8 @@ class App extends Component {
   componentDidMount() {
     this.retrieveFromList()
     this.getItineraryList()
+    let urlLength = window.location.href.split('/').length
+    this.getTripId(window.location.href.split('/')[urlLength - 1])
   }
 
 // ========== setting state for activeTab and currentDayItinerary ==========
@@ -191,6 +195,14 @@ class App extends Component {
   getNumberOfDays = (props) => {
     let days = Array(props).fill().map((_,i) => i + 1)
     this.setState({numberOfDays: days})
+  }
+
+  // get tripID
+  getTripId = async (id) => {
+    const response = await fetch(`/trip/${id}`)
+    const body = await response.json()
+    this.setState({ tripID: body })
+    console.log(body)
   }
 
   render() {
