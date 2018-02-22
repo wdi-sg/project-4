@@ -11,7 +11,6 @@ body {
   background-position: center;
   width: 100%;
   height: 100vh;
-  user-select: none;
 }
 
 .panel-text {
@@ -31,7 +30,7 @@ body {
 }
 
 #destination-field {
-  max-width: 400px;
+  min-width: 280px;
   margin: 0 1em 0 1em;
 }
 
@@ -61,6 +60,10 @@ body {
 
 .icon {
   width: 40%;
+}
+
+.footer-text {
+  text-shadow: 1px 1px 1px #000000;
 }
 
 footer a {

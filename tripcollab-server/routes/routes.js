@@ -14,7 +14,7 @@ router.post('/trip/update/:id', tripController.update) // update
 
 //==================== Location Control ====================
 router.post('/location/new', locationController.create) // create
-router.get('/location/getAllForTrip', locationController.getAllForTrip) // read
+router.get('/location/getAllForTrip/:id', locationController.getAllForTrip) // read
 router.delete('/location/delete/:id', locationController.delete)
 
 //==================== Event Control ====================

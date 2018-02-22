@@ -27,13 +27,15 @@ class App extends Component {
       numberOfDays: [1],
       activeTab: 1,
       itineraryList: [],
-      currentDayItinerary: []
+      currentDayItinerary: [],
+      tripID: ''
     };
   }
 
   // Test Code
   // ========== adding location to list ==========
   addToList = async ({ place_id, formatted_address, name, geometry: { location } }) => {
+    console.log(this.state.tripID)
     // display on React client
     // var node = document.createElement("LI");
     // var textnode = document.createTextNode(`${name}, ${formatted_address} at ${location.lat()}, ${location.lng()}`);
@@ -47,7 +49,7 @@ class App extends Component {
       address: formatted_address,
       latitude: location.lat(),
       longitude: location.lng(),
-      tripID: "5a8e88c81e15aed8297de7a3" // just an example
+      tripID: this.state.tripID
     }
     const response = await fetch('/location/new/', {
       method: 'POST',
@@ -75,8 +77,9 @@ class App extends Component {
   }
 
   // ========== fetching from db the location list ==========
-  retrieveFromList = async () => {
-    const response = await fetch('/location/getAllForTrip');
+  retrieveFromList = async (id) => {
+    console.log(id)
+    const response = await fetch(`/location/getAllForTrip/${id}`);
     const body = await response.json();
     if (response.status !== 200) throw Error(body.message);
     this.setState({ locationList: body });
@@ -91,13 +94,13 @@ class App extends Component {
         'Content-Type': 'application/json'
       },
     })
-    const body = await response.json()
-    this.setState({ locationList: body })
+    this.retrieveFromList()
   }
 
   // ========== mounting of component ==========
   componentDidMount() {
-    this.retrieveFromList()
+    let urlLength = window.location.href.split('/').length
+    this.getTripId(window.location.href.split('/')[urlLength - 1])
     this.getItineraryList()
   }
 
@@ -189,6 +192,14 @@ class App extends Component {
     } else {
       this.setState({numberOfDays: days})
     }
+  }
+
+  // get tripID
+  getTripId = async (id) => {
+    const response = await fetch(`/trip/read/${id}`)
+    const body = await response.json()
+    this.setState({ tripID: body })
+    this.retrieveFromList(body._id)
   }
 
   render() {

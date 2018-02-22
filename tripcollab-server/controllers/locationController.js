@@ -8,13 +8,12 @@ exports.create = (req, res) => {
     locationAddress: req.body.address,
     latitude: req.body.latitude,
     longitude: req.body.longitude,
-    // tripID: req.body.tripID
-    tripID: "5a8e9ee965e46ee76b9a493f"
+    tripID: req.body.tripID
   }, (err, location) => {
     if (err) {
       console.log(err)
     } else {
-      Location.find({tripID: "5a8e9ee965e46ee76b9a493f"}).exec((err, location) => {
+      Location.find({tripID: req.body.tripID}).exec((err, location) => {
         if (err) {
           console.log(err)
         } else {
@@ -26,13 +25,18 @@ exports.create = (req, res) => {
 };
 
 exports.getAllForTrip = (req, res) => {
+  console.log(req.params)
   // base on the trip id, populate all the location under it
-  // Location.find({}).exec((err, location) => {
-    Location.find({tripID: "5a8e9ee965e46ee76b9a493f"}, (err, location) => {
+  Location.find({tripID: req.params.id}).exec((err, location) => {
     if (err) {
       console.log(err)
     } else {
-      res.send(location)
+      if (location != null) {
+        res.send(location)
+      } else {
+        res.send({})
+      }
+
     }
   })
 }
@@ -43,13 +47,7 @@ exports.delete = (req, res) => {
     if (err) {
       console.log(err)
     } else {
-      Location.find({tripID: "5a8e9ee965e46ee76b9a493f"}).exec((err, location) => {
-        if (err) {
-          console.log(err)
-        } else {
-          res.send(location)
-        }
-      })
+      res.sendStatus(200)
     }
   })
 }
