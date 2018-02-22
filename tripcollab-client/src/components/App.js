@@ -221,18 +221,17 @@ class App extends Component {
       <div className="main" id="main">
         <Container className="fpContainer">
           <Row className="header">
-            <Col className="col-7">
+            <Col className="col-3">
               <span>
                 <img src="/assets/icon.png" className="logo"/>
                 <span className="title">TripCollab</span>
               </span>
             </Col>
 
-            <Col className="col-5 headerRight">
+            <Col className="col-9 headerRight">
               <div>
-
                 <p className="sharePromptText">
-                  Share this link with your friends!
+                  <FontAwesome name='copy' /> Click to copy this link, and share it with your friends!
                 </p>
 
                 <label><FontAwesome name='link' />&nbsp;</label>
@@ -276,8 +275,8 @@ class App extends Component {
                   &nbsp;Visit our Github!
                 </a>
                 <p>
-                  © WDI-13-SG <br/>
-                  <a href="#main">Back to the Top</a>
+                  © WDI-13 Singapore <br/>
+                  <a href="#main">Back to Top</a>
                 </p>
               </div>
             </Col>
