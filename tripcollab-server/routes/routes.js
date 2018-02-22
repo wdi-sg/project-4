@@ -8,7 +8,7 @@ const homeController = require('../controllers/homeController')
 
 //==================== Trip Control ====================
 router.post('/trip/new', tripController.create) // create
-router.get('/trip/view/:id', tripController.view) // read
+router.get('/trip/view/:id', tripController.read) // read
 router.post('/trip/update/:id', tripController.update) // update
 // router.post('/trip/delete', tripController.delete)
 
@@ -22,6 +22,9 @@ router.post('/event/new', eventController.create) // create
 router.get('/event/view', eventController.view) // read
 router.put('/event/update/:id', eventController.update) // update
 router.delete('/event/delete/:id', eventController.delete) // delete
+
+//==================== Google Maps API Key to React ====================
+router.get('/api/googlemapskey', homeController.googleMapsApiKey)
 
 //==================== 404 ====================
 router.get('*', homeController.fourZeroFour)
