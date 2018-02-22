@@ -9,14 +9,11 @@ import {
 
 export default class DayTable extends React.Component {
   // console.log(props)
-  constructor(props){
-    super(props)
-  }
+
 
   render() {
 
     let currentDayEvents = this.props.events
-    console.log("current day", currentDayEvents)
     let events = currentDayEvents.sort((a, b) => {
         return a.time.replace(/:/,'') - b.time.replace(/:/,'');
     });
@@ -30,7 +27,7 @@ export default class DayTable extends React.Component {
         })}/></td>
         <td>{event.locationID.locationName}</td>
         <td>{event.locationID.locationAddress}</td>
-        <td><textarea className="textarea" defaultValue={event.description} ref={i+1} onMouseLeave={() => this.props.onAdd({
+        <td><textarea className="textarea" defaultValue={event.description} ref={i+1} onBlur={() => this.props.onAdd({
             id: event._id,
             time: this.refs[i*10].value,
             description: this.refs[i+1].value

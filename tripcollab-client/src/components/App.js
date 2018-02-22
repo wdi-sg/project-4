@@ -50,7 +50,8 @@ class App extends Component {
       name: name,
       address: formatted_address,
       latitude: location.lat(),
-      longitude: location.lng()
+      longitude: location.lng(),
+      tripID: "5a8a93ec30f13825204253ab" // just an example
     }
     const response = await fetch('/location/new', {
       method: 'POST',
