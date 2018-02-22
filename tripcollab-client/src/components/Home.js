@@ -14,20 +14,20 @@ import '../styles/Home.css';
 
 import App from './App'
 
-// User type in where he want to go
-// User clicks on Go
-// Go should get a new trip ID
-// App will get the place user wants to go
-// App will load App.js
-// App grab the new trip ID
-// App will push trip ID into address bar and in the `Share URL`
 
 class Home extends Component {
   constructor(){
     super()
     this.state = {
       userInput: '',
-      tripID: ''
+      tripID: '',
+      logic : true
+    }
+  }
+
+  componentDidMount() {
+    if (this.props.location.pathname.includes('trip')) {
+      this.setState({logic: false})
     }
   }
 
@@ -41,17 +41,15 @@ class Home extends Component {
       body: JSON.stringify({"Pad Thai": "Yanjie don't puke"})
     })
     const body = await response.json()
-    document.getElementById('HomePage').style.display = "none"
-    console.log(body.url)
-    // this.setState({
-    //   tripID: body.url
-    // })
-    console.log(this)
+    this.setState({logic: false})
     this.props.history.push(`/trip/${body.url}`)
   }
 
   render() {
+    const isShowHome = this.state.logic
     return (
+      <div>
+      { isShowHome && (
         <div id="HomePage">
           <Container>
             <h1 className="logo text-center">TripCollab</h1>
@@ -74,25 +72,25 @@ class Home extends Component {
           <Container fluid id="back-panel">
             <Row className="text-center">
               <Col xs={6} sm={3}>
-                <img src="assets/planning.svg" alt="planner-icon" className="image-icon"/>
+                <img src="/assets/planning.svg" alt="planner-icon" className="image-icon"/>
                 <h4 className="icon-header">Easy Trip Planning</h4>
                 <p className="panel-text">Able to quickly create and arrange itinerary.</p>
               </Col>
 
               <Col xs={6} sm={3}>
-                <img src="assets/calendar.svg" className="image-icon" alt="calendar icon"/>
+                <img src="/assets/calendar.svg" className="image-icon" alt="calendar icon"/>
                 <h4 className="icon-header">Personalised Itinerary</h4>
                 <p className="panel-text">Able to customise itinerary.</p>
               </Col>
 
               <Col xs={6} sm={3}>
-                <img src="assets/add-contact.svg" alt="add contact icon" className="image-icon"/>
+                <img src="/assets/add-contact.svg" alt="add contact icon" className="image-icon"/>
                 <h4 className="icon-header">Seamless Collaboration</h4>
                 <p className="panel-text">Able to share itinerary with friends.</p>
               </Col>
 
               <Col xs={6} sm={3}>
-                <img src="assets/offline.svg" alt="no Wi-Fi icon" className="image-icon"/>
+                <img src="/assets/offline.svg" alt="no Wi-Fi icon" className="image-icon"/>
                 <h4 className="icon-header">Offline Access</h4>
                 <p className="panel-text">View itinerary even in remote locations.</p>
               </Col>
@@ -103,6 +101,9 @@ class Home extends Component {
             <p>Copyright © 2018 <a id="github" href='https://github.com/chongct/project-4'><strong>TripCollab</strong></a>. All Rights Reserved.</p>
           </footer>
         </div>
+      )
+      }
+    </div>
     )
   }
 }
