@@ -106,7 +106,7 @@ class App extends Component {
     this.getItineraryList()
   }
 
-// ========== setting state for activeTab and currentDayItinerary ==========
+  // ========== setting state for activeTab and currentDayItinerary ==========
   getActiveTab = async (data) => {
     await this.setState({activeTab: data})
 
@@ -210,13 +210,18 @@ class App extends Component {
                 <span className="title">TripCollab</span>
               </span>
             </Col>
-            <Col className="col-4 headerRight">hello hello hello
-                <div>
-                  <label for="shareLink"><FontAwesome name='link' size='1x' />&nbsp;</label>
-                  <input type="input" name="shareLink" id="shareLink" value="tripcollab.com/asdf1234asd123" />
-                </div>
-              </Col>
+
+            <Col className="col-4 headerRight">
+              <span className="sharePromptText">
+                Share this link with your friends!
+              </span>
+              <div>
+                <label for="shareLink"><FontAwesome name='link' size='1x' />&nbsp;</label>
+                <input type="input" name="shareLink" id="shareLink" value="tripcollab.com/asdf1234asd123" />
+              </div>
+            </Col>
           </Row>
+
           <Row>
             <Col className="col-7">
               <PlacesWithStandaloneSearchBox onAdd={this.addToList}/>
@@ -229,7 +234,7 @@ class App extends Component {
               </Col>
             </Row>
 
-            <Row className="mt-5">
+            <Row>
               <Col>
                 <Dates getNumberOfDays={this.getNumberOfDays}/>
               </Col>

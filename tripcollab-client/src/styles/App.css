@@ -30,13 +30,29 @@
 
 /* Customised Stuff */
 .locationHeader{
+  background-color: white;
   font-weight: bold;
   text-align: center;
 }
 
+.locationTitle{
+  margin: 0;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid #d1d1d1;
+}
+
 .locationBody{
-  height: 400px;
+  height: 413px;
   overflow-y: auto;
+}
+
+.locationRow{
+  border-bottom: 1px solid #d1d1d1;
+}
+
+.locationDiv{
+  background-color: white;
 }
 
 .header{
@@ -48,7 +64,7 @@
 
 .logo{
   /* padding-top: 5px; */
-  padding-bottom: 5px;
+  padding-bottom: 10px;
   width:50px;
   height: auto;
 }
@@ -78,20 +94,24 @@
   text-align: right;
 }
 
-.locationRow{
-  background-color: white;
-  border-bottom: 2px solid grey;
-}
-
 .textarea {
   resize: none;
   width: 300px;
 }
 
+.sharePromptText{
+  font-style: italic;
+}
 
-/* For The Scrollbar
-   Do not touch
-*/
+.dateLabels{
+  font-size: 20px;
+}
+
+.dates{
+  margin-top: 30px;
+}
+
+/* For The Scrollbar // Do not touch*/
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
