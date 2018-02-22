@@ -18,8 +18,14 @@ exports.create = (req,res) => {
 }
 
 exports.view = (req,res) => {
-  console.log(req.params.id)
-  res.send(req.params.id)
+  Trip.findById(req.params.id).exec((err, trip) => {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log(trip);
+      res.send(trip)
+}
+})
 }
 
 exports.update = (req,res) => {
