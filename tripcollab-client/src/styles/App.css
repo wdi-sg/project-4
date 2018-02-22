@@ -1,0 +1,171 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+/* Customised Stuff */
+.locationHeader{
+  background-color: white;
+  text-align: center;
+}
+
+.locationTitle{
+  margin: 0;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid #d1d1d1;
+  font-weight: bold;
+
+}
+
+.locationBody{
+  height: 413px;
+  overflow-y: auto;
+}
+
+.locationRow{
+  border-bottom: 1px solid #d1d1d1;
+}
+
+.locationDiv{
+  background-color: white;
+}
+
+.header{
+  text-align: left;
+  background-color: white;
+  border-bottom: 2px solid #C0C0C0;
+  margin-bottom: 15px;
+}
+
+.logo{
+  /* padding-top: 5px; */
+  padding-bottom: 10px;
+  width:60px;
+  height: auto;
+}
+
+.title{
+  display: inline-block;
+  /* margin: 10px; */
+  margin-top: 10px;
+  margin-bottom: 10px;
+  /* margin-left: 5px; */
+  font-family: 'Pacifico', cursive;
+  font-size: 30px;
+}
+
+.fpContainer{
+  /* This is the <Container> */
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.main{
+  background: url(https://images.unsplash.com/photo-1444723121867-7a241cacace9?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=34bb642ed1de30a476afee732c4e0c3e&auto=format&fit=crop&w=1050&q=80) no-repeat center center fixed;
+  background-size: cover;
+}
+
+.mapPopUp{
+  text-align: center;
+}
+
+.headerRight{
+  text-align: right;
+}
+
+.textarea {
+  resize: none;
+  width: 300px;
+}
+
+.sharePromptText{
+  margin: 5px 0 2px 0;
+  font-style: italic;
+}
+
+.tabText{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.dateLabels{
+  font-size: 20px;
+  font-weight: bold;
+
+}
+
+.dates{
+  margin-top: 30px;
+}
+
+#shareLink{
+  width: 500px;
+}
+
+.footer{
+  margin-top: 10px;
+  padding-top: 5px;
+  text-align: center;
+  background-color: white;
+  border-top: 2px solid #D1D1D1;
+}
+
+.event {
+  display: block;
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.event-content{
+  width: 11vw;
+}
+.event-des{
+  width: 40vw;
+}
+
+
+/* For The Scrollbar // Do not touch*/
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

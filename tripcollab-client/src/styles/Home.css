@@ -1,0 +1,79 @@
+/* Home */
+html {
+  min-width: 320px
+}
+
+body {
+  background-image: url("/assets/friends.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.panel-text {
+  margin-bottom: 0em;
+  padding: 0;
+}
+
+.brand {
+  font-family: 'Pacifico', cursive;
+  font-size: 1.6em;
+  padding: 1em;
+}
+
+#text-field-container {
+  margin-top: 1em;
+  margin-bottom: 20em;
+}
+
+#destination-field {
+  min-width: 280px;
+  margin: 0 1em 0 1em;
+}
+
+#back-panel {
+  background-color: rgba(255, 255, 255, 0.6);
+  width: 100%;
+  padding: 1em 1em;
+  margin-bottom: 4em;
+}
+
+.main-text {
+  font-family: 'Francois One', sans-serif;
+  font-size: 1.6em;
+  text-align: center;
+  padding: 2em 0 0 0;
+}
+
+.icon-header {
+  font-family: 'Francois One', sans-serif;
+  font-size: 1.1em;
+}
+
+.image-icon {
+  width: 4em;
+  height: 4em;
+}
+
+.icon {
+  width: 40%;
+}
+
+.footer-text {
+  text-shadow: 1px 1px 1px #000000;
+}
+
+footer a {
+  color: #f8f9fa;
+}
+
+footer a:link {
+  text-decoration: none;
+}
+
+footer a:visited {
+  color: #f8f9fa;
+}
