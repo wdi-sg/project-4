@@ -23,7 +23,6 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 // Serve static files for production
 app.use(express.static(path.resolve(__dirname, '../tripcollab-client/build')))
-// const staticFiles = express.static(path.join(__dirname, '../tripcollab-client/build'))
 
 // allow CORS
 app.use(function(req, res, next) {

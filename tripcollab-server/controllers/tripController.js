@@ -1,6 +1,6 @@
 const Trip = require('../models/trip')
-// const Hashids = require('hashids')
-// const hashids = new Hashids()
+const Hashids = require('hashids')
+const hashids = new Hashids()
 
 exports.create = (req,res) => {
   Trip.create({
@@ -10,19 +10,57 @@ exports.create = (req,res) => {
     if (err) {
       console.log(err)
     } else {
-      // var id = hashids.encodeHex(trip.id)
-      // res.send(id)
-      res.send(trip.id)
+      let id = hashids.encodeHex(trip.id)
+      let query = {
+        '_id' : trip.id
+      }
+      Trip.findOneAndUpdate(query, {'url':id}, (err, data) => {
+        if (err) {
+          console.log(err)
+        } else {
+          res.send(id)
+        }
+      })
     }
   })
 }
 
-exports.view = (req,res) => {
-  console.log(req.params.id)
-  res.send(req.params.id)
+exports.read = (req,res) => {
+  let query = {
+    'url' : req.params.id
+  }
+  Trip.findOne(query).exec((err, data) => {
+    if (err) {
+      console.log(err)
+      res.sendStatus(404)
+    }
+    else {
+      if (data != null) {
+        res.send(data)
+      } else {
+        res.sendStatus(404)
+      }
+    }
+  })
 }
 
 exports.update = (req,res) => {
-  console.log(req.params.id)
-  res.send(req.params.id)
+  let query = {
+    'url' : req.params.id
+  }
+  Trip.findOneAndUpdate(query, {
+    dateFrom: req.body.dateFrom,
+    dateTo: req.body.dateTo
+  }, (err, data) => {
+    if (err) {
+      console.log(err)
+      res.sendStatus(404)
+    } else {
+      if (data != null) {
+        res.send(data)
+      } else {
+        res.sendStatus(404)
+      }
+    }
+  })
 }
