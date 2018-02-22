@@ -47,14 +47,15 @@
 }
 
 .logo{
-  padding-top: 5px;
+  /* padding-top: 5px; */
   padding-bottom: 5px;
   width:50px;
   height: auto;
 }
 
 .title{
-  margin-top: 50px;
+  display: inline-block;
+  margin: 10px;
   font-family: 'Pacifico', cursive;
   font-size: 30px;
 }
@@ -82,6 +83,10 @@
   border-bottom: 2px solid grey;
 }
 
+.textarea {
+  resize: none;
+  width: 300px;
+}
 
 
 /* For The Scrollbar

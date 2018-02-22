@@ -14,13 +14,16 @@ class Dates extends Component {
 constructor() {
   super()
   this.state = {
-    startDate: '',
-    endDate: '',
+    startDate: '2018-02-21',
+    endDate: '2018-02-23',
   }
 }
 
+componentDidMount() {
+  this.setDate()
+}
+
 setDate() {
-  console.log(this.state.startDate)
   let {startDate, endDate} = this.state
   if (startDate !== '' & endDate !== '') {
     let oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
@@ -47,30 +50,45 @@ setDate() {
     this.setDate()
   }
 
+  componentDidMount () {
+    this.setDate()
+    this.setInitialStartDate()
+  }
+
+  setInitialStartDate = () => {
+    let newStartDate = new Date()
+    let newDay = newStartDate.getDate()
+    let newMonth = newStartDate.getMonth() + 1
+    let newYear = newStartDate.getFullYear()
+    let formattedDate = `${newYear}-${newMonth}-${newDay}`
+
+    // let newEndDate = newStartDate
+    console.log(formattedDate)
+  }
+
   render() {
     return (
       <div>
         <Row>
           <Col className="dates">
             <FormGroup>
-              <FontAwesome name='calendar' size='1x' />
+              <FontAwesome name='calendar' />
               <Label for="startDate">&nbsp;Start Date</Label>
-              <Input type="date" name="startDate" id="startDate" placeholder="Start Date" onChange={this.handleStart} />
+              <Input type="date" name="startDate" id="startDate" placeholder="Start Date" defaultValue={this.state.startDate} onChange={this.handleStart} />
             </FormGroup>
           </Col>
 
           <Col>
             <FormGroup>
-              <FontAwesome name='calendar' size='1x' />
+              <FontAwesome name='calendar' />
               <Label for="endDate">&nbsp;End Date</Label>
-              <Input type="date" name="endDate" id="endDate" placeholder="End Date" onChange={this.handleEnd} />
+              <Input type="date" name="endDate" id="endDate" placeholder="End Date" defaultValue={this.state.endDate} onChange={this.handleEnd} />
             </FormGroup>
           </Col>
         </Row>
       </div>
     );
   }
-
 }
 
 export default Dates;
