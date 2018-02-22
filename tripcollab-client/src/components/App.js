@@ -3,7 +3,10 @@ import React, { Component } from 'react';
 import {
   Container,
   Row,
-  Col
+  Col,
+  Popover,
+  PopoverHeader,
+  PopoverBody
 } from 'reactstrap';
 
 // ############### Components ###############
@@ -28,7 +31,8 @@ class App extends Component {
       activeTab: 1,
       itineraryList: [],
       currentDayItinerary: [],
-      tripID: ''
+      tripID: '',
+      popoverOpen: false,
     };
   }
 
@@ -203,6 +207,22 @@ class App extends Component {
     this.getItineraryList(body._id)
   }
 
+  // copy URL to clipboard
+  copyToClipboard = () => {
+    let copyURL = document.getElementById("shareLink");
+    copyURL.select();
+    document.execCommand("Copy");
+    this.togglePopover()
+    setTimeout(()=> this.togglePopover(), 1000)
+  }
+
+  // toggle popover to tell user that URL has been copied
+  togglePopover() {
+    this.setState({
+      popoverOpen: !this.state.popoverOpen
+    });
+  }
+
   render() {
 
     let newStartDate = new Date()
@@ -237,7 +257,13 @@ class App extends Component {
                 </p>
 
                 <label><FontAwesome name='link' />&nbsp;</label>
-                <input type="input" name="shareLink" id="shareLink" value={`https://tripcollab-v2.herokuapp.com/trip/${this.state.tripID.url}`} />
+                <input
+                  type="input"
+                  name="shareLink"
+                  id="shareLink" value={`https://tripcollab-v2.herokuapp.com/trip/${this.state.tripID.url}`}
+                  onClick={this.copyToClipboard}
+                  readOnly
+                />
               </div>
             </Col>
           </Row>
@@ -284,6 +310,11 @@ class App extends Component {
             </Col>
           </Row>
         </Container>
+        <Popover placement="bottom" isOpen={this.state.popoverOpen} target="shareLink" toggle={this.toggle}>
+          <PopoverBody>
+            The trip URL has been copied to your clipboard!
+          </PopoverBody>
+        </Popover>
       </div>
     );
   }
