@@ -33,13 +33,13 @@ constructor() {
   }
 }
 
-componentDidMount = async () => {
-  await this.getDate()
+componentDidMount() {
+  this.getDate()
   this.setDate()
 }
 
 getDate = async () => {
-  const response = await fetch(`/trip/view/5a8e432c7b188780787fe1bd`, {
+  const response = await fetch(`/trip/view/5a8e9ee965e46ee76b9a493f`, {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
@@ -73,15 +73,46 @@ setDate() {
 }
 }
 
-  handleStart = async (e) => {
-    await this.setState({startDate: e.target.value})
-    this.setDate()
-  }
+
+handleStart = async (e) => {
+  // write to Express server
+  await this.setState({startDate: e.target.value})
+  // var params = {
+  //   dateFrom: this.state.startDate,
+  //   id: "5a8e9ee965e46ee76b9a493f"
+  // };
+  // let response = await fetch(`/trip/update/${params.id}`, {
+  //   method: 'PUT',
+  //   headers: {
+  //     'Accept': 'application/json',
+  //     'Content-Type': 'application/json'
+  //   },
+  //   body: JSON.stringify(params)
+  // });
+  this.setDate()
+};
+
+
+
+
 
   handleEnd = async (e) => {
     await this.setState({endDate: e.target.value})
+    // var params = {
+    //   dateTo: this.state.endDate,
+    //   id: "5a8e9ee965e46ee76b9a493f"
+    // };
+    // let response = await fetch(`/trip/update/${params.id}`, {
+    //   method: 'PUT',
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(params)
+    // });
     this.setDate()
   }
+
 
   render() {
     return (

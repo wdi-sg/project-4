@@ -9,7 +9,7 @@ const homeController = require('../controllers/homeController')
 //==================== Trip Control ====================
 router.post('/trip/new', tripController.create) // create
 router.get('/trip/view/:id', tripController.view) // read
-router.post('/trip/update/:id', tripController.update) // update
+router.put('/trip/update/:id', tripController.update) // update
 // router.post('/trip/delete', tripController.delete)
 
 //==================== Location Control ====================

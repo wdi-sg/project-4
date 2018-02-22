@@ -29,6 +29,27 @@ exports.view = (req,res) => {
 }
 
 exports.update = (req,res) => {
-  console.log(req.params.id)
-  res.send(req.params.id)
+  // if (req.body.dateFrom) {
+  //   console.log("datefrom")
+  //   Trip.findByIdAndUpdate(req.body.id,
+  //     {$set: { dateFrom: req.body.dateFrom }},
+  //     (err, event) => {
+  //       if (err) {
+  //         console.log(err)
+  //       } else {
+  //         res.send(event)
+  //       }
+  //     })
+  // } else {
+  //   console.log("dateto");
+  //   Trip.findByIdAndUpdate(req.body.id,
+  //     {$set: { dateTo: req.body.dateTo }},
+  //     (err, event) => {
+  //       if (err) {
+  //         console.log(err)
+  //       } else {
+  //         res.send(event)
+  //       }
+  //     })
+  // }
 }
