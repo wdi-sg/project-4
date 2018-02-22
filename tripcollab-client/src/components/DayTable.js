@@ -10,7 +10,6 @@ import {
 export default class DayTable extends React.Component {
   // console.log(props)
 
-
   render() {
 
     let currentDayEvents = this.props.events
@@ -25,15 +24,14 @@ export default class DayTable extends React.Component {
           time: this.refs[i*10].value,
           description: this.refs[i+1].value
         })}/></td>
-        <td>{event.locationID.locationName}</td>
-        <td>{event.locationID.locationAddress}</td>
+        <td>{event.locationName}</td>
+        <td>{event.locationAddress}</td>
         <td><textarea className="textarea" defaultValue={event.description} ref={i+1} onBlur={() => this.props.onAdd({
             id: event._id,
             time: this.refs[i*10].value,
             description: this.refs[i+1].value
           })}/></td>
 
-        {/* <td><input type="text" defaultValue={event.description} ref={i+1} /></td> */}
         {/* <td><button
           onClick={() => this.props.onAdd({
             id: event._id,

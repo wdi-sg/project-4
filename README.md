@@ -1,64 +1,83 @@
-# WDI Project #4: TripCollab Expanded
+# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Project 4 – TripCollab Expanded
 
-This is the starter code for WDI projects. Please update this README file with information specific to your project. Replace this paragraph for instance, with a short description of your project. Then update the sections below. Refer to your project specificaion for instructions on how to submit your projects.
+Our group is developing a website with a centralised, easy-to-use travel itinerary in a single view which can be collaborated and shared with travel friends making travel planning more fun without any hassle.
+
+Live version: https://tripcollab-v2.herokuapp.com/
+
+---
 
 ## Getting Started
-
-Provide instructions here about how to get your project running on our local machine. Do we just need to clone and open a certain file or do we need to install anything first.
-
-### Prerequisites
-
-What is needed to install and run the project, how do we install them
-
-```
-Code example
-```
-
 ### How to Use
+* Fork and clone this repository.
+* Open your terminal and run ```yarn install``` to install dependencies.
+* Run ```yarn start```.
 
-A step by step guide on how to install and use the project, for example if this is a game, how do we play it.
-
-
-```
-Code example
-```
-
-More steps...
-
-```
-until finished
-```
-
-
-## Tests
-
-Did you write automated tests? If so, how do we run them.
-
-
-```
-Code example
-```
-
-## Live Version
-
-Where is this deployed online (github pages, heroku etc), give us the link and any access details we need.
+---
 
 ## Built With
+* Technologies: React, Node.js
+* Database: MongoDB
+* CSS Framework: Bootstrap 4.0
 
-What did you use to build it, list the technologies, plugins, gems, packages etc.
+---
 
-* [jQuery](http://jquery.com/) - jQuery for example is something you likely used
+## Deployment & Versioning
+* Github
+* Heroku
+
+---
 
 ## Workflow
+### Entity-Relationship Diagram
+![p4_erd](https://user-images.githubusercontent.com/31798170/36517170-4131fb74-17bc-11e8-9a6a-8ecdcfdcd1f1.png)
 
-Did you write user stories, draw wireframes, use task tracking, produce ERDs? Did you use source control, with regular commits? Include links to them here.
+---
 
-## Authors
+### User Stories
+![p4 user stories](https://user-images.githubusercontent.com/31798170/36518579-f591fde4-17c1-11e8-86fa-507fc7c83dca.png)
 
-Did you collaborate with others on this project, list them here
+---
 
-* **John McClain** - *Responsible for keeping vests white* - [GithubUserName](https://github.com/GithubUserName)
+### Use Case
+![p4 use case](https://user-images.githubusercontent.com/31798170/36517157-31ab1938-17bc-11e8-8c09-ffcb18f84878.png)
+
+---
+
+### Flowchart
+![p4 flowchart](https://user-images.githubusercontent.com/31798170/36517141-222913c0-17bc-11e8-9d53-66b6d3e1ef5b.png)
+
+---
+
+### Wireframe
+![p4_wireframe](https://user-images.githubusercontent.com/31798170/36517183-58883ca2-17bc-11e8-90c0-e9d5028f26f0.png)
+
+---
+
+# Scalable Areas
+* Share trip url via email.
+* Allow upvote and downvote on each location.
+
+---
+
+## Project Collaboration
+* Trello Project Management application
+
+![trello](https://user-images.githubusercontent.com/31798170/36472250-3cf73956-172c-11e8-9582-d4665b5f220c.jpeg)
+
+### Authors
+* [Darren Koh](https://github.com/keed) 
+* [Chong Ching Tong](https://github.com/chongct)
+* [Edmund Teo](https://github.com/edmundtck)
+* [Wong Kin Ting](https://github.com/strisen)
+* [Speed Chan](https://github.com/knownopear)
+* [Lim Jiechao](https://github.com/limjiechao)
+* [Poh Yan Jie](https://github.com/empludo)
+* [Jo Sho](https://github.com/emjys)
+
+---
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used, for example [this was a useful starting point for creating this template](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2).
+* Homepage Photo by Helena Lopes on Unsplash
+
+---

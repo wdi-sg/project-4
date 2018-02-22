@@ -114,17 +114,17 @@ class App extends Component {
   }
 
   // Event creation Test
-  // ========== adding from location list to itineray list ==========
-  addToEvent = async (e, req) => {
+
+  addToEvent = async (req) => {
 
     // write to Express server
     var params = {
-      location_id: e.target.parentNode.parentNode.id,
-      // trip_id: req.params.id,
-      // name: this.state.locationList[e.target],
+      locationName: req.locationName,
+      locationAddress: req.locationAddress,
       time: "00:00",
       date: this.state.activeTab
     };
+    console.log(req);
     let response = await fetch('/event/new', {
       method: 'POST',
       headers: {
@@ -208,7 +208,7 @@ class App extends Component {
                 <span className="title">TripCollab</span>
               </span>
             </Col>
-            <Col className="col-4">hello</Col>
+            {/* <Col className="col-4">hello</Col> */}
           </Row>
           <Row>
             <Col className="col-7">
@@ -216,7 +216,8 @@ class App extends Component {
             </Col>
             <Col className="col-5">
               <Locations
-                locations={this.state.locationList} addToEvent={this.addToEvent}
+                locations={this.state.locationList}
+                onAdd={this.addToEvent}
                 onDelete={this.deleteFromList}/>
             </Col>
           </Row>

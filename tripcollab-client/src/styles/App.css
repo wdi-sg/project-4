@@ -84,10 +84,6 @@
   width: 300px;
 }
 
-
-
-
-
 /* Scrollbar */
 /* width */
 ::-webkit-scrollbar {
@@ -110,7 +106,3 @@
 }
 
 /* End Scrollbar */
-/* .locationDiv {
-  overflow-y: scroll;
-  height: 250px;
-} */
