@@ -32,7 +32,6 @@ export default class DayTable extends React.Component {
             description: this.refs[i+1].value
           })}/></td>
 
-        <td><input type="text" defaultValue={event.description} ref={i+1} /></td>
         {/* <td><button
           onClick={() => this.props.onAdd({
             id: event._id,
