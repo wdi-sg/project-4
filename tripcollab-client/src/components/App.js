@@ -247,7 +247,7 @@ class App extends Component {
                 </a>
                 <p>
                   © WDI-13-SG <br/>
-                  <a href="#main">Back to Top</a>
+                  <a href="#main">Back to the Top</a>
                 </p>
               </div>
             </Col>
