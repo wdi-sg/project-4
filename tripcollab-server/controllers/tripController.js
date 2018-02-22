@@ -18,7 +18,7 @@ exports.create = (req,res) => {
         if (err) {
           console.log(err)
         } else {
-          res.send(id)
+          res.send({'url': id})
         }
       })
     }

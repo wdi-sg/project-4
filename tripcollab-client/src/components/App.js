@@ -18,7 +18,7 @@ import PlacesWithStandaloneSearchBox from './SearchBox';
 
 // ############### Styling ###############
 import '../styles/App.css'
-import logo from '../icon.png'
+// import logo from '../icon.png'
 
 
 class App extends Component {
@@ -200,7 +200,7 @@ class App extends Component {
           <Row className="header">
             <Col className="col-8">
               <span>
-                <img src={logo} className="logo"/>
+                {/* <img src={logo} className="logo"/> */}
                 <span className="title">TripCollab</span>
               </span>
             </Col>
