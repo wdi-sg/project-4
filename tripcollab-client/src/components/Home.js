@@ -12,8 +12,6 @@ import {
 } from 'reactstrap';
 import '../styles/Home.css';
 
-<<<<<<< HEAD
-=======
 import App from './App'
 
 // User type in where he want to go
@@ -24,7 +22,6 @@ import App from './App'
 // App grab the new trip ID
 // App will push trip ID into address bar and in the `Share URL`
 
->>>>>>> master
 class Home extends Component {
   constructor(){
     super()

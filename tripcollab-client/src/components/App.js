@@ -14,12 +14,9 @@ import PlacesWithStandaloneSearchBox from './SearchBox';
 
 // ############### Styling ###############
 import '../styles/App.css'
-<<<<<<< HEAD
 import FontAwesome from 'react-fontawesome'
-
-=======
 // import logo from '../icon.png'
->>>>>>> master
+
 
 
 class App extends Component {
@@ -168,10 +165,7 @@ class App extends Component {
     var params = {
       id: req
     };
-<<<<<<< HEAD
 
-=======
->>>>>>> master
     let response = await fetch(`/event/delete/${params.id}`, {
       method: 'DELETE',
       headers: {
@@ -199,11 +193,7 @@ class App extends Component {
           <Row className="header">
             <Col className="col-7">
               <span>
-<<<<<<< HEAD
                 <img src="/assets/icon.png" className="logo"/>
-=======
-                {/* <img src={logo} className="logo"/> */}
->>>>>>> master
                 <span className="title">TripCollab</span>
               </span>
             </Col>
