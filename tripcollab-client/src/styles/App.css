@@ -66,18 +66,21 @@
 .logo{
   /* padding-top: 5px; */
   padding-bottom: 10px;
-  width:50px;
+  width:60px;
   height: auto;
 }
 
 .title{
   display: inline-block;
-  margin: 10px;
+  /* margin: 10px; */
+  margin-top: 10px;
+  margin-bottom: 10px;
+  /* margin-left: 5px; */
   font-family: 'Pacifico', cursive;
   font-size: 30px;
 }
 
-.container{
+.fpContainer{
   /* This is the <Container> */
   background-color: rgba(255, 255, 255, 0.85);
 }
@@ -128,7 +131,11 @@
   border-top: 2px solid #D1D1D1;
 }
 
-
+.event {
+  display: block;
+  height: 400px;
+  overflow-y: scroll;
+}
 
 /* For The Scrollbar // Do not touch*/
 /* width */
@@ -149,25 +156,4 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
-}
-
-/* End Scrollbar */
-
-/* Day Table */
-.event thead tr {
-  display: block;
-}
-
-.event .event-content {
-  width: 20%;
-}
-
-.event .event-des {
-  width: 30%;
-}
-
-.event tbody {
-  display: block;
-  height: 400px;
-  overflow: auto;
 }

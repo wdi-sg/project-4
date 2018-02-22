@@ -14,7 +14,6 @@ import PlacesWithStandaloneSearchBox from './SearchBox';
 
 // ############### Styling ###############
 import '../styles/App.css'
-import logo from '../icon.png'
 import FontAwesome from 'react-fontawesome'
 
 
@@ -190,15 +189,14 @@ class App extends Component {
   render() {
     return (
       <div className="main" id="main">
-        <Container>
+        <Container className="fpContainer">
           <Row className="header">
             <Col className="col-7">
               <span>
-                <img src={logo} className="logo"/>
+                <img src="/assets/icon.png" className="logo"/>
                 <span className="title">TripCollab</span>
               </span>
             </Col>
-<<<<<<< HEAD
 
             <Col className="col-5 headerRight">
               <div>
@@ -211,8 +209,6 @@ class App extends Component {
                 <input type="input" name="shareLink" id="shareLink" value="tripcollab.com/asdf1234asd123" />
               </div>
             </Col>
-=======
->>>>>>> 21feb
           </Row>
 
           <Row>
