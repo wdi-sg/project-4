@@ -33,14 +33,14 @@ export default class DayTable extends React.Component {
           })}/></td>
 
         <td><input type="text" defaultValue={event.description} ref={i+1} /></td>
-        <td><button
+        {/* <td><button
           onClick={() => this.props.onAdd({
             id: event._id,
             time: this.refs[i*10].value,
             description: this.refs[i+1].value
           })}>
           Update
-        </button></td>
+        </button></td> */}
         <td><button
           onClick={() => this.props.onMinus(event._id)}>
           Delete
