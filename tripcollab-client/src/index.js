@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 
 // Stylesheets
@@ -13,7 +13,6 @@ import App from './components/App';
 ReactDOM.render(
   <Router>
     <div>
-      <Route path='/App' component={App} />
       <Route path="/" component={Home}/>
       <Route path="/trip/:trip_id" component={App} />
     </div>
